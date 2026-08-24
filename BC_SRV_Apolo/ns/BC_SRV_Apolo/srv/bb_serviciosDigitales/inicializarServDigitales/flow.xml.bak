@@ -10,7 +10,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="pub.flow:savePipelineToFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="pub.flow:savePipelineToFile" VALIDATE-IN="$none" VALIDATE-OUT="$none" DISABLED="true">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -89,7 +89,7 @@
 </MAP>
 </INVOKE>
 
-<INVOKE TIMEOUT="" SERVICE="pub.flow:restorePipelineFromFile" VALIDATE-IN="$none" VALIDATE-OUT="$none" DISABLED="true">
+<INVOKE TIMEOUT="" SERVICE="pub.flow:restorePipelineFromFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -305,6 +305,44 @@
       <value name="identity_session_token"></value>
       <value name="sessionId"></value>
       <value name="consumerRequestId"></value>
+    </record>
+    <record name="compuertas" javaclass="com.wm.util.Values">
+      <value name="extra1"></value>
+    </record>
+    <record name="executeOnBoardingPartyDigitalService" javaclass="com.wm.util.Values">
+      <record name="onBoardingPartyDigitalService" javaclass="com.wm.util.Values">
+        <record name="endorsement" javaclass="com.wm.util.Values">
+          <value name="sessionDialogueIdentification"></value>
+          <array name="endorsementManagement" type="record" depth="1">
+          </array>
+          <record name="digitalServicesEndorsement" javaclass="com.wm.util.Values">
+            <record name="partyReference" javaclass="com.wm.util.Values">
+              <value name="referenceId"></value>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+    <record name="updateCreditCardApplication" javaclass="com.wm.util.Values">
+      <value name="sessionDialogueIdentification"></value>
+      <record name="creditCardApplication" javaclass="com.wm.util.Values">
+        <value name="applicationContractNumber"></value>
+        <value name="applicationOfferDate"></value>
+        <value name="applicationReferenceId"></value>
+        <record name="bankBranch" javaclass="com.wm.util.Values">
+          <value name="branchReference"></value>
+        </record>
+        <record name="creditPlan" javaclass="com.wm.util.Values">
+        </record>
+        <record name="productInstanceRecord" javaclass="com.wm.util.Values">
+          <value name="productInstanceReference"></value>
+        </record>
+        <value name="requestNumber"></value>
+        <value name="requestStatus"></value>
+        <value name="requestType"></value>
+        <value name="intlCode"></value>
+        <value name="offerFlowType"></value>
+      </record>
     </record>
   </record>
 </Values>
