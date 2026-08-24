@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<SEQUENCE EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="wm.server.openapi:invoke">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/path;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">/v1/customerRelationshipInvolvementPep/create</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/httpMethod;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">POST</value>
+</Values>
+</DATA>
+</MAPSET>
+
+<MAPSET OVERWRITE="false" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/radNamespace;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">PD_Pruebas.api.BC_MULESOFT.consumer.customerManagement:customerManagement</value>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+
+<MAP MODE="OUTPUT">
+</MAP>
+</INVOKE>
+
+<BRANCH LABELEXPRESSIONS="true">
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="code = 400" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/400;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>400</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="code = 401" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/401;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>401</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="code = 403" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/403;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>403</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="code = 404" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/404;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>404</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="code = 408" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/408;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>408</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="code = 500" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<MAP MODE="STANDALONE">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/response;3;0" TO="/500;2;0">
+</MAPCOPY>
+</MAP>
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+    <value>500</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+
+<SEQUENCE NAME="$default" EXIT-ON="FAILURE">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="pub.flow:clearPipeline">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPSET OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/preserve;1;1">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <array name="xml" type="value" depth="1">
+    <value>code</value>
+    <value>phrase</value>
+  </array>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+</INVOKE>
+</SEQUENCE>
+</BRANCH>
+</SEQUENCE>
+</FLOW>

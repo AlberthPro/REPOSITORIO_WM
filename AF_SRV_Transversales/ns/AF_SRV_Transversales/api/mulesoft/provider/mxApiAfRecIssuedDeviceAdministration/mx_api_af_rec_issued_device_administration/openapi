@@ -1,0 +1,5218 @@
+openapi: 3.0.0
+info:
+  title: Rec Issued Device Administration
+  contact: {}
+  version: 1.6.0
+servers:
+- url: "https://${HOST_NAME}/experience/operationalServices/issuedDeviceAdministration"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/deviceAssignment/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1DeviceAssignmentInitiate_POST
+      description: "Servicio de recepción encargado de almacenar la informacion del\
+        \ dispositivo del usuario, durante el proceso de onboarding del cliente"
+      operationId: V1DeviceAssignmentInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateDeviceAssignmentRq'
+              - example:
+                  deviceAssignment:
+                    issuedDeviceAllocation:
+                      issuedDeviceType: WEBAPP
+                    deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                    issueLocation:
+                      location:
+                      - ipAddress: 189.203.89.169
+                        longitude: 92EAF3719159C372F3D50337E0A14F57
+                        latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                        locationAddressType: DEVICE_ADDRESS
+                    deviceDescription: "[{'key':'userAgent', 'value':'Mozilla/5.0\
+                      \ (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38\
+                      \ (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'}]"
+                    versionNumber: Android 11
+                    deviceProperty:
+                      model: Motorola moto g(20)
+                      sdk: (Web Flow)
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/initiateDeviceAssignmentRs'
+                - example:
+                    deviceAssignment:
+                      issuedDeviceStatus: Alive
+              example:
+                deviceAssignment:
+                  issuedDeviceStatus: Alive
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/retrieve:
+    get:
+      tags:
+      - v1
+      summary: V1DeviceAssignmentRetrieve_GET
+      description: Obtiene información sobre el dispositivo que el usuario estaba
+        usando durante la incorporación.
+      operationId: V1DeviceAssignmentRetrieve_GET
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveDeviceAssignmentRs'
+                - example:
+                    deviceAssignment:
+                      issueLocation:
+                        location:
+                        - locationAddressType: IP_ADDRESS
+                          locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                          ipAddress: 189.203.89.169
+                          country:
+                            name: Mexico
+                          city:
+                            name: 92EAF3719159C372F3D50337E0A14F57
+                          region:
+                            name: Mexico City
+                          longitude: 92EAF3719159C372F3D50337E0A14F57
+                          latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                        - locationAddressType: DEVICE_ADDRESS
+                          longitude: 92EAF3719159C372F3D50337E0A14F57
+                          latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                          province:
+                            name: CA
+                          countyDistrict:
+                            name: 9FF0FDA9669BF74AD3A1C747F0713803
+                          city:
+                            name: 92EAF3719159C372F3D50337E0A14F57
+                          neighborhood: 464E07AFC9E46359FB480839150595C5
+                          street:
+                            streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+                            streetNumber: A93B64AE1FB376A15EC21132E65B478F
+                          postalCode: 064A1B28141F5A118925852BBB124BAF
+                          country:
+                            code: 064A1B28141F5A118925852BBB124BAF
+                            name: México
+                      deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                      issuedDeviceAllocation:
+                        issuedDeviceType: WEBAPP
+                      versionNumber: Android 11
+                      deviceProperty:
+                        model: Motorola moto g(20)
+              example:
+                deviceAssignment:
+                  issueLocation:
+                    location:
+                    - locationAddressType: IP_ADDRESS
+                      locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                      ipAddress: 189.203.89.169
+                      country:
+                        name: Mexico
+                      city:
+                        name: 92EAF3719159C372F3D50337E0A14F57
+                      region:
+                        name: Mexico City
+                      longitude: 92EAF3719159C372F3D50337E0A14F57
+                      latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    - locationAddressType: DEVICE_ADDRESS
+                      longitude: 92EAF3719159C372F3D50337E0A14F57
+                      latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                      province:
+                        name: CA
+                      countyDistrict:
+                        name: 9FF0FDA9669BF74AD3A1C747F0713803
+                      city:
+                        name: 92EAF3719159C372F3D50337E0A14F57
+                      neighborhood: 464E07AFC9E46359FB480839150595C5
+                      street:
+                        streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+                        streetNumber: A93B64AE1FB376A15EC21132E65B478F
+                      postalCode: 064A1B28141F5A118925852BBB124BAF
+                      country:
+                        code: 064A1B28141F5A118925852BBB124BAF
+                        name: México
+                  deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                  issuedDeviceAllocation:
+                    issuedDeviceType: WEBAPP
+                  versionNumber: Android 11
+                  deviceProperty:
+                    model: Motorola moto g(20)
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1TokenAssignmentInitiate_POST
+      description: Envía un código OTP( One Time Password) para validar un onboarding
+        mediante la definición de un tipo de medio de envío (SMS o Correo).
+      operationId: V1TokenAssignmentInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateTokenAssignmentRq'
+              - example:
+                  partyReference:
+                    contactPoint:
+                    - contactPointType: Electronic Address
+                      contactPointValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                  sessionDialogueIdentification: C8CF053EF5CE7AD676E6E8C0925FE368
+                  headline: Bienvenida
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/register:
+    post:
+      tags:
+      - v1
+      summary: V1DeviceAssignmentRegister_POST
+      description: Actualiza información sobre el dispositivo que el usuario estaba
+        usando durante la incorporación.
+      operationId: V1DeviceAssignmentRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerDeviceAssignmentRq'
+              - example:
+                  deviceAssignment:
+                    sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                    issueLocation:
+                      location:
+                      - ipAddress: 19.29.192.1
+                        country:
+                          name: MEXICO
+                        city:
+                          name: 92EAF3719159C372F3D50337E0A14F57
+                        region:
+                          name: NL
+                        longitude: 92EAF3719159C372F3D50337E0A14F57
+                        latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                        locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                        locationAddressType: IP_ADDRESS
+                      - longitude: 92EAF3719159C372F3D50337E0A14F57
+                        latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                        locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                        locationAddressType: DEVICE_ADDRESS
+                        country:
+                          code: MEX
+                    deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                    issuedDeviceAllocation:
+                      issuedDeviceType: WEBAPP
+                    deviceProperty:
+                      model: Motorola moto g(20)
+                      sdk: (Web Flow)
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1TokenAssignmentEvaluate_POST
+      description: Envía un código OTP obtenido mediante SMS para validar un onboarding.
+      operationId: V1TokenAssignmentEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateTokenAssignmentRq'
+              - example:
+                  tokenAssignment:
+                    tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                    sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                    validationManagement:
+                    - validationType: 1
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluateTokenAssignmentRs'
+                - example:
+                    transactionSuccess: false
+              example:
+                transactionSuccess: false
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1TokenAssignmentRetrieve_POST
+      description: retorna todos los token resgistrados en gemalto para un usuario.
+      operationId: V1TokenAssignmentRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveTokenAssignmentRq'
+              - example:
+                  partyReference:
+                    referenceId: A93B64AE1FB376A15EC21132E65B478F
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveTokenAssignmentRs'
+                - example:
+                    tokensAssignment:
+                    - tokenAssignment:
+                        tokenIdentificationCode:
+                          identifierValue:
+                            value: TOKEN123456
+              example:
+                tokensAssignment:
+                - tokenAssignment:
+                    tokenIdentificationCode:
+                      identifierValue:
+                        value: TOKEN123456
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/{companyReference}/{customerReference}/retrieve:
+    get:
+      tags:
+      - v1
+      summary: V1BiometricAssignmentRetrieve_GET
+      description: Consulta de Huella de cliente persona física
+      operationId: V1BiometricAssignmentRetrieve_GET
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: employeeReference
+        in: query
+        description: ""
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Example
+      - name: branch
+        in: query
+        description: ""
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Example
+      - name: companyReference
+        in: path
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerReference
+        in: path
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveBiometricAssignmentRs'
+                - example:
+                    biometricAssignment:
+                      biometricType: Fingerprint
+                      biometricRegisteredDetail:
+                        rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                        leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                        date:
+                          registryDate: 2023-07-25
+                          changeDate: 2023-07-28
+                          lastChangeDate: 2023-07-30
+                        changeUser: user123
+                      sequence: 1
+                      status: Active
+                      username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                      bankBranch:
+                        branchReference: BR123
+              example:
+                biometricAssignment:
+                  biometricType: Fingerprint
+                  biometricRegisteredDetail:
+                    rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                    date:
+                      registryDate: 2023-07-25
+                      changeDate: 2023-07-28
+                      lastChangeDate: 2023-07-30
+                    changeUser: user123
+                  sequence: 1
+                  status: Active
+                  username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                  bankBranch:
+                    branchReference: BR123
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1BiometricAssignmentInitiate_POST
+      description: Operación encargada de realizar el registro de la huellas del cliente.
+      operationId: V1BiometricAssignmentInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateBiometricAssignmentRq'
+              - example:
+                  biometricAssignment:
+                    bankBranch:
+                      branchReference: BR123
+                    biometricRegisteredDetail:
+                      leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                      rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    operatorNumber: operador
+                    companyReference: "001"
+                    partyReference:
+                      referenceId: A93B64AE1FB376A15EC21132E65B478F
+                      referenceIdCoppel: 41EF894026A8CD4DA247105A6036DB70
+                      employeeNumber: B277B9D408D34013A4BE9FA416B72638
+                      identifications:
+                      - identifier:
+                          identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                        personIdentificationType: Registro Federal Contribuyentes
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/update:
+    put:
+      tags:
+      - v1
+      summary: V1BiometricAssignmentUpdate_PUT
+      description: Operación encargada de realiza la actualización de los datos biométricos
+        del cliente.
+      operationId: V1BiometricAssignmentUpdate_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateBiometricAssigmentRq'
+              - example:
+                  biometricAssignment:
+                    bankBranch:
+                      branchReference: BR123
+                    biometricRegisteredDetail:
+                      leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                      rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    biometricType: Fingerprint
+                    username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    companyReference: "12"
+                    partyReference:
+                      referenceId: A93B64AE1FB376A15EC21132E65B478F
+                      referenceIdCoppel: 41EF894026A8CD4DA247105A6036DB70
+                      employeeNumber: B277B9D408D34013A4BE9FA416B72638
+                      identifications:
+                      - identifier:
+                          identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                        personIdentificationType: Registro Federal Contribuyentes
+                    device:
+                      ipAddress: 19.29.192.1
+                      verificationDevice: computer
+                      sensorDevice: sensor
+                      componentDevice: componente
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/updateBiometricAssigmentRs'
+                - example:
+                    biometricAssignment:
+                      sequence: 1
+                      message: mensaje
+              example:
+                biometricAssignment:
+                  sequence: 1
+                  message: mensaje
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignment/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1PasswordAssignmentInitiate_POST
+      description: Domain Api que permite la asignación de NIP(Cambio de NIP) de la
+        tarjeta de crédito..
+      operationId: V1PasswordAssignmentInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiatePasswordAssignmentRq'
+              - example:
+                  issuedDeviceAllocation:
+                    issuedDeviceReference:
+                      deviceIdentification: 464E07AFC9E46359FB480839150595C5
+                  passwordAssignment:
+                    passwordValue: 464E07AFC9E46359FB480839150595C5
+                  cardPOSDeviceAllocation:
+                    cardPOSDeviceIdentifier: "10000086"
+                  allocation:
+                    merchantReference: "10000084"
+                    merchantType: "5999"
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/initiatePasswordAssignmentRs'
+                - example:
+                    transactionFacility:
+                      processCode: "960000"
+                      trackingNumber: "709427"
+                      transactionalDate: 2023-10-19T13:46:47
+                      authorizationReference: "245600"
+                      svfeIdentifier: "231019006413245600"
+                      channelDeviceReference: 534D415254504F53
+                      cardApplicationIdentifier: A0000000041010
+                      statusInstanceRecord:
+                        statusCode: "00"
+              example:
+                transactionFacility:
+                  processCode: "960000"
+                  trackingNumber: "709427"
+                  transactionalDate: 2023-10-19T13:46:47
+                  authorizationReference: "245600"
+                  svfeIdentifier: "231019006413245600"
+                  channelDeviceReference: 534D415254504F53
+                  cardApplicationIdentifier: A0000000041010
+                  statusInstanceRecord:
+                    statusCode: "00"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/update:
+    patch:
+      tags:
+      - v1
+      summary: V1DeviceAssignmentUpdate_PATCH
+      description: En esta Api se lleva a cabo la actualización del estatus de activación
+        de una tarjeta de crédito.
+      operationId: V1DeviceAssignmentUpdate_PATCH
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateDeviceAssignmentRq'
+              - example:
+                  paymentCard:
+                    cardNumber: NDQzNTMzMjM0MzQzNDMyMQ==
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/updateDeviceAssignmentRs'
+                - example:
+                    transactionFacility:
+                      processCode: "960000"
+                      trackingNumber: "709427"
+                      transactionalDate: 2023-10-19T13:46:47
+                      authorizationReference: "245600"
+                      svfeIdentifier: "231019006413245600"
+              example:
+                transactionFacility:
+                  processCode: "960000"
+                  trackingNumber: "709427"
+                  transactionalDate: 2023-10-19T13:46:47
+                  authorizationReference: "245600"
+                  svfeIdentifier: "231019006413245600"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignmentLog/register:
+    post:
+      tags:
+      - v1
+      summary: V1PasswordAssignmentLogRegister_POST
+      description: Api de experiencia que se encarga de insertar la información en
+        algunas tablas que corresponden a los pins en oficina o ATM.
+      operationId: V1PasswordAssignmentLogRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerPasswordAssignmentLogRq'
+              - example:
+                  issuedDeviceAllocation:
+                    issuedDeviceReference:
+                      deviceIdentification: 464E07AFC9E46359FB480839150595C5
+                  passwordAssignment:
+                    employeeNumber: 464E07AFC9E46359FB480839150595C5
+                    bankBranch:
+                      branchReference: "223211"
+                    configurationPasswordAssignment:
+                    - name: tagResponse
+                      value: "1"
+                    - name: Campo38
+                      value: "000000"
+                    - name: TLVResponse
+                      value: "1"
+                    - name: ip_pc
+                      value: 192.168.35.12
+                    - name: trj_stfin
+                      value: "1"
+                    - name: trj_stinicio
+                      value: "0"
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/capture:
+    put:
+      tags:
+      - v1
+      summary: V1TokenAssignmentCapture_PUT
+      description: Este microservicio realiza una Inserción de la validación del código
+        OTP  para un cliente prospecto en la tabla Validations.
+      operationId: V1TokenAssignmentCapture_PUT
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/captureTokenAssignmentRq'
+              - example:
+                  tokenAssignment:
+                    sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                    tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                    validationManagement:
+                    - validationStatus: true
+                      validationDescription: Validación SIC- buró externo
+                      validationDateTime: 2023-06-28 05:22:32
+                      validationType: 2
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignment/create:
+    post:
+      tags:
+      - v1
+      summary: V1PasswordAssignmentCreate_POST
+      description: En esta Api se lleva a cabo la creación de un pin para una tarjeta
+        de crédito en BPC.
+      operationId: V1PasswordAssignmentCreate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createPasswordAssignmentRq'
+              - example:
+                  paymentCard:
+                    cardNumber: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    partyReference:
+                      contactPoint:
+                      - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                        contactPointType: cellphone
+                  cardPOSDeviceAllocation:
+                    cardPOSDeviceIdentifier: "10000086"
+                  allocation:
+                    merchantReference: "10000084"
+                    merchantType: "5999"
+                  deviceAssignment:
+                    deliverymethod: WS
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/createPasswordAssignmentRs'
+                - example:
+                    transactionFacility:
+                      processCode: "00"
+                      trackingNumber: dddd
+                      transactionalDate: 01/02/2024
+                      authorizationReference: xxxxx
+                      svfeIdentifier: xsdsdsd
+                    passwordAssignment:
+                      passwordValue: 464E07AFC9E46359FB480839150595C5
+              example:
+                transactionFacility:
+                  processCode: "00"
+                  trackingNumber: dddd
+                  transactionalDate: 01/02/2024
+                  authorizationReference: xxxxx
+                  svfeIdentifier: xsdsdsd
+                passwordAssignment:
+                  passwordValue: 464E07AFC9E46359FB480839150595C5
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/update:
+    put:
+      tags:
+      - v1
+      summary: V1TokenAssignmentUpdate_PUT
+      description: Api de recepción que actualiza un código OTP(One Time Password)
+        utilizado para validar el onboarding.
+      operationId: V1TokenAssignmentUpdate_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateTokenAssignmentRq'
+              - example:
+                  tokenAssignment:
+                    tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                    sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                    validationManagement:
+                    - validationDescription: OTP validated
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/reporting/register:
+    post:
+      tags:
+      - v1
+      summary: V1ReportingRegister_POST
+      description: API que registra el log de las transacciones ejecutadas por la
+        app
+      operationId: V1ReportingRegister_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerReportingRq'
+              - example:
+                  logEntryType: "002"
+                  transactionFacility:
+                    transactionNumber: "1003"
+                  auditFacility:
+                    transactionTime: "469"
+                    transactionDate: 2020-07-19
+                    environment: DEV
+                    uuid: 072d6e0d-2ac8-42f9-96bb-e0e828e05c1
+                    namespace: Negocio
+                    apiName: /api/public/v2/channel/credit/cards/accounts/retrieve
+                  bankBranch:
+                    branchReference: "5011"
+                  partyReference:
+                    referenceId: "190000011"
+                  statusInstanceRecord:
+                    statusCode: "200"
+                    status: "000000"
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/issuedDeviceAllocation/register:
+    post:
+      tags:
+      - v1
+      summary: V1IssuedDeviceAllocationRegister_POST
+      description: Inserta la geolocalización del cliente
+      operationId: V1IssuedDeviceAllocationRegister_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerIssuedDeviceAllocationRq'
+              - example:
+                  transactionFacility:
+                    transactionNumber: "1003"
+                  auditFacility:
+                    transactionTime: "469"
+                    transactionDate: 2020-07-19
+                  partyReference:
+                    referenceId: "190000011"
+                  channelFacility:
+                    channelReferenceId: "1"
+                  issueLocation:
+                    location:
+                    - longitude: 92EAF3719159C372F3D50337E0A14F57
+                      latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                  amount: 12345
+                  recordIdentifier: branch1
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintAssignment/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1FingerprintAssignmentRetrieve_POST
+      description: Consulta del registro que contiene agrupadas las huellas del Trabajador
+        o del Asesor
+      operationId: V1FingerprintAssignmentRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveFingerprintAssignmentRq'
+              - example:
+                  sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                  fingerprintAssignment:
+                    role: "4"
+                    applicationNumber: sdfdsfdsf234df234324234
+                    fingerprintDetail:
+                    - path: 637d4cba28871fb0ce1ea6a7
+                  option: 2
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveFingerprintAssignmentRs'
+                - example:
+                    fingerprintAssignment:
+                      fingerprintDetail:
+                      - fingerprintIdentification: "1"
+                        fingerImpressionImage: sdfdsfdsf234df234324234
+                        fingerprintType: "2"
+                        captureDeviceIdentification: sdfdsfdsf234df234324234
+                        quality: "2"
+                        handType: Derecha
+                        path: s3://mi-bucket/ruta/a/un/archivo
+                      sequence: 637d4cba28871fb0ce1ea6a7
+                      status: Active
+                      role: "1"
+                      applicationNumber: sdfdsfdsf234df234324234
+                      exception: "1"
+                      fingerprintActive: 5
+                      fingerprintInactive: 5
+                      fingerprintException: 5
+                      partyReference:
+                        identifications:
+                        - identifier:
+                            identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                          personIdentificationType: ClaveUnicaRegistroPoblacion
+              example:
+                fingerprintAssignment:
+                  fingerprintDetail:
+                  - fingerprintIdentification: "1"
+                    fingerImpressionImage: sdfdsfdsf234df234324234
+                    fingerprintType: "2"
+                    captureDeviceIdentification: sdfdsfdsf234df234324234
+                    quality: "2"
+                    handType: Derecha
+                    path: s3://mi-bucket/ruta/a/un/archivo
+                  sequence: 637d4cba28871fb0ce1ea6a7
+                  status: Active
+                  role: "1"
+                  applicationNumber: sdfdsfdsf234df234324234
+                  exception: "1"
+                  fingerprintActive: 5
+                  fingerprintInactive: 5
+                  fingerprintException: 5
+                  partyReference:
+                    identifications:
+                    - identifier:
+                        identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                      personIdentificationType: ClaveUnicaRegistroPoblacion
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintAssignment/control:
+    put:
+      tags:
+      - v1
+      summary: V1FingerprintAssignmentControl_PUT
+      description: Operación encargada de actualizar el estatus de los registros almacenados
+        (huellas).
+      operationId: V1FingerprintAssignmentControl_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/controlFingerprintAssignmentRq'
+              - example:
+                  fingerprintAssignment:
+                    sequence: 637d4cba28871fb0ce1ea6a7
+                    status: A
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintDetail/{sequence}/retrieve:
+    get:
+      tags:
+      - v1
+      summary: V1FingerprintDetailRetrieve_GET
+      description: Consulta que se realiza para identificar las huellas relacionadas
+        a una solicitud
+      operationId: V1FingerprintDetailRetrieve_GET
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sequence
+        in: path
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveFingerprintDetailRs'
+                - example:
+                    fingerprintDetail:
+                    - fingerprintIdentification: sdfdsfdsf234df234324234
+                      fingerprintType: "2"
+                      handType: Derecha
+                      path: sdfdsfdsf234df234324234
+                      quality: "2"
+                      status: Activo
+                    - fingerprintIdentification: sdfdsfdsf234df234324234
+                      fingerprintType: "3"
+                      handType: Derecha
+                      path: sdfdsfdsf234df234324234
+                      quality: "2"
+                      status: Activo
+              example:
+                fingerprintDetail:
+                - fingerprintIdentification: sdfdsfdsf234df234324234
+                  fingerprintType: "2"
+                  handType: Derecha
+                  path: sdfdsfdsf234df234324234
+                  quality: "2"
+                  status: Activo
+                - fingerprintIdentification: sdfdsfdsf234df234324234
+                  fingerprintType: "3"
+                  handType: Derecha
+                  path: sdfdsfdsf234df234324234
+                  quality: "2"
+                  status: Activo
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintDetail/control:
+    put:
+      tags:
+      - v1
+      summary: V1FingerprintDetailControl_PUT
+      description: Operación encargada de actualizar el estatus de los registros almacenados
+        (huellas).
+      operationId: V1FingerprintDetailControl_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/controlFingerprintDetailRq'
+              - example:
+                  fingerprintAssignment:
+                    sequence: 637d4cba28871fb0ce1ea6a7
+                    fingerprintDetail:
+                    - fingerprintIdentification: sdfdsfdsf234df234324234
+                      status: Activo
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintAssignment/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1FingerprintAssignmentInitiate_POST
+      description: Operación encargada de realizar el alta de un registro con el agrupador
+        de huellas en la tabla templateFingerPrint.
+      operationId: V1FingerprintAssignmentInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateFingerprintAssignmentRq'
+              - example:
+                  sessionDialogueIdentification: efeqqer34sdfdfgret151235egregwe
+                  fingerprintAssignment:
+                    role: "4"
+                    applicationNumber: sdfdsfdsf234df234324234
+                    exception: "1"
+                    fingerprintTypeCapture: "2"
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/fingerprintDetail/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1FingerprintDetailInitiate_POST
+      description: Operación encargada de realizar la creación de un registro de huellas
+        en la tabla fingerPrint.
+      operationId: V1FingerprintDetailInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateFingerprintDetailRq'
+              - example:
+                  fingerprintAssignment:
+                    sequence: e10adc3949ba59abbe56e057f20f883e
+                    fingerprintDetail:
+                    - fingerprintIdentification: sdfdsfdsf234df234324234
+                      fingerprintType: "2"
+                      handType: Derecha
+                      path: sdfdsfdsf234df234324234
+                      quality: "2"
+                      fingerImpressionImage: 4pyTIMOgIGxhIG1vZGU=
+                      fingerprintDetailException: "7"
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    initiateDeviceAssignmentRq:
+      title: initiateDeviceAssignmentRq
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    initiateTokenAssignmentRq:
+      title: initiateTokenAssignmentRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        templateHtml:
+          type: string
+        urlOneTimePassword:
+          type: string
+        sessionDialogueIdentification:
+          type: string
+        headline:
+          type: string
+        endpoint:
+          type: string
+    registerDeviceAssignmentRq:
+      title: registerDeviceAssignmentRq
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    evaluateTokenAssignmentRq:
+      title: evaluateTokenAssignmentRq
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/tokenAssignment'
+    retrieveTokenAssignmentRq:
+      title: retrieveTokenAssignmentRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    initiateBiometricAssignmentRq:
+      title: initiateBiometricAssignmentRq
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/biometricAssignment'
+    updateBiometricAssigmentRq:
+      title: updateBiometricAssigmentRq
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/biometricAssignment'
+    initiatePasswordAssignmentRq:
+      title: initiatePasswordAssignmentRq
+      type: object
+      properties:
+        passwordAssignment:
+          $ref: '#/components/schemas/passwordAssignment'
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/issuedDeviceAllocation'
+        cardPOSDeviceAllocation:
+          $ref: '#/components/schemas/cardPOSDeviceAllocation'
+        allocation:
+          $ref: '#/components/schemas/allocation'
+    updateDeviceAssignmentRq:
+      title: updateDeviceAssignmentRq
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/paymentCard'
+        cardPOSDeviceAllocation:
+          $ref: '#/components/schemas/cardPOSDeviceAllocation'
+        allocation:
+          $ref: '#/components/schemas/allocation'
+    registerPasswordAssignmentLogRq:
+      title: registerPasswordAssignmentLogRq
+      type: object
+      properties:
+        passwordAssignment:
+          $ref: '#/components/schemas/passwordAssignment'
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/issuedDeviceAllocation'
+    captureTokenAssignmentRq:
+      title: captureTokenAssignmentRq
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/tokenAssignment'
+    createPasswordAssignmentRq:
+      title: createPasswordAssignmentRq
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/paymentCard'
+        cardPOSDeviceAllocation:
+          $ref: '#/components/schemas/cardPOSDeviceAllocation'
+        allocation:
+          $ref: '#/components/schemas/allocation'
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    updateTokenAssignmentRq:
+      title: updateTokenAssignmentRq
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/tokenAssignment'
+    registerReportingRq:
+      title: registerReportingRq
+      type: object
+      properties:
+        logEntryType:
+          type: string
+          description: Tipo de operación de log
+        transactionFacility:
+          $ref: '#/components/schemas/transactionFacility'
+        auditFacility:
+          $ref: '#/components/schemas/auditFacility'
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        statusInstanceRecord:
+          $ref: '#/components/schemas/statusInstanceRecord'
+    registerIssuedDeviceAllocationRq:
+      title: registerIssuedDeviceAllocationRq
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/transactionFacility'
+        auditFacility:
+          $ref: '#/components/schemas/auditFacility'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        channelFacility:
+          $ref: '#/components/schemas/channelFacility'
+        issueLocation:
+          $ref: '#/components/schemas/issueLocation'
+        amount:
+          type: number
+          description: Monto de la transacción
+        recordIdentifier:
+          type: string
+    retrieveFingerprintAssignmentRq:
+      title: retrieveFingerprintAssignmentRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identificador de la sesion inicializada.
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+        option:
+          type: number
+          description: Opción
+    controlFingerprintAssignmentRq:
+      title: controlFingerprintAssignmentRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identificador de la sesión generado por incode y es la propiedad
+            que relaciona el registro con la solicitud
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+    controlFingerprintDetailRq:
+      title: controlFingerprintDetailRq
+      type: object
+      properties:
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+    initiateFingerprintAssignmentRq:
+      title: initiateFingerprintAssignmentRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+    initiateFingerprintDetailRq:
+      title: initiateFingerprintDetailRq
+      type: object
+      properties:
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+    initiateDeviceAssignmentRs:
+      title: initiateDeviceAssignmentRs
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    retrieveDeviceAssignmentRs:
+      title: retrieveDeviceAssignmentRs
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    evaluateTokenAssignmentRs:
+      title: evaluateTokenAssignmentRs
+      type: object
+      properties:
+        transactionSuccess:
+          type: boolean
+          example: false
+    retrieveTokenAssignmentRs:
+      title: retrieveTokenAssignmentRs
+      type: object
+      properties:
+        tokensAssignment:
+          $ref: '#/components/schemas/tokensAssignment'
+    retrieveBiometricAssignmentRs:
+      title: retrieveBiometricAssignmentRs
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/biometricAssignment'
+    updateBiometricAssigmentRs:
+      title: updateBiometricAssigmentRs
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/biometricAssignment'
+    initiatePasswordAssignmentRs:
+      title: initiatePasswordAssignmentRs
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/transactionFacility'
+    updateDeviceAssignmentRs:
+      title: updateDeviceAssignmentRs
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/transactionFacility'
+    createPasswordAssignmentRs:
+      title: createPasswordAssignmentRs
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/transactionFacility'
+        passwordAssignment:
+          $ref: '#/components/schemas/passwordAssignment'
+    retrieveFingerprintAssignmentRs:
+      title: retrieveFingerprintAssignmentRs
+      type: object
+      properties:
+        fingerprintAssignment:
+          $ref: '#/components/schemas/fingerprintAssignment'
+    retrieveFingerprintDetailRs:
+      title: retrieveFingerprintDetailRs
+      type: object
+      properties:
+        fingerprintDetail:
+          $ref: '#/components/schemas/fingerprintDetail'
+    issuedDeviceReference:
+      title: issuedDeviceReference
+      type: object
+      properties:
+        deviceIdentification:
+          type: string
+          description: Numero de identificacion unico del dispositivo
+        expiryDate:
+          type: string
+          description: Fecha de vencimiento del dispositivo
+        status:
+          type: string
+          description: Estatus
+    device:
+      title: device
+      type: object
+      properties:
+        ipAddress:
+          type: string
+          description: Dirección IP del dispositivo.
+        verificationDevice:
+          type: string
+          description: Tipo principal del dispositivo usado.
+        sensorDevice:
+          type: string
+          description: Hardware que captura los datos biométricos.
+        componentDevice:
+          type: string
+          description: Dispositivos secundarios o componentes involucrados en el proceso
+            biométrico.
+    biometricAssignment:
+      title: biometricAssignment
+      type: object
+      properties:
+        biometricType:
+          type: string
+          description: Tipo de biométrica
+        biometricRegisteredDetail:
+          $ref: '#/components/schemas/biometricRegisteredDetail'
+        sequence:
+          type: number
+          description: Secuencia
+        status:
+          type: string
+          description: Estatus
+        username:
+          type: string
+          description: Nombre del usuario
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        operatorNumber:
+          type: string
+          description: Número de operador
+        companyReference:
+          type: string
+          description: Referencia de la compañia
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        device:
+          $ref: '#/components/schemas/device'
+        message:
+          type: string
+          description: Mensaje
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+          countyDistrict:
+            $ref: '#/components/schemas/countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    biometricRegisteredDetail:
+      title: biometricRegisteredDetail
+      type: object
+      properties:
+        rightFingerprint:
+          type: string
+          description: Dato de la huella derecha
+        leftFingerprint:
+          type: string
+          description: Dato de la huella izquierda
+        date:
+          $ref: '#/components/schemas/date'
+        changeUser:
+          type: string
+          description: Cambio de usuario
+    configurationPasswordAssignment:
+      title: configurationPasswordAssignment
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: Valor representativo de un parámetro de configuración.
+          name:
+            type: string
+            description: Nombre representativo de un parámetro de configuración.
+    fingerprintDetail:
+      title: fingerprintDetail
+      type: array
+      items:
+        type: object
+        properties:
+          fingerprintIdentification:
+            type: string
+            description: Identificador del registro de huella.
+          fingerprintType:
+            type: string
+            description: Indicador que hace referencia a que dedo regresa.
+            enum:
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+          handType:
+            type: string
+            description: Identificador que hace referencia si el dedo pertenece a
+              la mano.
+            enum:
+            - Derecha
+            - Izquierda
+          path:
+            type: string
+            description: Url en la que se encuentra almacenada la huella dentro del
+              contenedor
+          quality:
+            type: string
+            description: "Identificador de la calidad que tiene la huella esta va\
+              \ numerada del 1 al 5, donde entre mas alto es el numero menor es la\
+              \ calidad"
+          status:
+            type: string
+            description: Estatus
+          fingerImpressionImage:
+            type: string
+            description: Base64 de la imagen de la huella
+          captureDeviceIdentification:
+            type: string
+            description: Valor que contiene información sobre el dispositivo
+          fingerprintDetailException:
+            type: string
+            description: Identificador donde se coloca el tipo de excepción tiene
+              la huella en el momento de captura
+            enum:
+            - "7"
+            - "8"
+            - "9"
+            - "10"
+    identificationDevice:
+      title: identificationDevice
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: El género de la persona obtenido de ocr * M = Masculino* F
+            = Femenino
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          $ref: '#/components/schemas/machineReadZone'
+        personName:
+          $ref: '#/components/schemas/personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    customerCreditRatingState:
+      title: customerCreditRatingState
+      type: object
+      properties:
+        customerReference:
+          type: string
+          description: Identificador único del cliente.
+        customerCreditRatingStatusType:
+          type: string
+          description: Tipo de estado de la calificación crediticia del cliente.
+        customerCreditRatingSchedule:
+          type: string
+          description: Agenda o programación de la calificación de crédito.
+        customerCreditRatingAssessmentRecord:
+          type: string
+          description: Registro detallado de la evaluación crediticia del cliente.
+        assessmentCustomerBehaviorModelReference:
+          type: string
+          description: Referencia al modelo de comportamiento del cliente utilizado
+            para la evaluación.
+        creditRatingAssessmentType:
+          type: string
+          description: Tipo de evaluación de calificación crediticia realizada.
+        creditRatingAssessmentDate:
+          $ref: '#/components/schemas/dateContent'
+        creditRatingBlackListType:
+          type: string
+          description: "Tipo de lista negra de calificación crediticia, si aplica."
+        creditRatingAssessmentWorkProducts:
+          type: string
+          description: Productos de trabajo resultantes de la evaluación de calificación
+            crediticia.
+        creditRatingAssessmentResult:
+          type: string
+          description: Resultado final de la evaluación de calificación crediticia.
+        customerCreditRatingRecord:
+          type: string
+          description: Registro histórico de calificaciones crediticias del cliente.
+        customerCreditRatingNarrative:
+          type: string
+          description: Descripción o narrativa detallada relacionada con la calificación
+            crediticia del cliente.
+        customerCreditRatingDate:
+          $ref: '#/components/schemas/dateContent'
+    pepProfile:
+      title: pepProfile
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+        role:
+          type: string
+          description: Rol del PEP.
+    date:
+      title: date
+      type: object
+      properties:
+        registryDate:
+          type: string
+          description: Fecha de registro
+        changeDate:
+          type: string
+          description: Fecha del cambio de registro
+        lastChangeDate:
+          type: string
+          description: Fecha del último cambio de registro
+    validationManagement:
+      title: validationManagement
+      type: array
+      description: Validación OTP
+      items:
+        type: object
+        properties:
+          validationCheckDigit:
+            type: string
+            description: Código ingresado en validación acotado a 6 caracteres
+          validationStatus:
+            type: boolean
+            description: Estado de validacion
+          validationDescription:
+            type: string
+            description: Respuesta de servicio o Respuesta de validación acotado a
+              200 caracteres
+          validationDateTime:
+            type: string
+            description: Fecha de validacion
+          validationType:
+            type: number
+            description: tipo de validacion realizada por el cliente prospecto o por
+              el sistema. * 1 - Validación INE - Listas Nominales * 2 - Validación
+              OTP correo * 3 - Validación Correo Malware * 4 - Validación OTP celular
+              * 5 - Validación CURP * 6 - Validación RFC * 7 - Validación SIC- buró
+              externo * 8 - Validación de Domicilio * 9 - Validación de Domicilio
+              referencia * 10 - Pregunta validación PEP * 11 - Validación Dirección
+              INE * 12 - Validación Código Postal
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    issueLocation:
+      title: issueLocation
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    birthPlace:
+      title: birthPlace
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    identifications:
+      title: identifications
+      type: array
+      items:
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: Indica el tipo de documento de identidad * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            $ref: '#/components/schemas/customerCreditRatingState'
+    organisation:
+      title: organisation
+      type: object
+      properties:
+        organisationName:
+          type: string
+          description: Nombre oficial de la organización.
+    dateContent:
+      title: dateContent
+      type: object
+      properties:
+        dateContent:
+          type: string
+          description: Contenido de la fecha.
+    statusInstanceRecord:
+      title: statusInstanceRecord
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo del estado de la instancia
+        message:
+          type: string
+          description: Descripcion sobre el estado de la instancia
+        status:
+          type: string
+          description: status de la solicitud
+      description: Contiene la informacion registrada de una instancia ante un evento
+    personProfile:
+      title: personProfile
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+        pepProfile:
+          $ref: '#/components/schemas/pepProfile'
+        partyType:
+          $ref: '#/components/schemas/partyType'
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        economicActivity:
+          $ref: '#/components/schemas/economicActivity'
+        segment:
+          $ref: '#/components/schemas/segment'
+        group:
+          $ref: '#/components/schemas/group'
+        subGroup:
+          $ref: '#/components/schemas/subGroup'
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+        residencyYear:
+          type: string
+          description: Año de residencia.
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    subGroup:
+      title: subGroup
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del subgrupo.
+        code:
+          type: string
+          description: Código del subgrupo.
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+      description: Informacion sobre el estado
+    fingerprintAssignment:
+      title: fingerprintAssignment
+      type: object
+      properties:
+        fingerprintDetail:
+          $ref: '#/components/schemas/fingerprintDetail'
+        sequence:
+          type: string
+          description: Secuencia
+        status:
+          type: string
+          description: Estatus
+        role:
+          type: string
+          description: Tipo de persona a la que corresponden las huellas estas se
+            obtienen del catálogo (Asesor Previsional - 4; Cliente potencial - 1).
+          enum:
+          - "4"
+          - "1"
+          - "2"
+        exception:
+          type: string
+          description: "Parámetro que indica si la persona tiene alguna excepción\
+            \ (falta mano derecha, mano izquierda o ambas manos). * 0 - Sin excepció\
+            n * 1 - Excepción ambas manos * 2 - Excepción mano derecha * 3 - Excepció\
+            n mano izquierda * 4 - Lesión ambas manos * 5 - Lesión mano derecha *\
+            \ 6 - Lesión mano izquierda"
+          enum:
+          - "0"
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+          - "6"
+        applicationNumber:
+          type: string
+        fingerprintActive:
+          type: number
+          description: Número total de dedos activos
+        fingerprintInactive:
+          type: number
+          description: Número total de dedos inactivo
+        fingerprintException:
+          type: number
+          description: Número total de dedos con excepción
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        fingerprintTypeCapture:
+          type: string
+          description: "El tipo de captura hace referencia si es un levantamiento\
+            \ de huellas por flujo, es decir 1.- Validación de huellas, 2.- Registro\
+            \ de huellasx"
+          enum:
+          - "1"
+          - "2"
+    economicActivity:
+      title: economicActivity
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+    bankBranch:
+      title: bankBranch
+      type: object
+      properties:
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+        name:
+          type: string
+          description: Nombre de la Sucursal
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    personName:
+      title: personName
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+        fullName:
+          type: string
+    deviceAssignment:
+      title: deviceAssignment
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/issuedDeviceAllocation'
+        deviceIdentification:
+          type: string
+          description: Código hash de la huella digital del dispositivo.
+        issueLocation:
+          $ref: '#/components/schemas/issueLocation'
+        deviceDescription:
+          type: string
+          description: Datos adicionales sobre el dispositivo.
+        versionNumber:
+          type: string
+          description: versión del sistema operativo.
+        deviceProperty:
+          $ref: '#/components/schemas/deviceProperty'
+        issuedDeviceStatus:
+          type: string
+          description: Estado de la sesión * Alive = Sesion Activa * Closed = Sesion
+            Cerrada * Deleted = Sesion Eliminada
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        issuedDeviceConfiguration:
+          type: string
+          description: Configuración estándar de seguridad
+        deliverymethod:
+          type: string
+          description: Método de entrega del PIN en BPC
+    group:
+      title: group
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del grupo.
+        code:
+          type: string
+          description: Código del grupo.
+    passwordAssignment:
+      title: passwordAssignment
+      type: object
+      properties:
+        passwordAssignmentReference:
+          type: string
+          description: Numero de folio de la asignacion del dispositivo
+        dateContent:
+          type: string
+          description: Campo con formato “mmddhhmmss” (Mes-Dia-Hora-Minutos-Segundos)
+        timeContent:
+          type: string
+          description: Campo con formato “hhmmss” (Hora-Minutos-Segundos)
+        dayContent:
+          type: string
+          description: Campo con formato “mmdd” (Mes-Dia)
+        passwordValue:
+          type: string
+          description: password
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        employeeNumber:
+          type: string
+          description: Numero del empleado
+        detail:
+          type: string
+          description: detalle de la configuracion
+        configurationPasswordAssignment:
+          $ref: '#/components/schemas/configurationPasswordAssignment'
+    segment:
+      title: segment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del segmento.
+        code:
+          type: string
+          description: Código del segmento.
+    contactPoint:
+      title: contactPoint
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    activitySector:
+      title: activitySector
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del sector de actividad.
+        code:
+          type: string
+          description: Código del sector de actividad.
+    auditFacility:
+      title: auditFacility
+      type: object
+      properties:
+        transactionTime:
+          type: string
+          description: Hora de la transacción
+        transactionDate:
+          type: string
+          description: Fecha transaccion
+        timeParseRequest:
+          type: string
+          description: Hora en que se realizó el request
+        timeParseResponse:
+          type: string
+          description: Hora en que se realizó el response
+        versionNumber:
+          type: string
+          description: Versión del servicio que se ejecuta
+        environment:
+          type: string
+          description: Representa el ambiente actual
+        uuid:
+          type: string
+          description: Identificador Único Universal
+        namespace:
+          type: string
+          description: Capa donde se encuentra la API
+        apiName:
+          type: string
+          description: Recurso de la API
+      description: Contiene la informacion de la auditoria de la transacción
+    transactionFacility:
+      title: transactionFacility
+      type: object
+      properties:
+        processCode:
+          type: string
+          description: Resultado de la transacción SmartVista
+        trackingNumber:
+          type: string
+          description: Resultado de la transacción SmartVista
+        transactionalDate:
+          type: string
+          description: Resultado de la transacción SmartVista
+        authorizationReference:
+          type: string
+          description: Resultado de la transacción SmartVista
+        svfeIdentifier:
+          type: string
+          description: Resultado de la transacción SmartVista
+        transactionNumber:
+          type: string
+          description: Número de la transacción
+        channelDeviceReference:
+          type: string
+          description: Etiqueta para cambio del Pin Offline
+        cardApplicationIdentifier:
+          type: string
+          description: Etiqueta para cambio del Pin Offline
+        statusInstanceRecord:
+          $ref: '#/components/schemas/statusInstanceRecord'
+    cardPOSDeviceAllocation:
+      title: cardPOSDeviceAllocation
+      type: object
+      properties:
+        cardPOSDeviceIdentifier:
+          type: string
+          description: Id de la terminal
+    channelFacility:
+      title: channelFacility
+      type: object
+      properties:
+        channelReferenceId:
+          type: string
+          description: identificador de canal a consumir informix o bpc
+        description:
+          type: string
+          description: informacion adicional que describe el canal
+    issuedDeviceAllocation:
+      title: issuedDeviceAllocation
+      type: object
+      properties:
+        issuedDeviceType:
+          type: string
+          description: Indica la plataforma del dispositivo * IOS = IOS * ANDROID
+            = ANDROID * WEBAPP = WEBAPP
+          enum:
+          - IOS
+          - ANDROID
+          - WEBAPP
+        associatedPermissions:
+          type: string
+          description: Indica la configuracion del dispositivo
+        issuedDeviceReference:
+          $ref: '#/components/schemas/issuedDeviceReference'
+    partyType:
+      title: partyType
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+    deviceProperty:
+      title: deviceProperty
+      type: object
+      properties:
+        model:
+          type: string
+          description: "modelo de dispositivo. Si se omite, se analiza desde el agente\
+            \ de usuario."
+        sdk:
+          type: string
+          description: Versión de SDK usada.
+    tokensAssignment:
+      title: tokensAssignment
+      type: array
+      items:
+        type: object
+        properties:
+          tokenAssignment:
+            $ref: '#/components/schemas/tokenAssignment'
+    machineReadZone:
+      title: machineReadZone
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: valor de la línea ZLM.
+        description: Objeto que define las líneas ZLM.
+    identifierIssuingAuthority:
+      title: identifierIssuingAuthority
+      type: object
+      properties:
+        reference:
+          type: object
+          properties:
+            partyName:
+              type: string
+              description: Nombre de la entidad o partido que emite el identificador.
+        organisation:
+          $ref: '#/components/schemas/organisation'
+    partyReference:
+      title: partyReference
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        personName:
+          $ref: '#/components/schemas/personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+        location:
+          $ref: '#/components/schemas/location'
+        gender:
+          type: string
+          description: El género de la persona  * M = Masculino * F = Femenino
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+        maritalStatus:
+          type: string
+          description: Estado civil.
+        birthPlace:
+          $ref: '#/components/schemas/birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+    tokenIdentificationCode:
+      title: tokenIdentificationCode
+      type: object
+      properties:
+        identifierValue:
+          type: object
+          properties:
+            value:
+              type: string
+              description: Valor único del código de identificación del token.
+        identifierIssuingAuthority:
+          $ref: '#/components/schemas/identifierIssuingAuthority'
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    paymentCard:
+      title: paymentCard
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Indica el numero del plastico o de la tarjeta
+        cardExpiryDate:
+          type: string
+          description: Fecha de expireción de la tarjeta
+        cardHolderName:
+          type: string
+          description: Indica el nombre del plastico o de la tarjeta
+        cardType:
+          type: string
+          description: Indica el tipo de la tarjeta
+        deviceStatus:
+          type: string
+          description: Estado del dispositivo
+        cardHolderType:
+          type: string
+          description: Indica el tipo de titular de la tarjeta
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    tokenAssignment:
+      title: tokenAssignment
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        code:
+          type: string
+        description:
+          type: string
+          description: Descripción breve del token.
+        tokenPriority:
+          type: string
+          description: Indica la prioridad del token.
+        tokenStoredValue:
+          type: string
+          description: Código OTP de 6 cifras
+        tokenStoredHour:
+          type: string
+          description: Hora de generación de OTP
+        tokenStoredDate:
+          type: string
+          description: Fecha de insercion
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/tokenIdentificationCode'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        providerChannel:
+          type: string
+          description: Proveedor del canal
+        validationManagement:
+          $ref: '#/components/schemas/validationManagement'
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+    allocation:
+      title: allocation
+      type: object
+      properties:
+        merchantReference:
+          type: string
+          description: Id del comercio
+        merchantType:
+          type: string
+          description: tipo de comercio
+    countyDistrict:
+      title: countyDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito

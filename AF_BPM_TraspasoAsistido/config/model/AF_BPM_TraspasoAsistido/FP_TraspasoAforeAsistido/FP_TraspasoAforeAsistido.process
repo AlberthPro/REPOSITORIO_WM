@@ -1,0 +1,1719 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="5232ddd0-710a-4d41-809c-7ff4b032ff55" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Alberto Noche Rosas" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="FP_TraspasoAforeAsistido"
+  packageName="AF_BPM_TraspasoAsistido" processCategory=""
+  rnSync="false" runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TraspasoAforeCancelado"
+    name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado" type="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+  <logicalDataItem Id="0737daa1-5031-4ad7-b5f1-2e44c9ed1c54"
+    description="" dimension="0" label="AU.Capturar huellas APInputEnv"
+    name="{ProcessNamespace}AU.Capturar huellas APInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="b51c8775-5140-4fb9-a31a-eae21b3a0b77"
+    description="" dimension="0" label="AU.Capturar huellas APOutputEnv"
+    name="{ProcessNamespace}AU.Capturar huellas APOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="41603304-cd91-49b6-ac16-0ed436d879b6"
+    description="" dimension="0"
+    label="AU.Capturar manual IMSS/ISSSTEInputEnv"
+    name="{ProcessNamespace}AU.Capturar manual IMSS/ISSSTEInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="118e66f6-93f6-4c6d-b6ef-fff2c818fe49"
+    description="" dimension="0"
+    label="AU.Capturar manual IMSS/ISSSTEOutputEnv"
+    name="{ProcessNamespace}AU.Capturar manual IMSS/ISSSTEOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Capturar IMSSInputEnv"
+    name="{ProcessNamespace}AU.Capturar IMSSInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Capturar IMSSOutputEnv"
+    name="{ProcessNamespace}AU.Capturar IMSSOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Reingresar CURP o captura manualInputEnv"
+    name="{ProcessNamespace}AU.Reingresar CURP o captura manualInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Reingresar CURP o captura manualOutputEnv"
+    name="{ProcessNamespace}AU.Reingresar CURP o captura manualOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Autorizar consulta datos y biometrica ante INEOutputEnv"
+    name="{ProcessNamespace}AU.Autorizar consulta datos y biometrica ante INEOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TraspasoAsistido" name="{ProcessNamespace}TraspasoAsistido" type="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Capturar huellas trabajadorInputEnv"
+    name="{ProcessNamespace}AU.Capturar huellas trabajadorInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Capturar huellas trabajadorOutputEnv"
+    name="{ProcessNamespace}AU.Capturar huellas trabajadorOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Autorizar consulta datos y biometrica ante INEInputEnv"
+    name="{ProcessNamespace}AU.Autorizar consulta datos y biometrica ante INEInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TraspasoAsistido"
+    name="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido" type="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="6accbe39-1dbb-4d97-895c-aa657a2cd987" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="FP_TraspasoAfore"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="7"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P8" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <receiveStep Id="1d343281-3df7-4f6b-8a7b-b18dff313408"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="28"
+      isStartStepServiceRequired="true"
+      label="EVI.Traspaso Afore solicitado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S10" useCorrelation="false" width="28"
+      x="85" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="27571acf-c42e-4cf4-a56f-afa04f379858"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.¿Es cliente Afore?" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S24" useCorrelation="false" width="34" x="674" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="95fd8b27-ec41-4c8b-908c-5ab6f22789bc"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S26" useCorrelation="false" width="34" x="774" y="46">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="d0341b94-6322-419a-a337-e53b5ed0cb2f"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S28" useCorrelation="false" width="28"
+      x="674" y="389">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="f1c21c10-ae74-462a-8dc1-382428520eb7"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Validación CURP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S32" useCorrelation="false" width="34" x="1004" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="2086044d-c058-4a32-889c-b543fc99aed9"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Captura manual datos" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S36" useCorrelation="false" width="34" x="1219" y="46">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="cd7f9944-a628-4f73-b48f-ddbf814f284a"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Consulta RENAPO" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S38" useCorrelation="false" width="34" x="1219" y="142">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="0f7a17e8-220c-4453-8ff4-c752095335b5"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S39" useCorrelation="false" width="28"
+      x="1282" y="376">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="eb612fa5-8c35-43e7-9c2b-319a4745c443"
+      description="Solicitud &quot;En proceso&quot; o &quot;Por confirmar&quot; OR estado &quot;Recuperable&quot; con folio procesar MENOS de 5 días disponibles"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Estado solicitud" labelHeight="68" labelWidth="34"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S48" useCorrelation="false" width="34" x="1471" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="00149358-fb78-4883-a7af-670429a0796c"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S50" useCorrelation="false" width="28"
+      x="1474" y="376">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="098bdbe2-bc04-46b5-b102-e5aa3ae72385"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.2" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S55" useCorrelation="false" width="34" x="1728" y="46">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="117cf5fe-942d-4665-9ddc-f32bd148fdf3"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Consulta exitosa" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S65" useCorrelation="false" width="34" x="2106" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="346327e8-bb66-43c1-af15-59124a77ff84"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Consulta exitosa" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S67" useCorrelation="false" width="34" x="2321" y="46">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="1bc230c7-e948-4d10-b808-6ad5566e7c9e"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Captura ISSSTE" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S70" useCorrelation="false" width="34" x="2321" y="142">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="6c7655c2-61f4-44a7-88f4-d5ec27f22dca"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S74" useCorrelation="false" width="28"
+      x="2324" y="376">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="8b79ca23-cd1a-4884-99c4-e3c2ffd0f158"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Huellas AP correctas" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S79" useCorrelation="false" width="34" x="2558" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="f5d8a13c-d38a-43a6-ba36-72e4251030f9"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S81" useCorrelation="false" width="28"
+      x="2561" y="376">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="6693a389-d251-4d19-80e6-eb208dc8ae37"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD. Huellas trabajador correctas" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" retryCount="0"
+      stepLock="false" uid="S87" useCorrelation="false" width="34"
+      x="2784" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="aeeb364f-d9b0-4f17-aaa2-616d2966484b"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S89" useCorrelation="false" width="28"
+      x="2787" y="376">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="d468b759-8290-4223-bf9a-3f529c5eb0ee"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.3" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S91" useCorrelation="false" width="34" x="2874" y="46">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <terminateStep Id="e1207054-8015-4b25-b96f-e39d76f4cfd0"
+      escalateFailure="true" height="28"
+      label="EVF. Traspaso Afore completado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" stepLock="false"
+      terminateStatus="DONE" uid="S105" useCorrelation="false"
+      width="28" x="3125" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </terminateStep>
+    <invokeStep Id="32ccb2a9-cb86-42e6-99de-7c8deccd8848"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_TraspasoAforeAsistidoTasks"
+      invokeId="B5DCF6FC-9E42-056E-A170-F26D7C9CCCF0" invokeLocation=""
+      invokeName="AU.Autorizar consulta datos y biometrica ante INE"
+      invokeType="TASK" isCompensating="false" isTestAfter="false"
+      label="AU.Autorizar consulta datos y biometrica ante INE"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S17"
+      useCorrelation="false" width="93" x="264" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <input name="{ProcessNamespace}AU.Autorizar consulta datos y biometrica ante INEInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Autorizar consulta datos y biometrica ante INEOutputEnv"/>
+      <output name="{ProcessNamespace}ProcessData"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="1561deeb-3181-4ad7-85b9-5e9318e3e02d"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Consultar CURP en Afore Coppel"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S22"
+      useCorrelation="false" width="93" x="507" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="f0509903-78ee-4c7e-aa68-ae9583985507"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Validar CURP en RENAPO"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S30"
+      useCorrelation="false" width="93" x="848" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="4072b608-4044-49ed-976a-166ce7be1db5"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_TraspasoAforeAsistidoTasks"
+      invokeId="9CB781B3-CADD-2CEF-943A-81DF55160FF5" invokeLocation=""
+      invokeName="AU.Reingresar CURP o captura manual" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Reingresar CURP o captura manual" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S34" useCorrelation="false"
+      width="93" x="1062" y="129">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Reingresar CURP o captura manualInputEnv"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Reingresar CURP o captura manualOutputEnv"/>
+      <output name="{ProcessNamespace}ProcessData"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="31543b0a-b990-4a64-af92-a7b84bbe51bd"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Consultar estado tramite"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S46"
+      useCorrelation="false" width="93" x="1309" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="cd2b3ab1-3505-4d6a-a513-626fb5795332"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Generar nueva solicitud"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S53"
+      useCorrelation="false" width="93" x="1579" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="c3b2a4ed-591c-4336-a990-0402ed2a78f3"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_TraspasoAforeAsistidoTasks"
+      invokeId="0E1D8927-173A-7C19-EF7A-E78DA0D69FD1" invokeLocation=""
+      invokeName="AU.Capturar IMSS" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Capturar IMSS" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S61" useCorrelation="false" width="93" x="1815" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Capturar IMSSInputEnv"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Capturar IMSSOutputEnv"/>
+      <output name="{ProcessNamespace}ProcessData"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="5c5c7995-ac1e-4c92-92c7-53f68f8b7867"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Consultar IMSS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S63"
+      useCorrelation="false" width="93" x="1964" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="e4491e22-424b-4bf3-8705-1716e420625c"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_TraspasoAforeAsistidoTasks"
+      invokeId="EC229DB0-4858-0D7D-80E4-01F82298BF17" invokeLocation=""
+      invokeName="AU.Capturar manual IMSS/ISSSTE" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Capturar manual IMSS/ISSSTE" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S68" useCorrelation="false"
+      width="93" x="2173" y="129">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Capturar manual IMSS/ISSSTEInputEnv"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Capturar manual IMSS/ISSSTEOutputEnv"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="122503b7-69a6-45d7-bfe3-9a10da687c89"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_TraspasoAforeAsistidoTasks"
+      invokeId="0D72E6A6-DCD8-94DC-B403-DE5D4146F65E" invokeLocation=""
+      invokeName="AU.Capturar huellas AP" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Capturar huellas AP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S76" useCorrelation="false" width="93" x="2419" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Capturar huellas APInputEnv"/>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Capturar huellas APOutputEnv"/>
+      <output name="{ProcessNamespace}ProcessData"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="c19c1109-278d-4b8e-b2f5-15d3384d53a1"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="TASK" isCompensating="false"
+      isTestAfter="false" label="AU.Capturar huellas trabajador"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S85"
+      useCorrelation="false" width="93" x="2643" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Capturar huellas trabajadorInputEnv"/>
+      <input name="{ProcessNamespace}TraspasoAsistido"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Capturar huellas trabajadorOutputEnv"/>
+      <output name="{ProcessNamespace}TraspasoAsistido"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="39c8df58-7da8-45d6-99cf-f50b7ebae2a8"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS:Consultar expediente Procesar"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S95"
+      useCorrelation="false" width="93" x="2973" y="33">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="6f5f7940-2b82-4e0e-872e-bc678dd3c88b"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.util"
+      invokeId="BC_SRV_Transversales.util:UT_DocumentPipeline"
+      invokeLocation="" invokeName="UT_DocumentPipeline"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="AS_EVF.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S110" useCorrelation="false" width="93"
+      x="644" y="129">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="ebb0d9b4-458a-4e7b-91eb-c6d44623d1c6"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.util"
+      invokeId="BC_SRV_Transversales.util:UT_DocumentPipeline"
+      invokeLocation="" invokeName="UT_DocumentPipeline"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="AS.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S124" useCorrelation="false" width="93"
+      x="1249" y="241">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <wmExpression/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="d6ad098a-976d-4a99-8b62-1e130d0efa06"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.util"
+      invokeId="BC_SRV_Transversales.util:UT_DocumentPipeline"
+      invokeLocation="" invokeName="UT_DocumentPipeline"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="AS.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S127" useCorrelation="false" width="93"
+      x="1441" y="241">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <wmExpression/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="e7020a60-90c6-446b-bf63-b328136f5106"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.util"
+      invokeId="BC_SRV_Transversales.util:UT_DocumentPipeline"
+      invokeLocation="" invokeName="UT_DocumentPipeline"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="AS.Traspaso Afore cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S130" useCorrelation="false" width="93"
+      x="2291" y="241">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <wmExpression/>
+      <output name="{AF_SRV_TraspasoAsistido.docs}TraspasoAforeCancelado"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="edcd1132-781f-4693-a542-7815a6b7b49a" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S22"
+      sourceLocation="600,63" sourceTerminal="RIGHT" target="S24"
+      targetLocation="674,63" targetTerminal="LEFT" uid="T25">
+      <bendpoint index="0" location="756,115" weight="0.5"/>
+      <bendpoint index="1" location="756,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="4f77d92b-3393-46d3-a2bf-ea38fb42b16e" blue="255"
+      conditionDescription="no"
+      conditionText="TraspasoAsistido/datosControl/validaciones/clienteAfore = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S24" sourceLocation="708,63" sourceTerminal="RIGHT"
+      target="S26" targetLocation="774,63" targetTerminal="LEFT" uid="T27">
+      <bendpoint index="0" location="860,115" weight="0.5"/>
+      <bendpoint index="1" location="860,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="12" x="1065" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/clienteAfore"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="5b8b55f7-45f8-41bb-8179-6d8974343091" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S26" sourceLocation="808,63" sourceTerminal="RIGHT"
+      target="S30" targetLocation="848,63" targetTerminal="LEFT" uid="T31">
+      <bendpoint index="0" location="946,115" weight="0.5"/>
+      <bendpoint index="1" location="946,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="34" x="923" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="6c55e237-e18a-4df2-b000-132d85af6efd" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S30"
+      sourceLocation="941,63" sourceTerminal="RIGHT" target="S32"
+      targetLocation="1004,63" targetTerminal="LEFT" uid="T33">
+      <bendpoint index="0" location="1090,115" weight="0.5"/>
+      <bendpoint index="1" location="1090,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ba695643-6742-4d85-a75f-b44fa5cad040" blue="255"
+      conditionDescription="no" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S32" sourceLocation="1021,80" sourceTerminal="BOTTOM"
+      target="S34" targetLocation="1062,159" targetTerminal="LEFT" uid="T35">
+      <bendpoint index="0" location="1140,211" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="12" x="1147" y="191">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="31c34691-2a2f-48d6-8786-1f5e9af34a93" blue="255"
+      conditionDescription="si"
+      conditionText="TraspasoAsistido/datosControl/validaciones/validacionCurp = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S32" sourceLocation="1038,63" sourceTerminal="RIGHT"
+      target="S36" targetLocation="1219,63" targetTerminal="LEFT" uid="T37">
+      <bendpoint index="0" location="1246,115" weight="0.5"/>
+      <bendpoint index="1" location="1246,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="15" x="1237" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/validacionCurp"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="057253ea-0d2c-422b-98ac-88340942d075" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S34"
+      sourceLocation="1155,159" sourceTerminal="RIGHT" target="S38"
+      targetLocation="1219,159" targetTerminal="LEFT" uid="T42">
+      <bendpoint index="0" location="1306,211" weight="0.5"/>
+      <bendpoint index="1" location="1306,211" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="31b111a1-c1af-4a01-a1ad-1345aca78fdb" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S36"
+      sourceLocation="1253,63" sourceTerminal="RIGHT" target="S46"
+      targetLocation="1309,63" targetTerminal="LEFT" uid="T47">
+      <bendpoint index="0" location="1400,115" weight="0.5"/>
+      <bendpoint index="1" location="1400,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7d11eb92-f0ce-4f89-8784-d45efba6e304" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S46"
+      sourceLocation="1402,63" sourceTerminal="RIGHT" target="S48"
+      targetLocation="1471,63" targetTerminal="LEFT" uid="T49">
+      <bendpoint index="0" location="1554,115" weight="0.5"/>
+      <bendpoint index="1" location="1554,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="96fcfd7b-cb60-4b0d-a415-b005fa0dd7a2" blue="255"
+      conditionDescription="recuperable"
+      conditionText="TraspasoAsistido/datosControl/validaciones/estadoSolicitud = recuperado"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S48" sourceLocation="1505,63" sourceTerminal="RIGHT"
+      target="S53" targetLocation="1579,63" targetTerminal="LEFT" uid="T54">
+      <bendpoint index="0" location="1660,115" weight="0.5"/>
+      <bendpoint index="1" location="1660,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="58" x="1631" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/estadoSolicitud"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'recuperado'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="c94da0fd-9e82-4611-b18f-86a518367287" blue="255"
+      conditionDescription="No existe evidencia de tramite previo OR estado &quot;Recuperable&quot; SIN folio procesar"
+      conditionText="Default" conditionType="ELSE" green="0"
+      lineShape="STRAIGHT" red="0" source="S48" sourceLocation="1488,46"
+      sourceTerminal="TOP" target="S55" targetLocation="1745,46"
+      targetTerminal="TOP" uid="T57">
+      <bendpoint index="0" location="1607,88" weight="0.5"/>
+      <bendpoint index="1" location="1864,88" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="392" x="1574" y="50">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="" leftOperand=""
+          operator="=" rightFieldPath="" rightOperand=""/>
+      </wmExpression>
+    </transition>
+    <transition Id="b19caefb-c18a-4df4-8ea3-0bbf63114fb4" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S53"
+      sourceLocation="1672,63" sourceTerminal="RIGHT" target="S55"
+      targetLocation="1728,63" targetTerminal="LEFT" uid="T60">
+      <bendpoint index="0" location="1818,115" weight="0.5"/>
+      <bendpoint index="1" location="1818,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="decc91c2-e460-4277-a012-c7e815b27405" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S55" sourceLocation="1762,63" sourceTerminal="RIGHT"
+      target="S61" targetLocation="1815,63" targetTerminal="LEFT" uid="T62">
+      <bendpoint index="0" location="1906,115" weight="0.5"/>
+      <bendpoint index="1" location="1906,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="34" x="1889" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="684c5f3f-e4d4-49cc-bc5b-c0675ed551ab" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S61"
+      sourceLocation="1908,63" sourceTerminal="RIGHT" target="S63"
+      targetLocation="1964,63" targetTerminal="LEFT" uid="T64">
+      <bendpoint index="0" location="2054,115" weight="0.5"/>
+      <bendpoint index="1" location="2054,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="573eee62-1faf-40e0-8493-ce0649988ce4" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S63"
+      sourceLocation="2057,63" sourceTerminal="RIGHT" target="S65"
+      targetLocation="2106,63" targetTerminal="LEFT" uid="T66">
+      <bendpoint index="0" location="2200,115" weight="0.5"/>
+      <bendpoint index="1" location="2200,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="684e83ce-9919-4167-87f8-6c1606a1e5b1" blue="255"
+      conditionDescription="  no" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S65" sourceLocation="2123,80" sourceTerminal="BOTTOM"
+      target="S68" targetLocation="2173,159" targetTerminal="LEFT" uid="T69">
+      <bendpoint index="0" location="2242,211" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="18" x="2252" y="197">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/consultaIMSS"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="647a9d6a-f749-4dcb-bf3d-c710075c2b43" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S68"
+      sourceLocation="2266,159" sourceTerminal="RIGHT" target="S70"
+      targetLocation="2321,159" targetTerminal="LEFT" uid="T71">
+      <bendpoint index="0" location="2412,211" weight="0.5"/>
+      <bendpoint index="1" location="2412,211" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="dd1169a4-4287-418c-929f-71b1e62a2abe" blue="255"
+      conditionDescription="  si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S70" sourceLocation="2338,142" sourceTerminal="TOP"
+      target="S67" targetLocation="2338,80" targetTerminal="BOTTOM" uid="T73">
+      <bendpoint index="0" location="2457,162" weight="0.5"/>
+      <bendpoint index="1" location="2457,162" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="14" x="2454" y="149">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="84313d69-dba0-4d51-a04f-47ff9763eefc" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S67"
+      sourceLocation="2355,63" sourceTerminal="RIGHT" target="S76"
+      targetLocation="2419,63" targetTerminal="LEFT" uid="T77">
+      <bendpoint index="0" location="2506,115" weight="0.5"/>
+      <bendpoint index="1" location="2506,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a1328b43-bc79-4e8c-9e08-ef9a5d2237ce" blue="255"
+      conditionDescription="si"
+      conditionText="TraspasoAsistido/datosControl/validaciones/consultaIMSS = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S65" sourceLocation="2140,63" sourceTerminal="RIGHT"
+      target="S67" targetLocation="2321,63" targetTerminal="LEFT" uid="T78">
+      <bendpoint index="0" location="2348,115" weight="0.5"/>
+      <bendpoint index="1" location="2348,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="33" x="2329" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/consultaIMSS"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="eb686fb4-ddf9-4d31-b504-de7a6c98eab4" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S76"
+      sourceLocation="2512,63" sourceTerminal="RIGHT" target="S79"
+      targetLocation="2558,63" targetTerminal="LEFT" uid="T80">
+      <bendpoint index="0" location="2654,115" weight="0.5"/>
+      <bendpoint index="1" location="2654,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="54490ef0-8dbb-420a-a0b7-507345fb037c" blue="255"
+      conditionDescription=" no"
+      conditionText="TraspasoAsistido/datosControl/validaciones/huellasAPcorrectas = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S79" sourceLocation="2575,80" sourceTerminal="BOTTOM"
+      target="S81" targetLocation="2575,376" targetTerminal="TOP" uid="T82">
+      <bendpoint index="0" location="2694,280" weight="0.5"/>
+      <bendpoint index="1" location="2694,280" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="22" x="2698" y="275">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/huellasAPcorrectas"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="e56e3890-080e-4f9d-bedb-7ba81f0f6eed" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S85"
+      sourceLocation="2736,63" sourceTerminal="RIGHT" target="S87"
+      targetLocation="2784,63" targetTerminal="LEFT" uid="T88">
+      <bendpoint index="0" location="2878,115" weight="0.5"/>
+      <bendpoint index="1" location="2878,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="5c35ac30-96e2-41b1-8335-de6beeb72940" blue="255"
+      conditionDescription="   no"
+      conditionText="TraspasoAsistido/datosControl/validaciones/huellasAPcorrectas = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S87" sourceLocation="2801,80" sourceTerminal="BOTTOM"
+      target="S89" targetLocation="2801,376" targetTerminal="TOP" uid="T90">
+      <bendpoint index="0" location="2920,280" weight="0.5"/>
+      <bendpoint index="1" location="2920,280" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="23" x="2923" y="275">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/huellasAPcorrectas"
+          leftOperand="{ProcessNamespace}TraspasoAsistido" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="65bc6c85-77ef-4cdf-97d8-de6090c9dc29" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S87" sourceLocation="2818,63" sourceTerminal="RIGHT"
+      target="S91" targetLocation="2874,63" targetTerminal="LEFT" uid="T94">
+      <bendpoint index="0" location="2964,115" weight="0.5"/>
+      <bendpoint index="1" location="2964,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="34" x="2959" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/huellasAPcorrectas"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="9a156b09-192e-4589-9684-8fcf2f7e9dcf" blue="255"
+      conditionDescription="no"
+      conditionText="TraspasoAsistido/datosControl/validaciones/consultaPROCESAR = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S91" sourceLocation="2908,63" sourceTerminal="RIGHT"
+      target="S95" targetLocation="2973,63" targetTerminal="LEFT" uid="T96">
+      <bendpoint index="0" location="3058,115" weight="0.5"/>
+      <bendpoint index="1" location="3058,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="12" x="3057" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/consultaPROCESAR"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="13684462-29a4-407e-999a-1daa3d281ae4" blue="255"
+      conditionDescription="si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S38" sourceLocation="1236,142" sourceTerminal="TOP"
+      target="S36" targetLocation="1236,80" targetTerminal="BOTTOM" uid="T102">
+      <bendpoint index="0" location="1355,162" weight="0.5"/>
+      <bendpoint index="1" location="1355,162" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="14" x="1357" y="170">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a4088475-1392-4f45-92df-20eb9be65a08" blue="255"
+      conditionDescription="reintentar"
+      conditionText="TraspasoAsistido/datosControl/validaciones/validacionRenapo = reintentar"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S38" sourceLocation="1236,176" sourceTerminal="BOTTOM"
+      target="S26" targetLocation="791,80" targetTerminal="BOTTOM" uid="T103">
+      <bendpoint index="0" location="1355,275" weight="0.5"/>
+      <bendpoint index="1" location="910,275" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="46" x="1136" y="288">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/validacionRenapo"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'reintentar'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="0a5d0750-c0a5-45d1-b96f-e286600cb97e" blue="255"
+      conditionDescription="si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S91" sourceLocation="2891,46" sourceTerminal="TOP"
+      target="S105" targetLocation="3139,49" targetTerminal="TOP" uid="T106">
+      <bendpoint index="0" location="3010,68" weight="0.5"/>
+      <bendpoint index="1" location="3258,68" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="19" x="3124" y="51">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="93ff5849-826b-4fa1-a876-c49a71db4395" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S24"
+      sourceLocation="691,80" sourceTerminal="BOTTOM" target="S110"
+      targetLocation="690,129" targetTerminal="TOP" uid="T111">
+      <bendpoint index="0" location="810,156" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7d30249f-15fa-47ae-96e6-819d89b1f917" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S110"
+      sourceLocation="690,189" sourceTerminal="BOTTOM" target="S28"
+      targetLocation="688,389" targetTerminal="TOP" uid="T112">
+      <bendpoint index="0" location="809,340" weight="0.5"/>
+      <bendpoint index="1" location="807,340" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="1200fefd-d752-40dc-be49-f669733cb6f2" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="113,63" sourceTerminal="RIGHT" target="S17"
+      targetLocation="264,63" targetTerminal="LEFT" uid="T123">
+      <bendpoint index="0" location="306,115" weight="0.5"/>
+      <bendpoint index="1" location="306,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7718e316-044c-46af-818c-e3c839fe05ac" blue="255"
+      conditionDescription="CURP no encontrado o no desea reintentar"
+      conditionText="TraspasoAsistido/datosControl/validaciones/validacionRenapo = null"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S38" sourceLocation="1253,159" sourceTerminal="RIGHT"
+      target="S124" targetLocation="1295,241" targetTerminal="TOP" uid="T125">
+      <bendpoint index="0" location="1414,211" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="35" red="255" width="121" x="1415" y="235">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/validacionRenapo"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'null'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="f34e2008-1e53-402a-ab79-272961aef0ed" blue="255"
+      conditionDescription="fechaEnvioProcesar &lt; 5"
+      conditionText="TraspasoAsistido/datosControl/validaciones/fechaEnvioProcesar &lt;= 5"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S48" sourceLocation="1488,80" sourceTerminal="BOTTOM"
+      target="S127" targetLocation="1487,241" targetTerminal="TOP" uid="T128">
+      <bendpoint index="0" location="1607,212" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="116" x="1631" y="222">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/fechaEnvioProcesar"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="&lt;=" rightOperand="'5'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="0fd5ac25-ad36-4991-8316-2a3e18f61d0a" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S127"
+      sourceLocation="1487,301" sourceTerminal="BOTTOM" target="S50"
+      targetLocation="1488,376" targetTerminal="TOP" uid="T129">
+      <bendpoint index="0" location="1607,353" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="e88f9339-8a13-4c48-b3bd-a46f4adb9f6d" blue="255"
+      conditionDescription="no"
+      conditionText="TraspasoAsistido/datosControl/validaciones/consultaIMSS = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S70" sourceLocation="2338,176" sourceTerminal="BOTTOM"
+      target="S130" targetLocation="2337,241" targetTerminal="TOP" uid="T131">
+      <bendpoint index="0" location="2457,260" weight="0.5"/>
+      <bendpoint index="1" location="2456,260" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="12" x="2425" y="269">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/consultaIMSS"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="5fb34346-7ad3-44e9-b07c-5086deb09081" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S124"
+      sourceLocation="1295,301" sourceTerminal="BOTTOM" target="S39"
+      targetLocation="1296,376" targetTerminal="TOP" uid="T133">
+      <bendpoint index="0" location="1415,353" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="992988c1-2e98-4d93-9131-dcc51008bf87" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S130"
+      sourceLocation="2337,301" sourceTerminal="BOTTOM" target="S74"
+      targetLocation="2338,376" targetTerminal="TOP" uid="T134">
+      <bendpoint index="0" location="2457,353" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="58a32602-061d-42cb-8647-a33f24acefef" blue="255"
+      conditionDescription="si"
+      conditionText="TraspasoAsistido/datosControl/validaciones/huellasAPcorrectas = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S79" sourceLocation="2592,63" sourceTerminal="RIGHT"
+      target="S85" targetLocation="2643,63" targetTerminal="LEFT" uid="T135">
+      <bendpoint index="0" location="2736,115" weight="0.5"/>
+      <bendpoint index="1" location="2736,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="8" x="2730" y="101">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="datosControl/validaciones/huellasAPcorrectas"
+          leftOperand="{AF_SRV_TraspasoAsistido.docs}TraspasoAsistido"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="ede725f4-3165-4486-999e-17e99eea85ea" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S17"
+      sourceLocation="357,63" sourceTerminal="RIGHT" target="S22"
+      targetLocation="507,63" targetTerminal="LEFT" uid="T154">
+      <bendpoint index="0" location="550,115" weight="0.5"/>
+      <bendpoint index="1" location="550,115" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="14804cd2-8b06-44a6-b26e-e94ab232b09a" blue="204"
+      green="255" height="492" label="Transpaso Asistido"
+      labelBlue="255" labelGreen="238" labelRed="221"
+      name="Transpaso Asistido" red="255" uid="W9" width="4259">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="acd436f2-0be2-49c0-9818-b0d3ec08f520" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="4eca9b5c-5a35-4592-952a-f106e22d2558"
+      label="FP_TraspasoAfore" logicalServer="Bancoppel_DEV"
+      poolName="7" stepLock="false" uid="S4" useCorrelation="false"
+      x="89" y="51">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

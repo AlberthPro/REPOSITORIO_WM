@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">restDescriptor</value>
+  <value name="node_subtype">restv2Descriptor</value>
+  <value name="node_nsName">wm.task.taskengine.descriptors:getTaskRAD</value>
+  <value name="node_pkg">WmTaskEngine</value>
+  <value name="is_public">false</value>
+  <record name="generalInfo" javaclass="com.wm.util.Values">
+    <value name="specVersion">2.0</value>
+    <value name="hostName">localhost:5555</value>
+    <value name="basePath">/rad/wm.task.taskengine.descriptors:getTaskRAD</value>
+    <array name="schemes" type="value" depth="1">
+      <value>http</value>
+      <value>https</value>
+    </array>
+    <array name="consumes" type="value" depth="1">
+      <value>application/json</value>
+    </array>
+    <array name="produces" type="value" depth="1">
+      <value>application/json</value>
+    </array>
+  </record>
+  <record name="appInfo" javaclass="com.wm.util.Values">
+    <value name="appVersion">1.0</value>
+    <value name="description">Get Task REST API Descriptor</value>
+    <value name="title">Get Task RAD</value>
+    <null name="termsOfService"/>
+    <record name="contact" javaclass="com.wm.util.Values">
+      <null name="contactName"/>
+      <null name="contactUrl"/>
+      <null name="contactEmail"/>
+    </record>
+    <record name="license" javaclass="com.wm.util.Values">
+      <null name="licenseName"/>
+      <null name="licenseUrl"/>
+    </record>
+  </record>
+  <null name="sourceUri"/>
+  <null name="swaggerUrl"/>
+  <Boolean name="modifiable">true</Boolean>
+  <record name="restResources" javaclass="com.wm.util.Values">
+    <record name="/rest/WmTaskEngine/getTask" javaclass="com.wm.util.Values">
+      <value name="nsName">wm.task.taskengine.resources:getTaskREST</value>
+      <value name="path">/rest/WmTaskEngine/getTask</value>
+      <null name="suffix"/>
+      <record name="operations" javaclass="com.wm.util.Values">
+        <record name="GET" javaclass="com.wm.util.Values">
+          <value name="operationType">GET</value>
+          <value name="nsName">/rest/WmTaskEngine/getTask_GET</value>
+          <array name="requiredDefinitions" type="value" depth="1">
+            <value>wm.task:TaskInfo</value>
+            <value>/rest/WmTaskEngine/getTask_GET.TaskData</value>
+            <value>/rest/WmTaskEngine/getTask_GET_$response</value>
+          </array>
+          <record name="parameters" javaclass="com.wm.util.Values">
+            <record name="user" javaclass="com.wm.util.Values">
+              <value name="name">user</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="taskID" javaclass="com.wm.util.Values">
+              <value name="name">taskID</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">true</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="includeTaskData" javaclass="com.wm.util.Values">
+              <value name="name">includeTaskData</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="retryOnFailureCount" javaclass="com.wm.util.Values">
+              <value name="name">retryOnFailureCount</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+            <record name="retryDelay" javaclass="com.wm.util.Values">
+              <value name="name">retryDelay</value>
+              <value name="source">FORMDATA</value>
+              <value name="type">STRING</value>
+              <null name="description"/>
+              <Boolean name="isRequired">false</Boolean>
+              <Boolean name="isArray">false</Boolean>
+              <null name="defaultValue"/>
+              <null name="refDefinition"/>
+              <null name="definitionName"/>
+              <Boolean name="includeInRad">true</Boolean>
+            </record>
+          </record>
+          <record name="responseParam" javaclass="com.wm.util.Values">
+            <value name="name">reseponse</value>
+            <value name="source">BODY</value>
+            <value name="type">REFERENCE</value>
+            <null name="description"/>
+            <Boolean name="isRequired">true</Boolean>
+            <Boolean name="isArray">false</Boolean>
+            <null name="defaultValue"/>
+            <value name="refDefinition">/rest/WmTaskEngine/getTask_GET_$response</value>
+            <null name="definitionName"/>
+            <Boolean name="includeInRad">true</Boolean>
+          </record>
+          <record name="responses" javaclass="com.wm.util.Values">
+            <record name="200" javaclass="com.wm.util.Values">
+              <value name="statusCode">200</value>
+              <value name="description">OK</value>
+              <Boolean name="returnOutput">true</Boolean>
+            </record>
+            <record name="401" javaclass="com.wm.util.Values">
+              <value name="statusCode">401</value>
+              <value name="description">Access Denied</value>
+              <Boolean name="returnOutput">false</Boolean>
+            </record>
+          </record>
+        </record>
+      </record>
+    </record>
+  </record>
+  <record name="restDefinitions" javaclass="com.wm.util.Values">
+    <record name="wm.task:TaskInfo" javaclass="com.wm.util.Values">
+      <value name="name">TaskInfo</value>
+      <value name="nsName">wm.task:TaskInfo</value>
+      <Boolean name="autoGenerated">false</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+      <record name="parameters" javaclass="com.wm.util.Values">
+        <record name="name" javaclass="com.wm.util.Values">
+          <value name="name">name</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="description" javaclass="com.wm.util.Values">
+          <value name="name">description</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="expireDate" javaclass="com.wm.util.Values">
+          <value name="name">expireDate</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">DATE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="createdDate" javaclass="com.wm.util.Values">
+          <value name="name">createdDate</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">DATE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="lastModifiedDate" javaclass="com.wm.util.Values">
+          <value name="name">lastModifiedDate</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">DATE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="lastAcceptedDate" javaclass="com.wm.util.Values">
+          <value name="name">lastAcceptedDate</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">DATE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="taskID" javaclass="com.wm.util.Values">
+          <value name="name">taskID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="customTaskID" javaclass="com.wm.util.Values">
+          <value name="name">customTaskID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="createdBy" javaclass="com.wm.util.Values">
+          <value name="name">createdBy</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="lastModifiedBy" javaclass="com.wm.util.Values">
+          <value name="name">lastModifiedBy</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="lastAcceptedBy" javaclass="com.wm.util.Values">
+          <value name="name">lastAcceptedBy</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="status" javaclass="com.wm.util.Values">
+          <value name="name">status</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="priority" javaclass="com.wm.util.Values">
+          <value name="name">priority</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="acceptedByList" javaclass="com.wm.util.Values">
+          <value name="name">acceptedByList</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">true</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="assignedToList" javaclass="com.wm.util.Values">
+          <value name="name">assignedToList</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">true</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="errorCode" javaclass="com.wm.util.Values">
+          <value name="name">errorCode</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="errorMessage" javaclass="com.wm.util.Values">
+          <value name="name">errorMessage</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="taskUrl" javaclass="com.wm.util.Values">
+          <value name="name">taskUrl</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="taskTypeID" javaclass="com.wm.util.Values">
+          <value name="name">taskTypeID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="taskVersionNumber" javaclass="com.wm.util.Values">
+          <value name="name">taskVersionNumber</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="processInstanceID" javaclass="com.wm.util.Values">
+          <value name="name">processInstanceID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="processModelID" javaclass="com.wm.util.Values">
+          <value name="name">processModelID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="processModelVersion" javaclass="com.wm.util.Values">
+          <value name="name">processModelVersion</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="stepID" javaclass="com.wm.util.Values">
+          <value name="name">stepID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="processIteration" javaclass="com.wm.util.Values">
+          <value name="name">processIteration</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="stepIteration" javaclass="com.wm.util.Values">
+          <value name="name">stepIteration</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="auditContext" javaclass="com.wm.util.Values">
+          <value name="name">auditContext</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="parentTaskID" javaclass="com.wm.util.Values">
+          <value name="name">parentTaskID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="collaborationProcessID" javaclass="com.wm.util.Values">
+          <value name="name">collaborationProcessID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="collaborationStepID" javaclass="com.wm.util.Values">
+          <value name="name">collaborationStepID</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="delegatedToList" javaclass="com.wm.util.Values">
+          <value name="name">delegatedToList</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">true</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="delegatedFromList" javaclass="com.wm.util.Values">
+          <value name="name">delegatedFromList</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">STRING</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">true</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="isMandatory" javaclass="com.wm.util.Values">
+          <value name="name">isMandatory</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">INTEGER</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+        <record name="taskScheduleDate" javaclass="com.wm.util.Values">
+          <value name="name">taskScheduleDate</value>
+          <value name="source">FORMDATA</value>
+          <value name="type">DATE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">false</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <null name="refDefinition"/>
+          <null name="definitionName"/>
+          <Boolean name="includeInRad">true</Boolean>
+        </record>
+      </record>
+    </record>
+    <record name="/rest/WmTaskEngine/getTask_GET.TaskData" javaclass="com.wm.util.Values">
+      <value name="name">TaskData</value>
+      <value name="nsName">/rest/WmTaskEngine/getTask_GET.TaskData</value>
+      <Boolean name="autoGenerated">true</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+    </record>
+    <record name="/rest/WmTaskEngine/getTask_GET_$response" javaclass="com.wm.util.Values">
+      <value name="name">restWmTaskEnginegetTask_GET_response</value>
+      <value name="nsName">/rest/WmTaskEngine/getTask_GET_$response</value>
+      <Boolean name="autoGenerated">true</Boolean>
+      <Boolean name="recursive">false</Boolean>
+      <null name="description"/>
+      <record name="parameters" javaclass="com.wm.util.Values">
+        <record name="TaskInfo" javaclass="com.wm.util.Values">
+          <value name="name">TaskInfo</value>
+          <value name="source">BODY</value>
+          <value name="type">REFERENCE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <value name="refDefinition">wm.task:TaskInfo</value>
+          <value name="definitionName">TaskInfo</value>
+          <Boolean name="includeInRad">false</Boolean>
+        </record>
+        <record name="TaskData" javaclass="com.wm.util.Values">
+          <value name="name">TaskData</value>
+          <value name="source">BODY</value>
+          <value name="type">REFERENCE</value>
+          <null name="description"/>
+          <Boolean name="isRequired">true</Boolean>
+          <Boolean name="isArray">false</Boolean>
+          <null name="defaultValue"/>
+          <value name="refDefinition">/rest/WmTaskEngine/getTask_GET.TaskData</value>
+          <value name="definitionName">TaskData</value>
+          <Boolean name="includeInRad">false</Boolean>
+        </record>
+      </record>
+    </record>
+  </record>
+  <null name="radSource"/>
+  <value name="radVersion">1.0</value>
+  <array name="generatedDoctypes" type="record" depth="1">
+  </array>
+  <array name="generatedServices" type="record" depth="1">
+  </array>
+  <array name="generatedRestResources" type="record" depth="1">
+  </array>
+  <array name="resourceNodeNSNames" type="value" depth="1">
+    <value>wm.task.taskengine.resources:getTaskREST</value>
+  </array>
+</Values>

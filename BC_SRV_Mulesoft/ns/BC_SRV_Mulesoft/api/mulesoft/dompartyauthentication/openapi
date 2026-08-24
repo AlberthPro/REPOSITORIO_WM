@@ -1,0 +1,1600 @@
+openapi: 3.0.0
+info:
+  title: Dom Party Authentication
+  version: 1.1.1
+servers:
+- url: "https://${HOST_NAME}/crossChannel/partyAuthentication"
+  variables:
+    HOST_NAME:
+      default: HOST_NAME
+paths:
+  /v1/profileFacility/register:
+    post:
+      description: Realiza un alta del perfil del usuario registrando los valores
+        del password y usuario.
+      operationId: POST_v1-profileFacility-register
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateProfileRq'
+            example:
+              profileFacility:
+                branch: "2200"
+                profileStoredValue: 1
+                profileReference: 3
+                userCode: C8CF053EF5CE7AD676E6E8C0925FE368
+                approveUser: CA51BFDCEC77F2BF342C5194B3695A3C
+                password:
+                  passwordReference: CA51BFDCEC77F2BF342C5194B3695A3C
+                  passwordStoredValue: 9F3F55222E35AAAD8F49EEAF6F089854
+                  passwordValidFromToDate:
+                    date: 837605DDB5847FE471DD3DD01FEF9443
+                    lastUpdateTime: 0B4596F8EFE110DC55BBE564213DFB33
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.updateProfileRs'
+              example:
+                profileFacility:
+                  branch: "2200"
+                  profileStoredValue: 1
+                  profileReference: 3
+                  userCode: C8CF053EF5CE7AD676E6E8C0925FE368
+                  approveUser: C8CF053EF5CE7AD676E6E8C0925FE368
+                  password:
+                    passwordReference: CA51BFDCEC77F2BF342C5194B3695A3C
+                    passwordStoredValue: 9F3F55222E35AAAD8F49EEAF6F089854
+                    passwordValidFromToDate:
+                      date: 837605DDB5847FE471DD3DD01FEF9443
+                      lastUpdateTime: 0B4596F8EFE110DC55BBE564213DFB33
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/partyAuthenticationAssessment/evaluate:
+    post:
+      description: "Operacion que consulta el valor de la OTP en la tabla OTP, así\
+        \ como en el correo electronico de la tabla Email, realizando la comparacion\
+        \ para saber si son validas."
+      operationId: POST_v1-partyAuthenticationAssessment-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluatePartyAuthenticationAssessmentRq'
+            example:
+              partyAuthenticationAssessment:
+                partyReference:
+                  contactPoint:
+                  - contactPointValue: SLKN2343TP3NT367LK7KL6543BK2LJND
+                  referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                tokenAssignment:
+                  tokenStoredValue: DLKQ4LK6B7LK40F9H20DOIN32LKN
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/password/evaluate:
+    post:
+      description: Operación que valida el pin de una tarjeta de crédito en BPC.
+      operationId: POST_v1-password-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluatePasswordRq'
+            example:
+              paymentCard:
+                cardNumber: NDQzNTMzMjM0MzQzNDMyMQ==
+              passwordAssignment:
+                passwordValue: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.evaluatePasswordRs'
+              example:
+                transactionFacility:
+                  processCode: "00"
+                  trackingNumber: dddd
+                  transactionalDate: 01/02/2024
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordPolicies/evaluate:
+    post:
+      description: Operación que valida el pin de una tarjeta de crédito en BPC.
+      operationId: POST_v1-passwordPolicies-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluatePasswordPoliciesRq'
+            example:
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              paymentCard:
+                cardNumber: NDQzNTMzMjM0MzQzNDMyMQ==
+              passwordAssignment:
+                passwordValue: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/token/evaluate:
+    post:
+      description: Operación que valida un token en gemalto
+      operationId: POST_v1-token-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluateTokenRq'
+            example:
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              tokenIdentificationCode:
+                identifierValue:
+                  value: TMTM00009A20
+              passwordAssignment:
+                passwordValue: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.evaluateTokenRs'
+              example:
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                tokenIdentificationCode:
+                  identifierValue:
+                    value: TMTM00009A20
+                transactionDate:
+                - transactionDate: 2024/05/12
+                  transactionDateType: TransactionAuthenticationDate
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    lib.commonErrorRs:
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: estado de la peticion
+          example: Example
+    lib.updateProfileRq:
+      $ref: '#/components/schemas/lib.libraryUpdateProfileRq.updateProfileRq'
+    lib.updateProfileRs:
+      $ref: '#/components/schemas/lib.libraryUpdateProfileRs.updateProfileRs'
+    lib.evaluatePartyAuthenticationAssessmentRq:
+      $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.evaluatePartyAuthenticationAssessmentRq'
+    lib.evaluatePasswordRq:
+      $ref: '#/components/schemas/lib.libraryEvaluatePasswordRq.evaluatePasswordRq'
+    lib.evaluatePasswordRs:
+      $ref: '#/components/schemas/lib.libraryEvaluatePasswordRs.evaluatePasswordRs'
+    lib.evaluatePasswordPoliciesRq:
+      $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.evaluatePasswordPoliciesRq'
+    lib.evaluateTokenRq:
+      $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.evaluateTokenRq'
+    lib.evaluateTokenRs:
+      $ref: '#/components/schemas/lib.libraryEvaluateTokenRs.evaluateTokenRs'
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryBirthPlace.birthPlace:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.location'
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryContactPoint.contactPoint:
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointActiveStatus:
+            type: boolean
+            description: Indica el envio exitoso
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        code:
+          type: string
+          description: Código del distrito
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.deviceAssignment:
+      type: object
+      properties:
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssuedDeviceAllocation.issuedDeviceAllocation'
+        deviceIdentification:
+          type: string
+          description: Código hash de la huella digital del dispositivo.
+        issueLocation:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssueLocation.issueLocation'
+        deviceDescription:
+          type: string
+          description: Datos adicionales sobre el dispositivo.
+        versionNumber:
+          type: string
+          description: versión del sistema operativo.
+        deviceProperty:
+          type: object
+          properties:
+            model:
+              type: string
+              description: "modelo de dispositivo. Si se omite, se analiza desde el\
+                \ agente de usuario."
+            sdk:
+              type: string
+              description: Versión de SDK usada.
+        issuedDeviceStatus:
+          type: string
+          description: '''Estado de la sesión'' * Alive = Sesion Activa * Closed =
+            Sesion Cerrada * Deleted = Sesion Eliminada'
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        issuedDeviceConfiguration:
+          type: string
+          description: Configuración estándar de seguridad
+        deliveryMethod:
+          type: string
+          description: Método de entrega del producto.
+          enum:
+          - WS
+          - HALF_AND_HALF
+    ? lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity
+    : type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice:
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: '''El género de la persona obtenido de ocr'' * M = Masculino*
+            F = Femenino'
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        personName:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonName.personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryIdentifications.identifications:
+      type: array
+      items:
+        required:
+        - identifier
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+                x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+                format: date
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+                format: date
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: '''Indica el tipo de documento de identidad'' * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social'
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+    lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssueLocation.issueLocation:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.location'
+    ? lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssuedDeviceAllocation.issuedDeviceAllocation
+    : type: object
+      properties:
+        issuedDeviceType:
+          type: string
+          description: '''Indica la plataforma del dispositivo'' * IOS = IOS * ANDROID
+            = ANDROID * WEBAPP = WEBAPP'
+          enum:
+          - IOS
+          - ANDROID
+          - WEBAPP
+        associatedPermissions:
+          type: string
+          description: '''Indica la configuracion del dispositivo'
+        issuedDeviceReference:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssuedDeviceAllocation.libraryIssuedDeviceReference.issuedDeviceReference'
+    ? lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.libraryIssuedDeviceAllocation.libraryIssuedDeviceReference.issuedDeviceReference
+    : type: object
+      properties:
+        deviceIdentification:
+          type: string
+          description: Numero de identificacion unico del dispositivo
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expiryDate:
+          type: string
+          description: Fecha de vencimiento del dispositivo
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estatus
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.location:
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          country:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código ISO alfa-2 o alfa-3 válido del país.
+                default: All
+              name:
+                type: string
+                description: Nombre del País
+          city:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código de la ciudad
+              name:
+                type: string
+                description: "Indica el nombre de la ciudad, normalmente que pertenece\
+                  \ a una dirección"
+          region:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la region
+          state:
+            $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryState.state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          postalAddress:
+            type: string
+            description: Dirección postal.
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: '''Indica el tipo de direccion'' * IP_ADDRESS =  Direccion
+              IP  * DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS =
+              Direccion de una persona * INE_ADDRESS = Direccion retornada por el
+              INE * BIRTH_PLACE = Direccion de Nacimiento'
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+          countyDistrict:
+            $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          province:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la provincia
+              code:
+                type: string
+                description: Código de la provincia
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    ? lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList
+    : type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+            x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference:
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryIdentifications.identifications'
+        personName:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonName.personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        location:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.location'
+        gender:
+          type: string
+          description: '''El género de la persona '' * M = Masculino * F = Femenino'
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryContactPoint.contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        maritalStatus:
+          type: string
+          description: Estado civil.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        birthPlace:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryBirthPlace.birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        totalOccupancy:
+          type: string
+          description: ocupación total
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+        partyName:
+          type: string
+          description: Nombre del cliente
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiatePartyAuthenticationAssessmentRq.libraryPassword.password:
+      type: object
+      properties:
+        authenticationReferenceDataReference:
+          type: string
+          description: Referencia de autenticación.
+        authenticationReferenceDataType:
+          type: string
+          description: Tipo de referencia de autenticación.
+        authenticationReferenceDataValue:
+          type: string
+          description: Valor de referencia de autenticación.
+        passwordReference:
+          type: string
+          description: Referencia del nuevo password.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordTemplate:
+          type: string
+          description: Plantilla del password de autenticación.
+        passwordStoredValue:
+          type: string
+          description: Valor almacenado del password anterior.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        passwordValidFromToDate:
+          type: object
+          properties:
+            date:
+              type: string
+              description: Fecha de cambio del password.
+            lastUpdateTime:
+              type: string
+              description: Hora de cambio del password.
+    lib.libraryEvaluatePasswordPoliciesRq.libraryPasswordAssignment.passwordAssignment:
+      type: object
+      properties:
+        passwordAssignmentReference:
+          type: string
+          description: Numero de folio de la asignacion del dispositivo
+        dateContent:
+          type: string
+          description: Campo con formato “mmddhhmmss” (Mes-Dia-Hora-Minutos-Segundos)
+        timeContent:
+          type: string
+          description: Campo con formato “hhmmss” (Hora-Minutos-Segundos)
+        dayContent:
+          type: string
+          description: Campo con formato “mmdd” (Mes-Dia)
+        passwordValue:
+          type: string
+          description: password
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        employeeNumber:
+          type: string
+          description: Numero del empleado
+        detail:
+          type: string
+          description: detalle de la configuracion
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        configurationPasswordAssignment:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: Valor representativo de un parámetro de configuración.
+              name:
+                type: string
+                description: Nombre representativo de un parámetro de configuración.
+    lib.libraryEvaluatePasswordPoliciesRq.libraryPaymentCard.paymentCard:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Indica el numero del plastico o de la tarjeta
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cardExpiryDate:
+          type: string
+          description: Fecha de expireción de la tarjeta
+        cardHolderName:
+          type: string
+          description: Indica el nombre del plastico o de la tarjeta
+        cardType:
+          type: string
+          description: Indica el tipo de la tarjeta
+        deviceStatus:
+          type: string
+          description: Estado del dispositivo
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile:
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        role:
+          type: string
+          description: Rol del PEP.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonName.personName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.personProfile:
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        pepProfile:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile'
+        partyType:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType'
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        economicActivity:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity'
+        segment:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del segmento.
+            code:
+              type: string
+              description: Código del segmento.
+        group:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del grupo.
+            code:
+              type: string
+              description: Código del grupo.
+        subGroup:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del subgrupo.
+            code:
+              type: string
+              description: Código del subgrupo.
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        residencyYear:
+          type: string
+          description: Año de residencia.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    lib.libraryUpdateProfileRq.libraryProfileFacility.profileFacility:
+      type: object
+      properties:
+        branch:
+          type: string
+          description: Sucursal donde se encuentra el perfil.
+        profileStoredValue:
+          type: number
+          description: Valor almacenado del perfil anterior.
+        profileReference:
+          type: number
+          description: Referencia del nuevo perfil.
+        approveUser:
+          type: string
+          description: Usuario que autoriza el perfil.
+        userCode:
+          type: string
+          description: Codigo del usuario que autoriza el perfil.
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        password:
+          $ref: '#/components/schemas/lib.libraryInitiatePartyAuthenticationAssessmentRq.libraryPassword.password'
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.libraryLocation.libraryState.state:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        name:
+          type: string
+          description: Nombre del estado
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+      description: Informacion sobre el estado
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryTokenAssignment.tokenAssignment:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción breve del token.
+        tokenPriority:
+          type: string
+          description: Indica la prioridad del token.
+        tokenStoredValue:
+          type: string
+          description: Código OTP de 6 cifras
+        tokenStoredHour:
+          type: string
+          description: Hora de generación de OTP
+        tokenStoredDate:
+          type: string
+          description: Fecha de insercion
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.tokenIdentificationCode'
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference'
+        providerChannel:
+          type: string
+          description: Proveedor del canal
+    lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.tokenIdentificationCode:
+      required:
+      - identifierValue
+      type: object
+      properties:
+        identifierValue:
+          type: object
+          properties:
+            value:
+              type: string
+              description: Valor único del código de identificación del token.
+              x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+                kind: AUDITABLE_DATA
+          x-annotation-lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        identifierIssuingAuthority:
+          required:
+          - reference
+          type: object
+          properties:
+            reference:
+              type: object
+              properties:
+                partyName:
+                  type: string
+                  description: Nombre de la entidad o partido que emite el identificador.
+            organisation:
+              type: object
+              properties:
+                organisationName:
+                  type: string
+                  description: Nombre oficial de la organización.
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryEvaluatePasswordRs.libraryTransactionFacility.transactionFacility:
+      type: object
+      properties:
+        processCode:
+          type: string
+          description: Resultado de la transacción SmartVista
+        trackingNumber:
+          type: string
+          description: Resultado de la transacción SmartVista
+        transactionalDate:
+          type: string
+          description: Resultado de la transacción SmartVista
+        authorizationReference:
+          type: string
+          description: Resultado de la transacción SmartVista
+        svfeIdentifier:
+          type: string
+          description: Resultado de la transacción SmartVista
+    lib.libraryEvaluatePartyAuthenticationAssessmentRq.evaluatePartyAuthenticationAssessmentRq:
+      required:
+      - partyAuthenticationAssessment
+      type: object
+      properties:
+        partyAuthenticationAssessment:
+          type: object
+          properties:
+            partyReference:
+              $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference'
+            tokenAssignment:
+              $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryTokenAssignment.tokenAssignment'
+    lib.libraryEvaluatePasswordRq.evaluatePasswordRq:
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.libraryPaymentCard.paymentCard'
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.libraryPasswordAssignment.passwordAssignment'
+    lib.libraryEvaluatePasswordRs.evaluatePasswordRs:
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordRs.libraryTransactionFacility.transactionFacility'
+    lib.libraryEvaluatePasswordPoliciesRq.evaluatePasswordPoliciesRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference'
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.libraryPaymentCard.paymentCard'
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.libraryPasswordAssignment.passwordAssignment'
+    lib.libraryUpdateProfileRq.updateProfileRq:
+      required:
+      - profileFacility
+      type: object
+      properties:
+        profileFacility:
+          $ref: '#/components/schemas/lib.libraryUpdateProfileRq.libraryProfileFacility.profileFacility'
+    lib.libraryUpdateProfileRs.updateProfileRs:
+      required:
+      - profileFacility
+      type: object
+      properties:
+        profileFacility:
+          $ref: '#/components/schemas/lib.libraryUpdateProfileRq.libraryProfileFacility.profileFacility'
+    lib.libraryEvaluateTokenRq.evaluateTokenRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference'
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.tokenIdentificationCode'
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryEvaluatePasswordPoliciesRq.libraryPasswordAssignment.passwordAssignment'
+    lib.libraryEvaluateTokenRs.evaluateTokenRs:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryEvaluatePartyAuthenticationAssessmentRq.libraryPartyReference.partyReference'
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/lib.libraryEvaluateTokenRq.libraryTokenIdentificationCode.tokenIdentificationCode'
+        transactionDate:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionDate:
+                type: string
+              transactionDateType:
+                type: string
+                enum:
+                - TransactionInitiatedDate
+                - TransactionUpdatedDate
+                - TransactionAuthenticationDate
+  responses:
+    trait_common-responses.responses204_204:
+      description: No Content
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

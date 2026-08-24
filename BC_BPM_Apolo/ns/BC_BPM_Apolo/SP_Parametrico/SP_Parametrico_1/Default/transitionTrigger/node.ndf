@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">webMethods/trigger</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">BC_BPM_Apolo.SP_Parametrico.SP_Parametrico_1.Default:transitionTrigger</value>
+  <value name="node_pkg">BC_BPM_Apolo</value>
+  <value name="is_public">false</value>
+  <value name="trigger_type">broker-trigger</value>
+  <record name="trigger" javaclass="com.wm.util.Values">
+    <value name="concurrent">true</value>
+    <value name="auditOption">0</value>
+    <record name="auditSettings" javaclass="com.wm.util.Values">
+      <value name="document_data">0</value>
+      <value name="startExecution">false</value>
+      <value name="stopExecution">false</value>
+      <value name="onError">true</value>
+    </record>
+    <record name="redeliveryOptions" javaclass="com.wm.util.Values">
+      <value name="max">-1</value>
+      <value name="delayInterval">10000</value>
+      <value name="onRedeliveryFailure">0</value>
+      <value name="resumeTaskSvcName">wm.prt.admin:monitorPRTDB</value>
+    </record>
+    <value name="maxConcurrentThreads">10</value>
+    <value name="inDoubtDetection">false</value>
+    <value name="resolveWithHistory">false</value>
+    <value name="resolutionHistoryTTL">7200000</value>
+    <value name="uniqueId">X/TRhjaMvxQb1f2Pr8V2JnyEHmA=</value>
+    <value name="executeUser">Administrator</value>
+    <array name="conditions" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
+            <null name="filter"/>
+            <value name="umFilter">( ProcessModelID = 'BC_BPM_Apolo/SP_Parametrico' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S95', 'S82', 'S12', 'S21', 'S199', 'S44', 'S32', 'S36', 'S99', 'S10', 'S148', 'S25', 'S164', 'S76', 'S125', 'S113', 'S201', 'S58', 'S178', 'S191', 'S140', 'S60', 'S74', 'S40', 'S142', 'S176', 'S54', 'S133', 'S195', 'S70', 'S187', 'S109', 'S210', 'S170', 'S131', 'S174', 'S158', 'S154', 'S80', 'S48', 'S68', 'S197', 'S117', 'S9', 'S93', 'S65', 'S121', 'S52', 'S107', 'S129', 'S150', 'S103', 'S127', 'S172', 'S146', 'S18', 'S62', 'S23', 'S29', 'S214', 'S162', 'S185' )  ) </value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
+          <value name="conditionName">Inbound transitions</value>
+        </record>
+      </record>
+    </array>
+    <value name="processingSuspended">false</value>
+    <value name="retrievalSuspended">false</value>
+    <value name="transportAckSize">1</value>
+    <value name="deliverEnabled">true</value>
+    <value name="executeEnabled">true</value>
+    <value name="ordering">0</value>
+    <value name="joinTimeout">86400000</value>
+    <value name="serialSuspendOnError">false</value>
+    <value name="docsPrefetchMax">10</value>
+    <value name="docsPrefetchMin">4</value>
+    <value name="priorityEnabled">false</value>
+    <null name="namedObjectString"/>
+  </record>
+</Values>

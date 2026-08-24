@@ -1,0 +1,1055 @@
+openapi: 3.0.0
+info:
+  title: Dom Session Dialogue
+  version: 1.2.2
+servers:
+- url: "https://${HOST_NAME}/crossChannel/sessionDialogue"
+  variables:
+    HOST_NAME:
+      default: HOST_NAME
+paths:
+  /v1/customerContactSessionProcedure/initiate:
+    post:
+      description: Servicio que se encargara de iniciar el proceso de onboarding
+      operationId: POST_v1-customerContactSessionProcedure-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateCustomerContactSessionProcedureRq'
+            example:
+              customerContactSessionProcedure:
+                country:
+                  code: 064A1B28141F5A118925852BBB124BAF
+                sessionDialogueRecord:
+                  clientId: 064A1B28141F5A118925852BBB124BAF
+        required: true
+      responses:
+        default:
+          description: ""
+  /v1/customerContactSessionProcedure/retrieve:
+    get:
+      description: Servicio de Dominio encargado de verificar el estatus de la sesion
+        actual en INCODE
+      operationId: GET_v1-customerContactSessionProcedure-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: ""
+  /v1/customerContactSessionProcedure/capture:
+    post:
+      description: Servicio de Dominio que se encarga de registrar el número telefónico
+        y correo de un prospecto en INCODE
+      operationId: POST_v1-customerContactSessionProcedure-capture
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.captureCustomerContactSessionProcedureRq'
+            example:
+              customerContactSessionProcedure:
+                contactPoint:
+                - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                  contactPointType: cellphone
+                - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                  contactPointType: Electronic Address
+        required: true
+      responses:
+        default:
+          description: ""
+  /v1/history/retrieve:
+    get:
+      description: Servicio de Dominio encargado de validar la calidad de las imagenes
+        cargadas de DNI de la persona
+      operationId: GET_v1-history-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: ""
+  /v1/authenticationAddress/initiate:
+    post:
+      description: Servicio de dominio que se encarga de autenticar la homologación
+        de direcciones
+      operationId: POST_v1-authenticationAddress-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateAuthenticationAddressRq'
+            example:
+              authenticationAddress:
+                appId: 75f16c96-0835-4dc7-b896-efed293de89e
+                appKey: a17fc2f6eb660658d5356dcb23028035c2e3c5b8548e0ffbaa494abaa8e40d91
+                deviceId: "97959458"
+                iHrsDurationToken: 8
+        required: true
+      responses:
+        default:
+          description: ""
+  /v1/customerContactSelfieProcedure/initiate:
+    post:
+      description: Servicio de dominio encargado de guardar las selfies del prospecto
+      operationId: POST_v1-customerContactSelfieProcedure-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateCustomerContactSelfieProcedureRq'
+            example:
+              customerContactSelfieProcedure:
+                documentContent:
+                  page:
+                  - type: selfie
+                    content:
+                      base64Image: fb5c099361fe936a8bda87e71baa97b8
+        required: true
+      responses:
+        default:
+          description: ""
+  /v1/customerContactVideoSelfieProcedure/initiate:
+    post:
+      description: Servicio de dominio que se encarga de iniciar el proceso de carga
+        de video(fe de vida) con las preguntas generadas por la aplicacion
+      operationId: POST_v1-customerContactVideoSelfieProcedure-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateCustomerContactVideoSelfieProcedureRq'
+            example:
+              customerContactVideoSelfieProcedure:
+                documentContent:
+                  page:
+                  - type: videoSelfie
+                    content:
+                      base64Image: fb5c099361fe936a8bda87e71baa97b8
+        required: true
+      responses:
+        default:
+          description: ""
+  /v1/customerContactVideoSelfieProcedure/retrieve:
+    get:
+      description: Servicio de dominio encargado de generar el URL de Video Selfie
+      operationId: GET_v1-customerContactVideoSelfieProcedure-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        default:
+          description: ""
+  /v1/workstep/retrieve:
+    post:
+      description: Servicio de dominio encargado de Consultar step actual del cliente
+        en el BPM
+      operationId: POST_v1-workstep-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveWorkstepRq'
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+        required: true
+      responses:
+        default:
+          description: ""
+components:
+  schemas:
+    lib.initiateCustomerContactSessionProcedureRq:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSessionProcedureRq.initiateCustomerContactSessionProcedureRq'
+    lib.captureCustomerContactSessionProcedureRq:
+      $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.captureCustomerContactSessionProcedureRq'
+    lib.initiateAuthenticationAddressRq:
+      type: object
+      properties:
+        authenticationAddress:
+          type: object
+          properties:
+            appId:
+              type: string
+              description: Identificador de la consulta.
+            appKey:
+              type: string
+              description: Tipo de llave utilizada en el proceso de autenticacion
+            deviceId:
+              type: string
+              description: Identificador del dispositivo
+            iHrsDurationToken:
+              type: number
+              description: Tiempo de duracion del token
+            token:
+              type: string
+              description: Token generado.
+          description: Objeto necesario para autenticarse con la API de direcciones
+            fase 3
+    lib.initiateCustomerContactSelfieProcedureRq:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.initiateCustomerContactSelfieProcedureRq'
+    lib.initiateCustomerContactVideoSelfieProcedureRq:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerContactVideoSelfieProcedureRq.initiateCustomerContactVideoSelfieProcedureRq'
+    lib.retrieveWorkstepRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveWorkstepRq.retrieveWorkstepRq'
+    lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.libraryContactPoint.contactPoint:
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+            ? x-annotation-lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.libraryContactPoint.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryPage.libraryContent.content
+    : type: object
+      properties:
+        base64Image:
+          type: string
+          description: Formato base 64 que representa una imagen.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryPage.libraryContent.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        classification:
+          type: boolean
+          description: Indica si se realizó alguna clasificación sobre la imágen.
+        readability:
+          type: boolean
+          description: Indica si la imágen es leíble por el servidor.
+        sharpness:
+          type: number
+          description: Indica la nitidez de la imágen.
+        correctSharpness:
+          type: boolean
+          description: Indica si el sharpness es correcto.
+        glare:
+          type: number
+          description: Indica la cantidad de reflejo en una imágen.
+        correctGlare:
+          type: boolean
+          description: Indica si el glare es correcto.
+        horizontalResolution:
+          type: number
+          description: El valor se basa en la resolución de la foto recortada. Un
+            valor bajo significa que después de realizar el recorte tenemos una mala
+            calidad de imagen. Recomendamos volver a intentar la captura si el valor
+            es inferior a 155.
+        typeOfId:
+          type: string
+          description: Clasificación de la imágen
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación
+        location:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.location'
+        issueName:
+          type: string
+          description: "Descripción de la identificación. Podría contener código de\
+            \ país, estado, tipo de identificación, subtipo de identificación."
+        curpCheck:
+          type: boolean
+          description: Solo para cédulas mexicanas. Indicador que indica si curp se
+            leyó correctamente.
+        documentStatus:
+          type: string
+          description: '''Estado del contenido'' * Alive = contenido activo * Closed
+            = comtenido cerrado * Deleted = contenido eliminado'
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        failReason:
+          type: string
+          description: '''Razón del error de clasificación.'' * UNKNOWN_DOCUMENT_TYPE
+            = tipo de documento desconocido * WRONG_DOCUMENT_SIDE = lado incorrecto
+            del documento * WRONG_ONE_SIDED_DOCUMENT = Documento de una lado incorrecto*
+            DOCUMENT_NOT_READABLE = Documento no se puede leer * UNABLE_TO_ALIGN_DOCUMENT
+            = Documento no alineado * ID_TYPE_UNACCEPTABLE = Documento invalido *
+            UNEXPECTED_ERROR_OCCURRED = Error inesperado'
+          enum:
+          - UNKNOWN_DOCUMENT_TYPE
+          - WRONG_DOCUMENT_SIDE
+          - WRONG_ONE_SIDED_DOCUMENT
+          - DOCUMENT_NOT_READABLE
+          - UNABLE_TO_ALIGN_DOCUMENT
+          - ID_TYPE_UNACCEPTABLE
+          - UNEXPECTED_ERROR_OCCURRED
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryCountyDistrict.countyDistrict
+    : type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryCountyDistrict.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        code:
+          type: string
+          description: Código del distrito
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryCountyDistrict.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+    lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.customerContactSelfieProcedure:
+      type: object
+      properties:
+        documentContent:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.documentContent'
+        selfieDialogueRecord:
+          type: object
+          properties:
+            confidence:
+              type: number
+              description: Puede tomar el valor de 0 o 1. Un valor de 0 indica que
+                la persona en la foto esta viva.
+            hasLenses:
+              type: boolean
+              description: "Detecta si la persona en la foto tiene lentes, de ser\
+                \ asi se recomienda tomar otra foto."
+            hasFaceMask:
+              type: boolean
+              description: "Detecta si la persona en la foto tiene mascarilla, de\
+                \ ser asi se recomienda tomar otra foto."
+            isBright:
+              type: boolean
+              description: "Detecta si la foto es lo suficientemente brillante, de\
+                \ no ser asi se recomienda tomar otra foto."
+            age:
+              type: number
+              description: La edad de la persona en la foto.
+            documentStatus:
+              type: string
+              description: Estatus del documento
+            existingUser:
+              type: boolean
+              description: Bandera que indica si un usuario ya está registrado.
+            existingInterviewId:
+              type: string
+              description: "ID de sesión, en caso de que el usuario sea aprobado en\
+                \ otra sesión."
+            nameMatched:
+              type: boolean
+              description: Muestra si el nombre coincide con el utilizado anteriormente
+                (solo en caso de que el usuario ya esté aprobado en otra sesión)
+            existingExternalId:
+              type: string
+              description: "ID externo, en caso de que el usuario sea aprobado en\
+                \ otra sesión."
+            url:
+              type: string
+              description: Url Selfie
+            sessionStatus:
+              type: string
+              description: Indica el estado de la sesion
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: number
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+    lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.customerContactSessionProcedure:
+      type: object
+      properties:
+        country:
+          type: object
+          properties:
+            code:
+              type: string
+              description: Código ISO alfa-2 o alfa-3 válido del país.
+              default: All
+            name:
+              type: string
+              description: Nombre del País
+        sessionDialogueIdentification:
+          type: string
+          description: Identificador de la sesion inicializada
+          ? x-annotation-lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        sessionDialogueRecord:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.librarySessionDialogueRecord.sessionDialogueRecord'
+        procedureType:
+          type: string
+          description: Tipo de procedimiento utilizado.
+        sessionDialogueIdCaptureTimeout:
+          type: number
+          description: TimeOut de la sesion actual
+        sessionDialogueSelfieCaptureTimeout:
+          type: number
+          description: "Número de segundos después de los cuales se debe mostrar al\
+            \ usuario el botón de captura manual, mientras se captura la selfie."
+        sessionDialogueCreatedTime:
+          type: number
+          description: ¿Cuándo se creó la sesión?
+        sessionDialogueUpdatedTime:
+          type: number
+          description: ¿Cuándo se actualizó la sesión por última vez?
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.libraryContactPoint.contactPoint'
+    ? lib.libraryInitiateCustomerContactVideoSelfieProcedureRq.libraryCustomerContactVideoSelfieProcedure.customerContactVideoSelfieProcedure
+    : type: object
+      properties:
+        documentContent:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.documentContent'
+        selfieDialogueRecord:
+          type: object
+          properties:
+            confidence:
+              type: number
+              description: Puede tomar el valor de 0 o 1. Un valor de 0 indica que
+                la persona en la foto esta viva.
+            hasLenses:
+              type: boolean
+              description: "Detecta si la persona en la foto tiene lentes, de ser\
+                \ asi se recomienda tomar otra foto."
+            hasFaceMask:
+              type: boolean
+              description: "Detecta si la persona en la foto tiene mascarilla, de\
+                \ ser asi se recomienda tomar otra foto."
+            isBright:
+              type: boolean
+              description: "Detecta si la foto es lo suficientemente brillante, de\
+                \ no ser asi se recomienda tomar otra foto."
+            age:
+              type: number
+              description: La edad de la persona en la foto.
+            documentStatus:
+              type: string
+              description: Estatus del documento
+            existingUser:
+              type: boolean
+              description: Bandera que indica si un usuario ya está registrado.
+            existingInterviewId:
+              type: string
+              description: "ID de sesión, en caso de que el usuario sea aprobado en\
+                \ otra sesión."
+            nameMatched:
+              type: boolean
+              description: Muestra si el nombre coincide con el utilizado anteriormente
+                (solo en caso de que el usuario ya esté aprobado en otra sesión)
+            existingExternalId:
+              type: string
+              description: "ID externo, en caso de que el usuario sea aprobado en\
+                \ otra sesión."
+            url:
+              type: string
+              description: Url Selfie
+            sessionStatus:
+              type: string
+              description: Indica el estado de la sesion
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.documentContent
+    : type: object
+      properties:
+        ocrData:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.ocrData'
+        page:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryPage.page'
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.identificationDevice
+    : type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: '''El género de la persona obtenido de ocr'' * M = Masculino*
+            F = Femenino'
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: valor de la línea ZLM.
+            description: Objeto que define las líneas ZLM.
+        personName:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.location
+    : type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          country:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código ISO alfa-2 o alfa-3 válido del país.
+                default: All
+              name:
+                type: string
+                description: Nombre del País
+          city:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código de la ciudad
+              name:
+                type: string
+                description: "Indica el nombre de la ciudad, normalmente que pertenece\
+                  \ a una dirección"
+          region:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la region
+          state:
+            $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryState.state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+                ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+                : kind: AUDITABLE_DATA
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+                ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+                : kind: AUDITABLE_DATA
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+                ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+                : kind: AUDITABLE_DATA
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          postalAddress:
+            type: string
+            description: Dirección postal.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: '''Indica el tipo de direccion'' * IP_ADDRESS =  Direccion
+              IP  * DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS =
+              Direccion de una persona * INE_ADDRESS = Direccion retornada por el
+              INE * BIRTH_PLACE = Direccion de Nacimiento'
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+          countyDistrict:
+            $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryCountyDistrict.countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          neighborhoodList:
+            $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryNeighborhoodList.neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+          province:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la provincia
+              code:
+                type: string
+                description: Código de la provincia
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryNeighborhoodList.neighborhoodList
+    : type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+            ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryNeighborhoodList.annotation.customControlAttributes
+            : kind: AUDITABLE_DATA
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.ocrData
+    : type: object
+      properties:
+        personName:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.personName'
+        location:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.location'
+        identificationDevice:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryIdentificationDevice.identificationDevice'
+      description: Datos sacados del OCR aplicado a los documentos
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryPage.page
+    : type: array
+      items:
+        type: object
+        properties:
+          content:
+            $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryPage.libraryContent.content'
+          type:
+            type: string
+            description: '''Indica el tipo de la imágen.'' * selfie =  Selfie * videoSelfie
+              = Video Selfie * domiciliary-invoice = Comprobante de dpmicilio * front-document
+              = Anverso del documento de identidad * back-document = Reverso del documento
+              de identidad'
+            enum:
+            - selfie
+            - videoSelfie
+            - domiciliary-invoice
+            - front-document
+            - back-document
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.personName
+    : type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryPersonName.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+    ? lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.librarySessionDialogueRecord.sessionDialogueRecord
+    : type: object
+      properties:
+        authenticationValue:
+          type: string
+          description: "Token interno usado para llamadas futuras, es el valor de\
+            \ \"header.identity-session-token\" en las llamadas subsecuentes"
+        idCaptureRetries:
+          type: number
+          description: Numero de capturas del id despues de las cuales el usuario
+            debe ser llevado a la siguiente pantalla
+        selfieCaptureRetries:
+          type: number
+          description: Numero de capturas de selfie despues de las cuales el usuario
+            debe ser llevado a la siguiente pantalla
+        curpCaptureRetries:
+          type: number
+          description: Numero de capturas de CURP despues de las cuales el usuario
+            debe ser llevado a la siguiente pantalla
+        clientId:
+          type: string
+          description: Id especifico del cliente que corresponde a un API Key
+        env:
+          type: string
+          description: "Entorno del servidor, puede ser un de los siguientes: stage,\
+            \ demo, saas"
+        existingSession:
+          type: boolean
+          description: Indica si la sesion ya existe
+        frontIdAttempts:
+          type: number
+          description: Numero de intentos de guardar el anverso del id
+        backIdAttempts:
+          type: number
+          description: Numero de intentos de guardar el reverso del id
+        selfieAttempts:
+          type: number
+          description: Numero de intentos de guardar la selfie
+        existingCustomer:
+          type: boolean
+          description: Indica si se ha detectado que el cliente ya existe
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.libraryContactPoint.contactPoint'
+      description: Muestra un registro de una sesion interactiva con el cliente
+    ? lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryState.state
+    : type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryState.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+        name:
+          type: string
+          description: Nombre del estado
+          ? x-annotation-lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.libraryDocumentContent.libraryOcrData.libraryLocation.libraryState.annotation.customControlAttributes
+          : kind: AUDITABLE_DATA
+      description: Informacion sobre el estado
+    lib.libraryInitiateCustomerContactSelfieProcedureRq.initiateCustomerContactSelfieProcedureRq:
+      type: object
+      properties:
+        customerContactSelfieProcedure:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactSelfieProcedureRq.libraryCustomerContactSelfieProcedure.customerContactSelfieProcedure'
+    lib.libraryCaptureCustomerContactSessionProcedureRq.captureCustomerContactSessionProcedureRq:
+      type: object
+      properties:
+        customerContactSessionProcedure:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.customerContactSessionProcedure'
+    lib.libraryInitiateCustomerContactSessionProcedureRq.initiateCustomerContactSessionProcedureRq:
+      type: object
+      properties:
+        customerContactSessionProcedure:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerContactSessionProcedureRq.libraryCustomerContactSessionProcedure.customerContactSessionProcedure'
+    lib.libraryInitiateCustomerContactVideoSelfieProcedureRq.initiateCustomerContactVideoSelfieProcedureRq:
+      required:
+      - customerContactVideoSelfieProcedure
+      type: object
+      properties:
+        customerContactVideoSelfieProcedure:
+          $ref: '#/components/schemas/lib.libraryInitiateCustomerContactVideoSelfieProcedureRq.libraryCustomerContactVideoSelfieProcedure.customerContactVideoSelfieProcedure'
+    lib.libraryRetrieveWorkstepRq.retrieveWorkstepRq:
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          maxLength: 32
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+          x-annotation-lib.libraryRetrieveWorkstepRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

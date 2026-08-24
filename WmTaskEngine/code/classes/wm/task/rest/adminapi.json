@@ -1,0 +1,75 @@
+{
+  "resources" : [ {
+    "wm.task.rest.services.TaskAdminRest" : [ {
+      "method" : "getTEOInfo",
+      "httpMethod" : "GET",
+      "urlTemplate" : "/admin/te/config/orchestrator",
+      "input" : "",
+      "output" : "wm.task.rest.beans.config.orchestrator.OrchInfoOut"
+    }, {
+      "method" : "updateTEOState",
+      "httpMethod" : "POST",
+      "urlTemplate" : "/admin/te/config/orchestrator",
+      "input" : "wm.task.rest.beans.config.orchestrator.TEOStateInOut",
+      "output" : ""
+    }, {
+      "method" : "updateTEODataSourceConfig",
+      "httpMethod" : "POST",
+      "urlTemplate" : "/admin/te/config/orchestrator/datasource",
+      "input" : "wm.task.rest.beans.config.orchestrator.OrchDataSourceInOut",
+      "output" : "wm.task.rest.beans.config.orchestrator.OrchDataSourceInOut"
+    }, {
+      "method" : "recalculateAllTEOTypes",
+      "httpMethod" : "POST",
+      "urlTemplate" : "/admin/te/config/orchestrator/types",
+      "input" : "",
+      "output" : "wm.task.rest.beans.config.orchestrator.OrchTaskTypesOut"
+    }, {
+      "method" : "recalculateTEOType",
+      "httpMethod" : "POST",
+      "urlTemplate" : "/admin/te/config/orchestrator/types/{taskTypeID}",
+      "input" : "wm.task.rest.beans.config.orchestrator.OrchTaskTypeInOut",
+      "output" : "wm.task.rest.beans.config.orchestrator.OrchTaskTypeInOut"
+    }, {
+      "method" : "configureTEOType",
+      "httpMethod" : "PUT",
+      "urlTemplate" : "/admin/te/config/orchestrator/types/{taskTypeID}",
+      "input" : "wm.task.rest.beans.config.orchestrator.OrchTaskTypeInOut",
+      "output" : "wm.task.rest.beans.config.orchestrator.OrchTaskTypeInOut"
+    } ]
+  }, {
+    "wm.task.rest.services.TaskSearchServicesRest" : [ {
+      "method" : "searchTasks",
+      "httpMethod" : "POST",
+      "urlTemplate" : "admin/te/tasks",
+      "input" : "",
+      "output" : "wm.task.rest.beans.admin.TaskSearchOut"
+    } ]
+  }, {
+    "wm.task.rest.services.TaskVotingServicesRest" : [ {
+      "method" : "getRecalculationStatus",
+      "httpMethod" : "GET",
+      "urlTemplate" : "admin/te/voting/recstat/{taskTypeID}",
+      "input" : "",
+      "output" : "wm.task.rest.beans.admin.RecalculationStatusOut"
+    }, {
+      "method" : "startVoteRecalculation",
+      "httpMethod" : "GET",
+      "urlTemplate" : "admin/te/voting/recalc/{taskTypeID}",
+      "input" : "",
+      "output" : ""
+    }, {
+      "method" : "stopVoteRecalculation",
+      "httpMethod" : "GET",
+      "urlTemplate" : "admin/te/voting/stoprecalc/{taskTypeID}",
+      "input" : "",
+      "output" : ""
+    }, {
+      "method" : "voteTask",
+      "httpMethod" : "PUT",
+      "urlTemplate" : "admin/te/voting/vote",
+      "input" : "",
+      "output" : ""
+    } ]
+  } ]
+}

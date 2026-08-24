@@ -1,0 +1,1528 @@
+// Decompiled by DJ v3.6.6.79 Copyright 2004 Atanas Neshkov  Date: 24/11/2008 16:16:26
+// Home Page : http://members.fortunecity.com/neshkov/dj.html  - Check often for new version!
+// Decompiler options: packimports(3) 
+// Source File Name:   WmTransformationServices.java
+
+import com.wm.app.b2b.server.ServiceException;
+import com.wm.data.*;
+import java.math.BigDecimal;
+import java.text.FieldPosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public final class WmTransformationServices
+{
+
+    public WmTransformationServices()
+    {
+    }
+
+    static WmTransformationServices _newInstance()
+    {
+        return new WmTransformationServices();
+    }
+
+    static WmTransformationServices _cast(Object obj)
+    {
+        return (WmTransformationServices)obj;
+    }
+
+    public static final void BigDecimalToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(bigdecimal != null)
+            byte1 = new Byte(bigdecimal.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(bigdecimal != null)
+            double1 = new Double(bigdecimal.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(bigdecimal != null)
+            float1 = new Float(bigdecimal.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(bigdecimal != null)
+            integer = new Integer(bigdecimal.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(bigdecimal != null)
+            long1 = new Long(bigdecimal.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(bigdecimal != null)
+            short1 = new Short(bigdecimal.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void BigDecimalToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        BigDecimal bigdecimal = (BigDecimal)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(bigdecimal != null)
+            s = bigdecimal.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                byte1 = new Byte("1");
+            else
+                byte1 = new Byte("0");
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(boolean1 != null)
+        {
+            abyte0 = new byte[1];
+            if(boolean1.booleanValue())
+                abyte0[0] = 1;
+            else
+                abyte0[0] = 0;
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                double1 = new Double(1.0D);
+            else
+                double1 = new Double(0.0D);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                float1 = new Float(1.0F);
+            else
+                float1 = new Float(0.0F);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                integer = new Integer(1);
+            else
+                integer = new Integer(0);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                long1 = new Long(1L);
+            else
+                long1 = new Long(0L);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                short1 = new Short("1");
+            else
+                short1 = new Short("0");
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(boolean1 != null)
+            s = boolean1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void BooleanToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Boolean boolean1 = (Boolean)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(boolean1 != null)
+            if(boolean1.booleanValue())
+                character = new Character('1');
+            else
+                character = new Character('0');
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteArrayToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        byte abyte0[] = (byte[])IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(abyte0 != null)
+            s = new String(abyte0);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(byte1 != null)
+            bigdecimal = new BigDecimal(byte1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = null;
+        if(byte1 != null)
+            boolean1 = new Boolean(byte1.byteValue() != 0);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(byte1 != null)
+            double1 = new Double(byte1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(byte1 != null)
+            float1 = new Float(byte1.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(byte1 != null)
+            integer = new Integer(byte1.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(byte1 != null)
+            long1 = new Long(byte1.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(byte1 != null)
+            short1 = new Short(byte1.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(byte1 != null)
+            s = byte1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void ByteToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Byte byte1 = (Byte)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(byte1 != null)
+            character = new Character((char)byte1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void CharToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(character != null)
+            s = character.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void DateToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Date date = (Date)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(date != null)
+        {
+            SimpleDateFormat simpledateformat = new SimpleDateFormat();
+            StringBuffer stringbuffer = new StringBuffer();
+            StringBuffer stringbuffer1 = new StringBuffer();
+            stringbuffer = simpledateformat.format(date, stringbuffer1, new FieldPosition(0));
+            s = stringbuffer.toString();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(double1 != null)
+            bigdecimal = new BigDecimal(double1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = new Boolean(false);
+        if(double1 != null && double1.doubleValue() != 0.0D)
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(double1 != null)
+            byte1 = new Byte(double1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(double1 != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = double1.byteValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(double1 != null)
+            float1 = new Float(double1.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(double1 != null)
+            integer = new Integer(double1.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(double1 != null)
+            long1 = new Long(double1.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(double1 != null)
+            short1 = new Short(double1.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(double1 != null)
+            s = double1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void DoubleToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Double double1 = (Double)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(double1 != null)
+            character = new Character((char)double1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(float1 != null)
+            bigdecimal = new BigDecimal(float1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = new Boolean(false);
+        if(float1 != null && float1.floatValue() != 0.0F)
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(float1 != null)
+            byte1 = new Byte(float1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(float1 != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = float1.byteValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(float1 != null)
+            double1 = new Double(float1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(float1 != null)
+            integer = new Integer(float1.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(float1 != null)
+            long1 = new Long(float1.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(float1 != null)
+            short1 = new Short(float1.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(float1 != null)
+            s = float1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void FloatToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Float float1 = (Float)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(float1 != null)
+            character = new Character((char)float1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(integer != null)
+            bigdecimal = new BigDecimal(integer.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = new Boolean(false);
+        if(integer != null && integer.intValue() != 0)
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(integer != null)
+            byte1 = new Byte(integer.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(integer != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = integer.byteValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(integer != null)
+            double1 = new Double(integer.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(integer != null)
+            float1 = new Float(integer.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(integer != null)
+            long1 = new Long(integer.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(integer != null)
+            short1 = new Short(integer.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(integer != null)
+            s = integer.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void IntegerToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Integer integer = (Integer)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(integer != null)
+            character = new Character((char)integer.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(long1 != null)
+            bigdecimal = new BigDecimal(long1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = new Boolean(false);
+        if(long1 != null && long1.longValue() != 0L)
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(long1 != null)
+            byte1 = new Byte(long1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(long1 != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = long1.byteValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(long1 != null)
+            double1 = new Double(long1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(long1 != null)
+            float1 = new Float(long1.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(long1 != null)
+            integer = new Integer(long1.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(long1 != null)
+            short1 = new Short(long1.shortValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(long1 != null)
+            s = long1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void LongToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Long long1 = (Long)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(long1 != null)
+            character = new Character((char)long1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        if(short1 != null)
+            bigdecimal = new BigDecimal(short1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = new Boolean(false);
+        if(short1 != null && short1.shortValue() != 0)
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(short1 != null)
+            byte1 = new Byte(short1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(short1 != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = short1.byteValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(short1 != null)
+            double1 = new Double(short1.doubleValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(short1 != null)
+            float1 = new Float(short1.floatValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(short1 != null)
+            integer = new Integer(short1.intValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(short1 != null)
+            long1 = new Long(short1.longValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToString(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        String s = null;
+        if(short1 != null)
+            s = short1.toString();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", s);
+        idatacursor.destroy();
+    }
+
+    public static final void ShortToUnicodeChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Short short1 = (Short)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(short1 != null)
+            character = new Character((char)short1.byteValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToBigDecimal(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        BigDecimal bigdecimal = null;
+        try
+        {
+            if(s != null)
+                bigdecimal = new BigDecimal(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            bigdecimal = new BigDecimal(0.0D);
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", bigdecimal);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1 = null;
+        if(s != null)
+            boolean1 = new Boolean(s);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Byte byte1 = null;
+        if(s != null)
+            try
+            {
+                byte1 = new Byte(Byte.parseByte(s));
+            }
+            catch(NumberFormatException numberformatexception)
+            {
+                byte1 = new Byte("0");
+            }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", byte1);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(s != null)
+            abyte0 = s.getBytes();
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToChar(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Character character = null;
+        if(s != null)
+            character = new Character(s.charAt(0));
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", character);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToDate(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Date date = null;
+        if(s != null)
+        {
+            SimpleDateFormat simpledateformat = new SimpleDateFormat();
+            try
+            {
+                date = simpledateformat.parse(s);
+            }
+            catch(Exception exception)
+            {
+                SimpleDateFormat simpledateformat1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try
+                {
+                    date = simpledateformat1.parse(s);
+                }
+                catch(Exception exception1)
+                {
+                    SimpleDateFormat simpledateformat2 = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                    try
+                    {
+                        date = simpledateformat2.parse(s);
+                    }
+                    catch(Exception exception2)
+                    {
+                        SimpleDateFormat simpledateformat3 = new SimpleDateFormat("MM/dd/yyyy");
+                        try
+                        {
+                            date = simpledateformat3.parse(s);
+                        }
+                        catch(Exception exception3)
+                        {
+                            throw new ServiceException(exception2);
+                        }
+                    }
+                }
+            }
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", date);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        try
+        {
+            if(s != null)
+                double1 = new Double(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            double1 = new Double(0.0D);
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        try
+        {
+            if(s != null)
+                float1 = new Float(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            float1 = new Float(0.0F);
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        try
+        {
+            if(s != null)
+                integer = new Integer(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            integer = new Integer(0);
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        try
+        {
+            if(s != null)
+                long1 = new Long(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            long1 = new Long(0L);
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void StringToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        String s = IDataUtil.getString(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        try
+        {
+            if(s != null)
+                short1 = new Short(s);
+        }
+        catch(NumberFormatException numberformatexception)
+        {
+            short1 = new Short("0");
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToBoolean(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Boolean boolean1;
+        if(character == null)
+            boolean1 = new Boolean(false);
+        else
+            boolean1 = new Boolean(true);
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", boolean1);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToByte(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Object obj = null;
+        if(character != null)
+        {
+            Byte byte1 = new Byte((byte)character.charValue());
+            IDataCursor idatacursor1 = idata.getCursor();
+            IDataUtil.put(idatacursor1, "output", byte1);
+            idatacursor1.destroy();
+        }
+    }
+
+    public static final void UnicodeCharToByteArray(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        byte abyte0[] = null;
+        if(character != null)
+        {
+            abyte0 = new byte[1];
+            abyte0[0] = (byte)character.charValue();
+        }
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", abyte0);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToDouble(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Double double1 = null;
+        if(character != null)
+            double1 = new Double(character.charValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", double1);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToFloat(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Float float1 = null;
+        if(character != null)
+            float1 = new Float(character.charValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", float1);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToInteger(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Integer integer = null;
+        if(character != null)
+            integer = new Integer(character.charValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", integer);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToLong(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Long long1 = null;
+        if(character != null)
+            long1 = new Long(character.charValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", long1);
+        idatacursor.destroy();
+    }
+
+    public static final void UnicodeCharToShort(IData idata)
+        throws ServiceException
+    {
+        IDataCursor idatacursor = idata.getCursor();
+        Character character = (Character)IDataUtil.get(idatacursor, "input");
+        idatacursor.destroy();
+        Short short1 = null;
+        if(character != null)
+            short1 = new Short((short)character.charValue());
+        idatacursor = idata.getCursor();
+        IDataUtil.put(idatacursor, "output", short1);
+        idatacursor.destroy();
+    }
+
+    static final WmTransformationServices _instance = new WmTransformationServices();
+
+}

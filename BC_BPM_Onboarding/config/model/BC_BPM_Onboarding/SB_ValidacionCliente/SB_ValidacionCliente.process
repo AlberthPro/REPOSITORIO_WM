@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="b6d42690-d139-47f5-858e-221f3be7b484" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="SB_ValidacionCliente"
+  packageName="BC_BPM_Onboarding" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="01e83402-84f9-418e-af30-be25d345616d"
+    description="" dimension="0" label="dt_callactivity"
+    name="{ProcessNamespace}dt_callactivity" type="{BC_SRV_Onboarding.docs}dt_callactivity"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <input name="{ProcessNamespace}dt_callactivity"/>
+  <output name="{ProcessNamespace}dt_callactivity"/>
+  <pool Id="4300f93a-c1aa-4093-8ae1-18dd0956bae8" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="93471c31-e660-4549-9013-af7988f49289"
+      label="BB005 - Validación Cliente" logicalServer="Default"
+      poolName="5" stepLock="false" uid="S7" useCorrelation="false"
+      x="52" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <pool Id="74c1054f-a099-46e4-8622-1c540a6a408b" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false"
+    label="BB005 - Validación Cliente" labelBlue="255" labelGreen="204"
+    labelRed="153" logicalServer="" loopMaximum="0" loopMaximumField=""
+    name="5" orientation="horizontal" red="128" retryCount="0"
+    stepLock="false" uid="P6" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <noneEventStep Id="2e6230fa-ccaa-49c4-9a65-c9cbcfaf16ae"
+      eventType="START" height="28"
+      label="EVI.Validación cliente iniciada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default"
+      receiveProtocol="SUBSCRIPTION" stepLock="false" uid="S8"
+      useCorrelation="false" width="28" x="83" y="67">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}dt_callactivity"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <noneEventStep Id="ddbfabf6-2ffe-40f0-80b5-6eceee4c7ef5"
+      eventType="END" height="28"
+      label="EVF.Validación cliente finalizada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" stepLock="false" uid="S9"
+      useCorrelation="false" width="28" x="209" y="67">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <transition Id="023f3393-607f-4d16-ab83-e5b35ad216ab" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S8"
+      sourceLocation="111,81" sourceTerminal="RIGHT" target="S9"
+      targetLocation="209,81" targetTerminal="LEFT" uid="T11">
+      <bendpoint index="0" location="242,131" weight="0.5"/>
+      <bendpoint index="1" location="242,131" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="c0572886-b4fb-4273-811e-85bda342c9dc" blue="255"
+      green="255" height="284" label="webMethods IS" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods IS" red="255"
+      uid="W8" width="379">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

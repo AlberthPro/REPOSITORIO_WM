@@ -1,0 +1,3573 @@
+openapi: 3.0.0
+info:
+  title: Rec Document Services
+  contact: {}
+  version: 1.3.3
+servers:
+- url: "https://${HOST_NAME}/experience/documentManagementAndArchive/documentServices"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/documentServiceProcedure/register:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentServiceProcedureRegister_POST
+      description: Servicio de dominio que realiza la subida de los documentos al
+        expediente digital del prospecto a través de Onbase y registra los datos de
+        subida en Apolo
+      operationId: V1DocumentServiceProcedureRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerDocumentServiceProcedureRq'
+              - example:
+                  documentServiceProcedure:
+                    documentData:
+                    - documentType: EC09
+                      documentGroup: 1
+                      documentTypeIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                    partyReference:
+                      referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                    documentContent:
+                      page:
+                      - content:
+                          base64Image: 9FF0FDA9669BF74AD3A1C747
+                        type: signature
+                    sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                  documentData:
+                  - productInstanceRecord:
+                      productInstanceReferenceType: 9FF0FDA9669BF74AD3A1C747
+                  partyReference:
+                    referenceId: 9FF0FDA9669BF74AD3A1C747
+                    personName:
+                      firstName: 9FF0FDA9669BF74AD3A1C747
+                      secondName: 9FF0FDA9669BF74AD3A1C747
+                      familyName: 9FF0FDA9669BF74AD3A1C747
+                      secondLastName: 9FF0FDA9669BF74AD3A1C747
+                    identifications:
+                    - identifier:
+                        identifierValue: 9FF0FDA9669BF74AD3A1C747
+                      personIdentificationType: Registro Federal Contribuyentes
+                    identificationDevice:
+                      curp: ea7bac7976e5b1b49d
+                    dateOfBirth: 9FF0FDA9669BF74AD3A1C747
+                    contactPoint:
+                    - contactPointValue: 9FF0FDA9669BF74AD3A1C747
+                      contactPointType: Electronic Address
+                    - contactPointValue: 9FF0FDA9669BF74AD3A1C747
+                      contactPointType: cellphone
+                  customerRelationship:
+                  - customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 9FF0FDA9669BF74AD3A1C747
+                        firstName: 9FF0FDA9669BF74AD3A1C747
+                        secondName: 9FF0FDA9669BF74AD3A1C747
+                        familyName: 9FF0FDA9669BF74AD3A1C747
+                        secondLastName: 9FF0FDA9669BF74AD3A1C747
+                      roleType: Beneficiary
+                  - customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 9FF0FDA9669BF74AD3A1C747
+                        firstName: 9FF0FDA9669BF74AD3A1C747
+                        secondName: 9FF0FDA9669BF74AD3A1C747
+                        familyName: 9FF0FDA9669BF74AD3A1C747
+                        secondLastName: 9FF0FDA9669BF74AD3A1C747
+                      roleType: Reference
+                  documentation:
+                    documentData:
+                    - documentTypeIdentifier: 9FF0FDA9669BF74AD3A1C747
+                    documentContent:
+                      page:
+                      - documentIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                    documentProperties:
+                    - DocumentGroupCode: EC09
+                      DocumentGroup: EC09
+                      documentType: EC09
+                      sequence: 123
+                      definitionCode: 1234AS
+                      productInstanceRecord:
+                        productInstanceReference: SDSA33255DSFSFCXV
+                        productInstanceReferenceName: SDSA33255DSFSFCXV
+                  creditCardApplication:
+                    requestNumber: 9FF0FDA9669BF74AD3A1C747
+                  location:
+                  - postalCode: 9FF0FDA9669BF74AD3A1C747
+                    countyDistrict:
+                      code: 9FF0FDA9669BF74AD3A1C747
+                      name: 9FF0FDA9669BF74AD3A1C747
+                    city:
+                      code: MEX
+                      name: 9FF0FDA9669BF74AD3A1C747
+                    state:
+                      code: 9FF0FDA9669BF74AD3A1C747
+                      name: 9FF0FDA9669BF74AD3A1C747
+                    emissionDate: "1680998400000"
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/registerDocumentServiceProcedureRs'
+                - example:
+                    documentServiceProcedure:
+                      documentServiceId: "343243223"
+                    transactionDate:
+                    - transactionDate: 20/01/2024
+                      transactionDateType: TransactionUpdatedDate
+              example:
+                documentServiceProcedure:
+                  documentServiceId: "343243223"
+                transactionDate:
+                - transactionDate: 20/01/2024
+                  transactionDateType: TransactionUpdatedDate
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentTemplate/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentTemplateRetrieve_POST
+      description: Servicio de dominio que realiza consulta del ID y posteriormente
+        el contenido de un documento
+      operationId: V1DocumentTemplateRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveDocumentTemplateRq'
+              - example:
+                  documentTemplate:
+                    sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                    documentData:
+                    - revisionIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                      documentTypeIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                      productInstanceRecord:
+                        productInstanceType: A93B64AE1FB376A15EC21132E65B478F
+                      documentGroup: 1
+                      documentType: EC09
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveDocumentTemplateRs'
+                - example:
+                    documentTemplate:
+                      sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                      documentData:
+                      - documentTypeIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                        url: https://docs.company.com/OnBase/ShowDocument?DocID=1001&EnsembleID=12&DocTypeName=Contrato
+                        documentType: EC09
+                        documentGroup: 1
+                        documentActiveStatus: true
+                        documentValidationDateTime: 2025-03-12 12:32:32
+                        productInstanceRecord:
+                          productInstanceReference: 751d31dd6b56b26b29dac2c0e1839e34
+                      documentContent:
+                        page:
+                        - content:
+                            base64Image: fb5c099361fe936a8bda87e71baa97b8
+                          type: contract
+              example:
+                documentTemplate:
+                  sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                  documentData:
+                  - documentTypeIdentifier: 751d31dd6b56b26b29dac2c0e1839e34
+                    url: https://docs.company.com/OnBase/ShowDocument?DocID=1001&EnsembleID=12&DocTypeName=Contrato
+                    documentType: EC09
+                    documentGroup: 1
+                    documentActiveStatus: true
+                    documentValidationDateTime: 2025-03-12 12:32:32
+                    productInstanceRecord:
+                      productInstanceReference: 751d31dd6b56b26b29dac2c0e1839e34
+                  documentContent:
+                    page:
+                    - content:
+                        base64Image: fb5c099361fe936a8bda87e71baa97b8
+                      type: contract
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentServiceProcedure/activate:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentServiceProcedureActivate_POST
+      description: API que permite que mantener viva la sesión para carga de documentos
+        en el expediente digital
+      operationId: V1DocumentServiceProcedureActivate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentServiceProcedure/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentServiceProcedureRetrieve_POST
+      description: API de dominio que permite consultar los datos de documentos de
+        clientes
+      operationId: V1DocumentServiceProcedureRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveDocumentServiceProcedureRq'
+              - example:
+                  partyReference:
+                    referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                  account:
+                    accountIdentification:
+                    - accountIdentificationType: Account Number
+                      identifierValue: 5F600B3C636E509D8B739C57EC1AAA4F
+                  transactionDate:
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionCutoffDate
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveDocumentServiceProcedureRs'
+                - example:
+                  - documentServiceProcedure:
+                      documentServiceId: "343243223"
+                      documentMetadata:
+                      - heading: EC Apellido 2
+                        index: "2"
+                        keywordTypeId: "118"
+                        value: 4d696c8238971e7a68c8e5f6c340d1c0
+                      documentContent:
+                        page:
+                        - content:
+                            base64File: fb5c099361fe936a8bda87e71baa97b8
+              example:
+              - documentServiceProcedure:
+                  documentServiceId: "343243223"
+                  documentMetadata:
+                  - heading: EC Apellido 2
+                    index: "2"
+                    keywordTypeId: "118"
+                    value: 4d696c8238971e7a68c8e5f6c340d1c0
+                  documentContent:
+                    page:
+                    - content:
+                        base64File: fb5c099361fe936a8bda87e71baa97b8
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentService/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentServiceRetrieve_POST
+      description: Operación que realiza la consulta de la tabla que almacena los
+        metadatos del expediente digital en Informix
+      operationId: V1DocumentServiceRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveDocumentServiceRq'
+              - example:
+                  documentService:
+                    documentServiceProvider:
+                      partyReference:
+                        identifications:
+                        - identifier:
+                            identifierValue: MDAwMDEyNTY
+                    bankingProduct:
+                      account:
+                        accountIdentification:
+                        - identifierValue: MDAwMDEyNTY
+                    documentProduct: "6001"
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveDocumentServiceRs'
+                - example:
+                    documentService:
+                      documentServiceFunction:
+                      - documentCode: "0003"
+                        documentSequence: 1
+                        documentName: TARJETA DE CREDITO
+                        documentDescription: Pasaporte
+              example:
+                documentService:
+                  documentServiceFunction:
+                  - documentCode: "0003"
+                    documentSequence: 1
+                    documentName: TARJETA DE CREDITO
+                    documentDescription: Pasaporte
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentService/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentServiceInitiate_POST
+      description: Operación que realiza la inserción de la tabla que almacena los
+        metadatos del expediente digital en Informix
+      operationId: V1DocumentServiceInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateDocumentServiceRq'
+              - example:
+                  documentService:
+                    documentServiceProvider:
+                      partyReference:
+                        companyReference: "001"
+                        identifications:
+                        - identifier:
+                            identifierValue: MDAwMDEyNTY
+                    bankingProduct:
+                      account:
+                        accountIdentification:
+                        - identifierValue: MDAwMDEyNTY
+                    documentServiceName: TARJETA DE CREDITO
+                    documentServiceDescription: Pasaporte
+                    documentServiceSequence: 1
+                    documentServiceCode: "0003"
+                    documentProduct: "6001"
+                  operationType: "1"
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentService/update:
+    patch:
+      tags:
+      - v1
+      summary: V1DocumentServiceUpdate_PATCH
+      description: Operación que realiza la actualización de la tabla que almacena
+        los metadatos del expediente digital en Informix
+      operationId: V1DocumentServiceUpdate_PATCH
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveDocumentServiceProcedureRq'
+              - example:
+                  partyReference:
+                    referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                  account:
+                    accountIdentification:
+                    - accountIdentificationType: Account Number
+                      identifierValue: 5F600B3C636E509D8B739C57EC1AAA4F
+                  transactionDate:
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionCutoffDate
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentData/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentDataInitiate_POST
+      description: Operación que realiza la carga de un documento dentro de un almacen
+        de archivos Amazon S3 y posteriormente realiza el registro de los datos en
+        la tabla file
+      operationId: V1DocumentDataInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateDocumentDataRq'
+              - example:
+                  sessionDialogueIdentification: 637d4cba28871fb0ce1ea6a7
+                  documentData:
+                  - documentType: EC09
+                    url: 751d31dd6b56b26b29dac2c0e1839e34
+                    page:
+                    - content:
+                        base64File: dasfeqwr1345135324rfewqgtwetherq43265645t43qgetwhsefawagwerg
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/documentData/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1DocumentDataRetrieve_POST
+      description: Operación que realiza la consulta de un documento dentro de un
+        almacen de archivos Amazon S3 y la tabla file
+      operationId: V1DocumentDataRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveDocumentDataRq'
+              - example:
+                  sessionDialogueIdentification: 637d4cba28871fb0ce1ea6a7
+                  documentData:
+                  - eTag: 637d4cba28871fb0ce1ea6a7
+                    documentType: EC09
+                    documentGroup: 1
+                    url: 751d31dd6b56b26b29dac2c0e1839e34
+                    productInstanceRecord:
+                      productInstanceReference: TA
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveDocumentDataRs'
+                - example:
+                    documentData:
+                    - eTag: 637d4cba28871fb0ce1ea6a7
+                      page:
+                      - content:
+                          base64File: dasfeqwr1345135324rfewqgtwetherq43265645t43qgetwhsefawagwerg
+                      url: archivo1.pdf
+                      documentFileSize: 12345
+                      documentModificationDate: 2024-03-14T12:00:00.000Zt
+              example:
+                documentData:
+                - eTag: 637d4cba28871fb0ce1ea6a7
+                  page:
+                  - content:
+                      base64File: dasfeqwr1345135324rfewqgtwetherq43265645t43qgetwhsefawagwerg
+                  url: archivo1.pdf
+                  documentFileSize: 12345
+                  documentModificationDate: 2024-03-14T12:00:00.000Zt
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/statusCertification/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1StatusCertificationRetrieve_POST
+      description: Operación encargada de consultar la información del estatus de
+        los documentos resguardados en “ASW S3” en la base de datos de Yugabyte
+      operationId: V1StatusCertificationRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveStatusCertificationRq'
+              - example:
+                  applicationNumber: "0333434"
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveStatusCertificationRs'
+                - example:
+                    statusCertification:
+                    - documentValidationDateTime: 2025-08-06T01:00:29
+                      applicationNumber: "0333434"
+                      fileType: imagen
+                      statusInstanceRecord:
+                        statusCode: 1
+                        message: archivo validado y aceptado
+              example:
+                statusCertification:
+                - documentValidationDateTime: 2025-08-06T01:00:29
+                  applicationNumber: "0333434"
+                  fileType: imagen
+                  statusInstanceRecord:
+                    statusCode: 1
+                    message: archivo validado y aceptado
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/statusCertification/register:
+    post:
+      tags:
+      - v1
+      summary: V1StatusCertificationRegister_POST
+      description: "Operación encargada de realizar la inserción de las respuestas\
+        \ de los servicios utilizados para el envío de los paquetes de imágenes, de\
+        \ video, de biométricos y de datos, durante el proceso de ejecución del Comparador"
+      operationId: V1StatusCertificationRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: ID que se genera como llave para el cifrado y descifrado de la
+          información.
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerStatusCertificationRq'
+              - example:
+                  statusCertification:
+                  - applicationNumber: "0333434"
+                    fileType: imagen
+                    statusInstanceRecord:
+                      statusCode: 1
+                      message: archivo validado y aceptado
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    registerDocumentServiceProcedureRq:
+      title: registerDocumentServiceProcedureRq
+      type: object
+      properties:
+        documentServiceProcedure:
+          $ref: '#/components/schemas/documentServiceProcedure'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        documentData:
+          $ref: '#/components/schemas/documentData'
+        libraryPartyReference:
+          $ref: '#/components/schemas/partyReference'
+        customerRelationship:
+          $ref: '#/components/schemas/customerRelationship'
+        documentation:
+          $ref: '#/components/schemas/documentation'
+        creditCardApplication:
+          $ref: '#/components/schemas/creditCardApplication'
+        location:
+          $ref: '#/components/schemas/location'
+    retrieveDocumentTemplateRq:
+      title: retrieveDocumentTemplateRq
+      type: object
+      properties:
+        documentTemplate:
+          $ref: '#/components/schemas/documentTemplate'
+    retrieveDocumentServiceProcedureRq:
+      title: retrieveDocumentServiceProcedureRq
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/account'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        transactionDate:
+          $ref: '#/components/schemas/transactionDate'
+    retrieveDocumentServiceRq:
+      title: retrieveDocumentServiceRq
+      type: object
+      properties:
+        documentService:
+          $ref: '#/components/schemas/documentService'
+        operationType:
+          type: string
+          description: "Id que identificará que acción debe realizar el API, las posibles\
+            \ valores son 1 = Register / 2 = Update / 3 = Retrieve"
+    initiateDocumentServiceRq:
+      title: initiateDocumentServiceRq
+      type: object
+      properties:
+        documentService:
+          $ref: '#/components/schemas/documentService'
+        operationType:
+          type: string
+          description: "Id que identificará que acción debe realizar el API, las posibles\
+            \ valores son 1 = Register / 2 = Update / 3 = Retrieve"
+    initiateDocumentDataRq:
+      title: initiateDocumentDataRq
+      type: object
+      properties:
+        documentData:
+          $ref: '#/components/schemas/documentData'
+        sessionDialogueIdentification:
+          type: string
+          description: Identificador de la sesión generado por incode y es la propiedad
+            que relaciona el registro con la solicitud
+    retrieveDocumentDataRq:
+      title: retrieveDocumentDataRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        documentData:
+          $ref: '#/components/schemas/documentData'
+    retrieveStatusCertificationRq:
+      title: retrieveStatusCertificationRq
+      type: object
+      properties:
+        applicationNumber:
+          type: string
+    registerStatusCertificationRq:
+      title: registerStatusCertificationRq
+      type: object
+      properties:
+        statusCertification:
+          $ref: '#/components/schemas/statusCertification'
+    registerDocumentServiceProcedureRs:
+      title: registerDocumentServiceProcedureRs
+      type: object
+      properties:
+        documentServiceProcedure:
+          $ref: '#/components/schemas/documentServiceProcedure'
+        transactionDate:
+          $ref: '#/components/schemas/transactionDate'
+    retrieveDocumentTemplateRs:
+      title: retrieveDocumentTemplateRs
+      type: object
+      properties:
+        documentTemplate:
+          $ref: '#/components/schemas/documentTemplate'
+    retrieveDocumentServiceProcedureRs:
+      title: retrieveDocumentServiceProcedureRs
+      type: array
+      items:
+        type: object
+        properties:
+          documentServiceProcedure:
+            $ref: '#/components/schemas/documentServiceProcedure'
+    retrieveDocumentServiceRs:
+      title: retrieveDocumentServiceRs
+      type: object
+      properties:
+        documentService:
+          $ref: '#/components/schemas/documentService'
+    retrieveDocumentDataRs:
+      title: retrieveDocumentDataRs
+      type: object
+      properties:
+        documentData:
+          $ref: '#/components/schemas/documentData'
+    retrieveStatusCertificationRs:
+      title: retrieveStatusCertificationRs
+      type: object
+      properties:
+        statusCertification:
+          $ref: '#/components/schemas/statusCertification'
+    customerRelationship:
+      title: customerRelationship
+      type: array
+      items:
+        type: object
+        properties:
+          customerRelationshipInvolvement:
+            $ref: '#/components/schemas/customerRelationshipInvolvement'
+    internalReport:
+      title: internalReport
+      type: object
+      properties:
+        value:
+          type: string
+          description: Valor o contenido del reporte interno.
+    creditCardApplication:
+      title: creditCardApplication
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        creditPlan:
+          $ref: '#/components/schemas/creditPlan'
+        monthlyIncome:
+          type: number
+          description: Ingreso mensual
+        minimumIncomeGold:
+          type: number
+          description: Ingreso minimo oro
+        scoring:
+          type: string
+          description: Calificación crediticia
+        requestType:
+          type: string
+          description: Tipo de solicitud
+        group:
+          type: string
+          description: Grupo
+        evaluateCC:
+          type: string
+          description: Evaluate cc
+        applicationReferenceId:
+          type: string
+          description: Id referente
+        requestNumber:
+          type: string
+          description: Número de la solicitud de crédito
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        requestStatus:
+          type: string
+          description: "Estatus de la evaluación del producto acotada a 2 caracteres\
+            \ tales como: - EA En Analisis - RT Rechazada - AP Autorizacion de Apertura\
+            \ - AN Anulada por el Cliente - PC Solicitud- re Calificada - RA REQUIERE\
+            \ AUTORIZACIÓN - CN Cancelada - RP Rechazo por Precalificación - CM Cancelació\
+            n por Mesa de Control - EC Evaluacion Coppel - PA re Autorizada - BC En\
+            \ Buro de Credito - CC En Circulo de Credito - ST Supervisión Telefónica\
+            \ - MC Mesa de Control - EE En Estudio Supervision - OS Enviada a Orden\
+            \ de Supervision - LC En Determinación de Línea - CE Catalogo de domicilio\
+            \ en estudio - OA Orden Supervision en Aclaracion - AT Autorizada - IN\
+            \ Intermedio"
+          enum:
+          - EA
+          - RT
+          - AP
+          - AN
+          - PC
+          - RA
+          - CN
+          - RP
+          - CM
+          - EC
+          - PA
+          - BC
+          - CC
+          - ST
+          - MC
+          - EE
+          - OS
+          - LC
+          - CE
+          - OA
+          - AT
+          - IN
+        productInstanceRecord:
+          $ref: '#/components/schemas/productInstanceRecord'
+        requestChannel:
+          type: number
+        productOrderReason:
+          type: string
+        applicationNumber:
+          type: string
+        registerStatus:
+          type: string
+          description: ' A - Activo B - Inactivo C - Cancelado D - Pendiente E - Terminado
+            F - Aceptado G - Rechazado H - Orden Supervisión'
+          enum:
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+        validityDate:
+          type: string
+        documentContent:
+          $ref: '#/components/schemas/documentContent'
+        documentData:
+          $ref: '#/components/schemas/documentData'
+        notificationEmailSubject:
+          type: string
+    documentTemplate:
+      title: documentTemplate
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        documentContent:
+          $ref: '#/components/schemas/documentContent'
+        documentData:
+          $ref: '#/components/schemas/documentData'
+    documentServiceProcedure:
+      title: documentServiceProcedure
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        documentData:
+          $ref: '#/components/schemas/documentData'
+        documentContent:
+          $ref: '#/components/schemas/documentContent'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        documentServiceId:
+          type: string
+        documentMetadata:
+          $ref: '#/components/schemas/documentMetadata'
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+          countyDistrict:
+            $ref: '#/components/schemas/countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+    documentService:
+      title: documentService
+      type: object
+      properties:
+        documentServiceProvider:
+          type: object
+          properties:
+            partyReference:
+              $ref: '#/components/schemas/partyReference'
+        bankingProduct:
+          type: object
+          properties:
+            account:
+              $ref: '#/components/schemas/account'
+        documentServiceName:
+          type: string
+          description: Nombre del producto relacionado al document
+        documentServiceDescription:
+          type: string
+          description: Descripcion del documento
+        documentServiceSequence:
+          type: number
+          description: Secuencia del documento
+        documentServiceCode:
+          type: string
+          description: Codigo del documento relacionado al documento
+        documentProduct:
+          type: string
+          description: Producto vinculado al expediente y al documento
+        documentServiceFunction:
+          type: array
+          items:
+            type: object
+            properties:
+              documentName:
+                type: string
+                description: Nombre del producto relacionado al document
+              documentDescription:
+                type: string
+                description: Descripcion del documento
+              documentSequence:
+                type: number
+                description: Secuencia del documento
+              documentCode:
+                type: string
+                description: Codigo del documento relacionado al documento
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    electronicSignatureDetail:
+      title: electronicSignatureDetail
+      type: object
+      properties:
+        targetOrganisation:
+          $ref: '#/components/schemas/organisation'
+        sourceOrganisation:
+          $ref: '#/components/schemas/organisation'
+        policy:
+          type: string
+          description: Valor que indica la política aplicada
+        signingHash:
+          type: string
+          description: Es el hash criptográfico de los datos firmados
+        certificateIdentification:
+          type: string
+          description: Número de serie del certificado digital utilizado para firmar
+            el documento
+        date:
+          type: string
+          description: Valor que indica la fecha en formato epoch/unix timestamp
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    personIdentification:
+      title: personIdentification
+      type: object
+      properties:
+        personIdentificationType:
+          type: string
+          description: Tipo de identificación de la persona
+        identifier:
+          $ref: '#/components/schemas/identifier'
+        personDocumentType:
+          type: string
+          description: Tipo de documento de la persona
+    documentData:
+      title: documentData
+      type: array
+      items:
+        type: object
+        properties:
+          productInstanceRecord:
+            $ref: '#/components/schemas/productInstanceRecord'
+          documentGroup:
+            type: number
+            description: etiqueta para identificar a qué grupo pertenece el documento
+              1 - Contratos 2 - Comprobantes 3 - Identificación 4 - Consentimientos
+              5 - NOM151 6 - Plantillas
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+          documentType:
+            type: string
+            description: "etiqueta para identificar a qué tipo archivo es el documento\
+              \ EC01 Expediente Digital Cliente EC02 Identificacion Oficial EC03 COMPROBANTE\
+              \ DE DOMICILIO EC04 COMPROBANTE DE INGRESOS EC05 Foto Biometría EC06\
+              \ Video Selfie EC07 Autorizaciones EC08 Tarjeta de Crédito Coppel EC09\
+              \ Portada de Créditos EC10 Carátula del producto EC11 CONTRATO CUENTA\
+              \ MÓVIL DIGITAL EC12 Comprobantes de Domicilio EC13 Documentos BanCoppel\
+              \ EC14 Documentos Fiscales 1 - Comprobante Ingresos, 2 - Comprobante\
+              \ de Domicilio, 3 - Identificación Oficial Adverso, 4 - Identificació\
+              n Oficial Reverso 5 - T&C, 6 - Aviso Privacidad, 7 - Data Coppel, 8\
+              \ - Aceptación Validación INE, 9 - Uso Biométricos, 10 - Caratula de\
+              \ Contrato TDC, 11 - Aceptación Servicios Digitales 12 - Aceptación\
+              \ Validación SIC buró de crédito 13 - Carátula de Contrato TDC, 14 -\
+              \ Firma Digital Certificada, 15 - Formato de Solicitud Producto / Grafo\
+              \ 16 - Formato de Solicitud Producto / NOM-151 17 - Formato de Solicitud\
+              \ Producto / Certificado de evidencia 18 Portada de créditos 19 - Portada\
+              \ de créditos / Grafo 20 - Portada de créditos / NOM-151 21 - Caratula\
+              \ de Producto de TDC 22 - Caratula de Producto de TDC / NOM-151 23 -\
+              \ Carátula de Producto de TDC / Grafo 24 - Documento Contrato crédito\
+              \ / Grafo 25 - Documento Contrato crédito / NOM-151 26 - Documento Contrato\
+              \ crédito / Certificado de evidencia 27 - Plantillas STFT - Solicitud\
+              \ Traspaso Afore FT DRFT - Documento de Rendimiento Neto FT STFA - Solicitud\
+              \ Traspaso Afore FA DRFA - Documento de Rendimiento Neto FA ACHD - Acuse\
+              \ Carta de Derechos HD ACDD - Acuse Carta de Derechos STP2 - Solicitud\
+              \ Traspaso Afore Pag 2 FE - Formato de Enrolamiento SB - Solicitud Beneficiarios"
+            enum:
+            - EC01
+            - EC02
+            - EC03
+            - EC04
+            - EC05
+            - EC06
+            - EC07
+            - EC08
+            - EC09
+            - EC10
+            - EC11
+            - EC12
+            - EC13
+            - EC14
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
+            - "9"
+            - "10"
+            - "11"
+            - "12"
+            - "13"
+            - "14"
+            - "15"
+            - "16"
+            - "17"
+            - "18"
+            - "19"
+            - "20"
+            - "21"
+            - "22"
+            - "23"
+            - "24"
+            - "25"
+            - "26"
+            - "27"
+            - STFT
+            - DRFT
+            - STFA
+            - DRFA
+            - ACHD
+            - ACDD
+            - STP2
+            - FE
+            - SB
+          revisionIdentifier:
+            type: string
+            description: El identificador único de una revisión de documento.
+          documentTypeIdentifier:
+            type: string
+            description: El identificador único de un documento.
+          url:
+            type: string
+            description: Path donde se guarda el documento por parte de OnBase.
+          documentActiveStatus:
+            type: boolean
+            description: "estatus del archivo, si se encuentra activo/inactivo."
+          documentValidationDateTime:
+            type: string
+            description: Fecha en la que se validó el archivo con formato yyyy-MM-dd
+              HH:mm:ss.
+          page:
+            $ref: '#/components/schemas/page'
+          documentFileTypeIdentifier:
+            type: string
+            description: El identificador único de un tipo de archivo. El valor constante
+              es default
+          signedDocumentStatus:
+            type: boolean
+            description: Estado del documento
+          documentFileExtension:
+            type: string
+            description: Extensión del archivo que se está cargando.
+          documentFileSize:
+            type: number
+            description: "Tamaño del archivo en bytes. El tamaño máximo recomendado\
+              \ de un archivo es 4 GB, pero el tamaño máximo sólo está limitado por\
+              \ el lenguaje de programación que se utiliza y el sistema de archivos\
+              \ del host."
+          eTag:
+            type: string
+            description: Identificador del archivo de AWS S3
+          documentModificationDate:
+            type: string
+            description: Ultima fecha de modificación del documento
+    identificationDevice:
+      title: identificationDevice
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: El género de la persona obtenido de ocr * M = Masculino* F
+            = Femenino
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          $ref: '#/components/schemas/machineReadZone'
+        personName:
+          $ref: '#/components/schemas/personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    customerCreditRatingState:
+      title: customerCreditRatingState
+      type: object
+      properties:
+        customerReference:
+          type: string
+          description: Identificador único del cliente.
+        customerCreditRatingStatusType:
+          type: string
+          description: Tipo de estado de la calificación crediticia del cliente.
+        customerCreditRatingSchedule:
+          type: string
+          description: Agenda o programación de la calificación de crédito.
+        customerCreditRatingAssessmentRecord:
+          type: string
+          description: Registro detallado de la evaluación crediticia del cliente.
+        assessmentCustomerBehaviorModelReference:
+          type: string
+          description: Referencia al modelo de comportamiento del cliente utilizado
+            para la evaluación.
+        creditRatingAssessmentType:
+          type: string
+          description: Tipo de evaluación de calificación crediticia realizada.
+        creditRatingAssessmentDate:
+          $ref: '#/components/schemas/dateContent'
+        creditRatingBlackListType:
+          type: string
+          description: "Tipo de lista negra de calificación crediticia, si aplica."
+        creditRatingAssessmentWorkProducts:
+          type: string
+          description: Productos de trabajo resultantes de la evaluación de calificación
+            crediticia.
+        creditRatingAssessmentResult:
+          type: string
+          description: Resultado final de la evaluación de calificación crediticia.
+        customerCreditRatingRecord:
+          type: string
+          description: Registro histórico de calificaciones crediticias del cliente.
+        customerCreditRatingNarrative:
+          type: string
+          description: Descripción o narrativa detallada relacionada con la calificación
+            crediticia del cliente.
+        customerCreditRatingDate:
+          $ref: '#/components/schemas/dateContent'
+    pepProfile:
+      title: pepProfile
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+        role:
+          type: string
+          description: Rol del PEP.
+    creditPlan:
+      title: creditPlan
+      type: object
+      properties:
+        creditPlanMinimumAmount:
+          type: number
+          description: Cantidad mínima del plan de crédito
+        creditPlanMaximumAmount:
+          type: number
+          description: Cantidad máxima del plan de crédito
+        creditPlanReference:
+          type: string
+          description: Referencia del plan de crédito
+        creditPlanName:
+          type: string
+          description: Nombre del plan de crédito
+        creditPlanType:
+          type: string
+          description: Tipo del plan de crédito
+        creditPlanLimit:
+          type: number
+          description: Limite del plan de crédito
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    documentMetadata:
+      title: documentMetadata
+      type: array
+      items:
+        type: object
+        properties:
+          heading:
+            type: string
+            description: Nombre del metadato referente al documento.
+          index:
+            type: string
+            description: Indice del metadato referente al documento
+          keywordTypeId:
+            type: string
+            description: Id del metadato referente al documento.
+          value:
+            type: string
+            description: Valor del metadato referente al documento
+    issueLocation:
+      title: issueLocation
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    birthPlace:
+      title: birthPlace
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    identifications:
+      title: identifications
+      type: array
+      items:
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: Indica el tipo de documento de identidad * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            $ref: '#/components/schemas/customerCreditRatingState'
+    content:
+      title: content
+      type: object
+      properties:
+        base64Image:
+          type: string
+          description: Formato base 64 que representa una imagen.
+        base64File:
+          type: string
+          description: Formato base 64 que representa un archivo.
+        classification:
+          type: boolean
+          description: Indica si se realizó alguna clasificación sobre la imágen.
+        readability:
+          type: boolean
+          description: Indica si la imágen es leíble por el servidor.
+        sharpness:
+          type: number
+          description: Indica la nitidez de la imágen.
+        correctSharpness:
+          type: boolean
+          description: Indica si el sharpness es correcto.
+        glare:
+          type: number
+          description: Indica la cantidad de reflejo en una imágen.
+        correctGlare:
+          type: boolean
+          description: Indica si el glare es correcto.
+        horizontalResolution:
+          type: number
+          description: El valor se basa en la resolución de la foto recortada. Un
+            valor bajo significa que después de realizar el recorte tenemos una mala
+            calidad de imagen. Recomendamos volver a intentar la captura si el valor
+            es inferior a 155.
+        typeOfId:
+          type: string
+          description: Clasificación de la imágen
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación
+        location:
+          $ref: '#/components/schemas/location'
+        issueName:
+          type: string
+          description: "Descripción de la identificación. Podría contener código de\
+            \ país, estado, tipo de identificación, subtipo de identificación."
+        curpCheck:
+          type: boolean
+          description: Solo para cédulas mexicanas. Indicador que indica si curp se
+            leyó correctamente.
+        documentStatus:
+          type: string
+          description: Estado del contenido * Alive = contenido activo * Closed =
+            comtenido cerrado * Deleted = contenido eliminado
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        failReason:
+          type: string
+          description: Razón del error de clasificación. * UNKNOWN_DOCUMENT_TYPE =
+            tipo de documento desconocido * WRONG_DOCUMENT_SIDE = lado incorrecto
+            del documento * WRONG_ONE_SIDED_DOCUMENT = Documento de una lado incorrecto*
+            DOCUMENT_NOT_READABLE = Documento no se puede leer * UNABLE_TO_ALIGN_DOCUMENT
+            = Documento no alineado * ID_TYPE_UNACCEPTABLE = Documento invalido *
+            UNEXPECTED_ERROR_OCCURRED = Error inesperado
+          enum:
+          - UNKNOWN_DOCUMENT_TYPE
+          - WRONG_DOCUMENT_SIDE
+          - WRONG_ONE_SIDED_DOCUMENT
+          - DOCUMENT_NOT_READABLE
+          - UNABLE_TO_ALIGN_DOCUMENT
+          - ID_TYPE_UNACCEPTABLE
+          - UNEXPECTED_ERROR_OCCURRED
+    organisation:
+      title: organisation
+      type: object
+      properties:
+        organisationName:
+          type: string
+          description: Nombre oficial de la organización.
+        organisationCode:
+          type: string
+          description: Nombre oficial de la organización.
+        primaryContactInformation:
+          type: boolean
+          description: Indica si la información de contacto principal de la organización
+            destino está disponible.
+        unitName:
+          type: boolean
+          description: Indica si el nombre de la unidad organizacional de la organización
+            destino está disponible
+        hasOrganisationName:
+          type: boolean
+          description: Indica si el Nombre oficial de la organización esta disponible
+    dateContent:
+      title: dateContent
+      type: object
+      properties:
+        dateContent:
+          type: string
+          description: Contenido de la fecha.
+    statusInstanceRecord:
+      title: statusInstanceRecord
+      type: object
+      properties:
+        statusCode:
+          type: number
+          description: Codigo del estado de la instancia
+        message:
+          type: string
+          description: Descripcion sobre el estado de la instancia
+    notificationFacility:
+      title: notificationFacility
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        tokenAssignment:
+          $ref: '#/components/schemas/tokenAssignment'
+    coppelReference:
+      title: coppelReference
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    personProfile:
+      title: personProfile
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+        pepProfile:
+          $ref: '#/components/schemas/pepProfile'
+        partyType:
+          $ref: '#/components/schemas/partyType'
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        economicActivity:
+          $ref: '#/components/schemas/economicActivity'
+        segment:
+          $ref: '#/components/schemas/segment'
+        group:
+          $ref: '#/components/schemas/group'
+        subGroup:
+          $ref: '#/components/schemas/subGroup'
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+        residencyYear:
+          type: string
+          description: Año de residencia.
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    documentContent:
+      title: documentContent
+      type: object
+      properties:
+        ocrData:
+          $ref: '#/components/schemas/ocrData'
+        page:
+          $ref: '#/components/schemas/page'
+    subGroup:
+      title: subGroup
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del subgrupo.
+        code:
+          type: string
+          description: Código del subgrupo.
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+      description: Informacion sobre el estado
+    pendingOperation:
+      title: pendingOperation
+      type: object
+      properties:
+        pendingOperations:
+          type: number
+          description: Cantidad de operaciones que están pendientes de procesamiento.
+        internalReport:
+          type: array
+          description: Lista de reportes internos relacionados con las operaciones
+            pendientes.
+          items:
+            $ref: '#/components/schemas/internalReport'
+        reference:
+          $ref: '#/components/schemas/reference'
+    economicActivity:
+      title: economicActivity
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+    bankBranch:
+      title: bankBranch
+      type: object
+      properties:
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+        name:
+          type: string
+          description: Nombre de la Sucursal
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    personName:
+      title: personName
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+    statusCertification:
+      title: statusCertification
+      type: array
+      items:
+        type: object
+        properties:
+          applicationNumber:
+            type: string
+            description: Valor que indica el número de solicitud
+          fileType:
+            type: string
+            description: "Tipo de paquete que fue validado imagen,video,biométricos\
+              \ y data"
+            enum:
+            - imagen
+            - video
+            - biometricos
+            - data
+          statusInstanceRecord:
+            $ref: '#/components/schemas/statusInstanceRecord'
+          documentValidationDateTime:
+            type: string
+            description: Fecha de respuesta del registro .
+    deviceAssignment:
+      title: deviceAssignment
+      type: object
+      properties:
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/issuedDeviceAllocation'
+        deviceIdentification:
+          type: string
+          description: Código hash de la huella digital del dispositivo.
+        issueLocation:
+          $ref: '#/components/schemas/issueLocation'
+        deviceDescription:
+          type: string
+          description: Datos adicionales sobre el dispositivo.
+        versionNumber:
+          type: string
+          description: versión del sistema operativo.
+        deviceProperty:
+          $ref: '#/components/schemas/deviceProperty'
+        issuedDeviceStatus:
+          type: string
+          description: Estado de la sesión * Alive = Sesion Activa * Closed = Sesion
+            Cerrada * Deleted = Sesion Eliminada
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        issuedDeviceConfiguration:
+          type: string
+          description: Configuración estándar de seguridad
+    group:
+      title: group
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del grupo.
+        code:
+          type: string
+          description: Código del grupo.
+    segment:
+      title: segment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del segmento.
+        code:
+          type: string
+          description: Código del segmento.
+    contactPoint:
+      title: contactPoint
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    activitySector:
+      title: activitySector
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del sector de actividad.
+        code:
+          type: string
+          description: Código del sector de actividad.
+    transactionDate:
+      title: transactionDate
+      type: array
+      items:
+        type: object
+        properties:
+          transactionDate:
+            type: string
+          transactionDateType:
+            type: string
+            enum:
+            - TransactionInitiatedDate
+            - TransactionUpdatedDate
+            - TransactionCutoffDate
+    identifier:
+      title: identifier
+      type: object
+      properties:
+        identifierValue:
+          type: string
+          description: Especifica el valor único del identificador.
+        issuingAuthority:
+          type: string
+          description: Nombre de la entidad que emite o proporciona el identificador.
+        issuingAuthorityType:
+          type: string
+          description: Tipo o categoría de la entidad emisora.
+        identifierStartDate:
+          type: string
+          description: Fecha en la que el identificador fue emitido o comenzó a ser
+            válido.
+        identifierEndDate:
+          type: string
+          description: Fecha de expiración o finalización de la validez del identificador.
+        identifierHolderName:
+          type: string
+          description: Nombre de la persona o entidad que posee o está asociada con
+            el identificador.
+    documentation:
+      title: documentation
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        documentData:
+          $ref: '#/components/schemas/documentData'
+        documentContent:
+          $ref: '#/components/schemas/documentContent'
+        documentProperties:
+          $ref: '#/components/schemas/documentProperties'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        manualCheckNeeded:
+          type: boolean
+          description: Indica que se necesita una verificación manual para validar
+            la identificación.
+        manualSelfieCheckNeeded:
+          type: boolean
+          description: "Si se establece en verdadero, indica que se necesita una verificació\
+            n manual para validar la imagen selfie."
+          default: false
+    partyReferenceDataDirectoryEntry:
+      title: partyReferenceDataDirectoryEntry
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    page:
+      title: page
+      type: array
+      items:
+        type: object
+        properties:
+          content:
+            $ref: '#/components/schemas/content'
+          type:
+            type: string
+            description: Indica el tipo de la imágen. * selfie =  Selfie * videoSelfie
+              = Video Selfie * domiciliary-invoice = Comprobante de dpmicilio * front-document
+              = Anverso del documento de identidad * back-document = Reverso del documento
+              de identidad
+            enum:
+            - selfie
+            - videoSelfie
+            - domiciliary-invoice
+            - front-document
+            - back-document
+            - contract
+            - pdf-linetime
+            - graph-pdf
+            - validity-chain-pdf
+            - nom-151-document
+            - nom-151-detail
+            - signature
+            - pdf-validantions-consents
+          documentLink:
+            type: string
+          documentIdentifier:
+            type: string
+            description: Identificador del documento
+          contract:
+            type: string
+    accountIdentification:
+      title: accountIdentification
+      type: array
+      items:
+        type: object
+        properties:
+          identifierValue:
+            type: string
+            description: Indica el número de cuenta
+          accountIdentificationType:
+            type: string
+            description: Indica el tipo de identificacion de la cuenta * Account Number
+              = Tipo de identificacion de numero de cuenta * Clabe = Tipo de identificacion
+              de numero Clabe * IBAN = Tipo de identificacion de numero IBAN
+            enum:
+            - Account Number
+            - Clabe
+            - IBAN
+    issuedDeviceAllocation:
+      title: issuedDeviceAllocation
+      type: object
+      properties:
+        issuedDeviceType:
+          type: string
+          description: Indica la plataforma del dispositivo * IOS = IOS * ANDROID
+            = ANDROID * WEBAPP = WEBAPP
+          enum:
+          - IOS
+          - ANDROID
+          - WEBAPP
+    partyType:
+      title: partyType
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+    partyRelationshipProcedure:
+      title: partyRelationshipProcedure
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          maxLength: 24
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        partyRelationshipType:
+          type: string
+          description: Tipo de relación de fiesta
+        partyLifeCycleMaintenanceSchedule:
+          type: string
+          description: Ciclo de vida de la programación del mantenimiento
+        partyLifeCycleMaintenanceTask:
+          type: string
+          description: Tarea de mantenimiento del ciclo de vida del grupo
+        partyLifeCycleMaintenanceTaskType:
+          type: string
+          description: Parte Tipo de tarea de mantenimiento del ciclo de vida
+        partyLifeCycleMaintenanceWorkProducts:
+          type: string
+          description: Productos de trabajo de mantenimiento del ciclo de vida del
+            partido
+        partyLifeAccountResult:
+          type: string
+          description: Resultado de la cuenta party life
+        partyLifeApplicationStatus:
+          type: string
+          description: Estado de la aplicación partyLife
+        customerProspectiveType:
+          type: string
+          description: Tipo de Prospeto
+    productInstanceRecord:
+      title: productInstanceRecord
+      type: object
+      properties:
+        productInstanceReference:
+          type: string
+          description: Indica el identificador del producto
+        productInstanceReferenceName:
+          type: string
+          description: Indica el nombre del producto
+        productInstanceIdentification:
+          type: string
+          description: ID del producto relacionado al expediente.
+        productInstanceReferenceType:
+          type: string
+        productInstanceType:
+          type: string
+          description: etiqueta para identificar a qué producto pertenece el documento
+            TDC - Tarjeta Digital de Crédito PP - Préstamo Personal N2 - Cuenta Débito
+    deviceProperty:
+      title: deviceProperty
+      type: object
+      properties:
+        model:
+          type: string
+          description: "modelo de dispositivo. Si se omite, se analiza desde el agente\
+            \ de usuario."
+        sdk:
+          type: string
+          description: Versión de SDK usada.
+    machineReadZone:
+      title: machineReadZone
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: valor de la línea ZLM.
+        description: Objeto que define las líneas ZLM.
+    reference:
+      title: reference
+      type: object
+      properties:
+        referenceId:
+          type: string
+          description: Identificador único para la referencia.
+        economicActivity:
+          type: string
+          description: Actividad económica asociada al cliente o entidad.
+        economicActivityDescription:
+          type: string
+          description: Descripción detallada de la actividad económica.
+        partyType:
+          type: string
+          description: "Tipo de entidad o individuo (e.g., persona, empresa)."
+        partyRelationshipProcedure:
+          $ref: '#/components/schemas/partyRelationshipProcedure'
+        referral:
+          type: string
+          description: Referencia o recomendación para el cliente.
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        educationLevel:
+          type: string
+          description: Nivel educativo del individuo.
+        profession:
+          type: string
+          description: Profesión u oficio del individuo.
+        partyReferenceDataDirectoryEntry:
+          $ref: '#/components/schemas/partyReferenceDataDirectoryEntry'
+        status:
+          type: string
+          description: "Estado actual del cliente en el sistema (e.g., activo, inactivo)."
+        dependents:
+          type: number
+          description: Número de dependientes del cliente.
+        maritalStatus:
+          type: string
+          description: Estado civil del individuo.
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        marketing:
+          type: string
+          description: Marketing
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento de la persona.
+        gender:
+          type: string
+          description: Género de la persona.
+        nationality:
+          type: string
+          description: Nacionalidad de la persona.
+        personName:
+          $ref: '#/components/schemas/personName'
+        partyName:
+          type: string
+          description: Nombre de la entidad o parte relacionada.
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        personIdentification:
+          $ref: '#/components/schemas/personIdentification'
+    identifierIssuingAuthority:
+      title: identifierIssuingAuthority
+      type: object
+      properties:
+        reference:
+          type: object
+          properties:
+            partyName:
+              type: string
+              description: Nombre de la entidad o partido que emite el identificador.
+        organisation:
+          $ref: '#/components/schemas/organisation'
+    documentProperties:
+      title: documentProperties
+      type: array
+      items:
+        type: object
+        properties:
+          DocumentGroupCode:
+            type: string
+          DocumentGroup:
+            type: string
+          DocumentType:
+            type: string
+          sequence:
+            type: number
+          definitionCode:
+            type: string
+          productInstanceRecord:
+            $ref: '#/components/schemas/productInstanceRecord'
+          documentType:
+            type: string
+    partyReference:
+      title: partyReference
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        personName:
+          $ref: '#/components/schemas/personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+        location:
+          $ref: '#/components/schemas/location'
+        gender:
+          type: string
+          description: El género de la persona  * M = Masculino * F = Femenino
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+        maritalStatus:
+          type: string
+          description: Estado civil.
+        birthPlace:
+          $ref: '#/components/schemas/birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+    tokenIdentificationCode:
+      title: tokenIdentificationCode
+      type: object
+      properties:
+        identifierValue:
+          type: object
+          properties:
+            value:
+              type: string
+              description: Valor único del código de identificación del token.
+        identifierIssuingAuthority:
+          $ref: '#/components/schemas/identifierIssuingAuthority'
+        deviceAssignment:
+          $ref: '#/components/schemas/deviceAssignment'
+    account:
+      title: account
+      type: object
+      properties:
+        accountIdentification:
+          $ref: '#/components/schemas/accountIdentification'
+        accountBalance:
+          $ref: '#/components/schemas/accountBalance'
+    accountBalance:
+      title: accountBalance
+      type: array
+      items:
+        type: object
+        properties:
+          accountBalance:
+            type: string
+            description: Indica el monto total de la capacidad del prestamo
+          accountBalanceType:
+            type: string
+            description: Tipo de Saldo * openingBalance = Saldo de apertura del producto*
+              closingBalance = Saldo de cierre del producto * currentBalance = Saldo
+              actual del producto * availableBalance = Saldo disponible del producto*
+              reserveBalance = Saldo reservado del producto * freeBalance = Saldo
+              disponible del producto * principalBalance = Saldo de principal del
+              producto
+            enum:
+            - openingBalance
+            - closingBalance
+            - currentBalance
+            - availableBalance
+            - reserveBalance
+            - freeBalance
+            - principalBalance
+          accountBalanceDate:
+            type: string
+            description: Indica la fecha y hora del balance
+    tokenAssignment:
+      title: tokenAssignment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción breve del token.
+        tokenPriority:
+          type: string
+          description: Indica la prioridad del token.
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/tokenIdentificationCode'
+    ocrData:
+      title: ocrData
+      type: object
+      properties:
+        personName:
+          $ref: '#/components/schemas/personName'
+        location:
+          $ref: '#/components/schemas/location'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+      description: Datos sacados del OCR aplicado a los documentos
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+    customerRelationshipInvolvement:
+      title: customerRelationshipInvolvement
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        partyRelationshipType:
+          type: string
+          description: "Parentesco acotado a 1 posición que puede contener los siguientes\
+            \ valores: A - ABUELO (A) B - SOBRINO (A) C - CUÑADO (A) E - ESPOSO(A)\
+            \ / CÓNYUGE H - HERMANO (A) I - AMIGO(A)/CONOCIDO(A) J - HIJO (A) N -\
+            \ NIETO (A) P - PADRE / MADRE R - PRIMO(A) T - TIO (A) U - SUEGRO (A)"
+        dateTime:
+          type: string
+          description: Fecha de validación
+        roleType:
+          type: string
+    countyDistrict:
+      title: countyDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito

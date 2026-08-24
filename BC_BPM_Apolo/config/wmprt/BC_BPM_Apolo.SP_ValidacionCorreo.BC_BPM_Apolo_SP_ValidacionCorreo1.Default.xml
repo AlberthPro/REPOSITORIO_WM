@@ -1,0 +1,859 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <idatacodable name="fragment" javaclass="com.wm.app.prt.model.PRTFragmentDef">
+      <number name="version" type="java.lang.Integer">3</number>
+      <value name="modelId">BC_BPM_Apolo/SP_ValidacionCorreo</value>
+      <value name="modelVersion">1</value>
+      <value name="modelName">SP_ValidacionCorreo</value>
+      <value name="packageName">BC_BPM_Apolo</value>
+      <value name="fragmentId">Default</value>
+      <value name="focalRole">Focal role</value>
+      <value name="triggerName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:transitionTrigger</value>
+      <value name="inputTriggerName">BC_BPM_Apolo.SP_ValidacionCorreo.Default:subscriptionTrigger</value>
+      <value name="synch">false</value>
+      <value name="minimumLogLevel">5</value>
+      <value name="volGlobalData">false</value>
+      <value name="usesJMS">false</value>
+      <value name="usesEDA">false</value>
+      <value name="useVersion97EscalationPolicy">true</value>
+      <value name="singleServer">true</value>
+      <value name="timeoutMs">0</value>
+      <null name="timeout"/>
+      <value name="processTimeoutMs">0</value>
+      <value name="processTimeoutExpr"></value>
+      <null name="processTimeoutBusiness"/>
+      <value name="processTimeoutType">relative</value>
+      <idatacodable name="error" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+        <value name="isXpathCond">false</value>
+        <value name="targetServerId">Default</value>
+        <value name="targetStepId">S78</value>
+        <null name="pipeKeys"/>
+        <null name="deadPathTargets"/>
+        <value name="compensating">false</value>
+      </idatacodable>
+      <null name="cancel"/>
+      <null name="userProps"/>
+      <null name="partnerLinks"/>
+      <null name="properties"/>
+      <null name="globalVariables"/>
+      <null name="businessCalendarAlias"/>
+      <array name="steps" type="idatacodable" depth="1">
+        <idatacodable javaclass="com.wm.app.prt.model.StartNoneEvent">
+          <value name="stepId">S9</value>
+          <value name="stepLabel">EVI.Validación correo iniciada</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S27</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="interrupting">false</value>
+          <value name="usesEDA">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.UserTask">
+          <value name="stepId">S60</value>
+          <value name="stepLabel">TU.Validar email</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S50</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S62</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+          <value name="inputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TU_Validar_email_InputMapService</value>
+          <value name="outputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TU_Validar_email_OutputMapService</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.UserTask">
+          <value name="stepId">S71</value>
+          <value name="stepLabel">TU.Mostrar email válido</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S18</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S12</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+          <value name="inputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:S71_InputMapService</value>
+          <value name="outputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:S71_OutputMapService</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S62</value>
+          <value name="stepLabel">TS.Validar email OTP</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S60</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Validar_email_OTP</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S18</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S50</value>
+          <value name="stepLabel">TS.Actualizar email</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S58</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Actualizar_email</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S60</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S30</value>
+          <value name="stepLabel">COC.Loop editar</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S47 TX-FROM-S27 TX-FROM-S18)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S47</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S27</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S18</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S10</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S41</value>
+          <value name="stepLabel">EVF.Validación correo cancelada 1</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S39</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S33</value>
+          <value name="stepLabel">COD.Modyo</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S10</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_validacionCorreo/dt_ContextoTransaccional/executorUserId% = "Modyo"</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S35</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+            <value name="condition">!(%dt_validacionCorreo/dt_ContextoTransaccional/executorUserId% = "Modyo")</value>
+            <value name="isXpathCond">false</value>
+            <value name="targetServerId">Default</value>
+            <value name="targetStepId">S43</value>
+            <array name="pipeKeys" type="value" depth="1">
+              <value>dt_validacionCorreo</value>
+            </array>
+            <null name="deadPathTargets"/>
+            <value name="compensating">false</value>
+          </idatacodable>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S54</value>
+          <value name="stepLabel">COC.Oficina</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S47 TX-FROM-S18)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S47</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S18</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S21</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.UserTask">
+          <value name="stepId">S10</value>
+          <value name="stepLabel">TU.Ingresar email</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S30</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S33</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+          <value name="inputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TU_Ingresar_email_InputMapService</value>
+          <value name="outputMappingService">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TU_Ingresar_email_OutputMapService</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S21</value>
+          <value name="stepLabel">TS.Regresar flujo principal</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S54</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Regresar_flujo_principal</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S23</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S43</value>
+          <value name="stepLabel">TS.Evaluar email</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S33</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Evaluar_email</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S47</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S35</value>
+          <value name="stepLabel">COD.stopInstance</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S33</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_validacionCorreo/dt_ContextoTransaccional/stopInstance% = "true"</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S39</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_validacionCorreo/dt_ContextoTransaccional/stopInstance% = "false"</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S37</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S12</value>
+          <value name="stepLabel">EVF.Validación correo finalizado</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S71</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S23</value>
+          <value name="stepLabel">EVF.Validacion correo cancelado</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S21</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S78</value>
+          <value name="stepLabel">TS.Error_ValidacionCliente</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Error_ValidacionCliente</value>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType"></value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S37</value>
+          <value name="stepLabel">EVF.Validación correo completada </value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S35</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S47</value>
+          <value name="stepLabel">COD.valida mail</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S43</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">(%dt_validacionCorreo/compuertas/countMail% &lt;= 3 &amp;&amp; %dt_validacionCorreo/compuertas/hasErrorMail% = "false")</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S58</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">(%dt_validacionCorreo/compuertas/countMail% &gt; 3 &amp;&amp; %dt_validacionCorreo/compuertas/hasErrorMail% = "true")</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S54</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">((%dt_validacionCorreo/edicionEmail% = "true" || %dt_validacionCorreo/compuertas/hasErrorMail% = "true") &amp;&amp; %dt_validacionCorreo/compuertas/countMail% &lt;= 3)</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S30</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S58</value>
+          <value name="stepLabel">COC.Loop reenviar</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S47 TX-FROM-S18)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S47</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S18</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S50</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S39</value>
+          <value name="stepLabel">T.Regresar flujo principal 1</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S35</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:T_Regresar_flujo_principal_1</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S41</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S27</value>
+          <value name="stepLabel">TS.Inicializar valCorreo</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S9</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Apolo</value>
+          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCorreo.SP_ValidacionCorreo_1.Default:TS_Inicializar_valCorreo</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S30</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S18</value>
+          <value name="stepLabel">COD.evalua mail</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S62</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_validacionCorreo/compuertas/hasOTPError% = "false"</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S71</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">((%dt_validacionCorreo/reenvioOTPEmail% = "true" || %dt_validacionCorreo/compuertas/hasOTPError% = "true") &amp;&amp; %dt_validacionCorreo/compuertas/countOTP% &lt;= 3)</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S58</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">(%dt_validacionCorreo/compuertas/countOTP% &gt; 3 &amp;&amp; %dt_validacionCorreo/compuertas/hasOTPError% = "true")</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S54</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">(%dt_validacionCorreo/edicionEmail% = "true" &amp;&amp; %dt_validacionCorreo/compuertas/countOTP% &lt;= 3)</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S30</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionCorreo</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+      </array>
+    </idatacodable>
+    <Date name="timestamp" type="java.util.Date">Tue Aug 04 20:24:58 UTC 2026</Date>
+  </record>
+</IDataXMLCoder>

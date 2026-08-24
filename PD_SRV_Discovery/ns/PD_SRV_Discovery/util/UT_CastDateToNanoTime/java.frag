@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">UT_CastDateToNanoTime</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">U3RyaW5nIGZlY2hhU3RyaW5nID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGluZS5nZXRDdXJz
+b3IoKSwgImZlY2hhIik7DQoNCkRhdGVUaW1lRm9ybWF0dGVyIGZvcm1hdHRlciA9IERhdGVUaW1l
+Rm9ybWF0dGVyLm9mUGF0dGVybigiZGQvTU0veXl5eSBISDptbTpzcy5TU1MiKTsNCg0KTG9jYWxE
+YXRlVGltZSBmZWNoYSA9IExvY2FsRGF0ZVRpbWUucGFyc2UoZmVjaGFTdHJpbmcsIGZvcm1hdHRl
+cik7DQoNCmxvbmcgZXBvY2hNaWxsaXMgPSBmZWNoYQ0KLmF0Wm9uZShab25lSWQuc3lzdGVtRGVm
+YXVsdCgpKQ0KLnRvSW5zdGFudCgpDQoudG9FcG9jaE1pbGxpKCk7DQoNClN0cmluZyBlcG9jaFN0
+cmluZyA9IFN0cmluZy52YWx1ZU9mKGVwb2NoTWlsbGlzKTsNCklEYXRhVXRpbC5wdXQocGlwZWxp
+bmUuZ2V0Q3Vyc29yKCksICJuYW5vVGltZSIsIGVwb2NoU3RyaW5nKTs=</value>
+</Values>

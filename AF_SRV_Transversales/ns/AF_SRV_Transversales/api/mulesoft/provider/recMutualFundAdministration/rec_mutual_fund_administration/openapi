@@ -1,0 +1,3414 @@
+openapi: 3.0.0
+info:
+  title: Rec Mutual Fund Administration
+  contact: {}
+  version: 1.8.0
+servers:
+- url: "https://${HOST_NAME}/experience/marketOperations/mutualFundAdministration"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/mutualFundAdministration/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundAdministrationEvaluate_POST
+      description: Servicio de recepcion encargado de validar la afiliación de un
+        trabajador al sistema de Afore Coppel.
+      operationId: V1MutualFundAdministrationEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateMutualFundAdministrationRq'
+              - example:
+                  partyReference:
+                    identificationDevice:
+                      curp: DUEBN848027D48027D
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundAdministration/capture:
+    put:
+      tags:
+      - v1
+      summary: V1MutualFundAdministrationCapture_PUT
+      description: Servicio de recepcion encargado de iniciar el enrolamiento facial
+        del Asesor Previsional (AP) en Afore Onboarding y gestiona los tiempos de
+        espera para la captura de datos biométricos.
+      operationId: V1MutualFundAdministrationCapture_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/captureMutualFundAdministrationRq'
+              - example:
+                  validationManagement:
+                  - validationCheckDigit: 6499e10a3486062d71c04bb8
+                    validationStatus: true
+                    validationDescription: Validación INE - Listas Nominales
+                    validationDateTime: 2023-06-28T05:22:32
+                    validationType: 1
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundApplication/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundApplicationInitiate_POST
+      description: Servicio de recepcion encargado de registrar los datos minimos
+        necesario para la solicitud de Afore.
+      operationId: V1MutualFundApplicationInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateMutualFundApplicationRq'
+              - example:
+                  mutualFundApplication:
+                    productInstanceRecord:
+                      productInstanceReference: "6500"
+                    employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                    requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                    partyReference:
+                      referenceId: DUEBN848027D48027D
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementInitiate_POST
+      description: Servicio de recepcion realiza el registro de un beneficiario asociado
+        a un trabajador
+      operationId: V1CustomerRelationshipInvolvementInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateCustomerRelationshipInvolvementRq'
+              - example:
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+                  customerRelationshipInvolvement:
+                  - partyReference:
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        secondName: da598699cef750ee8e5ef3b2daf47719
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                        secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+                      dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                    partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    ownershipStake: 50
+                    status: A
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundApplication/update:
+    put:
+      tags:
+      - v1
+      summary: V1MutualFundApplicationUpdate_PUT
+      description: Servicio de recepción encargado de la actualización de una solicitud
+        en el proceso de Onboarding Afore
+      operationId: V1MutualFundApplicationUpdate_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateMutualFundApplicationRq'
+              - example:
+                  sessionDialogueIdentification: efeqqer34sdfdfgret151235egregwe
+                  mutualFundApplication:
+                    productInstanceRecord:
+                      productInstanceReference: "6500"
+                    paymentMechanismType: sfsdafsdfewr3455erwrewtwerertw
+                    requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                    requestChannel: "1"
+                    requestStatus: AD
+                    partyReference:
+                      referenceId: DUEBN848027D48027D
+                      maritalStatus: DUEBN848027D48027D
+                      maritalStatusDurationYears: DUEBN848027D48027D
+                      maritalStatusDurationMonths: DUEBN848027D48027D
+                      location:
+                      - locationAddressType: PARTY_ADDRESS
+                        currentAddressTime: DUEBN848027D48027D
+                        addressInhabitantsNumber: "4"
+                      contactPoint:
+                      - contactPointType: work Phone Number
+                        contactPointValue: DUEBN848027D48027D
+                      personProfile:
+                        economicActivity:
+                          companyName: Bancoppel
+                          lastEmploymentDurationYears: "2"
+                          lastEmploymentDurationMonths: "9"
+                          currentEmploymentDurationYears: "1"
+                          currentEmploymentDurationMonths: "3"
+                        homeOfficeFlag: BA5B324317B90CE3CE579BB98416E3EA
+                        monthlyIncome: BA5B324317B90CE3CE579BB98416E3EA
+                        numberOfDependents: CA51BFDCEC77F2BF342C5194B3695A3C
+                        educationalLevel: "1"
+                        educationalLevelInstitution: "1"
+                        hasIncomeProof: BA5B324317B90CE3CE579BB98416E3EA
+                    branch:
+                      branchReference: "223231"
+                    employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                    requestDate: 2025-04-04T12:12:12
+                    requestMethod: SMS
+                    requestType: C
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/update:
+    put:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementUpdate_PUT
+      description: Servicio de recepcion realiza la actualizacion de un beneficiario
+        asociado a un trabajador
+      operationId: V1CustomerRelationshipInvolvementUpdate_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateCustomerRelationshipInvolvementRq'
+              - example:
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+                  customerRelationshipInvolvement:
+                  - partyReference:
+                      referenceId: da598699cef750ee8e5ef3b2daf47719
+                    partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    ownershipStake: 50
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/control:
+    put:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementControl_PUT
+      description: Servicio de recepcion realiza la inactivacion o activacion de un
+        beneficiario asociado a un trabajador
+      operationId: V1CustomerRelationshipInvolvementControl_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/controlCustomerRelationshipInvolvementRq'
+              - example:
+                  customerRelationshipInvolvement:
+                  - partyReference:
+                      referenceId: da598699cef750ee8e5ef3b2daf47719
+                    status: A
+        required: false
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementRetrieve_POST
+      description: Servicio de recepcion realiza la consulta de un beneficiario asociado
+        a un trabajador
+      operationId: V1CustomerRelationshipInvolvementRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveCustomerRelationshipInvolvementRq'
+              - example:
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveCustomerRelationshipInvolvementRs'
+                - example:
+                    customerRelationshipInvolvement:
+                    - partyReference:
+                        referenceId: da598699cef750ee8e5ef3b2daf47719
+                        personName:
+                          firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                          secondName: da598699cef750ee8e5ef3b2daf47719
+                          familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                          secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                        identifications:
+                        - identifier:
+                            identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                          personIdentificationType: ClaveUnicaRegistroPoblacion
+                        dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                      partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                      ownershipStake: 50
+              example:
+                customerRelationshipInvolvement:
+                - partyReference:
+                    referenceId: da598699cef750ee8e5ef3b2daf47719
+                    personName:
+                      firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                      secondName: da598699cef750ee8e5ef3b2daf47719
+                      familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                      secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                    identifications:
+                    - identifier:
+                        identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                      personIdentificationType: ClaveUnicaRegistroPoblacion
+                    dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                  partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                  ownershipStake: 50
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundApplication/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundApplicationRetrieve_POST
+      description: Servicio de recepción encargado de realizar la recuperación de
+        los datos correspondientes de una solicitud
+      operationId: V1MutualFundApplicationRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveMutualFundApplicationRq'
+              - example:
+                  sessionDialogueIdentification: efeqqer34sdfdfgret151235egregwe
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveMutualFundApplicationRs'
+                - example:
+                    mutualFundApplication:
+                      requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                      requestStatus: AD
+                      employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                      requestMethod: SMS
+                      requestReason: PAC
+                      requestType: C
+              example:
+                mutualFundApplication:
+                  requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                  requestStatus: AD
+                  employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                  requestMethod: SMS
+                  requestReason: PAC
+                  requestType: C
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundApplications/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundApplicationsRetrieve_POST
+      description: Servicio de Recepción encargado de realizar la  consulta de las
+        solicitudes del Asesor Provisional (AP)  por medio del id del empleado o por
+        el número de Curp
+      operationId: V1MutualFundApplicationsRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveMutualFundApplicationsRq'
+              - example:
+                  pageFacility:
+                    pageSize: 0
+                    currentPage: 0
+                  mutualFundApplication:
+                    requestStatus: AD
+                    employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveMutualFundApplicationsRs'
+                - example:
+                    pageFacility:
+                      pageSize: 0
+                      currentPage: 0
+                      totalPages: 7
+                    mutualFundApplications:
+                    - mutualFundApplication:
+                        folioProcesar: A93B64AE1FB376A15EC21132E65B478F
+                        employeeNumber: A93B64AE1FB376A15EC2113
+                        sessionDialogueIdentification: A93B64AE1FB376A15EC21132E65B478F
+                        folioCreationDate: 2025-09-07T12:32:34
+                        requestStatus: AD
+                        requestDate: 2025-09-07T12:32:34
+                        partyReference:
+                          identifications:
+                          - identifier:
+                              identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                            personIdentificationType: ClaveUnicaRegistroPoblacion
+                          contactPoint:
+                          - contactPointType: cellphone
+                            contactPointValue: DUEBN848027D48027D
+                          personName:
+                            firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                            familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    - mutualFundApplication:
+                        folioProcesar: A93B64AE1FB376A15EC21132E65B478F
+                        employeeNumber: A93B64AE1FB376A15EC2113
+                        sessionDialogueIdentification: A93B64AE1FB376A15EC21132E65B478F
+                        folioCreationDate: 2025-09-07T12:32:34
+                        requestStatus: AD
+                        requestDate: 2025-09-07T12:32:34
+                        partyReference:
+                          identifications:
+                          - identifier:
+                              identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                            personIdentificationType: ClaveUnicaRegistroPoblacion
+                          contactPoint:
+                          - contactPointType: cellphone
+                            contactPointValue: DUEBN848027D48027D
+                          personName:
+                            firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                            familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+              example:
+                pageFacility:
+                  pageSize: 0
+                  currentPage: 0
+                  totalPages: 7
+                mutualFundApplications:
+                - mutualFundApplication:
+                    folioProcesar: A93B64AE1FB376A15EC21132E65B478F
+                    employeeNumber: A93B64AE1FB376A15EC2113
+                    sessionDialogueIdentification: A93B64AE1FB376A15EC21132E65B478F
+                    folioCreationDate: 2025-09-07T12:32:34
+                    requestStatus: AD
+                    requestDate: 2025-09-07T12:32:34
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+                      contactPoint:
+                      - contactPointType: cellphone
+                        contactPointValue: DUEBN848027D48027D
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                - mutualFundApplication:
+                    folioProcesar: A93B64AE1FB376A15EC21132E65B478F
+                    employeeNumber: A93B64AE1FB376A15EC2113
+                    sessionDialogueIdentification: A93B64AE1FB376A15EC21132E65B478F
+                    folioCreationDate: 2025-09-07T12:32:34
+                    requestStatus: AD
+                    requestDate: 2025-09-07T12:32:34
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+                      contactPoint:
+                      - contactPointType: cellphone
+                        contactPointValue: DUEBN848027D48027D
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundApplication/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundApplicationEvaluate_POST
+      description: "Servicio de recepción encargado de validar la información del\
+        \ trabajador, capturada durante el expediente para autorizar el traspaso de\
+        \ Afore."
+      operationId: V1MutualFundApplicationEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateMutualFundApplicationRq'
+              - example:
+                  mutualFundApplication:
+                    folioNumber: "12345678901234567890"
+                    folioCreationDate: 20/12/2000 18:00:00
+                    folioProcesar: "12345678901234567890"
+                    signatoryRequestDate: 20/12/2000
+                    signatoryRequest: "10"
+                    folioRequest: 12V12E33Xa3DEN5A
+                    promoterAgent: 12V12E33Xa3DEN90
+                    registrationYear: "2000"
+                    requestType: "02"
+                    requestCurp: AAAA900909XXXXXX09
+                    key: 5V12E33Xa3DEN0
+                    applicationReason: "02"
+                    partyReference:
+                      identificationDevice:
+                        curp: DUEBN848027D48027D
+                        ocr: oV12E33Xa3DEN90
+                        cic: cV1G2EH3G3Xa3DEN6
+                      personName:
+                        firstName: 3B7EN9123DD4CGW12S
+                        familyName: EN9123DD4CEN9123DEN9123DD4C
+                        secondLastName: a3DEN9123DD4C3DEN9123DD4C
+                      identifications:
+                      - personIdentificationType: Numero Identificacion Social
+                        identifier:
+                          identifierValue: 1DEN9123DD4C3DEN
+                      - personIdentificationType: Registro Federal Contribuyentes
+                        identifier:
+                          identifierValue: CCCC900909XXX
+                      birthPlace:
+                        location:
+                        - country:
+                            name: 0V12E33Xa3DEN1
+                          state:
+                            name: 0V12E33Xa3DEN1
+                      location:
+                      - locationAddressType: PARTY_ADDRESS
+                        street:
+                          streetName: calle
+                        countyDistrict:
+                          code: mun12
+                        province:
+                          code: "20"
+                        country:
+                          code: "01"
+                        internalHouseNumber: "100"
+                        externalHouseNumber: "100"
+                        neighborhood: colonia
+                        postalCode: "11100"
+                      - locationAddressType: WORK_ADDRESS
+                        street:
+                          streetName: calle
+                        countyDistrict:
+                          code: mun30
+                        province:
+                          code: "20"
+                        country:
+                          code: "01"
+                        internalHouseNumber: "200"
+                        externalHouseNumber: "200"
+                        neighborhood: colonia
+                        postalCode: "12345"
+                      contactPoint:
+                      - contactPointValue: 5F5V12E33Xa3DEN0
+                        contactPointType: cellphone
+                      - contactPointValue: FG5V12E33Xa3DEN7
+                        contactPointType: other Phone Number
+                        contactPointDetail: "12345"
+                      - contactPointValue: V12E33Xa3DENE5
+                        contactPointType: Electronic Address
+                      personProfile:
+                        educationalLevel: "03"
+                      partyProfile:
+                        partyProfileType: Risk Profile
+                        partyVoluntaryContributions: "1"
+                        partyContributionsAmount: 2c3B7EN9123DD4
+                        partyContributionsFrequency: "1"
+                        partyFinancialInstrument: "1"
+                        sourceOfWealth: "1"
+                        documentType: "1"
+                      dateOfBirth: 1a3DEN9123DD4C3DEN
+                      gender: MDEN9123DD4C3DEN
+                      nationality: MRTYV12E33Xa3DEN9123DD4C3N
+                      profession: "02"
+                      economicActivity: "02"
+                    mutualFundAdministrativePlanReference:
+                      planRecordBrand: "1"
+                      enlistmentBrand: "1"
+                      renapoBrand: "1"
+                      disabilityBrand: "1"
+                      planValidity: 20/12/200
+                      planFolioStatus: folioEstadoCuenta123
+                      planDetails: folio1234
+                      planActivationDate: 20/12/2000
+                      planWorkerStamp: sello123456789
+                      planVerificationStamp: sello123456789
+                      identificationDevice:
+                        curp: DUEBN848027D48027D
+                      key: W2gdc3B7EN9123DD4
+                      planRequestSource: "02"
+                      planAuthenticationChannel: "02"
+                      planAgeCheck: "1"
+                    fundTaxAdministration:
+                      fundTaxResidency: true
+                      fundTaxAdministrationRoutineReference:
+                      - taxResidence: MEX
+                      - taxResidence: MEX
+                      - taxResidence: MEX
+                    mutualFundAdministrativePlanAssociatedParty:
+                      identifications:
+                      - identifier:
+                          identifierEndDate: 2000-12-20
+                        personDocumentType: "08"
+                        personIdentificationType: Pasaporte
+                  customerRelationshipInvolvement:
+                  - partyRelationshipType: "01"
+                    percentage: 1PGT56DFRA68S
+                    partyReference:
+                      identificationDevice:
+                        curp: DDDD900909XXXXXX09
+                      personName:
+                        firstName: 12E33Xa3DEN0
+                        familyName: FGT12E33Xa3DEN0
+                        secondLastName: a3DE33Xa3DEDRN0EN9123DD4C3DEN9123DD4C
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluateMutualFundApplicationRs'
+                - example:
+                    mutualFundApplication:
+                      folioNumber: A3AW2gdc3B7E3B7EN9
+                      folioProcesar: A3AW2gdc3B7EN9123DD4
+                      requestStatus: "02"
+                      reason: "001"
+                      reasonDescription: descripcionRechazo
+              example:
+                mutualFundApplication:
+                  folioNumber: A3AW2gdc3B7E3B7EN9
+                  folioProcesar: A3AW2gdc3B7EN9123DD4
+                  requestStatus: "02"
+                  reason: "001"
+                  reasonDescription: descripcionRechazo
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundInstance/initiate:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundInstanceInitiate_POST
+      description: "Servicio de recepción que inicializa el proceso de comparador,\
+        \ con el fin de obtener la información correspondiente y poder realizar el\
+        \ envia el expediente del trabajador al proceso del comparador"
+      operationId: V1MutualFundInstanceInitiate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/initiateMutualFundInstanceRq'
+              - example:
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+                  applicationUser: Modyo
+                  mutualFundApplication:
+                    employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                    requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Numero Identificacion Social
+                        issuingAuthority: IMSS
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/mutualFundInstance/register:
+    post:
+      tags:
+      - v1
+      summary: V1MutualFundInstanceRegister_POST
+      description: Servicio que se encarga de guardar la información recopilada por
+        el comparador para el proceso onboarding Afore
+      operationId: V1MutualFundInstanceRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+      - name: token
+        in: header
+        description: "Token de autenticación del consumidor del servicio (por ejemplo:\
+          \ JWT)"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+      - name: sessionId
+        in: header
+        description: "Identificador único de la solicitud, utilizado para trazabilidad\
+          \ entre sistemas"
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: sessionkey-12ab34cd56ef7890
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerMutualFundInstanceRq'
+              - example:
+                  sessionDialogueIdentification: da598699cef750ee8e5ef3b2daf47719
+                  applicationUser: Modyo
+                  instanceNumber: "9927764566"
+                  mutualFundApplication:
+                    requestDate: 2025-04-04T12:12:12
+                    employeeNumber: sfsdafsdfewr3455erwrewtwerertw
+                    requestNumber: sfsdafsdfewr3455erwrewtwerertw
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Numero Identificacion Social
+                        issuingAuthority: IMSS
+        required: false
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    evaluateMutualFundAdministrationRq:
+      title: evaluateMutualFundAdministrationRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    captureMutualFundAdministrationRq:
+      title: captureMutualFundAdministrationRq
+      type: object
+      properties:
+        validationManagement:
+          $ref: '#/components/schemas/validationManagement'
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+    initiateMutualFundApplicationRq:
+      title: initiateMutualFundApplicationRq
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+    initiateCustomerRelationshipInvolvementRq:
+      title: initiateCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+    updateMutualFundApplicationRq:
+      title: updateMutualFundApplicationRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+    updateCustomerRelationshipInvolvementRq:
+      title: updateCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Es el identificador que relaciona el registro del beneficiario
+            con el trabajador
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+    controlCustomerRelationshipInvolvementRq:
+      title: controlCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+    retrieveCustomerRelationshipInvolvementRq:
+      title: retrieveCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Es el identificador que relaciona el registro del beneficiario
+            con el trabajador
+    retrieveMutualFundApplicationRq:
+      title: retrieveMutualFundApplicationRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+    retrieveMutualFundApplicationsRq:
+      title: retrieveMutualFundApplicationsRq
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+        pageFacility:
+          $ref: '#/components/schemas/pageFacility'
+    evaluateMutualFundApplicationRq:
+      title: evaluateMutualFundApplicationRq
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+    initiateMutualFundInstanceRq:
+      title: initiateMutualFundInstanceRq
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationUser:
+          type: string
+          description: 'Usuario de servicio que ejecuta la transacción '
+    registerMutualFundInstanceRq:
+      title: registerMutualFundInstanceRq
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationUser:
+          type: string
+          description: 'Usuario de servicio que ejecuta la transacción '
+        instanceNumber:
+          type: string
+          description: 'Instancia de proceso '
+    retrieveCustomerRelationshipInvolvementRs:
+      title: retrieveCustomerRelationshipInvolvementRs
+      type: object
+      properties:
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+    retrieveMutualFundApplicationRs:
+      title: retrieveMutualFundApplicationRs
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+    retrieveMutualFundApplicationsRs:
+      title: retrieveMutualFundApplicationsRs
+      type: object
+      properties:
+        mutualFundApplications:
+          type: array
+          items:
+            type: object
+            properties:
+              mutualFundApplication:
+                $ref: '#/components/schemas/mutualFundApplication'
+        pageFacility:
+          $ref: '#/components/schemas/pageFacility'
+    evaluateMutualFundApplicationRs:
+      title: evaluateMutualFundApplicationRs
+      type: object
+      properties:
+        mutualFundApplication:
+          $ref: '#/components/schemas/mutualFundApplication'
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          locationInegiCode:
+            type: string
+            description: Referencia de la localidad con respecto al Inegi
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+          cityNumber:
+            type: number
+            description: Numero de ciudad
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+            - WORK_ADDRESS
+          countryDistrict:
+            $ref: '#/components/schemas/countryDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+          apartment:
+            type: string
+            description: numero de apartamento
+          housingUnit:
+            type: string
+            description: Unidad habitacional
+          currentAddressTime:
+            type: string
+            description: Años en el domicilio actual
+          addressInhabitantsNumber:
+            type: string
+            description: Número de habitantes en el domicilio
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    identificationDevice:
+      title: identificationDevice
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: El género de la persona obtenido de ocr * M = Masculino* F
+            = Femenino
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+        ocr:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        cic:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          $ref: '#/components/schemas/machineReadZone'
+        personName:
+          $ref: '#/components/schemas/personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    mutualFundAdministrativePlanReference:
+      title: mutualFundAdministrativePlanReference
+      type: object
+      properties:
+        planRecordBrand:
+          type: string
+          description: Marca de Expediente Identificación
+        enlistmentBrand:
+          type: string
+          description: Marca Enrolamiento.
+        renapoBrand:
+          type: string
+          description: Marca renapo.
+          enum:
+          - "1"
+          - "0"
+        disabilityBrand:
+          type: string
+          description: Marca Discapacidad Video.
+        planValidity:
+          type: string
+          description: Fecha fin de vigencia del DRN
+        planFolioStatus:
+          type: string
+          description: Folio de Estado de Cuenta generado por la Transferente
+        planDetails:
+          type: string
+          description: Folio de Conocimiento de Traspaso del Trabajador.
+        planActivationDate:
+          type: string
+          description: Fecha de activación del FCT en formato DD/MM/AAAA Donde D=día;
+            M=mes; A=año.
+        planWorkerStamp:
+          type: string
+          description: Sello de voluntad del Trabajador.
+        planVerificationStamp:
+          type: string
+          description: Sello de verificación del Trabajador
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        key:
+          type: string
+          description: Clave de la AFORE.
+        planRequestSource:
+          type: string
+          description: Origen de la solicitud
+        planAuthenticationChannel:
+          type: string
+          description: Origen de la solicitud
+        planAgeCheck:
+          type: string
+          description: Bandera que refiere si es un traspaso de un menor de edad ->
+            0 - No desea traspasar a menor de edad. 1 - Desea trapasar a menor de
+            edad.
+          enum:
+          - "0"
+          - "1"
+    pepProfile:
+      title: pepProfile
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+        role:
+          type: string
+          description: Rol del PEP.
+    pageFacility:
+      title: pageFacility
+      type: object
+      properties:
+        pageSize:
+          type: number
+          description: Cantidad de registros por paginas
+        totalPages:
+          type: number
+          description: Número de paginas
+        currentPage:
+          type: number
+          description: Pagina actual
+    validationManagement:
+      title: validationManagement
+      type: array
+      description: Validación OTP
+      items:
+        type: object
+        properties:
+          validationCheckDigit:
+            type: string
+            description: Código ingresado en validación acotado a 6 caracteres
+          validationStatus:
+            type: boolean
+            description: Estado de validacion
+          validationDescription:
+            type: string
+            description: Respuesta de servicio o Respuesta de validación acotado a
+              200 caracteres
+          validationDateTime:
+            type: string
+            description: Fecha de validacion
+          validationType:
+            type: number
+            description: tipo de validacion realizada por el cliente prospecto o por
+              el sistema. * 1 - Validación INE - Listas Nominales * 2 - Validación
+              OTP correo * 3 - Validación Correo Malware * 4 - Validación OTP celular
+              * 5 - Validación CURP * 6 - Validación RFC * 7 - Validación SIC- buró
+              externo * 8 - Validación de Domicilio * 9 - Validación de Domicilio
+              referencia * 10 - Pregunta validación PEP * 11 - Validación Dirección
+              INE * 12 - Validación Código Postal * 13 - Validación Correo Existente  *
+              14 - Validación celular registrado COFETEL * 15 - Validación PLD  *
+              16 - Validación AP
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+            - 14
+            - 15
+            - 16
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    birthPlace:
+      title: birthPlace
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    identifications:
+      title: identifications
+      type: array
+      items:
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: Indica el tipo de documento de identidad * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+            - Pasaporte
+            - Documento Migratorio
+            - Credencial para votar
+            - Cédula Profesional
+            - Cartilla Militar
+            - Matrícula Consular
+            - Fotografía
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+    fundTaxAdministration:
+      title: fundTaxAdministration
+      type: object
+      properties:
+        fundTaxResidency:
+          type: boolean
+          description: Pregunta si la residencia fiscal está en un pais distinto
+        fundTaxAdministrationRoutineReference:
+          type: array
+          items:
+            type: object
+            properties:
+              taxResidence:
+                type: string
+                description: Clave en base a catálogo de País. Deberá ingresar de
+                  1 a 5 posiciones con respecto a la clave definida en el catálogo
+    personProfile:
+      title: personProfile
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+        pepProfile:
+          $ref: '#/components/schemas/pepProfile'
+        partyType:
+          $ref: '#/components/schemas/partyType'
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        economicActivity:
+          $ref: '#/components/schemas/economicActivity'
+        segment:
+          $ref: '#/components/schemas/segment'
+        group:
+          $ref: '#/components/schemas/group'
+        subGroup:
+          $ref: '#/components/schemas/subGroup'
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+        residencyYear:
+          type: string
+          description: Año de residencia.
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+        monthlyIncome:
+          type: string
+          description: Ingreso  Mensual acotado
+        hasIncomeProof:
+          type: string
+          description: Indicador de entrega de comprobante de ingresos
+        educationalLevelInstitution:
+          type: string
+          description: Identifica la institución educativa donde el prospecto concluyo
+            su nivel educativo.
+        homeOfficeFlag:
+          type: string
+          description: La persona trabaja desde casa
+    subGroup:
+      title: subGroup
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del subgrupo.
+        code:
+          type: string
+          description: Código del subgrupo.
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+        inegiCode:
+          type: string
+          description: Nombre del estado con respecto al Inegi
+        locationInegiCode:
+          type: string
+          description: Referencia de la localidad con respecto al Inegi
+      description: Informacion sobre el estado
+    economicActivity:
+      title: economicActivity
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+        lastEmploymentDurationYears:
+          type: string
+          description: Número de años en el empleo anterior
+        lastEmploymentDurationMonths:
+          type: string
+          description: ¿Cuántos meses trabajaste en tu empleo anterior?
+        currentEmploymentDurationYears:
+          type: string
+          description: Número de años en el empleo actual
+        currentEmploymentDurationMonths:
+          type: string
+          description: ¿Cuántos meses trabajaste en tu empleo actual?
+        companyName:
+          type: string
+          description: Nombre de la empresa
+    bankBranch:
+      title: bankBranch
+      type: object
+      properties:
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    personName:
+      title: personName
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+    mutualFundApplication:
+      title: mutualFundApplication
+      type: object
+      properties:
+        folioNumber:
+          type: string
+          description: Numero de folio
+        folioCreationDate:
+          type: string
+          description: Fecha de registro del folio
+        folioProcesar:
+          type: string
+          description: Numero de folio asignado
+        folioRequest:
+          type: string
+          description: Numero de registro del folio
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras
+        requestNumber:
+          type: string
+          description: Número de la solicitud de crédito
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        productInstanceRecord:
+          $ref: '#/components/schemas/productInstanceRecord'
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        requestChannel:
+          type: string
+          description: Medio de la solicitud
+        requestStatus:
+          type: string
+          description: Estatus de la evaluación del producto
+        branch:
+          $ref: '#/components/schemas/bankBranch'
+        requestDate:
+          type: string
+          description: Fecha de registro del prospecto (sin zona horaria)
+        requestType:
+          type: string
+          description: Tipo de solicitud del prospecto
+        requestMethod:
+          type: string
+          description: Valor que indica el medio de recepción de código enviado por
+            procesar. (SMS - Llamada)
+          enum:
+          - SMS
+          - Llamada
+        paymentMechanismType:
+          type: string
+          description: Forma de pago
+        requestReason:
+          type: string
+          description: Tipo de solicitud del prospectoTipo de solicitud del prospecto
+          enum:
+          - MS
+          - MR
+          - PD
+          - PAC
+          - OT
+        requestCurp:
+          type: string
+          description: "CURP del Solicitante (Titular, Beneficiario, Apoderado legal\
+            \ / Tutor)"
+        applicationReason:
+          type: string
+          description: Motivo de trámite
+        key:
+          type: string
+          description: Clave de la AFORE.
+        promoterAgent:
+          type: string
+          description: Número del Agente Promotor registrado en Base de Datos
+        reason:
+          type: string
+          description: Diagnóstico del proceso de acuerdo al resultado de la operación
+        reasonDescription:
+          type: string
+          description: Descripcion del rechazo
+        mutualFundAdministrativePlanReference:
+          $ref: '#/components/schemas/mutualFundAdministrativePlanReference'
+        mutualFundAdministrativePlanAssociatedParty:
+          $ref: '#/components/schemas/partyReference'
+        fundTaxAdministration:
+          $ref: '#/components/schemas/fundTaxAdministration'
+    group:
+      title: group
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del grupo.
+        code:
+          type: string
+          description: Código del grupo.
+    segment:
+      title: segment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del segmento.
+        code:
+          type: string
+          description: Código del segmento.
+    contactPoint:
+      title: contactPoint
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+            - postalCode
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    activitySector:
+      title: activitySector
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del sector de actividad.
+        code:
+          type: string
+          description: Código del sector de actividad.
+    countryDistrict:
+      title: countryDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+    partyType:
+      title: partyType
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+    productInstanceRecord:
+      title: productInstanceRecord
+      type: object
+      properties:
+        productInstanceReference:
+          type: string
+          description: Indica el identificador del producto
+        productInstanceReferenceName:
+          type: string
+          description: Indica el nombre del producto
+        productSubType:
+          type: string
+          description: Clasificación secundaria del producto
+    partyProfile:
+      title: partyProfile
+      type: object
+      properties:
+        partyProfileType:
+          type: string
+          description: El tipo de perfil del cliente
+          enum:
+          - CommercialProfile
+          - KYC Profile
+          - Risk Profile
+          - Financial Profile
+        partyVoluntaryContributions:
+          type: string
+          description: Pregunta si realiza aportaciones voluntarias -> 1=SI / 0= NO
+          enum:
+          - "1"
+          - "0"
+        partyContributionsAmount:
+          type: string
+          description: "De acuerdo al catálogo de rangos -> 1 = 1 a 1000 2 = 1001\
+            \ a 10,000 3 = mayor a 10,000"
+        partyContributionsFrequency:
+          type: string
+          description: Frecuencia de aportaciones -> 1 - Semanal 2 - Quincenal 3 -
+            Mensual 4 - Por evento
+          enum:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+        partyFinancialInstrument:
+          type: string
+          description: Instrumento Monetario -> 1 Efectivo 2 Cheque 3 Transferencia
+          enum:
+          - "1"
+          - "2"
+          - "3"
+        sourceOfWealth:
+          type: string
+          description: Origen de los recursos -> 1 AHORRO PERSONAL 2 HERENCIA 3 VENTA
+            DE UN BIEN MUEBLE O INMUEBLE 4 SALARIOS Y COMPENSACIONES 5 OTRO
+          enum:
+          - "1"
+          - "2"
+          - "3"
+          - "4"
+          - "5"
+        documentType:
+          type: string
+          description: Tipo de documentación -> 1= CURP 2= CIF 3= NO EN ESTE MOMENTO
+          enum:
+          - "1"
+          - "2"
+          - "3"
+    machineReadZone:
+      title: machineReadZone
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: valor de la línea ZLM.
+        description: Objeto que define las líneas ZLM.
+    partyReference:
+      title: partyReference
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        personName:
+          $ref: '#/components/schemas/personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+        location:
+          $ref: '#/components/schemas/location'
+        gender:
+          type: string
+          description: El género de la persona  * M = Masculino * F = Femenino
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+        maritalStatus:
+          type: string
+          description: Estado civil.
+        birthPlace:
+          $ref: '#/components/schemas/birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+        maritalStatusDurationYears:
+          type: string
+          description: Años de Estado Civil
+        maritalStatusDurationMonths:
+          type: string
+          description: Meses de Estado Civil
+        partyProfile:
+          $ref: '#/components/schemas/partyProfile'
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+          number:
+            type: string
+            description: Número del Barrio.
+    customerRelationshipInvolvement:
+      title: customerRelationshipInvolvement
+      type: array
+      items:
+        type: object
+        properties:
+          partyReference:
+            $ref: '#/components/schemas/partyReference'
+          customerRelationshipInvolvementType:
+            type: string
+            description: Tipo de Rol A - PEP B - CONYUGE C - REFERENCIA D - BENEFICIARIO
+          partyRelationshipType:
+            type: string
+            description: "Parentesco acotado a 1 posición que puede contener los siguientes\
+              \ valores: A - ABUELO (A) B - SOBRINO (A) C - CUÑADO (A) E - ESPOSO(A)\
+              \ / CÓNYUGE H - HERMANO (A) I - AMIGO(A)/CONOCIDO(A) J - HIJO (A) N\
+              \ - NIETO (A) P - PADRE / MADRE R - PRIMO(A) T - TIO (A) U - SUEGRO\
+              \ (A)"
+          dateTime:
+            type: string
+            description: Fecha de validación
+          ownershipStake:
+            type: number
+            description: Porcentaje de participación de la persona.
+          status:
+            type: string
+            description: Estado del beneficiario.
+            enum:
+            - A
+            - IT
+          percentage:
+            type: string
+            description: Procentaje correspondiente al beneficiario a 3 posiciones

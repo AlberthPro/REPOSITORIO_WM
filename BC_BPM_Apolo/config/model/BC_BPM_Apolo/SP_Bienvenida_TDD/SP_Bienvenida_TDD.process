@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="416194bf-91cb-4a45-80f3-2ea1de98cb4c" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="SP_Bienvenida_TDD"
+  packageName="BC_BPM_Apolo" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="0e6b2627-40f9-493e-b502-fad63f2f0554"
+    description="" dimension="0" label="dt_bienvenida"
+    name="{ProcessNamespace}dt_bienvenida" type="{BC_SRV_Apolo.docs}dt_bienvenida"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_contextoTransaccional"
+    name="{ProcessNamespace}dt_contextoTransaccional" type="{BC_SRV_Transversales.docs}dt_ContextoTransaccional"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <input name="{ProcessNamespace}dt_bienvenida"/>
+  <output name="{ProcessNamespace}dt_bienvenida"/>
+  <pool Id="8885d51e-4e27-4d6b-a29b-f01bb752704f" blue="128"
+    containerType="BPMN_SUBPROCESS" errorHandler="S17" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="SP_Bienvenida_TDD"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="6"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P7" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" italicFont="false"/>
+    <annotationNode Id="8f3c002b-5a7c-4e09-8712-b58cd0ddbafa" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Bus_activateOnboardingDebitCardWelcomeKit" uid="N15"
+      width="257" x="190" y="167">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <noneEventStep Id="48a68aab-46a1-4ded-a012-bf7b2f9e7933"
+      eventType="START" height="28" label="EVI.Bienvenida TDD iniciada"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      receiveProtocol="SUBSCRIPTION" stepLock="false" uid="S9"
+      useCorrelation="false" width="28" x="98" y="78">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}dt_bienvenida"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <invokeStep Id="90d4491c-a2dd-40bd-b82b-887c1b58e39f"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_bienvenida"
+      invokeId="BC_SRV_Apolo.srv.bb_bienvenida:N4activarTarjeta"
+      invokeLocation="" invokeName="N4activarTarjeta"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Activar tarjeta N4" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S10"
+      useCorrelation="false" width="93" x="180" y="62">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_bienvenida"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_bienvenida"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <noneEventStep Id="68725a45-9e62-4b46-88df-caa30ae54483"
+      eventType="END" height="28" label="EVF.Bienvenida TDD completada"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S12" useCorrelation="false" width="28"
+      x="347" y="78">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}dt_bienvenida"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <invokeStep Id="c64e10ed-5ba1-4779-a03f-ea7d840a6ce5"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.srv"
+      invokeId="BC_SRV_Transversales.srv:procesarError"
+      invokeLocation="" invokeName="procesarError"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Error_BTDD" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S17"
+      useCorrelation="false" width="93" x="73" y="219">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_contextoTransaccional"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="a623b2e5-1b5f-4a77-9021-9d479471ff13" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="126,92" sourceTerminal="RIGHT" target="S10"
+      targetLocation="180,92" targetTerminal="LEFT" uid="T11">
+      <bendpoint index="0" location="212,132" weight="0.5"/>
+      <bendpoint index="1" location="212,132" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="56926384-7bb3-4384-b050-85769dbda18a" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="273,92" sourceTerminal="RIGHT" target="S12"
+      targetLocation="347,92" targetTerminal="LEFT" uid="T13">
+      <bendpoint index="0" location="370,132" weight="0.5"/>
+      <bendpoint index="1" location="370,132" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <annotationFlow Id="1e80a5d0-0291-4d1a-bee8-56a09a7863ed" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S10" sourceLocation="232,122" sourceTerminal="BOTTOM"
+      target="N15" targetLocation="318,167" targetTerminal="TOP" uid="T16">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+    </annotationFlow>
+    <swimlane Id="71d400b2-79df-47aa-aeca-a2d130b9c9f9" blue="255"
+      green="255" height="306" label="webMethods" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods" red="255"
+      uid="W8" width="501">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="dfec71d7-e490-4b64-a3e6-522b453df666" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" italicFont="false"/>
+    <poolReference Id="c67129bc-d035-46ff-80a4-61f2c48ca0c1"
+      label="SP_Bienvenida_TDD" logicalServer="Default" poolName="6"
+      stepLock="false" uid="S3" useCorrelation="false" x="30" y="39">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

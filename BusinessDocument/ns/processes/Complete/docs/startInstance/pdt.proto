@@ -1,0 +1,107 @@
+message processes_Complete_docs_startInstance {
+optional  processes_Complete_docs_startInstance_dt_validacionTelefono dt_validacionTelefono = 1;
+optional  pub_publish_envelope _env = 536870910;
+}
+message processes_Complete_docs_startInstance_dt_validacionTelefono {
+optional  string telefono = 1;
+optional  processes_Complete_docs_startInstance_dt_validacionTelefono_compuertas compuertas = 2;
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure updatePartyRelationshipProcedure = 3;
+}
+message processes_Complete_docs_startInstance_dt_validacionTelefono_compuertas {
+optional  string optValido = 1;
+optional  string reenvio = 2;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure {
+optional  string sessionDialogueIdentification = 1;
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure partyRelationshipProcedure = 2;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure {
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference partyReference = 1;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference {
+optional  string nationality = 1;
+optional  string dateOfBirth = 2;
+optional  string gender = 3;
+optional  string economicActivityIdentification = 4;
+optional  string economicSubActivityIdentification = 5;
+optional  string resourceSupplier = 6;
+optional  string housingType = 7;
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_personName personName = 8;
+optional  string customerType = 9;
+repeated  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_contactPoint contactPoint = 10;
+repeated  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identifications identifications = 11;
+repeated  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_location location = 12;
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identificationDevice identificationDevice = 13;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identifications {
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identifications_identifier identifier = 1;
+optional  string personIdentificationType = 2;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identifications_identifier {
+optional  string identifierValue = 1;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_personName {
+optional  string alias = 1;
+optional  string familyName = 2;
+optional  string secondLastName = 3;
+optional  string firstName = 4;
+optional  string secondName = 5;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_location {
+optional  PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_location_state state = 1;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_location_state {
+optional  string code = 1;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_contactPoint {
+optional  string contactPointValue = 1;
+optional  bool contactPointActiveStatus = 2;
+optional  string registrationDate = 3;
+optional  string contactPointType = 4;
+}
+message PD_SRV_Discovery_docs_dt_updatePartyRelationshipProcedure_partyRelationshipProcedure_partyReference_identificationDevice {
+optional  string curp = 1;
+}
+message pub_publish_envelope {
+optional  string activation = 1;
+optional  int32 appLastSeqn = 2;
+optional  string appPassword = 3;
+optional  int32 appSeqn = 4;
+optional  string appUserName = 5;
+optional  int32 priority = 6;
+optional  string businessContext = 7;
+repeated  int32 controlLabel = 8;
+optional  string errorsTo = 9;
+optional  string errorRequestsTo = 10;
+optional  string locale = 11;
+optional  int32 maxResults = 12;
+optional  string replyTo = 13;
+optional  int32 runLevel = 14;
+optional  bytes signature = 15;
+optional  string signatureType = 16;
+optional  int32 startResult = 17;
+optional  int32 tag = 18;
+optional  string trackId = 19;
+optional  string transactionId = 20;
+optional  string transformState = 21;
+optional  int32 age = 22;
+optional  string connectionIntegrity = 23;
+optional  string destId = 24;
+optional  int64 enqueueTime = 25;
+optional  string logBroker = 26;
+optional  string logHost = 27;
+optional  string pubDistinguishedName = 28;
+optional  string pubId = 29;
+optional  bytes pubNetAddr = 30;
+optional  int64 pubSeqn = 31;
+repeated  int32 pubLabel = 32;
+optional  int64 recvTime = 33;
+repeated  pub_publish_envelope_route route = 34;
+optional  string uuid = 35;
+optional  string status = 36;
+}
+message pub_publish_envelope_route {
+optional  string broker = 1;
+optional  int64 recvTime = 2;
+optional  int64 enqueueTime = 3;
+}

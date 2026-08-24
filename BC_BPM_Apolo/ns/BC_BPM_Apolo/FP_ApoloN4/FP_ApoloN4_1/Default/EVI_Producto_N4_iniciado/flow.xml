@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT>getCurrentDateString</COMMENT>
+
+  <!-- nodes -->
+
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>getCurrentDateString</COMMENT>
+  <MAPTARGET>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">dt_ApoloN4</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPTARGET>
+  <MAPSOURCE>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPSOURCE>
+
+  <!-- nodes -->
+
+<MAPINVOKE SERVICE="pub.date:getCurrentDateString" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
+
+  <!-- nodes -->
+
+<MAP MODE="INVOKEINPUT">
+
+  <!-- nodes -->
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/pattern;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">dd/MM/yyyy HH:mm:ss.sss</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">field</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_name">pattern</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
+</MAP>
+
+<MAP MODE="INVOKEOUTPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/value;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/txStartDate;1;0">
+</MAPCOPY>
+</MAP>
+</MAPINVOKE>
+</MAP>
+
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>ProcessData mapping</COMMENT>
+  <MAPTARGET>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">dt_ApoloN4</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPTARGET>
+  <MAPSOURCE>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">dt_ApoloN4</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPSOURCE>
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/endorsement;4;0;BC_SRV_Apolo.docs:dt_registerEndorsement/sessionDialogueIdentification;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/sessionDialogueIdentification;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/ProcessData;4;0;pub.prt:ProcessData/ProcessInstanceID;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/processInstanceID;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/ProcessData;4;0;pub.prt:ProcessData/ProcessModelID;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/processDefinitionName;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/ProcessData;4;0;pub.prt:ProcessData/ProcessInstanceID;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/customProcessInstanceId;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/productInstanceRecord;2;0/productInstanceSequenceNumber;3.7;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/channel;1;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/productInstanceRecord;2;0/productInstanceReference;1;0" TO="/dt_ApoloN4;4;0;BC_SRV_Apolo.docs:dt_ApoloN4/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/product;1;0">
+</MAPCOPY>
+</MAP>
+</FLOW>

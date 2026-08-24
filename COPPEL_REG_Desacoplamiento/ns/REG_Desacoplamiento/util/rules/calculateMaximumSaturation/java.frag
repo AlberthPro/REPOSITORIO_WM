@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">calculateMaximumSaturation</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">dHJ5IHsNCglEb3VibGUgY3JlZGl0TGluZSA9IERvdWJsZS52YWx1ZU9mKElEYXRhVXRpbC5nZXRT
+dHJpbmcocGlwZWxpbmUuZ2V0Q3Vyc29yKCksICJjcmVkaXRMaW5lIikpOw0KCURvdWJsZSB0b3Rh
+bEJhbGFuY2U9IERvdWJsZS52YWx1ZU9mKElEYXRhVXRpbC5nZXRTdHJpbmcocGlwZWxpbmUuZ2V0
+Q3Vyc29yKCksICJ0b3RhbEJhbGFuY2UiKSk7DQoJDQoJRG91YmxlIG1heGltdW1TYXR1cmF0aW9u
+PXRvdGFsQmFsYW5jZS9jcmVkaXRMaW5lOw0KCQ0KCS8vQ2FsY3VsbyBjb24gZG9zIGRlY2ltYWxl
+cw0KCUJpZ0RlY2ltYWwgYmQgPSBCaWdEZWNpbWFsLnZhbHVlT2YobWF4aW11bVNhdHVyYXRpb24p
+Ow0KCWJkID0gYmQuc2V0U2NhbGUoMiwgUm91bmRpbmdNb2RlLkhBTEZfVVApOw0KCXRvdGFsQmFs
+YW5jZT0gYmQuZG91YmxlVmFsdWUoKTsNCgkNCgkNCglJRGF0YVV0aWwucHV0KHBpcGVsaW5lLmdl
+dEN1cnNvcigpLCAibWF4aW11bVNhdHVyYXRpb24iLCBtYXhpbXVtU2F0dXJhdGlvbik7DQoJCQ0K
+CX1jYXRjaCAoRXhjZXB0aW9uIGUxKSB7DQoJICAgIHRocm93IG5ldyBSdW50aW1lRXhjZXB0aW9u
+KGUxLmdldE1lc3NhZ2UoKSk7DQoJfQ==</value>
+</Values>

@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <idatacodable name="fragment" javaclass="com.wm.app.prt.model.PRTFragmentDef">
+      <number name="version" type="java.lang.Integer">3</number>
+      <value name="modelId">AF_BPM_TraspasoAsistido/FP_TraspasoAsistidoAfore</value>
+      <value name="modelVersion">1</value>
+      <value name="modelName">FP_TraspasoAsistidoAfore</value>
+      <value name="packageName">AF_BPM_TraspasoAsistido</value>
+      <value name="fragmentId">Default</value>
+      <value name="focalRole">Focal role</value>
+      <value name="triggerName">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:transitionTrigger</value>
+      <null name="inputTriggerName"/>
+      <value name="synch">false</value>
+      <value name="minimumLogLevel">5</value>
+      <value name="volGlobalData">false</value>
+      <value name="usesJMS">false</value>
+      <value name="usesEDA">false</value>
+      <value name="useVersion97EscalationPolicy">true</value>
+      <value name="singleServer">false</value>
+      <value name="timeoutMs">0</value>
+      <null name="timeout"/>
+      <value name="processTimeoutMs">0</value>
+      <value name="processTimeoutExpr"></value>
+      <null name="processTimeoutBusiness"/>
+      <value name="processTimeoutType">relative</value>
+      <null name="error"/>
+      <null name="cancel"/>
+      <null name="userProps"/>
+      <null name="partnerLinks"/>
+      <null name="properties"/>
+      <null name="globalVariables"/>
+      <null name="businessCalendarAlias"/>
+      <array name="steps" type="idatacodable" depth="1">
+        <idatacodable javaclass="com.wm.app.prt.model.UserTask">
+          <value name="stepId">S45</value>
+          <value name="stepLabel">AU.Ingresar CURP y TERMS</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S29</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Bancoppel_DEV</value>
+              <value name="targetStepId">S30</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>TraspasoAsistido</value>
+                <value>TraspasoAsistido</value>
+                <value>TraspasoAforeCancelado</value>
+                <value></value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+          <value name="inputMappingService">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:AU_Ingresar_CURP_y_TERMS_InputMapService</value>
+          <value name="outputMappingService">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:AU_Ingresar_CURP_y_TERMS_OutputMapService</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S158</value>
+          <value name="stepLabel">AS.PrepararCancelacion_S158</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S21</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">AF_BPM_TraspasoAsistido</value>
+          <value name="serviceName">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:AS_PrepararCancelacion_S158</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Bancoppel_DEV</value>
+              <value name="targetStepId">S22</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>TraspasoAforeCancelado</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.UserTask">
+          <value name="stepId">S147</value>
+          <value name="stepLabel">AU.Captura Huellas A.P</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S20</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Bancoppel_DEV</value>
+              <value name="targetStepId">S23</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>TraspasoAsistido</value>
+                <value>TraspasoAsistido</value>
+                <value>TraspasoAforeCancelado</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+          <value name="inputMappingService">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:AU_Captura_Huellas_A_P_InputMapService</value>
+          <value name="outputMappingService">AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Default:AU_Captura_Huellas_A_P_OutputMapService</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S141</value>
+          <value name="stepLabel">Gateway1</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S27 TX-FROM-S40)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S27</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S40</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Bancoppel_DEV</value>
+              <value name="targetStepId">S28</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+      </array>
+    </idatacodable>
+    <Date name="timestamp" type="java.util.Date">Mon May 05 22:24:08 UTC 2025</Date>
+  </record>
+</IDataXMLCoder>

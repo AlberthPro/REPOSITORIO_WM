@@ -1,0 +1,885 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <idatacodable name="fragment" javaclass="com.wm.app.prt.model.PRTFragmentDef">
+      <number name="version" type="java.lang.Integer">3</number>
+      <value name="modelId">BC_BPM_Onboarding/SP_ValidacionTelefono</value>
+      <value name="modelVersion">1</value>
+      <value name="modelName">SP_ValidacionTelefono</value>
+      <value name="packageName">BC_BPM_Onboarding</value>
+      <value name="fragmentId">Default</value>
+      <value name="focalRole">Focal role</value>
+      <value name="triggerName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:transitionTrigger</value>
+      <value name="inputTriggerName">BC_BPM_Onboarding.SP_ValidacionTelefono.Default:subscriptionTrigger</value>
+      <value name="synch">false</value>
+      <value name="minimumLogLevel">5</value>
+      <value name="volGlobalData">false</value>
+      <value name="usesJMS">false</value>
+      <value name="usesEDA">false</value>
+      <value name="useVersion97EscalationPolicy">true</value>
+      <value name="singleServer">true</value>
+      <value name="timeoutMs">0</value>
+      <null name="timeout"/>
+      <value name="processTimeoutMs">0</value>
+      <value name="processTimeoutExpr"></value>
+      <null name="processTimeoutBusiness"/>
+      <value name="processTimeoutType">relative</value>
+      <null name="error"/>
+      <null name="cancel"/>
+      <null name="userProps"/>
+      <null name="partnerLinks"/>
+      <null name="properties"/>
+      <null name="globalVariables"/>
+      <null name="businessCalendarAlias"/>
+      <array name="steps" type="idatacodable" depth="1">
+        <idatacodable javaclass="com.wm.app.prt.model.StartNoneEvent">
+          <value name="stepId">S8</value>
+          <value name="stepLabel">EVI.Validación teléfono inciada</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S11</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionTelefono</value>
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="interrupting">false</value>
+          <value name="usesEDA">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S9</value>
+          <value name="stepLabel">EVF.Validación teléfono finalizada</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S31</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S73</value>
+          <value name="stepLabel">COC.OTP correcto</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S29</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_AltaCliente/dt_AltaCliente/compuertas/compuerta1% L_EQUALS "reintentar"</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S75</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="condition">%dt_AltaCliente/dt_AltaCliente/compuertas/compuerta1% L_EQUALS 3</value>
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S89</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+            <value name="condition">!(%dt_AltaCliente/dt_AltaCliente/compuertas/compuerta1% L_EQUALS "reintentar") &amp;&amp; !(%dt_AltaCliente/dt_AltaCliente/compuertas/compuerta1% L_EQUALS 3)</value>
+            <value name="isXpathCond">false</value>
+            <value name="targetServerId">Default</value>
+            <value name="targetStepId">S31</value>
+            <array name="pipeKeys" type="value" depth="1">
+              <value>dt_AltaCliente</value>
+            </array>
+            <null name="deadPathTargets"/>
+            <value name="compensating">false</value>
+          </idatacodable>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S75</value>
+          <value name="stepLabel">COC.Reintentar</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S65 TX-FROM-S73)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S65</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S73</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S22</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S31</value>
+          <value name="stepLabel">TU.Mostrar teléfono válido</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S73</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:S31</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S9</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S86</value>
+          <value name="stepLabel">TU.Mostrar mensaje salida</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S89</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:TU_Mostrar_mensaje_salida</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S49</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S11</value>
+          <value name="stepLabel">TS.Validar teléfono</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S8</value>
+            </idatacodable>
+          </array>
+          <array name="loggedInputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/stepName</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/stepName</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger/value</value>
+              <value name="fieldType">1</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair</value>
+              <value name="fieldAlias">dt_valuePair</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/stopInstance</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/stopInstance</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/processInstanceID</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/processInstanceID</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity</value>
+              <value name="fieldAlias">dt_callactivity</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray/value</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/txStartDate</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/txStartDate</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/stepId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/stepId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/customTaskId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/customTaskId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/applicationUserId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/applicationUserId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/taskId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/taskId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/stepNameToSendWebhook</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/stepNameToSendWebhook</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/completeTask</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/completeTask</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/customProcessInstanceId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/customProcessInstanceId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/processDefinitionName</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/processDefinitionName</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName"></value>
+              <value name="fieldAlias">dt_validacionTelefono</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString/value</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/sessionDialogIdentification</value>
+              <value name="fieldAlias">dt_callactivity/sessionDialogIdentification</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/txId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/txId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_callactivity/dt_ContextoTransaccional/executorUserId</value>
+              <value name="fieldAlias">dt_callactivity/dt_ContextoTransaccional/executorUserId</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+          </array>
+          <array name="loggedOutputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair</value>
+              <value name="fieldAlias">dt_valuePair</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName"></value>
+              <value name="fieldAlias">dt_validacionTelefono</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString/value</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray</value>
+              <value name="fieldType">3</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairInteger/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairInteger/value</value>
+              <value name="fieldType">1</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairStringArrayParent/valuePairArray/value</value>
+              <value name="fieldAlias">dt_valuePair/valuePairStringArrayParent/valuePairArray/value</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTLoggedFieldDef">
+              <value name="docName">dt_validacionTelefono</value>
+              <value name="fieldName">dt_valuePair/valuePairString/name</value>
+              <value name="fieldAlias">dt_valuePair/valuePairString/name</value>
+              <value name="fieldType">0</value>
+              <value name="isTN">false</value>
+              <value name="isGlobalData">false</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:S11</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S26</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_validacionTelefono</value>
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S22</value>
+          <value name="stepLabel">TS.Generar OTP</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S75</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:TS_Generar_OTP</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S24</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S65</value>
+          <value name="stepLabel">TS.RegistrarDatosCliente</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S26</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:TS_RegistrarDatosCliente</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S75</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S24</value>
+          <value name="stepLabel">TU.Ingresar OTP</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S22</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:TU_Ingresar_OTP</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S29</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S89</value>
+          <value name="stepLabel">Gateway3</value>
+          <value name="isStart">false</value>
+          <value name="joinExpression">(unsynchronizedor TX-FROM-S26 TX-FROM-S73)</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S26</value>
+            </idatacodable>
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S73</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S86</value>
+              <null name="pipeKeys"/>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType">relative</value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <null name="defaultTransition"/>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
+          <value name="stepId">S26</value>
+          <value name="stepLabel">COD.Cliente bancoppel</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S11</value>
+            </idatacodable>
+          </array>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S89</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">0</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+            <value name="isXpathCond">false</value>
+            <value name="targetServerId">Default</value>
+            <value name="targetStepId">S65</value>
+            <array name="pipeKeys" type="value" depth="1">
+              <value>dt_AltaCliente</value>
+            </array>
+            <null name="deadPathTargets"/>
+            <value name="compensating">false</value>
+          </idatacodable>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
+          <value name="stepId">S49</value>
+          <value name="stepLabel">EVF.Validación teléfono cancelada</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S86</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+        </idatacodable>
+        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
+          <value name="stepId">S29</value>
+          <value name="stepLabel">TS.Validar OTP</value>
+          <value name="isStart">false</value>
+          <value name="isSynchronizationPoint">false</value>
+          <array name="inputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
+              <value name="sourceStepId">S24</value>
+            </idatacodable>
+          </array>
+          <value name="servicePackage">BC_BPM_Onboarding</value>
+          <value name="serviceName">BC_BPM_Onboarding.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:TS_Validar_OTP</value>
+          <array name="outputs" type="idatacodable" depth="1">
+            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
+              <value name="isXpathCond">false</value>
+              <value name="targetServerId">Default</value>
+              <value name="targetStepId">S73</value>
+              <array name="pipeKeys" type="value" depth="1">
+                <value>dt_AltaCliente</value>
+              </array>
+              <null name="deadPathTargets"/>
+              <value name="compensating">false</value>
+            </idatacodable>
+          </array>
+          <value name="timeoutMs">0</value>
+          <value name="stepTimeoutMs">0</value>
+          <value name="timeoutType"></value>
+          <value name="stepTimeoutType">relative</value>
+          <value name="retryMax">0</value>
+          <value name="stepRetryCount">0</value>
+          <value name="stepRetryInterval">60000</value>
+          <value name="isSubEnd">false</value>
+          <value name="isXPathJoinExpression">false</value>
+          <value name="beginsCompensatingTransaction">false</value>
+          <value name="skip">false</value>
+          <value name="parallelExecute">false</value>
+          <value name="suppressUnsatisfiedJoin">false</value>
+          <value name="forCompensation">false</value>
+        </idatacodable>
+      </array>
+    </idatacodable>
+    <Date name="timestamp" type="java.util.Date">Thu Aug 28 16:31:41 UTC 2025</Date>
+  </record>
+</IDataXMLCoder>

@@ -1,0 +1,96 @@
+message BC_SRV_Onboarding_docs_dt_AltaCliente {
+optional  BC_SRV_Onboarding_docs_dt_AltaCliente_dt_AltaCliente dt_AltaCliente = 1;
+optional  pub_publish_envelope _env = 536870910;
+}
+message BC_SRV_Onboarding_docs_dt_AltaCliente_dt_AltaCliente {
+optional  BC_SRV_Onboarding_docs_dt_callactivity dt_callactivity = 1;
+optional  BC_SRV_Onboarding_docs_dt_AltaCliente_dt_AltaCliente_compuertas compuertas = 2;
+optional  BC_SRV_Transversales_docs_dt_valuePair dt_valuePair = 3;
+}
+message BC_SRV_Onboarding_docs_dt_AltaCliente_dt_AltaCliente_compuertas {
+optional  string compuerta1 = 1;
+optional  string compuerta2 = 2;
+}
+message BC_SRV_Onboarding_docs_dt_callactivity {
+optional  string sessionDialogIdentification = 1;
+optional  BC_SRV_Transversales_docs_dt_ContextoTransaccional dt_ContextoTransaccional = 2;
+}
+message BC_SRV_Transversales_docs_dt_ContextoTransaccional {
+optional  string txId = 1;
+optional  string txStartDate = 3;
+optional  string stepId = 4;
+optional  string processDefinitionName = 10;
+optional  string processInstanceID = 2;
+optional  string customProcessInstanceId = 5;
+optional  string taskId = 6;
+optional  string customTaskId = 7;
+optional  string stepName = 8;
+optional  string applicationUserId = 11;
+optional  string executorUserId = 12;
+optional  string stopInstance = 13;
+optional  string completeTask = 14;
+optional  string stepNameToSendWebhook = 9;
+}
+message BC_SRV_Transversales_docs_dt_valuePair {
+repeated  BC_SRV_Transversales_docs_dt_valuePair_valuePairInteger valuePairInteger = 1;
+repeated  BC_SRV_Transversales_docs_dt_valuePair_valuePairString valuePairString = 2;
+optional  BC_SRV_Transversales_docs_dt_valuePair_valuePairStringArrayParent valuePairStringArrayParent = 3;
+}
+message BC_SRV_Transversales_docs_dt_valuePair_valuePairInteger {
+optional  string name = 1;
+optional  int32 value = 2;
+}
+message BC_SRV_Transversales_docs_dt_valuePair_valuePairStringArrayParent {
+repeated  BC_SRV_Transversales_docs_dt_valuePair_valuePairStringArrayParent_valuePairArray valuePairArray = 1;
+}
+message BC_SRV_Transversales_docs_dt_valuePair_valuePairStringArrayParent_valuePairArray {
+optional  string name = 1;
+optional  string value = 2;
+}
+message BC_SRV_Transversales_docs_dt_valuePair_valuePairString {
+optional  string name = 1;
+optional  string value = 2;
+}
+message pub_publish_envelope {
+optional  string activation = 1;
+optional  int32 appLastSeqn = 2;
+optional  string appPassword = 3;
+optional  int32 appSeqn = 4;
+optional  string appUserName = 5;
+optional  int32 priority = 6;
+optional  string businessContext = 7;
+repeated  int32 controlLabel = 8;
+optional  string errorsTo = 9;
+optional  string errorRequestsTo = 10;
+optional  string locale = 11;
+optional  int32 maxResults = 12;
+optional  string replyTo = 13;
+optional  int32 runLevel = 14;
+optional  bytes signature = 15;
+optional  string signatureType = 16;
+optional  int32 startResult = 17;
+optional  int32 tag = 18;
+optional  string trackId = 19;
+optional  string transactionId = 20;
+optional  string transformState = 21;
+optional  int32 age = 22;
+optional  string connectionIntegrity = 23;
+optional  string destId = 24;
+optional  int64 enqueueTime = 25;
+optional  string logBroker = 26;
+optional  string logHost = 27;
+optional  string pubDistinguishedName = 28;
+optional  string pubId = 29;
+optional  bytes pubNetAddr = 30;
+optional  int64 pubSeqn = 31;
+repeated  int32 pubLabel = 32;
+optional  int64 recvTime = 33;
+repeated  pub_publish_envelope_route route = 34;
+optional  string uuid = 35;
+optional  string status = 36;
+}
+message pub_publish_envelope_route {
+optional  string broker = 1;
+optional  int64 recvTime = 2;
+optional  int64 enqueueTime = 3;
+}

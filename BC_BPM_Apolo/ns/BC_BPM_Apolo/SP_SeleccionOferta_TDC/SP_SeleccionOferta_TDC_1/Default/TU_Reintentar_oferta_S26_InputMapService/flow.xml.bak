@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="BC_BPM_Apolo.SP_SeleccionOferta_TDC.SP_SeleccionOferta_TDC_1.Default:TU_Reintentar_oferta_S26_QueueTask">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY NAME="Link" FROM="/dt_seleccionOferta;4;0;BC_SRV_Apolo.docs:dt_seleccionOferta" TO="/TaskData;2;0/dt_seleccionOferta;2;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/TU.Reintentar ofertaInputEnv;4;0;pub.task:TaskQueueInfo" TO="/TaskQueueInfo;4;0;pub.task:TaskQueueInfo">
+</MAPCOPY>
+</MAP>
+</INVOKE>
+</FLOW>

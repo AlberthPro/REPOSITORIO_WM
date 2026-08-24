@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="61054df3-f89c-4ec7-99de-76859d743416" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Alberto Noche Rosas" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="FP_OnboardingPersonas"
+  packageName="BC_BPM_Onboarding" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="docType_OnboardingPersonas"
+    name="{ProcessNamespace}docType_OnboardingPersonas" type="{BC_SRV_Onboarding.docs}docType_OnboardingPersonas"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="docType_OnboardingPersonaCancela"
+    name="{ProcessNamespace}docType_OnboardingPersonaCancela" type="{BC_SRV_Onboarding.docs}docType_OnboardingPersonaCancela"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Ingresar telefonoInputEnv"
+    name="{ProcessNamespace}AU.Ingresar telefonoInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Ingresar telefonoOutputEnv"
+    name="{ProcessNamespace}AU.Ingresar telefonoOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Aceptar TC y aviso privacidadOutputEnv"
+    name="{ProcessNamespace}AU.Aceptar TC y aviso privacidadOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Aceptar TC y aviso privacidadInputEnv"
+    name="{ProcessNamespace}AU.Aceptar TC y aviso privacidadInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="5fa3bd13-38f0-49d5-a850-4795f1257b68" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false"
+    label="FP_OnboardingPersonas" labelBlue="255" labelGreen="204"
+    labelRed="153" logicalServer="" loopMaximum="0" loopMaximumField=""
+    name="6" orientation="horizontal" red="128" retryCount="0"
+    stepLock="false" uid="P7" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <receiveStep Id="902288df-cdad-4738-b605-b0a164522df3"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="28"
+      isStartStepServiceRequired="true"
+      label="Start docType_OnboardingPersonas" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV"
+      outputMessageType="{BC_SRV_Onboarding.docs}docType_OnboardingPersonas"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S9" useCorrelation="false" width="28" x="49" y="97">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="1a1fe8a0-3eb8-4f13-b7be-aca89c39c696"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="EVD.TerritorioMexicano" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S12" useCorrelation="false" width="34" x="509" y="94">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <input name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="c0244632-6fbc-40b2-8e3b-a8600e16b1cd"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="EVD.ClienteBC" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S14" useCorrelation="false" width="34" x="652" y="94">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <input name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="9f208eca-ab9a-443f-b9ab-1f56d3e531b1"
+      externalizeConditions="false" gatewayType="PARALLEL" height="34"
+      label="EVP.1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV" retryCount="0" stepLock="false"
+      uid="S28" useCorrelation="false" width="34" x="141" y="94">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <receiveStep Id="abc4c4c5-7520-4ca7-9c94-c607e148d40a"
+      allowsSynchronousReply="false"
+      correlationFieldName="contextoTransaccional/processInstanceID"
+      edaEventQName="" edaSubFilter="" edaSubFilterLang=""
+      eventType="INTERMEDIATE_CATCH" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="true"
+      label="OnboardingPersonaCancela" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV"
+      outputMessageType="{BC_SRV_Onboarding.docs}docType_OnboardingPersonaCancela"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S31" useCorrelation="true" width="28"
+      x="144" y="209">
+      <documentation/>
+      <join joinType="unspecified" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <terminateStep Id="84625080-575f-4f0d-bde8-aa7623d5aa1a"
+      escalateFailure="true" height="28"
+      label="EVT.Onboarding personas cancelado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" stepLock="false"
+      terminateStatus="DONE" uid="S33" useCorrelation="false" width="28"
+      x="144" y="354">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </terminateStep>
+    <terminateStep Id="4f810e66-44e6-4016-8423-cd15803e0ce5"
+      escalateFailure="true" height="28"
+      label="EVF.Onboarding personas completado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" stepLock="false"
+      terminateStatus="DONE" uid="S23" useCorrelation="false" width="28"
+      x="1192" y="97">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </terminateStep>
+    <receiveStep Id="9af1b07b-a2d3-4ea8-924e-ba37901ed1b3"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="OnboardingPersonaCancela" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV"
+      outputMessageType="{BC_SRV_Onboarding.docs}docType_OnboardingPersonaCancela"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S37" useCorrelation="false" width="28"
+      x="512" y="265">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <receiveStep Id="bc37e3aa-d218-43e3-9be3-3444ddbaf9d5"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="END" externalizeConditions="false"
+      height="28" isStartStepServiceRequired="false"
+      label="OnboardingPersonaCancela" labelHeight="-1" labelWidth="-1"
+      logicalServer="Bancoppel_DEV"
+      outputMessageType="{BC_SRV_Onboarding.docs}docType_OnboardingPersonaCancela"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S39" useCorrelation="false" width="28"
+      x="655" y="252">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <invokeStep Id="d5e2ab16-53c5-4bd9-84be-8a7fdee42242"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_OnboardingPersonasTasks"
+      invokeId="F3269A5B-E1F4-78AF-D85D-9464AA104C03" invokeLocation=""
+      invokeName="AU.Aceptar TC y aviso privacidad" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Aceptar TC y aviso privacidad" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S16" useCorrelation="false"
+      width="93" x="817" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <input name="{ProcessNamespace}AU.Aceptar TC y aviso privacidadInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <output name="{ProcessNamespace}AU.Aceptar TC y aviso privacidadOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="b894d8c8-08c5-4627-8a49-b2c782039703"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="TASK" isCompensating="false"
+      isTestAfter="false" label="AU.Ingresar telefono" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S18" useCorrelation="false"
+      width="93" x="1007" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}AU.Ingresar telefonoInputEnv"/>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}AU.Ingresar telefonoOutputEnv"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="66a12811-67c9-48f2-b7d9-68f270d2a021"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="EMPTY" isCompensating="false"
+      isTestAfter="false" label="RN01.Validate location"
+      labelHeight="-1" labelWidth="-1" logicalServer="Bancoppel_DEV"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S10"
+      useCorrelation="false" width="93" x="378" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="6b83813f-edea-4fdd-ab79-d13ef3e4db62"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="ISSERVICE" isCompensating="false"
+      isTestAfter="false" label="AS.Preparar datos" labelHeight="-1"
+      labelWidth="-1" logicalServer="Bancoppel_DEV" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S41"
+      useCorrelation="false" width="93" x="244" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <input name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonas"/>
+      <output name="{ProcessNamespace}docType_OnboardingPersonaCancela"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="893c5c59-cf71-4603-896b-c5d65c57428e" blue="255"
+      conditionDescription="true" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S12" sourceLocation="543,111" sourceTerminal="RIGHT"
+      target="S14" targetLocation="652,111" targetTerminal="LEFT" uid="T15">
+      <bendpoint index="0" location="692,164" weight="0.5"/>
+      <bendpoint index="1" location="692,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="18" red="255" width="26" x="636" y="146">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="9a02e192-f6ec-46ce-9e6b-d4e8df5a848a" blue="255"
+      conditionDescription="false" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S14" sourceLocation="686,111" sourceTerminal="RIGHT"
+      target="S16" targetLocation="817,111" targetTerminal="LEFT" uid="T17">
+      <bendpoint index="0" location="846,164" weight="0.5"/>
+      <bendpoint index="1" location="846,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="18" red="255" width="33" x="792" y="146">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="f469a8a3-2cba-4e49-ac94-2c2b071a4c04" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S16"
+      sourceLocation="910,111" sourceTerminal="RIGHT" target="S18"
+      targetLocation="1007,111" targetTerminal="LEFT" uid="T22">
+      <bendpoint index="0" location="1054,164" weight="0.5"/>
+      <bendpoint index="1" location="1054,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7fac76da-0cba-430a-b748-8d68391b1375" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="77,111" sourceTerminal="RIGHT" target="S28"
+      targetLocation="141,111" targetTerminal="LEFT" uid="T29">
+      <bendpoint index="0" location="204,164" weight="0.5"/>
+      <bendpoint index="1" location="204,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="1536d2a0-70eb-466e-986e-f795bf1eefb4" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="471,111" sourceTerminal="RIGHT" target="S12"
+      targetLocation="509,111" targetTerminal="LEFT" uid="T13">
+      <bendpoint index="0" location="586,164" weight="0.5"/>
+      <bendpoint index="1" location="586,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="30ea61be-c3aa-47f2-ab79-b217ab0efc72" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S28"
+      sourceLocation="158,128" sourceTerminal="BOTTOM" target="S31"
+      targetLocation="158,209" targetTerminal="TOP" uid="T32">
+      <bendpoint index="0" location="254,220" weight="0.5"/>
+      <bendpoint index="1" location="254,220" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="c89861b7-cdcb-4a5c-91ae-a62aafa9f641" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S31"
+      sourceLocation="158,237" sourceTerminal="BOTTOM" target="S33"
+      targetLocation="158,354" targetTerminal="TOP" uid="T34">
+      <bendpoint index="0" location="254,348" weight="0.5"/>
+      <bendpoint index="1" location="254,348" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="824d34af-bd80-4fc5-a778-07d626dccd0f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S18"
+      sourceLocation="1100,111" sourceTerminal="RIGHT" target="S23"
+      targetLocation="1192,111" targetTerminal="LEFT" uid="T25">
+      <bendpoint index="0" location="1242,164" weight="0.5"/>
+      <bendpoint index="1" location="1242,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="b4bccaec-c6fb-4e1b-8fea-608097df60eb" blue="255"
+      conditionDescription="false"
+      conditionText="docType_OnboardingPersonas/DatosControl/territorioMX = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S12" sourceLocation="526,128" sourceTerminal="BOTTOM"
+      target="S37" targetLocation="526,265" targetTerminal="TOP" uid="T38">
+      <bendpoint index="0" location="622,248" weight="0.5"/>
+      <bendpoint index="1" location="622,248" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="18" red="255" width="33" x="620" y="231">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="DatosControl/territorioMX"
+          leftOperand="{ProcessNamespace}docType_OnboardingPersonas"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="ffbf5364-6b98-4a4b-9ac4-41543746df77" blue="255"
+      conditionDescription="true"
+      conditionText="docType_OnboardingPersonas/DatosControl/clienteBancoppel = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S14" sourceLocation="669,128" sourceTerminal="BOTTOM"
+      target="S39" targetLocation="669,252" targetTerminal="TOP" uid="T40">
+      <bendpoint index="0" location="765,242" weight="0.5"/>
+      <bendpoint index="1" location="765,242" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="18" red="255" width="26" x="757" y="225">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="DatosControl/clienteBancoppel"
+          leftOperand="{ProcessNamespace}docType_OnboardingPersonas"
+          operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="545d6587-544d-4c2f-9601-2302976cd45b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S41"
+      sourceLocation="337,111" sourceTerminal="RIGHT" target="S10"
+      targetLocation="378,111" targetTerminal="LEFT" uid="T43">
+      <bendpoint index="0" location="452,164" weight="0.5"/>
+      <bendpoint index="1" location="452,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="74417b76-1e74-492f-8726-d0a685ccef3c" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S28"
+      sourceLocation="175,111" sourceTerminal="RIGHT" target="S41"
+      targetLocation="244,111" targetTerminal="LEFT" uid="T44">
+      <bendpoint index="0" location="304,164" weight="0.5"/>
+      <bendpoint index="1" location="304,164" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="19e83796-9897-450b-b624-8ab8ba21f96e" blue="255"
+      green="255" height="480" label="Solicitante" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Solicitante" red="255"
+      uid="W8" width="1249">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="4c744f7f-c2d1-4c69-8a38-5b2aa25c77c6" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="fb7937f2-3d38-4f40-8175-6ea816f23956"
+      label="FP_OnboardingPersonas" logicalServer="Bancoppel_DEV"
+      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
+      x="66" y="52">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

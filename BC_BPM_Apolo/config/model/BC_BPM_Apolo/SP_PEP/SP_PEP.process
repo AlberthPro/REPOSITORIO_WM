@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="d01e53fd-374d-42c5-ad53-cdc2a70faf95" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="SP_PEP" packageName="BC_BPM_Apolo"
+  processCategory="" rnSync="false" runtimeVersion="1"
+  transitionLabelPref="description" unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0" label="dt_pep"
+    name="{ProcessNamespace}dt_pep" type="{BC_SRV_Apolo.docs}dt_pep"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Ingresar datos PEPInputEnv"
+    name="{ProcessNamespace}TU.Ingresar datos PEPInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Ingresar datos PEPOutputEnv"
+    name="{ProcessNamespace}TU.Ingresar datos PEPOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_contextoTransaccional"
+    name="{ProcessNamespace}dt_contextoTransaccional" type="{BC_SRV_Transversales.docs}dt_ContextoTransaccional"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <input name="{ProcessNamespace}dt_pep"/>
+  <output name="{ProcessNamespace}dt_pep"/>
+  <pool Id="9fcdd888-18cf-4277-a41a-28b360adb067" blue="128"
+    containerType="BPMN_SUBPROCESS" errorHandler="S68" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="SP_PEP (KYC)"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="6"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P7" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="a7d62f26-05c4-40ec-9bff-35b8b278d730" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="webHook = START_PEP_BB"
+      uid="N13" width="170" x="194" y="200">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="9cf568bc-7aa1-42b8-9f36-d5fcd677e258" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Bus_createCustomerRelationshipInvolvementPEP" uid="N18"
+      width="270" x="419" y="260">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="f93c84fc-3da6-4d56-b345-862b311ea8fb" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="Dom_retrieveQualification"
+      uid="N23" width="158" x="703" y="313">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="5465772f-9ca9-477e-b800-bd219d93f9ac" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Bus_registerCustomerCreditRatingState" uid="N42" width="226"
+      x="929" y="313">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <noneEventStep Id="fa813ebb-c525-4707-b78b-1b2476692ad3"
+      eventType="START" height="28" label="EVI.PEP iniciado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      receiveProtocol="SUBSCRIPTION" stepLock="false" uid="S9"
+      useCorrelation="false" width="28" x="52" y="104">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="18b53188-23ab-43c6-bf3e-8a2d7f101b8d"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Calificación PEP - lista negra" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" retryCount="0"
+      stepLock="false" uid="S26" useCorrelation="false" width="34"
+      x="949" y="199">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="84cce2b3-1f3e-4506-8808-b8f92fb5034f"
+      eventType="END" height="28" label="EVF.PEP finalizado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S34" useCorrelation="false" width="28"
+      x="1339" y="104">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <noneEventStep Id="ccc004eb-f160-4c26-b30b-9737abe4d651"
+      eventType="END" height="28" label="EVF.PEP Cancelado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S36" useCorrelation="false" width="28"
+      x="1347" y="202">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="c1ed5b14-dbb8-4200-8323-859a1f302163"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Es PEP?" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S52"
+      useCorrelation="false" width="34" x="537" y="101">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="15d21876-9ef6-40fc-83d9-bbf144a47788"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.PEP family" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S57"
+      useCorrelation="false" width="34" x="756" y="101">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="674ea480-24a5-4a77-89ae-d857797f36c9"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.no PEP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S60"
+      useCorrelation="false" width="34" x="949" y="101">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <invokeStep Id="f0716cb0-ada8-46f9-8098-42c475a94f57"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_PEP"
+      invokeId="2094A82D-FA8B-4F3A-81DC-96E0DFB9FABA" invokeLocation=""
+      invokeName="pntPep" invokeType="TASK" isCompensating="false"
+      isTestAfter="false" label="TU.Ingresar datos PEP" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S10" useCorrelation="false"
+      width="93" x="246" y="88">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <input name="{ProcessNamespace}TU.Ingresar datos PEPInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <output name="{ProcessNamespace}TU.Ingresar datos PEPOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="e68541ea-a451-47e2-b6fe-a75be5277677"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:crearRegistro" invokeLocation=""
+      invokeName="crearRegistro" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TS.Crear registro PEP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S16"
+      useCorrelation="false" width="93" x="629" y="88">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="c76e8b00-aaa0-46c7-bdb5-1cfe927673dc"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:recuperarCalificacion"
+      invokeLocation="" invokeName="recuperarCalificacion"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Recuperar calificación PEP" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S21" useCorrelation="false" width="93"
+      x="804" y="186">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="9e7041f3-4d3f-4ce4-9a3f-d6574953e033"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:registrarEstadoCredito"
+      invokeLocation="" invokeName="registrarEstadoCredito"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Registrar estado crédito PEP" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S39" useCorrelation="false" width="93"
+      x="1037" y="186">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="df829050-eb48-4153-be25-fe39371ceb9c"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:inicializarPep"
+      invokeLocation="" invokeName="inicializarPep"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Inicializar" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S44"
+      useCorrelation="false" width="93" x="129" y="88">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="7711e4c7-d18a-40b4-b29b-4021a71c78e8"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.srv"
+      invokeId="BC_SRV_Transversales.srv:procesarError"
+      invokeLocation="" invokeName="procesarError"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Error_PEP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S68"
+      useCorrelation="false" width="93" x="63" y="285">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_contextoTransaccional"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="6267f1d7-58c1-4a08-bde4-e93c88a1d513"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:regresarFlujoPrincipal"
+      invokeLocation="" invokeName="regresarFlujoPrincipal"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Regresar flujo principal" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" ornamentKey="32_decision_diamond_orange.png"
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S69"
+      useCorrelation="false" width="93" x="1222" y="186">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="9e7ab03d-511c-4673-af9c-7e22cab89072"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_pep"
+      invokeId="BC_SRV_Apolo.srv.bb_pep:inicializarVariablesPEP"
+      invokeLocation="" invokeName="inicializarVariablesPEP"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.inicializar variables PEP" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S76" useCorrelation="false" width="93"
+      x="379" y="88">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="a6aefa9d-13d3-40b6-b15a-2261812d44b0" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S21"
+      sourceLocation="897,216" sourceTerminal="RIGHT" target="S26"
+      targetLocation="949,216" targetTerminal="LEFT" uid="T27">
+      <bendpoint index="0" location="974,247" weight="0.5"/>
+      <bendpoint index="1" location="974,247" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="73750c31-8533-40df-a9bb-cee27f1ff65a" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="80,118" sourceTerminal="RIGHT" target="S44"
+      targetLocation="129,118" targetTerminal="LEFT" uid="T45">
+      <bendpoint index="0" location="156,149" weight="0.5"/>
+      <bendpoint index="1" location="156,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="bff65da7-68ad-49cb-9a8e-ae9c3df46bed" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S44"
+      sourceLocation="222,118" sourceTerminal="RIGHT" target="S10"
+      targetLocation="246,118" targetTerminal="LEFT" uid="T46">
+      <bendpoint index="0" location="286,149" weight="0.5"/>
+      <bendpoint index="1" location="286,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="50a48b92-f362-4318-80a0-7923cf633064" blue="255"
+      conditionDescription="Al menos uno true"
+      conditionText="dt_pep/compuertas/civilAssociation = true or&#xa;dt_pep/compuertas/pepFamily = true or&#xa;dt_pep/compuertas/publicPosition = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S52" sourceLocation="571,118" sourceTerminal="RIGHT"
+      target="S16" targetLocation="629,118" targetTerminal="LEFT" uid="T56">
+      <bendpoint index="0" location="652,149" weight="0.5"/>
+      <bendpoint index="1" location="652,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="88" x="555" y="184">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="or"
+          leftFieldPath="compuertas/civilAssociation"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'true'"/>
+        <row chainOperator="or" leftFieldPath="compuertas/pepFamily"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'true'"/>
+        <row chainOperator="" leftFieldPath="compuertas/publicPosition"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="987ddcc4-e566-4b61-bd57-66006731085f" blue="255"
+      conditionDescription="true"
+      conditionText="dt_pep/compuertas/pepFamily = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S57" sourceLocation="773,135" sourceTerminal="BOTTOM"
+      target="S21" targetLocation="804,216" targetTerminal="LEFT" uid="T58">
+      <bendpoint index="0" location="825,247" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="19" x="829" y="229">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/pepFamily"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="7af6d54e-11b0-4a36-a613-9c659a692f28" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S16"
+      sourceLocation="722,118" sourceTerminal="RIGHT" target="S57"
+      targetLocation="756,118" targetTerminal="LEFT" uid="T59">
+      <bendpoint index="0" location="790,149" weight="0.5"/>
+      <bendpoint index="1" location="790,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="e8e9fe19-11d1-4929-b86a-41dfd6918192" blue="255"
+      conditionDescription="false"
+      conditionText="dt_pep/compuertas/pepFamily = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S57" sourceLocation="790,118" sourceTerminal="RIGHT"
+      target="S60" targetLocation="949,118" targetTerminal="LEFT" uid="T61">
+      <bendpoint index="0" location="920,149" weight="0.5"/>
+      <bendpoint index="1" location="920,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="24" x="857" y="132">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/pepFamily"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="8ae08cb8-603b-4956-9525-a18f41482325" blue="255"
+      conditionDescription="false"
+      conditionText="dt_pep/compuertas/calificacionPEP = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S26" sourceLocation="966,199" sourceTerminal="TOP"
+      target="S60" targetLocation="966,135" targetTerminal="BOTTOM" uid="T62">
+      <bendpoint index="0" location="1018,198" weight="0.5"/>
+      <bendpoint index="1" location="1018,198" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="24" x="1015" y="190">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/calificacionPEP"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="3e867eae-da78-4797-8090-8886f4665127" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S60"
+      sourceLocation="983,118" sourceTerminal="RIGHT" target="S34"
+      targetLocation="1339,118" targetTerminal="LEFT" uid="T63">
+      <bendpoint index="0" location="1212,149" weight="0.5"/>
+      <bendpoint index="1" location="1212,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="14cc2cd9-9f1c-4db4-8649-5673c8abb24a" blue="255"
+      conditionDescription="true"
+      conditionText="dt_pep/compuertas/calificacionPEP = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S26" sourceLocation="983,216" sourceTerminal="RIGHT"
+      target="S39" targetLocation="1037,216" targetTerminal="LEFT" uid="T64">
+      <bendpoint index="0" location="1062,247" weight="0.5"/>
+      <bendpoint index="1" location="1062,247" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="19" x="1052" y="223">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/calificacionPEP"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="4bb4afd2-2ebe-4a0c-8516-e6cd41a31fd3" blue="255"
+      conditionDescription="todos false"
+      conditionText="dt_pep/compuertas/civilAssociation = false and&#xa;dt_pep/compuertas/pepFamily = false and&#xa;dt_pep/compuertas/publicPosition = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S52" sourceLocation="554,101" sourceTerminal="TOP"
+      target="S60" targetLocation="966,101" targetTerminal="TOP" uid="T65">
+      <bendpoint index="0" location="606,89" weight="0.5"/>
+      <bendpoint index="1" location="1018,89" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="54" x="436" y="73">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and"
+          leftFieldPath="compuertas/civilAssociation"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'false'"/>
+        <row chainOperator="and" leftFieldPath="compuertas/pepFamily"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'false'"/>
+        <row chainOperator="" leftFieldPath="compuertas/publicPosition"
+          leftOperand="{ProcessNamespace}dt_pep" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="f2464116-12ca-4124-a9f1-5cb733f4756b" blue="255"
+      conditionDescription="exitCode=0032" conditionText=""
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S39" sourceLocation="1130,216" sourceTerminal="RIGHT"
+      target="S69" targetLocation="1222,216" targetTerminal="LEFT" uid="T71">
+      <bendpoint index="0" location="1228,247" weight="0.5"/>
+      <bendpoint index="1" location="1228,247" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="72" x="1186" y="229">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="59a68f2f-b430-4b10-829e-92334b4af258" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S69"
+      sourceLocation="1315,216" sourceTerminal="RIGHT" target="S36"
+      targetLocation="1347,216" targetTerminal="LEFT" uid="T72">
+      <bendpoint index="0" location="1382,247" weight="0.5"/>
+      <bendpoint index="1" location="1382,247" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="5cc94b1b-3d16-4ac6-8a83-2f72cf28548e" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="339,118" sourceTerminal="RIGHT" target="S76"
+      targetLocation="379,118" targetTerminal="LEFT" uid="T77">
+      <bendpoint index="0" location="410,149" weight="0.5"/>
+      <bendpoint index="1" location="410,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="6115f339-7f34-4f03-9f1a-dca8b8c58dac" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S76"
+      sourceLocation="472,118" sourceTerminal="RIGHT" target="S52"
+      targetLocation="537,118" targetTerminal="LEFT" uid="T78">
+      <bendpoint index="0" location="556,149" weight="0.5"/>
+      <bendpoint index="1" location="556,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <annotationFlow Id="95707246-d2c0-4d17-91f9-d8abb7b5889f" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S10" sourceLocation="292,148" sourceTerminal="BOTTOM"
+      target="N13" targetLocation="278,200" targetTerminal="TOP" uid="T15">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="fab37bda-efb7-4a9e-bbc8-d41674b23191" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S16" sourceLocation="675,148" sourceTerminal="BOTTOM"
+      target="N18" targetLocation="550,260" targetTerminal="TOP" uid="T20">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="24bd5bb3-9423-4d6d-bf1a-b232e4f3a0b8" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S21" sourceLocation="850,246" sourceTerminal="BOTTOM"
+      target="N23" targetLocation="779,313" targetTerminal="TOP" uid="T25">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="4146315f-002c-4751-9bd9-00a58785407a" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S39" sourceLocation="1083,246" sourceTerminal="BOTTOM"
+      target="N42" targetLocation="1042,313" targetTerminal="TOP" uid="T43">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <swimlane Id="b9ff58c2-6bf5-432f-a3c8-32015f69a712" blue="255"
+      green="255" height="369" label="webMethods" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods" red="255"
+      uid="W8" width="1476">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="b349fb1d-9f6c-4fc8-a42e-f96a882c2b49" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="752d2f80-bcec-4ecf-b810-c86b567ede10"
+      label="SP_PEP (KYC)" logicalServer="Default" poolName="6"
+      stepLock="false" uid="S3" useCorrelation="false" x="22" y="30">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

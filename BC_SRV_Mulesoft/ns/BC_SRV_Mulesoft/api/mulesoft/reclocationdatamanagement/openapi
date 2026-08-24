@@ -1,0 +1,3094 @@
+openapi: 3.0.0
+info:
+  title: Rec Location Data Management
+  contact: {}
+  version: 1.7.3
+servers:
+- url: "https://${HOST_NAME}/experience/marketData/locationDataManagement"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/street/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1StreetEvaluate_POST
+      description: Servicio de Dominio encargado de consultar los datos correctos
+        de una calle.
+      operationId: V1StreetEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: authorization
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateStreetRq'
+              - example:
+                  street:
+                    location:
+                    - street:
+                        streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                  organisation:
+                    organisationCode: "2"
+                  channelFacility:
+                    channelReferenceId: APOLO
+            example:
+              street:
+                location:
+                - street:
+                    streetName: dbdf93dc6ae43db67c56ab8a226daa28
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluateStreetRs'
+                - example:
+                    street:
+                      location:
+                      - street:
+                          streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                          streetCode: 6d166f1e69c6a52c1dbccfb39a237dd7
+              example:
+                street:
+                  location:
+                  - street:
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                      streetCode: 6d166f1e69c6a52c1dbccfb39a237dd7
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/sepomex/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1SepomexRetrieve_POST
+      description: Servicio de dominio que se encargará de consultar el catálogo de
+        direcciones.
+      operationId: V1SepomexRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveSepomexRq'
+              - example:
+                  sepomex:
+                    location:
+                    - postalCode: 064A1B28141F5A118925852BBB124BAF
+            example:
+              sepomex:
+                location:
+                - postalCode: 064A1B28141F5A118925852BBB124BAF
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveSepomexRs'
+                - example:
+                    sepomex:
+                      location:
+                      - city:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                          name: 92EAF3719159C372F3D50337E0A14F57
+                        postalCode: a68ff546db3e1dfbbef72041279c5574
+                        countryDistrict:
+                          code: 24c53cacba758b4fee3bebc22d9a63d3
+                        country:
+                          code: MEX
+                        state:
+                          code: 4a35783a172aad8ad502ef6a122be2fe
+                        neighborhoodList:
+                        - number: ecff412c5a1d5db57bfb545bdf355d3f
+                          name: 92EAF3719159C372F3D50337E0A14F57
+              example:
+                sepomex:
+                  location:
+                  - city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      name: 92EAF3719159C372F3D50337E0A14F57
+                    postalCode: a68ff546db3e1dfbbef72041279c5574
+                    countryDistrict:
+                      code: 24c53cacba758b4fee3bebc22d9a63d3
+                    country:
+                      code: MEX
+                    state:
+                      code: 4a35783a172aad8ad502ef6a122be2fe
+                    neighborhoodList:
+                    - number: ecff412c5a1d5db57bfb545bdf355d3f
+                      name: 92EAF3719159C372F3D50337E0A14F57
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/neighborhood/retrieve:
+    get:
+      tags:
+      - v1
+      summary: V1NeighborhoodRetrieve_GET
+      description: Servicio de dominio encargado de consultar las Colonias
+      operationId: V1NeighborhoodRetrieve_GET
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: postalCode
+        in: query
+        description: ""
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: Example
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveNeighborhoodRs'
+                - example:
+                    location:
+                    - neighborhoodList:
+                      - name: ecff412c5a1d5db57bfb545bdf355d3f
+              example:
+                location:
+                - neighborhoodList:
+                  - name: ecff412c5a1d5db57bfb545bdf355d3f
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/location/register:
+    post:
+      tags:
+      - v1
+      summary: V1LocationRegister_POST
+      description: Este servicio de dominio permite guardar la Dirección Del Cliente
+      operationId: V1LocationRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerLocationRq'
+              - example:
+                  location:
+                  - locationAddressType: PARTY_ADDRESS
+                    locationInegiCode: 98f13708210194c475687be6106a3b84
+                    street:
+                      streetNumber: 98f13708210194c475687be6106a3b84
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                    neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                    locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                    locationReferencePoint: d41e0312b78db54d2e464dd97e54178a
+                    locationObservations: d41e0312b78db54d2e464dd97e54178a
+                    neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                    cityNumber: 2
+                    country:
+                      code: 24c53cacba758b4fee3bebc22d9a63d3
+                    countyDistrict:
+                      code: 24c53cacba758b4fee3bebc22d9a63d3
+                      name: 24c53cacba758b4fee3bebc22d9a63d3
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                    postalCode: 049d64bd087ad59d9e5320df965a4820
+                    city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    province:
+                      code: 751d31dd6b56b26b29dac2c0e1839e34
+                      name: 24c53cacba758b4fee3bebc22d9a63d3
+                    state:
+                      code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                    externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                    internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                    houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    cardinalPoint: NORTE
+                    sector: c085f5f4520170f210097480ab4ab414
+                    block: c085f5f4520170f210097480ab4ab414
+                    stage: 6ef16950a64657f212c144bc668c5934
+                    lot: a87ff679a2f3e71d9181a67b7542122c
+                    building: e698b5edc0e267abc4dbc54457b6087a
+                    entryPoint: f045c7902bd388666d8859c9f9423868
+                    isHousingUnit: true
+                  partyReference:
+                    referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                    referenceIdCoppel: 4d696c8238971e7a68c8e5f6c340d1c0
+                    contactPoint:
+                    - contactPointType: cellphone
+                      contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                      contactPointDetail: "85071"
+                      contactPointStatus: status
+                  sequence: "236670474"
+                  user: "98681012"
+                  dateInsert: 04/22/2022
+            example:
+              location:
+              - locationAddressType: PARTY_ADDRESS
+                locationInegiCode: 98f13708210194c475687be6106a3b84
+                street:
+                  streetNumber: 98f13708210194c475687be6106a3b84
+                  streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                locationReferencePoint: d41e0312b78db54d2e464dd97e54178a
+                locationObservations: d41e0312b78db54d2e464dd97e54178a
+                neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                cityNumber: 2
+                country:
+                  code: 24c53cacba758b4fee3bebc22d9a63d3
+                countyDistrict:
+                  code: 24c53cacba758b4fee3bebc22d9a63d3
+                  name: 24c53cacba758b4fee3bebc22d9a63d3
+                  inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                postalCode: 049d64bd087ad59d9e5320df965a4820
+                city:
+                  code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                province:
+                  code: 751d31dd6b56b26b29dac2c0e1839e34
+                  name: 24c53cacba758b4fee3bebc22d9a63d3
+                state:
+                  code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                  inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                cardinalPoint: NORTE
+                sector: c085f5f4520170f210097480ab4ab414
+                block: c085f5f4520170f210097480ab4ab414
+                stage: 6ef16950a64657f212c144bc668c5934
+                lot: a87ff679a2f3e71d9181a67b7542122c
+                building: e698b5edc0e267abc4dbc54457b6087a
+                entryPoint: f045c7902bd388666d8859c9f9423868
+                isHousingUnit: true
+              partyReference:
+                referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                referenceIdCoppel: 4d696c8238971e7a68c8e5f6c340d1c0
+                contactPoint:
+                - contactPointType: cellphone
+                  contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                  contactPointDetail: "85071"
+                  contactPointStatus: status
+              sequence: "236670474"
+              user: "98681012"
+              dateInsert: 04/22/2022
+        required: true
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/sepomex/update:
+    patch:
+      tags:
+      - v1
+      summary: V1SepomexUpdate_PATCH
+      description: Servicio de Dominio que actualiza en tabla Address (Homologación
+        SEPOMEX)
+      operationId: V1SepomexUpdate_PATCH
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateSepomexRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                  sepomex:
+                    location:
+                    - countryDistrict:
+                        code: d48d9783fee1f1e84a5acbd98169d047
+                        name: d48d9783fee1f1e84a5acbd98169d047
+                      street:
+                        streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                        streetNumber: d48d9783fee1f1e84a5acbd98169d047
+                        streetExternalNumber: fee1f1e84a5acb
+                        streetInternalNumber: 02a44259755d38e6
+                      neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                      neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      postalCode: 064A1B28141F5A118925852BBB124BAF
+                      state:
+                        name: 0b4596f8efe110dc55bbe564213dfb33
+                        code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                      city:
+                        name: 0b4596f8efe110dc55bbe564213dfb33
+                        code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+              sepomex:
+                location:
+                - countryDistrict:
+                    code: d48d9783fee1f1e84a5acbd98169d047
+                    name: d48d9783fee1f1e84a5acbd98169d047
+                  street:
+                    streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                    streetNumber: d48d9783fee1f1e84a5acbd98169d047
+                    streetExternalNumber: fee1f1e84a5acb
+                    streetInternalNumber: 02a44259755d38e6
+                  neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                  neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                  postalCode: 064A1B28141F5A118925852BBB124BAF
+                  state:
+                    name: 0b4596f8efe110dc55bbe564213dfb33
+                    code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                  city:
+                    name: 0b4596f8efe110dc55bbe564213dfb33
+                    code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+        required: true
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/state/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1StateRetrieve_POST
+      description: Servicio de dominio que se encargará de consultar el nombre del
+        estado del cliente.
+      operationId: V1StateRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveStateRq'
+              - example:
+                  location:
+                  - state:
+                      code: 464E07AFC9E46359FB480839150595C5
+                    country:
+                      code: 464E07AFC9E46359FB480839150595C5
+            example:
+              location:
+              - state:
+                  code: 464E07AFC9E46359FB480839150595C5
+                country:
+                  code: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveStateRs'
+                - example:
+                    location:
+                    - state:
+                        name: 464E07AFC9E46359FB480839150595C5
+              example:
+                location:
+                - state:
+                    name: 464E07AFC9E46359FB480839150595C5
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/location/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1LocationRetrieve_POST
+      description: API que permite consultar la dirección del cliente
+      operationId: V1LocationRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveLocationRq'
+              - example:
+                  partyReference:
+                    referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                    location:
+                    - locationAddressType: PARTY_ADDRESS
+            example:
+              partyReference:
+                referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                location:
+                - locationAddressType: PARTY_ADDRESS
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveLocationRs'
+                - example:
+                    partyReference:
+                      location:
+                      - postalCode: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        locationObservations: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        city:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        country:
+                          code: MEX
+                        state:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                          locationInegiCode: b98fc8f5a38bca1e3d75
+                          inegiCode: b98f83032f6e8ca0d75
+                        province:
+                          code: 0b98720dcb2cc6fd60358a45dfbc5b87
+                          name: 0b98720dcb2cc6fd60358a45dfbc5b87
+                        street:
+                          streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                          streetNumber: dbdf93dc6ae43db67c56ab8a226daa28
+                        countyDistrict:
+                          name: 6512bd43d9caa6e02c990b0a82652dca
+                        houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        externalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        internalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        neighborhoodNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        cardinalPoint: NORTE
+                        isHousingUnit: true
+                        locationReferencePoint: 6512bd43d9caa6e02c990b0a82652dca
+                        sector: 6512bd43d9caa6e02c990b0a82652dca
+                        stage: 6512bd43d9caa6e02c990b0a82652dca
+                        lot: 6512bd43d9caa6e02c990b0a82652dca
+                        building: 6512bd43d9caa6e02c990b0a82652dca
+                        entryPoint: 6512bd43d9caa6e02c990b0a82652dca
+                        block: 6512bd43d9caa6e02c990b0a82652dca
+                      contactPoint:
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: phone Number
+                        contactPointDetail: "34215"
+                        contactPointStatus: V
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: cellphone
+                        contactPointDetail: "34215"
+                        contactPointStatus: V
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: work Phone Number
+                        contactPointStatus: V
+                        contactPointDetail: "34215"
+                      - contactPointValue: W8uYCJUfwARjTvFBm4PdOH6WVAsbDW/1XLwbVxSDcFs
+                        contactPointType: Electronic Address
+                        contactPointStatus: V
+                        contactPointDetail: "34215"
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: postalCode
+                        contactPointStatus: V
+                        contactPointDetail: "34215"
+              example:
+                partyReference:
+                  location:
+                  - postalCode: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    locationObservations: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    country:
+                      code: MEX
+                    state:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      locationInegiCode: b98fc8f5a38bca1e3d75
+                      inegiCode: b98f83032f6e8ca0d75
+                    province:
+                      code: 0b98720dcb2cc6fd60358a45dfbc5b87
+                      name: 0b98720dcb2cc6fd60358a45dfbc5b87
+                    street:
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                      streetNumber: dbdf93dc6ae43db67c56ab8a226daa28
+                    countyDistrict:
+                      name: 6512bd43d9caa6e02c990b0a82652dca
+                    houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    externalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    internalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    neighborhoodNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    cardinalPoint: NORTE
+                    isHousingUnit: true
+                    locationReferencePoint: 6512bd43d9caa6e02c990b0a82652dca
+                    sector: 6512bd43d9caa6e02c990b0a82652dca
+                    stage: 6512bd43d9caa6e02c990b0a82652dca
+                    lot: 6512bd43d9caa6e02c990b0a82652dca
+                    building: 6512bd43d9caa6e02c990b0a82652dca
+                    entryPoint: 6512bd43d9caa6e02c990b0a82652dca
+                    block: 6512bd43d9caa6e02c990b0a82652dca
+                  contactPoint:
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: phone Number
+                    contactPointDetail: "34215"
+                    contactPointStatus: V
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: cellphone
+                    contactPointDetail: "34215"
+                    contactPointStatus: V
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: work Phone Number
+                    contactPointStatus: V
+                    contactPointDetail: "34215"
+                  - contactPointValue: W8uYCJUfwARjTvFBm4PdOH6WVAsbDW/1XLwbVxSDcFs
+                    contactPointType: Electronic Address
+                    contactPointStatus: V
+                    contactPointDetail: "34215"
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: postalCode
+                    contactPointStatus: V
+                    contactPointDetail: "34215"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/city/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1CityRetrieve_POST
+      description: Servicio de dominio que se encargará de consultar el nombre de
+        la ciudad del cliente.
+      operationId: V1CityRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveCityRq'
+              - example:
+                  location:
+                  - city:
+                      code: 464E07AFC9E46359FB480839150595C5
+                    country:
+                      code: 464E07AFC9E46359FB480839150595C5
+                    state:
+                      code: 464E07AFC9E46359FB480839150595C5
+            example:
+              location:
+              - city:
+                  code: 464E07AFC9E46359FB480839150595C5
+                country:
+                  code: 464E07AFC9E46359FB480839150595C5
+                state:
+                  code: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveCityRs'
+                - example:
+                    location:
+                    - city:
+                        name: 464E07AFC9E46359FB480839150595C5
+              example:
+                location:
+                - city:
+                    name: 464E07AFC9E46359FB480839150595C5
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvementLocation/register:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementLocationRegister_POST
+      description: API que permite guardar la dirección del CONYUGE del cliente
+      operationId: V1CustomerRelationshipInvolvementLocationRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerCustomerRelationshipInvolvementLocationRq'
+              - example:
+                  employeeReference: "97523642"
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                  customerRelationshipInvolvement:
+                    sequence: 2345
+                    partyReference:
+                      location:
+                      - locationAddressType: PARTY_ADDRESS
+                        postalCode: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        locationDescription: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        locationObservations: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        city:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        country:
+                          code: MEX
+                        state:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                          locationInegiCode: b98fc8f5a38bca1e3d75
+                          inegiCode: b98f83032f6e8ca0d75
+                        province:
+                          code: 0b98720dcb2cc6fd60358a45dfbc5b87
+                          name: 0b98720dc45dfbc5b87
+                        street:
+                          streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                          streetNumber: dbdf93dc6ae43db67c56ab8a226daa28
+                        countyDistrict:
+                          code: 6512bd43d9caa6e02c990b0a82652dca
+                        houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        externalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        internalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        neighborhoodNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        cardinalPoint: NORTE
+                        isHousingUnit: true
+                        locationReferencePoint: 6512bd43d9caa6e02c990b0a82652dca
+                        sector: 6512bd43d9caa6e02c990b0a82652dca
+                        stage: 6512bd43d9caa6e02c990b0a82652dca
+                        lot: 6512bd43d9caa6e02c990b0a82652dca
+                        building: 6512bd43d9caa6e02c990b0a82652dca
+                        entryPoint: 6512bd43d9caa6e02c990b0a82652dca
+                        block: 6512bd43d9caa6e02c990b0a82652dca
+                      referenceId: 738754a8dc187735701c05a35e80aff9
+                      contactPoint:
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: phone Number
+                        contactPointDetail: "3421"
+                        contactPointStatus: V
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: cellphone
+                        contactPointDetail: "3421"
+                        contactPointStatus: V
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: work Phone Number
+                        contactPointDetail: "3421"
+                        contactPointStatus: V
+            example:
+              employeeReference: "97523642"
+              partyReference:
+                referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+              customerRelationshipInvolvement:
+                sequence: 2345
+                partyReference:
+                  location:
+                  - locationAddressType: PARTY_ADDRESS
+                    postalCode: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    locationDescription: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    neighborhood: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    locationObservations: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    country:
+                      code: MEX
+                    state:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      locationInegiCode: b98fc8f5a38bca1e3d75
+                      inegiCode: b98f83032f6e8ca0d75
+                    province:
+                      code: 0b98720dcb2cc6fd60358a45dfbc5b87
+                      name: 0b98720dc45dfbc5b87
+                    street:
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                      streetNumber: dbdf93dc6ae43db67c56ab8a226daa28
+                    countyDistrict:
+                      code: 6512bd43d9caa6e02c990b0a82652dca
+                    houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    externalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    internalHouseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    neighborhoodNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    cardinalPoint: NORTE
+                    isHousingUnit: true
+                    locationReferencePoint: 6512bd43d9caa6e02c990b0a82652dca
+                    sector: 6512bd43d9caa6e02c990b0a82652dca
+                    stage: 6512bd43d9caa6e02c990b0a82652dca
+                    lot: 6512bd43d9caa6e02c990b0a82652dca
+                    building: 6512bd43d9caa6e02c990b0a82652dca
+                    entryPoint: 6512bd43d9caa6e02c990b0a82652dca
+                    block: 6512bd43d9caa6e02c990b0a82652dca
+                  referenceId: 738754a8dc187735701c05a35e80aff9
+                  contactPoint:
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: phone Number
+                    contactPointDetail: "3421"
+                    contactPointStatus: V
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: cellphone
+                    contactPointDetail: "3421"
+                    contactPointStatus: V
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: work Phone Number
+                    contactPointDetail: "3421"
+                    contactPointStatus: V
+        required: true
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/country/retrieve:
+    post:
+      tags:
+      - v1
+      summary: V1CountryRetrieve_POST
+      description: Servicio de dominio que se encargará de consultar el nombre del
+        estado del cliente.
+      operationId: V1CountryRetrieve_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/retrieveCountryRq'
+              - example:
+                  location:
+                  - country:
+                      code: 464E07AFC9E46359FB480839150595C5
+            example:
+              location:
+              - country:
+                  code: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/retrieveCountryRs'
+                - example:
+                    location:
+                    - country:
+                        name: 464E07AFC9E46359FB480839150595C5
+              example:
+                location:
+                - country:
+                    name: 464E07AFC9E46359FB480839150595C5
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/location/update:
+    patch:
+      tags:
+      - v1
+      summary: V1LocationUpdate_PATCH
+      description: Este servicio de dominio permite actualizar la dirección Del Cliente
+      operationId: V1LocationUpdate_PATCH
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/updateLocationRq'
+              - example:
+                  dateInsert: 04/22/2022
+                  location:
+                  - block: c085f5f4520170f210097480ab4ab414
+                    building: e698b5edc0e267abc4dbc54457b6087a
+                    cardinalPoint: NORTE
+                    city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      name: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    cityNumber: 2
+                    country:
+                      code: 24c53cacba758b4fee3bebc22d9a63d3
+                    countyDistrict:
+                      code: 24c53cacba758b4fee3bebc22d9a63d3
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                      name: 24c53cacba758b4fee3bebc22d9a63d3
+                    entryPoint: f045c7902bd388666d8859c9f9423868
+                    externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                    houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                    isHousingUnit: true
+                    locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                    locationInegiCode: 98f13708210194c475687be6106a3b84
+                    locationObservations: d41e0312b78db54d2e464dd97e54178a
+                    locationReferencePoint: d41e0312b78db54d2e464dd97e54178a
+                    lot: a87ff679a2f3e71d9181a67b7542122c
+                    neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                    neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                    postalCode: 049d64bd087ad59d9e5320df965a4820
+                    province:
+                      code: 751d31dd6b56b26b29dac2c0e1839e34
+                      name: 24c53cacba758b4fee3bebc22d9a63d3
+                    sector: c085f5f4520170f210097480ab4ab414
+                    stage: 6ef16950a64657f212c144bc668c5934
+                    state:
+                      code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                    street:
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                      streetNumber: 98f13708210194c475687be6106a3b84
+                  partyReference:
+                    contactPoint:
+                    - contactPointType: cellphone
+                      contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                    referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                    referenceIdCoppel: 4d696c8238971e7a68c8e5f6c340d1c0
+                  sequence: "236670474"
+                  user: "98681012"
+            example:
+              dateInsert: 04/22/2022
+              location:
+              - block: c085f5f4520170f210097480ab4ab414
+                building: e698b5edc0e267abc4dbc54457b6087a
+                cardinalPoint: NORTE
+                city:
+                  code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                  name: b98f83032f6e8ca0c8f5a38bca1e3d75
+                cityNumber: 2
+                country:
+                  code: 24c53cacba758b4fee3bebc22d9a63d3
+                countyDistrict:
+                  code: 24c53cacba758b4fee3bebc22d9a63d3
+                  inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                  name: 24c53cacba758b4fee3bebc22d9a63d3
+                entryPoint: f045c7902bd388666d8859c9f9423868
+                externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                isHousingUnit: true
+                locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                locationInegiCode: 98f13708210194c475687be6106a3b84
+                locationObservations: d41e0312b78db54d2e464dd97e54178a
+                locationReferencePoint: d41e0312b78db54d2e464dd97e54178a
+                lot: a87ff679a2f3e71d9181a67b7542122c
+                neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                neighborhoodNumber: d3d9446802a44259755d38e6d163e820
+                postalCode: 049d64bd087ad59d9e5320df965a4820
+                province:
+                  code: 751d31dd6b56b26b29dac2c0e1839e34
+                  name: 24c53cacba758b4fee3bebc22d9a63d3
+                sector: c085f5f4520170f210097480ab4ab414
+                stage: 6ef16950a64657f212c144bc668c5934
+                state:
+                  code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                  inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                street:
+                  streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                  streetNumber: 98f13708210194c475687be6106a3b84
+              partyReference:
+                contactPoint:
+                - contactPointType: cellphone
+                  contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                referenceId: 4d696c8238971e7a68c8e5f6c340d1c0
+                referenceIdCoppel: 4d696c8238971e7a68c8e5f6c340d1c0
+              sequence: "236670474"
+              user: "98681012"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/location/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1LocationEvaluate_POST
+      description: "API encargada de validar que el nombre de la calle exista y retorna\
+        \ el número de la calle, para el flujo de validación de domicilio en el proceso\
+        \ de onboarding."
+      operationId: V1LocationEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateLocationRq'
+              - example:
+                  location:
+                  - street:
+                      streetName: 4d696c8238971e7a68c8e5f6c340d1c0
+            example:
+              location:
+              - street:
+                  streetName: 4d696c8238971e7a68c8e5f6c340d1c0
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluateLocationRs'
+                - example:
+                    location:
+                    - street:
+                        streetCode: 4d696c8238971e7a68c8e5f6c340d1c0
+              example:
+                location:
+                - street:
+                    streetCode: 4d696c8238971e7a68c8e5f6c340d1c0
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    evaluateStreetRq:
+      title: evaluateStreetRq
+      type: object
+      properties:
+        street:
+          $ref: '#/components/schemas/street'
+        organisation:
+          $ref: '#/components/schemas/organisation'
+        channelFacility:
+          $ref: '#/components/schemas/channelFacility'
+    retrieveSepomexRq:
+      title: retrieveSepomexRq
+      type: object
+      properties:
+        sepomex:
+          $ref: '#/components/schemas/sepomex'
+    registerLocationRq:
+      title: registerLocationRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        location:
+          $ref: '#/components/schemas/location'
+        sequence:
+          type: string
+          description: Sequencia generada
+        user:
+          type: string
+          description: Identificador del usuario en el sistema
+        dateInsert:
+          type: string
+          description: Fecha de la inserción o actualización de los datos de la referencia.
+    updateSepomexRq:
+      title: updateSepomexRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        sepomex:
+          $ref: '#/components/schemas/sepomex'
+    retrieveStateRq:
+      title: retrieveStateRq
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    retrieveLocationRq:
+      title: retrieveLocationRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    retrieveCityRq:
+      title: retrieveCityRq
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    registerCustomerRelationshipInvolvementLocationRq:
+      title: registerCustomerRelationshipInvolvementLocationRq
+      type: object
+      properties:
+        employeeReference:
+          type: string
+          description: employeeReference
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    retrieveCountryRq:
+      title: retrieveCountryRq
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    updateLocationRq:
+      title: updateLocationRq
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        location:
+          $ref: '#/components/schemas/location'
+        sequence:
+          type: string
+          description: Sequencia generada
+        user:
+          type: string
+          description: Identificador del usuario en el sistema
+        dateInsert:
+          type: string
+          description: Fecha de la inserción o actualización de los datos de la referencia.
+    evaluateLocationRq:
+      title: evaluateLocationRq
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    evaluateStreetRs:
+      title: evaluateStreetRs
+      type: object
+      properties:
+        street:
+          $ref: '#/components/schemas/street'
+    retrieveSepomexRs:
+      title: retrieveSepomexRs
+      type: object
+      properties:
+        sepomex:
+          $ref: '#/components/schemas/sepomex'
+    retrieveNeighborhoodRs:
+      title: retrieveNeighborhoodRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    retrieveStateRs:
+      title: retrieveStateRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    retrieveLocationRs:
+      title: retrieveLocationRs
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    retrieveCityRs:
+      title: retrieveCityRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    retrieveCountryRs:
+      title: retrieveCountryRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    evaluateLocationRs:
+      title: evaluateLocationRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    activitySector:
+      title: activitySector
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del sector de actividad.
+        code:
+          type: string
+          description: Código del sector de actividad.
+    bankBranch:
+      title: bankBranch
+      type: object
+      properties:
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+    birthPlace:
+      title: birthPlace
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    channelFacility:
+      title: channelFacility
+      type: object
+      properties:
+        channelReferenceId:
+          type: string
+          description: Nombre del sistema del usuario que creó la aplicación.
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    contactPoint:
+      title: contactPoint
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+            - postalCode
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    countryDistrict:
+      title: countryDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    countyDistrict:
+      title: countyDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+    customerRelationshipInvolvement:
+      title: customerRelationshipInvolvement
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        customerRelationshipInvolvementType:
+          type: string
+          description: Tipo de Rol A - PEP B - CONYUGE C - REFERENCIA
+        partyRelationshipType:
+          type: string
+          description: "Parentesco acotado a 1 posición que puede contener los siguientes\
+            \ valores: A - ABUELO (A) B - SOBRINO (A) C - CUÑADO (A) E - ESPOSO(A)\
+            \ / CÓNYUGE H - HERMANO (A) I - AMIGO(A)/CONOCIDO(A) J - HIJO (A) N -\
+            \ NIETO (A) P - PADRE / MADRE R - PRIMO(A) T - TIO (A) U - SUEGRO (A)"
+        dateTime:
+          type: string
+          description: Fecha de validación
+        sequence:
+          type: number
+          description: Secuencia del mensaje a mostrar
+    economicActivity:
+      title: economicActivity
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+    group:
+      title: group
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del grupo.
+        code:
+          type: string
+          description: Código del grupo.
+    identificationDevice:
+      title: identificationDevice
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: El género de la persona obtenido de ocr * M = Masculino* F
+            = Femenino
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          $ref: '#/components/schemas/machineReadZone'
+        personName:
+          $ref: '#/components/schemas/personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    identifications:
+      title: identifications
+      type: array
+      items:
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: Indica el tipo de documento de identidad * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          locationInegiCode:
+            type: string
+            description: Referencia de la localidad con respecto al Inegi
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+          cityNumber:
+            type: number
+            description: Numero de ciudad
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+              streetExternalNumber:
+                type: string
+                description: Número exterior
+              streetInternalNumber:
+                type: string
+                description: Número interior
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+          countryDistrict:
+            $ref: '#/components/schemas/countryDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+          apartment:
+            type: string
+            description: numero de apartamento
+    machineReadZone:
+      title: machineReadZone
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: valor de la línea ZLM.
+        description: Objeto que define las líneas ZLM.
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+          number:
+            type: string
+            description: Número del Barrio.
+    organisation:
+      title: organisation
+      type: object
+      properties:
+        organisationName:
+          type: string
+          description: Nombre oficial de la organización
+        organisationCode:
+          type: string
+          description: Código oficial de la organización
+    partyReference:
+      title: partyReference
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        personName:
+          $ref: '#/components/schemas/personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+        location:
+          $ref: '#/components/schemas/location'
+        gender:
+          type: string
+          description: El género de la persona  * M = Masculino * F = Femenino
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+        maritalStatus:
+          type: string
+          description: Estado civil.
+        birthPlace:
+          $ref: '#/components/schemas/birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        dependents:
+          type: string
+          description: dependientes
+    partyType:
+      title: partyType
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+    pepProfile:
+      title: pepProfile
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+        role:
+          type: string
+          description: Rol del PEP.
+    personName:
+      title: personName
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+    personProfile:
+      title: personProfile
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+        pepProfile:
+          $ref: '#/components/schemas/pepProfile'
+        partyType:
+          $ref: '#/components/schemas/partyType'
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        economicActivity:
+          $ref: '#/components/schemas/economicActivity'
+        segment:
+          $ref: '#/components/schemas/segment'
+        group:
+          $ref: '#/components/schemas/group'
+        subGroup:
+          $ref: '#/components/schemas/subGroup'
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+        residencyYear:
+          type: string
+          description: Año de residencia.
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    segment:
+      title: segment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del segmento.
+        code:
+          type: string
+          description: Código del segmento.
+    sepomex:
+      title: sepomex
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+      description: Muestra la informacion de la consulta del catalogo de direcciones
+        usando el servicio postal de Mexico
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+        inegiCode:
+          type: string
+          description: Nombre del estado con respecto al Inegi
+        locationInegiCode:
+          type: string
+          description: Referencia de la localidad con respecto al Inegi
+      description: Informacion sobre el estado
+    street:
+      title: street
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+      description: Muestra la informacion sobre la calle solicitada
+    subGroup:
+      title: subGroup
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del subgrupo.
+        code:
+          type: string
+          description: Código del subgrupo.

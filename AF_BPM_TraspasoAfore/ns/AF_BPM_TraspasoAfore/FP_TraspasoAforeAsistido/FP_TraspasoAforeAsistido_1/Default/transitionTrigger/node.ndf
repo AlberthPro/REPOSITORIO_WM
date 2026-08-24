@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">webMethods/trigger</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">AF_BPM_TraspasoAfore.FP_TraspasoAforeAsistido.FP_TraspasoAforeAsistido_1.Default:transitionTrigger</value>
+  <value name="node_pkg">AF_BPM_TraspasoAfore</value>
+  <value name="is_public">false</value>
+  <value name="trigger_type">broker-trigger</value>
+  <record name="trigger" javaclass="com.wm.util.Values">
+    <value name="concurrent">true</value>
+    <value name="auditOption">0</value>
+    <record name="auditSettings" javaclass="com.wm.util.Values">
+      <value name="document_data">0</value>
+      <value name="startExecution">false</value>
+      <value name="stopExecution">false</value>
+      <value name="onError">true</value>
+    </record>
+    <record name="redeliveryOptions" javaclass="com.wm.util.Values">
+      <value name="max">-1</value>
+      <value name="delayInterval">10000</value>
+      <value name="onRedeliveryFailure">0</value>
+      <value name="resumeTaskSvcName">wm.prt.admin:monitorPRTDB</value>
+    </record>
+    <value name="maxConcurrentThreads">10</value>
+    <value name="inDoubtDetection">false</value>
+    <value name="resolveWithHistory">false</value>
+    <value name="resolutionHistoryTTL">7200000</value>
+    <value name="uniqueId">VkLNWwhUzoaidYjF8p0V+eMYy7M=</value>
+    <value name="executeUser">Administrator</value>
+    <array name="conditions" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
+            <null name="filter"/>
+            <value name="umFilter">( ProcessModelID = 'AF_BPM_TraspasoAfore/FP_TraspasoAforeAsistido' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S86', 'S44', 'S94', 'S43', 'S15', 'S39', 'S92', 'S96', 'S17', 'S45', 'S87', 'S35', 'S14', 'S276', 'S62', 'S69', 'S32', 'S36', 'S56', 'S81', 'S57', 'S19', 'S37', 'S34', 'S89', 'S20', 'S97', 'S11', 'S88', 'S33', 'S48', 'S28', 'S27', 'S75', 'S59', 'S30', 'S24', 'S64', 'S9', 'S80', 'S18', 'S67', 'S49', 'S90', 'S55', 'S46', 'S29', 'S63', 'S52', 'S21', 'S71', 'S79', 'S41', 'S85', 'S54', 'S66', 'S68', 'S23', 'S91', 'S12', 'S58', 'S25', 'S26', 'S70', 'S93', 'S51', 'S38', 'S273', 'S83', 'S76', 'S84', 'S13', 'S95', 'S61', 'S78', 'S16', 'S65', 'S40', 'S50', 'S82', 'S60', 'S22', 'S74', 'S10', 'S42', 'S31', 'S77', 'S73', 'S72' )  ) </value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
+          <value name="conditionName">Inbound transitions</value>
+        </record>
+      </record>
+    </array>
+    <value name="processingSuspended">false</value>
+    <value name="retrievalSuspended">false</value>
+    <value name="transportAckSize">1</value>
+    <value name="deliverEnabled">true</value>
+    <value name="executeEnabled">true</value>
+    <value name="ordering">0</value>
+    <value name="joinTimeout">86400000</value>
+    <value name="serialSuspendOnError">false</value>
+    <value name="docsPrefetchMax">10</value>
+    <value name="docsPrefetchMin">4</value>
+    <value name="priorityEnabled">false</value>
+    <null name="namedObjectString"/>
+  </record>
+</Values>

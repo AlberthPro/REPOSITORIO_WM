@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">writeFileLogger</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">U3RyaW5nIHBhdGggPSBJRGF0YVV0aWwuZ2V0U3RyaW5nKHBpcGVsaW5lLmdldEN1cnNvcigpLCAi
+cGF0aCIpOw0KRmlsZSBsb2cgPSBuZXcgRmlsZShwYXRoKTsNCg0KdHJ5ew0KaWYoIWxvZy5leGlz
+dHMoKSl7DQpTeXN0ZW0ub3V0LnByaW50bG4oInRvIGNyZWF0ZSBhIGZpbGUiKTsNCmxvZy5jcmVh
+dGVOZXdGaWxlKCk7DQp9DQoNCkZpbGVXcml0ZXIgZmlsZVdyaXRlciA9IG5ldyBGaWxlV3JpdGVy
+KGxvZywgdHJ1ZSk7DQoNClN0cmluZyBkYXRhID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGlu
+ZS5nZXRDdXJzb3IoKSwgImRhdGEiKTsNCg0KQnVmZmVyZWRXcml0ZXIgYnVmZmVyZWRXcml0ZXIg
+PSBuZXcgQnVmZmVyZWRXcml0ZXIoZmlsZVdyaXRlcik7DQpidWZmZXJlZFdyaXRlci53cml0ZShk
+YXRhKyIsIik7DQoNCmJ1ZmZlcmVkV3JpdGVyLmNsb3NlKCk7DQoNClN5c3RlbS5vdXQucHJpbnRs
+bigiRG9uZSIpOw0KfSBjYXRjaChJT0V4Y2VwdGlvbiBlKSB7DQogICBJRGF0YVV0aWwucHV0KHBp
+cGVsaW5lLmdldEN1cnNvcigpLCAiZXJyb3IiLCBlKTsNCn0=</value>
+</Values>

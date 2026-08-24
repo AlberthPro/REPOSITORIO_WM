@@ -1,0 +1,93 @@
+message BC_SRV_Onboarding_docs_dt_OnboardingClient {
+optional  BC_SRV_Transversales_docs_dt_ContextoTransaccional_old dt_ContextoTransaccional = 1;
+optional  BC_SRV_Onboarding_docs_dt_OnboardingClient_DatosControl DatosControl = 2;
+optional  BC_SRV_Onboarding_docs_dt_OnboardingClient_Prospecto Prospecto = 3;
+optional  string countryNumber = 4;
+optional  string celularNum = 5;
+optional  pub_publish_envelope _env = 536870910;
+}
+message BC_SRV_Onboarding_docs_dt_OnboardingClient_DatosControl {
+optional  string requestNumber = 1;
+optional  string requestChannel = 2;
+optional  string requestStatus = 3;
+optional  string numberCte = 4;
+optional  BC_SRV_Onboarding_docs_dt_OnboardingClient_DatosControl_validaciones validaciones = 5;
+optional  bool exitoso = 6;
+}
+message BC_SRV_Onboarding_docs_dt_OnboardingClient_DatosControl_validaciones {
+optional  string telefonoValido = 1;
+optional  string esClienteAfore = 2;
+optional  string OtpValido = 3;
+optional  string IneValidoOcr = 4;
+optional  string estaListasNegras = 5;
+optional  string estaBloqueado = 6;
+optional  string decision36 = 7;
+optional  string tieneSolicitudEnProceso = 8;
+optional  string tieneSolicitudRechazada = 9;
+optional  string ineVerificadoRenapo = 10;
+optional  string ineVerificado1 = 11;
+optional  string homonimoDuplicado = 12;
+optional  string ineConDireccion = 13;
+optional  string direccionCorrecta = 14;
+}
+message BC_SRV_Onboarding_docs_dt_OnboardingClient_Prospecto {
+}
+message BC_SRV_Transversales_docs_dt_ContextoTransaccional_old {
+optional  string txId = 1;
+optional  string txStartDate = 3;
+optional  string stepId = 4;
+optional  string processDefinitionName = 10;
+optional  string processInstanceID = 2;
+optional  string customProcessInstanceId = 5;
+optional  string taskId = 6;
+optional  string customTaskId = 7;
+optional  string stepName = 8;
+optional  string applicationUserId = 11;
+optional  string executorUserId = 12;
+optional  string stopInstance = 13;
+optional  string completeTask = 14;
+optional  string stepNameToSendWebhook = 9;
+}
+message pub_publish_envelope {
+optional  string activation = 1;
+optional  int32 appLastSeqn = 2;
+optional  string appPassword = 3;
+optional  int32 appSeqn = 4;
+optional  string appUserName = 5;
+optional  int32 priority = 6;
+optional  string businessContext = 7;
+repeated  int32 controlLabel = 8;
+optional  string errorsTo = 9;
+optional  string errorRequestsTo = 10;
+optional  string locale = 11;
+optional  int32 maxResults = 12;
+optional  string replyTo = 13;
+optional  int32 runLevel = 14;
+optional  bytes signature = 15;
+optional  string signatureType = 16;
+optional  int32 startResult = 17;
+optional  int32 tag = 18;
+optional  string trackId = 19;
+optional  string transactionId = 20;
+optional  string transformState = 21;
+optional  int32 age = 22;
+optional  string connectionIntegrity = 23;
+optional  string destId = 24;
+optional  int64 enqueueTime = 25;
+optional  string logBroker = 26;
+optional  string logHost = 27;
+optional  string pubDistinguishedName = 28;
+optional  string pubId = 29;
+optional  bytes pubNetAddr = 30;
+optional  int64 pubSeqn = 31;
+repeated  int32 pubLabel = 32;
+optional  int64 recvTime = 33;
+repeated  pub_publish_envelope_route route = 34;
+optional  string uuid = 35;
+optional  string status = 36;
+}
+message pub_publish_envelope_route {
+optional  string broker = 1;
+optional  int64 recvTime = 2;
+optional  int64 enqueueTime = 3;
+}

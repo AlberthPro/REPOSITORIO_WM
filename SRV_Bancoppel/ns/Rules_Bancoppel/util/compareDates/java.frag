@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">compareDates</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">RGF0ZSBkYXRlMSA9IChEYXRlKSBJRGF0YVV0aWwuZ2V0KHBpcGVsaW5lLmdldEN1cnNvcigpLCAi
+b2J0MSIpOw0KRGF0ZSBkYXRlQSA9IChEYXRlKSBJRGF0YVV0aWwuZ2V0KHBpcGVsaW5lLmdldEN1
+cnNvcigpLCAib2J0QSIpOw0KDQpEYXRlIGRhdGUyID0gKERhdGUpIElEYXRhVXRpbC5nZXQocGlw
+ZWxpbmUuZ2V0Q3Vyc29yKCksICJvYnQyIik7DQpEYXRlIGRhdGVCID0gKERhdGUpIElEYXRhVXRp
+bC5nZXQocGlwZWxpbmUuZ2V0Q3Vyc29yKCksICJvYnRCIik7DQoNCmlmIChkYXRlQS5hZnRlcihk
+YXRlMSkgJiYgZGF0ZUIuYmVmb3JlKGRhdGUyKSl7DQpJRGF0YVV0aWwucHV0KHBpcGVsaW5lLmdl
+dEN1cnNvcigpLCAicmVzdWx0IiwgdHJ1ZSk7DQp9ZWxzZXsNCklEYXRhVXRpbC5wdXQocGlwZWxp
+bmUuZ2V0Q3Vyc29yKCksICJyZXN1bHQiLCBmYWxzZSk7DQp9</value>
+</Values>

@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="2ccd40e3-bda1-4b51-abdc-16c705479dde" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="SP_PruebaVidaVideoselfie"
+  packageName="BC_BPM_Apolo" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_videoselfie" name="{ProcessNamespace}dt_videoselfie" type="{BC_SRV_Apolo.docs}dt_videoselfie"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar prueba vida y VSInputEnv"
+    name="{ProcessNamespace}TU.Mostrar prueba vida y VSInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar prueba vida y VSOutputEnv"
+    name="{ProcessNamespace}TU.Mostrar prueba vida y VSOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar QRInputEnv"
+    name="{ProcessNamespace}TU.Mostrar QRInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar QROutputEnv"
+    name="{ProcessNamespace}TU.Mostrar QROutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Tomar video selfieInputEnv"
+    name="{ProcessNamespace}TU.Tomar video selfieInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Tomar video selfieOutputEnv"
+    name="{ProcessNamespace}TU.Tomar video selfieOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar vselfie validaInputEnv"
+    name="{ProcessNamespace}TU.Mostrar vselfie validaInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar vselfie validaOutputEnv"
+    name="{ProcessNamespace}TU.Mostrar vselfie validaOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <input name="{ProcessNamespace}dt_videoselfie"/>
+  <output name="{ProcessNamespace}dt_videoselfie"/>
+  <pool Id="481e5e57-e165-4d0b-9478-732b2effb369" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="113024a0-6eb5-4d17-aac8-729e48935cda"
+      label="SP_PruebaVidaVideoselfie" logicalServer="Default"
+      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
+      x="34" y="45">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <pool Id="4ced7068-e190-4611-a23a-b033f31a574d" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false"
+    label="SP_PruebaVidaVideoselfie" labelBlue="255" labelGreen="204"
+    labelRed="153" logicalServer="" loopMaximum="0" loopMaximumField=""
+    name="6" orientation="horizontal" red="128" retryCount="0"
+    stepLock="false" uid="P7" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="50bd21cf-bce0-4019-ba43-290d852d7691" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="webHook = START_VIDEOSELFIE_BB" uid="N14" width="216"
+      x="256" y="32">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="de0aadfa-12db-4737-a230-33505b6d047a" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="Dom_registerEndorsement"
+      uid="N42" width="162" x="810" y="230">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="7fd79fae-1eb1-4ab1-ad9e-38f35555aa9e" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="webHook = VIDEO_SELFIE_QR"
+      uid="N61" width="184" x="486" y="32">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="14760035-676f-4c65-be31-c702d92e4729" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="webHook = VIDEO_SELFIE"
+      uid="N62" width="163" x="863" y="26">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="8cae5fb3-f50f-4c59-b1dc-bf1309ec3414" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="Dom_retrieveHistory"
+      uid="N63" width="133" x="1091" y="232">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="4503ab24-2fb8-44c9-af2a-dde676fe1a38" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="webHook = VIDEO_SELFIE_VALIDATED" uid="N65" width="225"
+      x="1190" y="26">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="192" green="192" red="192"/>
+      </fontData>
+    </annotationNode>
+    <noneEventStep Id="9e157784-e22a-46a1-9a16-90864af17584"
+      eventType="START" height="28" label="EVI.Videoselfie iniciado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      receiveProtocol="SUBSCRIPTION" stepLock="false" uid="S9"
+      useCorrelation="false" width="28" x="78" y="132">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <noneEventStep Id="452bb45c-00ac-4ff4-9455-cf855f918f4f"
+      eventType="END" height="28" label="EVF.Videoselfie finalizado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S12" useCorrelation="false" width="28"
+      x="1498" y="132">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="7cec5de6-b1e1-4948-9e37-52a6a58ba78f"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Score" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S16"
+      useCorrelation="false" width="34" x="1260" y="129">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="a1ed0eae-20eb-4c8d-a1fa-3c2ed5dfde4c"
+      eventType="END" height="28" label="EVF.Videoselfie cancelado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S21" useCorrelation="false" width="28"
+      x="1498" y="232">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="143eb65c-7bde-4fd1-ad18-47cee07fe61c"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.executorUserId" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S28"
+      useCorrelation="false" width="34" x="448" y="129">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="1a1e34b1-47fd-43e9-a85c-e71aa4691809"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Termina instancia" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S30"
+      useCorrelation="false" width="34" x="448" y="242">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="75d8b72f-dd81-4add-ac45-07de36d80f4f"
+      eventType="END" height="28" label="EVF.Prueba vida cancelado 1"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S34" useCorrelation="false" width="28"
+      x="648" y="328">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <noneEventStep Id="a39bffbb-700e-485b-af68-3e3c87b025c5"
+      eventType="END" height="28" label="EVF.Prueba vida completado 1"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S36" useCorrelation="false" width="28"
+      x="648" y="245">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="674b30c2-e98b-49a4-b230-f8165ea2fa30"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Loop" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S44"
+      useCorrelation="false" width="34" x="914" y="129">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="0ee28b61-177e-45df-b9cf-b9b00aa43a25"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.cancel" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S71"
+      useCorrelation="false" width="34" x="555" y="129">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <invokeStep Id="1a11b48d-0e10-4409-988b-f2b718f9f629"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_Videoselfie"
+      invokeId="678EC464-0DBB-C25B-FC42-1EAC81245B08" invokeLocation=""
+      invokeName="pntVideoselfie" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Mostrar prueba vida y VS" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S10" useCorrelation="false"
+      width="93" x="306" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <input name="{ProcessNamespace}TU.Mostrar prueba vida y VSInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <output name="{ProcessNamespace}TU.Mostrar prueba vida y VSOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="4028ee19-6712-4129-a085-3b58a8568b78"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_videoselfie"
+      invokeId="BC_SRV_Apolo.srv.bb_videoselfie:regresarFlujoPrincipal"
+      invokeLocation="" invokeName="regresarFlujoPrincipal"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Regresar flujo principal" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" ornamentKey="32_decision_diamond_orange.png"
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S19"
+      useCorrelation="false" width="93" x="1357" y="216">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="ea8945ed-a210-4274-8973-71b5eacc4059"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_videoselfie"
+      invokeId="BC_SRV_Apolo.srv.bb_videoselfie:inicializarVideoselfie"
+      invokeLocation="" invokeName="inicializarVideoselfie"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Inicializar prueba vida" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S25" useCorrelation="false" width="93"
+      x="148" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}ProcessData"/>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="5f02bd98-48da-47b4-812c-38968ef1e78e"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_videoselfie"
+      invokeId="BC_SRV_Apolo.srv.bb_videoselfie:regresarFlujoPrincipal"
+      invokeLocation="" invokeName="regresarFlujoPrincipal"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Regresar flujo principal" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" ornamentKey="32_decision_diamond_orange.png"
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S32"
+      useCorrelation="false" width="93" x="506" y="312">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="56df787f-5bf6-4690-a5f7-f5a0901b2e96"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_Videoselfie"
+      invokeId="678EC464-0DBB-C25B-FC42-1EAC81245B08" invokeLocation=""
+      invokeName="pntVideoselfie" invokeType="TASK"
+      isCompensating="false" isTestAfter="false" label="TU.Mostrar QR"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="TASK" stepLock="false" uid="S38"
+      useCorrelation="false" width="93" x="633" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <input name="{ProcessNamespace}TU.Mostrar QRInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <output name="{ProcessNamespace}TU.Mostrar QROutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="39bea776-2be2-4ccf-a79b-ece2b60c686a"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_videoselfie"
+      invokeId="BC_SRV_Apolo.srv.bb_videoselfie:registrarAprobacion"
+      invokeLocation="" invokeName="registrarAprobacion"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Registrar aprobación videoselfie" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S40" useCorrelation="false" width="93"
+      x="781" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="3a5251ce-eb61-424c-a26c-b072ed89163e"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_Videoselfie"
+      invokeId="678EC464-0DBB-C25B-FC42-1EAC81245B08" invokeLocation=""
+      invokeName="pntVideoselfie" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Tomar video selfie" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S46" useCorrelation="false" width="93" x="982" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <input name="{ProcessNamespace}TU.Tomar video selfieInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <output name="{ProcessNamespace}TU.Tomar video selfieOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="d721e28d-baa6-4fa0-a091-f0676c606793"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_videoselfie"
+      invokeId="BC_SRV_Apolo.srv.bb_videoselfie:validarVideoSelfie"
+      invokeLocation="" invokeName="validarVideoSelfie"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Validar selfie" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S48"
+      useCorrelation="false" width="93" x="1112" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="a6b640ff-c214-4741-bf36-c2049f8d4e06"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_Videoselfie"
+      invokeId="678EC464-0DBB-C25B-FC42-1EAC81245B08" invokeLocation=""
+      invokeName="pntVideoselfie" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Mostrar vselfie valida" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S54" useCorrelation="false" width="93" x="1357" y="116">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <input name="{ProcessNamespace}TU.Mostrar vselfie validaInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <output name="{ProcessNamespace}TU.Mostrar vselfie validaOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="23bd5e2b-bd4a-4225-a460-4d00ee7454d4" blue="255"
+      conditionDescription=">=3 OR score fail"
+      conditionText="dt_videoselfie/compuertas/countSelfie >= 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S16" sourceLocation="1277,163" sourceTerminal="BOTTOM"
+      target="S19" targetLocation="1357,246" targetTerminal="LEFT" uid="T20">
+      <bendpoint index="0" location="1341,292" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="84" x="1315" y="295">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and" leftFieldPath="compuertas/countSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator=">=" rightOperand="'3'"/>
+        <row chainOperator="" leftFieldPath="compuertas/hasErrorSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="385105a0-451d-4769-a850-e6e1b7d8bd7b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S19"
+      sourceLocation="1450,246" sourceTerminal="RIGHT" target="S21"
+      targetLocation="1498,246" targetTerminal="LEFT" uid="T22">
+      <bendpoint index="0" location="1538,292" weight="0.5"/>
+      <bendpoint index="1" location="1538,292" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="5b6ac1a4-6dd7-4f8c-b103-991a574a7b6e" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="106,146" sourceTerminal="RIGHT" target="S25"
+      targetLocation="148,146" targetTerminal="LEFT" uid="T26">
+      <bendpoint index="0" location="190,192" weight="0.5"/>
+      <bendpoint index="1" location="190,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="340781a6-7263-456a-bbd5-b6ecc53bb132" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S25"
+      sourceLocation="241,146" sourceTerminal="RIGHT" target="S10"
+      targetLocation="306,146" targetTerminal="LEFT" uid="T27">
+      <bendpoint index="0" location="336,192" weight="0.5"/>
+      <bendpoint index="1" location="336,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="586ab504-ef3f-43b4-a7f3-b1a1abdb7cea" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="399,146" sourceTerminal="RIGHT" target="S28"
+      targetLocation="448,146" targetTerminal="LEFT" uid="T29">
+      <bendpoint index="0" location="486,192" weight="0.5"/>
+      <bendpoint index="1" location="486,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="131595f5-1778-4d30-b029-24ff1f1fd177" blue="255"
+      conditionDescription="true"
+      conditionText="dt_videoselfie/dt_ContextoTransaccional/executorUserId = Modyo"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S28" sourceLocation="465,163" sourceTerminal="BOTTOM"
+      target="S30" targetLocation="465,242" targetTerminal="TOP" uid="T31">
+      <bendpoint index="0" location="529,248" weight="0.5"/>
+      <bendpoint index="1" location="529,248" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="19" x="525" y="161">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="dt_ContextoTransaccional/executorUserId"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'Modyo'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="bcece7f6-47e5-4873-955a-6480b1d0c45d" blue="255"
+      conditionDescription="stop=true"
+      conditionText="dt_videoselfie/dt_ContextoTransaccional/stopInstance = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S30" sourceLocation="465,276" sourceTerminal="BOTTOM"
+      target="S32" targetLocation="506,342" targetTerminal="LEFT" uid="T33">
+      <bendpoint index="0" location="529,388" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="46" x="498" y="392">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="dt_ContextoTransaccional/stopInstance"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="b1c120ea-9928-410b-a4ba-d2a6c1639435" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S32"
+      sourceLocation="599,342" sourceTerminal="RIGHT" target="S34"
+      targetLocation="648,342" targetTerminal="LEFT" uid="T35">
+      <bendpoint index="0" location="686,388" weight="0.5"/>
+      <bendpoint index="1" location="686,388" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="0b95cf65-d857-4042-a793-0c0b4c324ddc" blue="255"
+      conditionDescription="stop=false"
+      conditionText="dt_videoselfie/dt_ContextoTransaccional/stopInstance = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S30" sourceLocation="482,259" sourceTerminal="RIGHT"
+      target="S36" targetLocation="648,259" targetTerminal="LEFT" uid="T37">
+      <bendpoint index="0" location="628,305" weight="0.5"/>
+      <bendpoint index="1" location="628,305" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="51" x="565" y="288">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="dt_ContextoTransaccional/stopInstance"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="bea216e0-6dfe-433d-b868-b066d1e28fa3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S38"
+      sourceLocation="726,146" sourceTerminal="RIGHT" target="S40"
+      targetLocation="781,146" targetTerminal="LEFT" uid="T41">
+      <bendpoint index="0" location="816,192" weight="0.5"/>
+      <bendpoint index="1" location="816,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="cf5d8622-4d91-4fd1-b891-f26de360b1eb" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S40"
+      sourceLocation="874,146" sourceTerminal="RIGHT" target="S44"
+      targetLocation="914,146" targetTerminal="LEFT" uid="T45">
+      <bendpoint index="0" location="958,192" weight="0.5"/>
+      <bendpoint index="1" location="958,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="8bbd5c67-0c19-4a7a-8c7a-90e454f1584d" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S44"
+      sourceLocation="948,146" sourceTerminal="RIGHT" target="S46"
+      targetLocation="982,146" targetTerminal="LEFT" uid="T47">
+      <bendpoint index="0" location="1028,192" weight="0.5"/>
+      <bendpoint index="1" location="1028,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="f5e6de22-1a94-477c-85d1-705f70c08182" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S46"
+      sourceLocation="1075,145" sourceTerminal="RIGHT" target="S48"
+      targetLocation="1111,145" targetTerminal="LEFT" uid="T49">
+      <bendpoint index="0" location="1156,191" weight="0.5"/>
+      <bendpoint index="1" location="1156,191" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a9ffdb53-3df6-419e-9f3b-bca14310685d" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S48"
+      sourceLocation="1205,145" sourceTerminal="RIGHT" target="S16"
+      targetLocation="1259,146" targetTerminal="LEFT" uid="T52">
+      <bendpoint index="0" location="1296,191" weight="0.5"/>
+      <bendpoint index="1" location="1296,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="51c729ca-e95d-49b6-930f-b1364ab2a3ca" blue="255"
+      conditionDescription="count&lt;3"
+      conditionText="dt_videoselfie/compuertas/countSelfie &lt; 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S16" sourceLocation="1276,129" sourceTerminal="TOP"
+      target="S44" targetLocation="931,128" targetTerminal="TOP" uid="T53">
+      <bendpoint index="0" location="1340,149" weight="0.5"/>
+      <bendpoint index="1" location="995,149" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="39" x="1291" y="148">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and" leftFieldPath="compuertas/countSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="&lt;" rightOperand="'3'"/>
+        <row chainOperator="" leftFieldPath="compuertas/hasErrorSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="23ece253-d024-4d31-b14f-f7ec3c56c19b" blue="255"
+      conditionDescription="&lt;3 &amp; score OK"
+      conditionText="dt_videoselfie/compuertas/countSelfie &lt; 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S16" sourceLocation="1294,146" sourceTerminal="RIGHT"
+      target="S54" targetLocation="1357,146" targetTerminal="LEFT" uid="T55">
+      <bendpoint index="0" location="1388,192" weight="0.5"/>
+      <bendpoint index="1" location="1388,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="71" x="1257" y="173">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and" leftFieldPath="compuertas/countSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="&lt;" rightOperand="'3'"/>
+        <row chainOperator="" leftFieldPath="compuertas/hasErrorSelfie"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="60015ac9-b1d3-41f9-a244-17c6bd5b4806" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S54"
+      sourceLocation="1450,146" sourceTerminal="RIGHT" target="S12"
+      targetLocation="1498,146" targetTerminal="LEFT" uid="T56">
+      <bendpoint index="0" location="1538,192" weight="0.5"/>
+      <bendpoint index="1" location="1538,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="6e850250-847d-45a1-8901-2aaa36251684" blue="255"
+      conditionDescription="false" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S28" sourceLocation="482,146" sourceTerminal="RIGHT"
+      target="S71" targetLocation="555,146" targetTerminal="LEFT" uid="T72">
+      <bendpoint index="0" location="582,192" weight="0.5"/>
+      <bendpoint index="1" location="582,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="-1" red="255" width="-1" x="573" y="196">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="9c59d618-b5e3-45be-a946-b185225b63af" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S71"
+      sourceLocation="589,146" sourceTerminal="RIGHT" target="S38"
+      targetLocation="633,146" targetTerminal="LEFT" uid="T73">
+      <bendpoint index="0" location="674,192" weight="0.5"/>
+      <bendpoint index="1" location="674,192" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="391a204f-c5f8-4fb4-acdc-e6c895f32c10" blue="255"
+      conditionDescription="cancel=true"
+      conditionText="dt_videoselfie/cancel = true" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S16"
+      sourceLocation="1277,129" sourceTerminal="TOP" target="S71"
+      targetLocation="572,129" targetTerminal="TOP" uid="T74">
+      <bendpoint index="0" location="1341,133" weight="0.5"/>
+      <bendpoint index="1" location="636,133" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="57" x="1282" y="114">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="cancel"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <annotationFlow Id="1b741801-1be7-4ed0-8cf8-b74702afda39" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S10" sourceLocation="364,176" sourceTerminal="BOTTOM"
+      target="N14" targetLocation="364,64" targetTerminal="BOTTOM" uid="T15">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="d773b0e0-91e2-435e-ada3-65d777b49a5a" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S40" sourceLocation="827,176" sourceTerminal="BOTTOM"
+      target="N42" targetLocation="832,230" targetTerminal="TOP" uid="T43">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="2802ffb9-0131-479b-8c99-f11eec294fed" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S48" sourceLocation="1158,176" sourceTerminal="BOTTOM"
+      target="N63" targetLocation="1157,232" targetTerminal="TOP" uid="T64">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="fd153187-1b90-4384-94d1-ba38f817672f" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S38" sourceLocation="679,115" sourceTerminal="TOP"
+      target="N61" targetLocation="578,64" targetTerminal="BOTTOM" uid="T66">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="13b630e7-e6e4-4c81-9d00-68eb7eab7062" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S46" sourceLocation="1028,115" sourceTerminal="TOP"
+      target="N62" targetLocation="928,58" targetTerminal="BOTTOM" uid="T67">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="32f0bd68-3338-4b1d-934e-91cbc64af0cf" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S54" sourceLocation="1402,115" sourceTerminal="TOP"
+      target="N65" targetLocation="1284,58" targetTerminal="BOTTOM" uid="T68">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+    </annotationFlow>
+    <swimlane Id="d914bae6-e9ee-4f65-883d-d94168e6b2b7" blue="255"
+      green="255" height="511" label="webMethods" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods" red="255"
+      uid="W8" width="1819">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

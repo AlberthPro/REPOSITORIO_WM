@@ -1,0 +1,3083 @@
+openapi: 3.0.0
+info:
+  title: Bus Cross Product Operations
+  version: 1.10.0
+servers:
+- url: "https://${HOST_NAME}/crossProductOperations"
+  variables:
+    HOST_NAME:
+      default: HOST_NAME
+paths:
+  /v1/customerCreditRating/execute:
+    put:
+      description: "Operación encargada de la orquestación de los procesos encargados\
+        \ de la aceptación, consumo y registro de la respuesta a la consulta de las\
+        \ Sociedades de Información Crediticia"
+      operationId: PUT_v1-customerCreditRating-execute
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.executeCustomerCreditRatingRq'
+            example:
+              sessionDialogueIdentification: 677d4e603fee0515bcdd777f
+              applicationReferenceId: "930000007144"
+              bankBranch:
+                branchReference: "8802"
+                name: BC
+              companyReference: "001"
+              employeeNumber: "70000002"
+              amount: "0"
+              partyReference:
+                referenceId: "077696879"
+              bankReference: BC
+              requestNumber: "930000007144"
+              organisation:
+                organisationName: BC
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.executeCustomerCreditRatingRs'
+              example:
+                applicationReferenceId: ACCT-98765
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                details:
+                - detail: -191-010513EAMU900101TF20802MX090111101S1201M170201PA
+                - detail: 24CALLE 037144088 12454 SN0107CAÑADAS0308CULIACAN0403SIN
+                - detail: 0505801781001HES05002680002**
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/accountBalanceDetails/create:
+    post:
+      description: Api de negocio encargado de realizar la consulta de saldos de los
+        diferentes canales
+      operationId: POST_v1-accountBalanceDetails-create
+      parameters:
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.createAccountBalanceDetailsRq'
+            example:
+              account:
+                accountIdentification:
+                - accountIdentificationType: Account Number
+                  identifierValue: 1DD3DD01FEF9443
+              productInstanceRecord:
+                productInstanceReference: D4DB7298729FCA8E66F1E69A28ECE2F0
+              companyReference: "001"
+              option: "12"
+              record: 10
+              paymentCard:
+                cardNumber: D4DB7298729FCA8E66F1E69A28ECE2F0
+                cardExpiryDate: D4DB7298729FCA8E66F1E69A28ECE2F0
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              channelFacility:
+                channelReferenceId: "3"
+                transactionIdentifier: OPE02
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.createAccountBalanceDetailsRs'
+              example:
+                loanFacility:
+                  loanOriginationDate: 2018-06-06
+                  loanStatus: "01"
+                  loanMaturity: 12
+                  loanApplicableRate:
+                    rate:
+                      rateValue: "6.69"
+                  loanAgreement:
+                  - loanAmount: i110904261409189
+                    loanDescription: PA
+                  loanProduct:
+                    bankingProduct:
+                      productType: LoanProduct
+                  interest:
+                  - interestType: AccrualInterest
+                    interestAmount: i110904261409189
+                  - interestType: ValidInterest
+                    interestTax: 2.15
+                    interestAmount: i110904261409189
+                  - interestType: ExpiredInterest
+                    interestTax: 2.15
+                    interestAmount: i110904261409189
+                  - interestType: CurrentInterest
+                    interestTax: 2.15
+                    interestAmount: i110904261409189
+                  - interestType: MonthlyInterest
+                    interestTax: 2.15
+                    interestAmount: i110904261409189
+                  - interestType: DelinquencyInterest
+                    interestTax: 2.15
+                    interestAmount: i110904261409189
+                  loanAccount:
+                    accountBalance:
+                    - accountBalance: CLWEBO43OINOI5NDLKW
+                      accountBalanceType: overduePayment
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: standingCapital
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: transactionalCapital
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: notOverdueRequiredCapital
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: overdueRequiredCapital
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: currentBalance
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: heldBalance
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: totalSettledBalance
+                    - accountBalance: CLWEBO4523LOKP23N43OINOI5NDLKW
+                      accountBalanceType: availableBalance
+                    accountIdentification:
+                    - accountIdentificationType: Clabe
+                      identifierValue: "0039843"
+                    accountLien:
+                      lienType: 2
+                      lienDefinition: PA
+                      lienPurpose: F
+                    depositsAndWithdrawals:
+                      accumulatedDeposit: 899.99
+                  fees:
+                    delinquencyFee:
+                      feeRate: 6.69
+                  repayment:
+                    repaymentTransactions: 45.89
+                    repaymentTransactionPaymentLastDate: 2023-10-10
+                    repaymentTransactionPaymentDueDate: 2023-10-10
+                  transactionHoldFacility:
+                    transactionHoldCustomer:
+                      transactionHoldReason: 0
+                      transactionHoldCode: F
+                      transactionHoldCodeDescription: Description Code
+                    transactionHoldProduct:
+                      transactionHoldReason: 0
+                      transactionHoldCode: S
+                      transactionHoldCodeDescription: Descriptio Code
+                financialSettlement:
+                  totalTransactionAmount: i110904261409189
+                  settlementRate:
+                    rateValue: 6.69
+                billing:
+                  billingExpiredTransactions: 45.89
+                  billingTransactionMinimumRequiredPayment: 17.89
+                retainedBalanceDetail:
+                - releaseDate: 15/02/2024
+                  transactionNumber: i110904261409189
+                  amount: i110904261409189
+                  detail: AMAZON MX 1256273
+                  releaseDays: 12
+                - releaseDate: 15/02/2024
+                  transactionNumber: i110904261409189
+                  amount: i110904261409189
+                  detail: AMAZON MX 234
+                  releaseDays: 115
+                minimumPayment: 300
+                companyReference: "001"
+                account:
+                  accountBalance:
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: currentBalance
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: delinquentBalance30
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: delinquentBalance60
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: delinquentBalance90
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: delinquentBalance120
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: holdBalance
+                  - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    accountBalanceType: outGoingBalance
+                  - currency:
+                      currencyId: "01"
+                defaultInterestRate: D4DB7298729FCA8E66F1E69A28ECE2F0
+                invoiceDate: 2026-08-20
+                dueDate: 2026-09-16
+                totalAmountDue: "1648.22"
+                transactionDate:
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionContractDate
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionStartDate
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionInvoiceDate
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionGraceDate
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionDueDate
+                - transactionDate: 2025/03/02
+                  transactionDateType: TransactionPenalityDate
+                statusInstanceRecord:
+                  statusCode: "00001"
+                  status: ""
+                  message: ""
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                creditCardStatement:
+                  institutionName: TBIBank
+                  cardPaymentAgreement:
+                    overdue: 0
+                    billingDate: 2025/03/02
+                    paymentDate: 2025/01/02
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: Not Found
+                message: ERR-404-A7A987C5
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: Not Found
+                message: ERR-404-A7A987C5
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: Internal Server Error
+                message: ERR-500-2317A94D
+  /v1/productInformation/retrieve:
+    post:
+      description: Operación de realizar la consulta de información de productos del
+        cliente (información básica del producto) relacionado a la base de datos Informix
+        y el core SmartVista para el proceso “Consultar productos” en los canales
+        de BanCoppel.
+      operationId: POST_v1-productInformation-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveProductInformationRq'
+            example:
+              deviceAssignment:
+                deviceIdentification: "120001"
+                issueLocation:
+                  location:
+                  - longitude: 92EAF3719159C372F3D50337E0A14F57
+                    latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    locationAddressType: DEVICE_ADDRESS
+              channelFacility:
+                channelReferenceId: "1"
+                transactionIdentifier: ACL01
+                description: AppBancoppel
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              companyReference: "001"
+              account:
+                accountIdentification:
+                - accountIdentificationType: Account Number
+                  identifierValue: 1DD3DD01FEF9443
+              queryType: "1"
+              paymentCard:
+                cardNumber: D4DB7298729FCA8E66F1E69A28ECE2F0
+              limit: "10"
+              execution: "0"
+              pageFacility:
+                lastRegister: 0
+                counter: 0
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveProductInformationRs'
+              example:
+                productInformation:
+                - paymentCard:
+                    cardExpiryDate: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    creationDate: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    cardNumber: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    deviceIdentificationCard: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    cardHolderName: Jose Gutierrez
+                    cardType: CreditCard
+                    deviceStatus: CARD IS NOT ACTIVATED
+                    deviceStatusDescription: SIA
+                    deviceStatusCode: "12"
+                    cardPlasticReference: 1
+                    cardClassification: L
+                  productInstanceRecord:
+                    productInstanceReference: D4DB7298729FCA8E66F1E69A28ECE2F0
+                    productInstanceReferenceName: D4DB7298729FCA8E66F1E69A28ECE2F0
+                  account:
+                    accountIdentification:
+                    - identifierValue: 5F600B3C636E509D8B739C57EC1AAA4F
+                      accountIdentificationType: Account Number
+                      currency: USD
+                      currencyCode: 840
+                    - identifierValue: 5F600B3C636E509D8B739C57EC1AAA4F
+                      accountIdentificationType: Clabe
+                    accountBalance:
+                    - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                      accountBalanceType: availableBalance
+                    - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                      accountBalanceType: disposalMinBalance
+                    - accountBalance: D4DB7298729FCA8E66F1E69A28ECE2F0
+                      accountBalanceType: disposalMaxBalance
+                  creditLimit:
+                    amount: D4DB7298729FCA8E66F1E69A28ECE2F0
+                  partyReference:
+                    referenceId: A93B64AE1FB376A15EC21132E65B478F
+                    identifications:
+                    - identifier:
+                        identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personName:
+                      fullName: A93B64AE1FB376A15EC21132E65B478F
+                  creditCardLogFacility:
+                    cashAdvancedIndicator: true
+                    failedTransactionAttempts: 0
+                    primaryCreditCard: true
+                    supplementaryCard: false
+                    cardContractReference: 0Q
+                    cardHolder: false
+                    defaultAccount: true
+                  loanFacility:
+                    loanStatus: E1
+                  rewardPointsAccount:
+                    rewardPointsIndicator: true
+                  bankBranch:
+                    branchReference: ABC123
+                  cancellationemployeeReference: "0"
+                  cancellationReason: "0"
+                  cancellationTransactionReference: "005"
+                  statusInstanceRecord:
+                    statusCode: "00000"
+                  acronym: SC
+                  creditProfile:
+                    specialSituation: f5c4aa0648d87d54176a1e77000b6be8
+                    reason: "57"
+                    description: A93B64AE1FB376A15EC21132E65B478F
+                  transactionDate:
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionLastUpdate
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionRegister
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionExpiryDate
+                  - transactionDate: 20/01/2024
+                    transactionDateType: TransactionCancellationDate
+                  requestType: "0"
+                  execution: "0"
+                  record: "1"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/transactionalProfile/capture:
+    put:
+      description: "Servicio de Business encargado de revisar si ya existe informació\
+        n guardada sobre un cliente en la tabla transactional_profile dentro de la\
+        \ base de datos de Yugabyte. Básicamente, ayuda a saber si ese cliente ya\
+        \ tiene un perfil transaccional registrado y devuelve la información en caso\
+        \ de encontrarlo. Esta consulta es usada dentro del proceso de OnBoarding\
+        \ N4."
+      operationId: PUT_v1-transactionalProfile-capture
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: sessionId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.captureTransactionalProfileRq'
+            example:
+              loanAccount:
+                transactionalProfile:
+                  accountUseType: "01"
+                  depositRange: "01"
+                  withdrawalRange: "01"
+                  depositCount: "01"
+                  withdrawalCount: "01"
+                  sourceOfFunds: "01"
+                  monthlyRange: "01"
+              sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.captureTransactionalProfileRs'
+              example:
+                sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: Not Found
+                message: ERR-404-A7A987C5
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: Not Found
+                message: ERR-404-A7A987C5
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: Internal Server Error
+                message: ERR-500-2317A94D
+components:
+  schemas:
+    lib.commonErrorRs:
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: estado de la peticion
+          example: Example
+    lib.executeCustomerCreditRatingRq:
+      $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.executeCustomerCreditRatingRq'
+    lib.executeCustomerCreditRatingRs:
+      $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRs.executeCustomerCreditRatingRs'
+    lib.retrieveProductInformationRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRq.retrieveProductInformationRq'
+    lib.retrieveProductInformationRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.retrieveProductInformationRs'
+    lib.createAccountBalanceDetailsRs:
+      $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.createAccountBalanceDetailsRs'
+    lib.createAccountBalanceDetailsRq:
+      $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.createAccountBalanceDetailsRq'
+    lib.captureTransactionalProfileRq:
+      $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.captureTransactionalProfileRq'
+    lib.captureTransactionalProfileRs:
+      $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRs.captureTransactionalProfileRs'
+    lib.libraryCreateAccountBalanceDetailsRq.createAccountBalanceDetailsRq:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+        productInstanceRecord:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+        record:
+          type: number
+          description: cantidad de registros
+        option:
+          type: string
+          description: Opción
+        channelFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryChannelFacility.channelFacility'
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.paymentCard'
+    lib.libraryCreateAccountBalanceDetailsRs.createAccountBalanceDetailsRs:
+      type: object
+      properties:
+        loanFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.loanFacility'
+        financialSettlement:
+          required:
+          - settlementRate
+          type: object
+          properties:
+            totalTransactionAmount:
+              type: string
+            settlementRate:
+              type: object
+              properties:
+                rateValue:
+                  type: number
+        billing:
+          type: object
+          properties:
+            billingTransactionAmount:
+              type: number
+              description: Monto de abonos.
+            billingExpiredTransactions:
+              type: number
+            billingTransactionMinimumRequiredPayment:
+              type: number
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+        account:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+        retainedBalanceDetail:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryRetainedBalanceDetail.retainedBalanceDetail'
+        minimumPayment:
+          type: number
+          description: Pago minimo
+        dueDate:
+          type: string
+          description: fechas de vencimiento
+          format: date
+        totalAmountDue:
+          type: string
+          description: Total a pagar
+        invoiceDate:
+          type: string
+          description: fechas de facturacion
+          format: date
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        transactionDate:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionDate:
+                type: string
+              transactionDateType:
+                type: string
+                enum:
+                - TransactionInitiatedDate
+                - TransactionUpdatedDate
+                - TransactionCutoffDate
+                - TransactionDischargeDate
+                - TransactionLastUpdate
+                - TransactionRegister
+                - TransactionExpiryDate
+                - TransactionCancellationDate
+                - TransactionContractDate
+                - TransactionStartDate
+                - TransactionInvoiceDate
+                - TransactionGraceDate
+                - TransactionDueDate
+                - TransactionPenalityDate
+        creditCardStatement:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.creditCardStatement'
+        defaultInterestRate:
+          type: string
+          description: Interes moratorio
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account:
+      type: object
+      properties:
+        accountIdentification:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountIdentification.accountIdentification'
+        accountBalance:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountBalance.accountBalance'
+    lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountBalance.accountBalance:
+      type: array
+      items:
+        type: object
+        properties:
+          accountBalance:
+            type: string
+            description: Indica el monto total de la capacidad del prestamo
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          accountBalanceType:
+            type: string
+            description: Tipo de Saldo * openingBalance = Saldo de apertura del producto*
+              closingBalance = Saldo de cierre del producto * currentBalance = Saldo
+              actual del producto * availableBalance = Saldo disponible del producto*
+              reserveBalance = Saldo reservado del producto * freeBalance = Saldo
+              disponible del producto * principalBalance = Saldo de principal del
+              producto
+            enum:
+            - openingBalance
+            - closingBalance
+            - currentBalance
+            - availableBalance
+            - reserveBalance
+            - freeBalance
+            - principalBalance
+            - standingCapital
+            - transactionalCapital
+            - notOverdueRequiredCapital
+            - overdueRequiredCapital
+            - heldBalance
+            - totalSettledBalance
+            - insoluteBalance
+            - currentCapitalBalance
+            - holdBalance
+            - delinquentBalance
+            - delinquentBalance30
+            - delinquentBalance60
+            - delinquentBalance90
+            - delinquentBalance120
+            - disposalMinBalance
+            - disposalMaxBalance
+            - outGoingBalance
+            - holdBalance
+            - overduePayment
+          accountBalanceDate:
+            type: string
+            description: Indica la fecha y hora del balance
+          currency:
+            type: object
+            properties:
+              currencyCode:
+                type: string
+                description: Código de la moneda.
+              currencyId:
+                type: string
+                description: Id de la moneda.
+    lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountIdentification.accountIdentification:
+      type: array
+      items:
+        type: object
+        properties:
+          identifierValue:
+            type: string
+            description: Indica el número de cuenta
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          accountIdentificationType:
+            type: string
+            description: |
+              Indica el tipo de identificacion de la cuenta * Account Number = Tipo de identificacion de numero de cuenta * Clabe = Tipo de identificacion de numero Clabe * IBAN = Tipo de identificacion de numero IBAN
+            enum:
+            - Account Number
+            - Clabe
+            - IBAN
+          currency:
+            type: string
+            description: tipo moneda empleada
+          currencyCode:
+            type: number
+            description: codigo del tipo moneda empleada
+    lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.location'
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+        name:
+          type: string
+          description: Nombre de la Sucursal
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryBirthPlace.birthPlace:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.location'
+    lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCardPaymentAgreement.cardPaymentAgreement:
+      type: object
+      properties:
+        creationDate:
+          type: string
+          description: Fecha de la creación
+          format: date
+        expiredDate:
+          type: string
+          description: Fecha de expiración
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        isIFRS:
+          type: boolean
+          description: Sí es IFRS
+        cutOffDay:
+          type: number
+          description: Dia de corte
+        vatTax:
+          type: number
+          description: Impuesto al iva
+        cashDispositionIndicator:
+          type: string
+          description: Indicador de disposición de efectivo
+        cashDisposition:
+          type: string
+          description: disposición de efectivo
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        overdueFactor:
+          type: number
+          description: Factor vencido
+        interest:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryInterest.interest'
+        cardAmount:
+          type: string
+          description: Monto de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        paymentDate:
+          type: string
+          description: Fecha de pago
+        cutOffDate:
+          type: string
+          description: Fecha de corte
+          format: date
+        currency:
+          type: object
+          properties:
+            currencyCode:
+              type: string
+              description: Código de la moneda.
+            currencyId:
+              type: string
+              description: Id de la moneda.
+        overdue:
+          type: number
+          description: Saldo vencido
+        billingDate:
+          type: string
+          description: Fecha de facturacion
+    lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCardPaymentInvolvement.cardPaymentInvolvement:
+      type: object
+      properties:
+        cardPaymentInvolvementType:
+          type: string
+          description: "Indica el rol de del participante en la transaccion o solicitud\
+            \ CardHolder = titular de la tarjeta, CardIssuer = emisor de la tarjeta,\
+            \ CardAcceptor = aceptador de la tarjeta, CardAcquirer = adquiriente de\
+            \ la tarjeta, CardNetwork = red de la tarjeta, AdditionaCardHolder = titular\
+            \ adicional"
+          enum:
+          - CardHolder
+          - CardIssuer
+          - CardAcceptor
+          - CardAcquirer
+          - CardNetwork
+          - AdditionaCardHolder
+    lib.libraryCreateAccountBalanceDetailsRq.libraryChannelFacility.channelFacility:
+      type: object
+      properties:
+        channelReferenceId:
+          type: string
+          description: identificador de canal a consumir informix o bpc
+        description:
+          type: string
+          description: informacion adicional que describe el canal
+        transactionIdentifier:
+          type: string
+          description: identificador del sub-canal a consumir informix o bpc
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryContactPoint.contactPoint:
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+            - postalCode
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointActiveStatus:
+            type: boolean
+            description: Indica el envio exitoso
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+          registrationDate:
+            type: string
+            description: Fecha de insercion
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        code:
+          type: string
+          description: Código del distrito
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCreditCardFacility.creditCardFacility:
+      type: object
+      properties:
+        creditPlan:
+          type: object
+          properties:
+            creditPlanMinimumAmount:
+              type: number
+              description: Cantidad mínima del plan de crédito
+            creditPlanMaximumAmount:
+              type: number
+              description: Cantidad máxima del plan de crédito
+            creditPlanReference:
+              type: string
+              description: Referencia del plan de crédito
+            creditPlanName:
+              type: string
+              description: Nombre del plan de crédito
+            creditPlanType:
+              type: string
+              description: Tipo del plan de crédito
+            creditPlanLimit:
+              type: number
+              description: Limite del plan de crédito
+        monthlyIncome:
+          type: number
+          description: Ingreso mensual
+        minimumIncomeGold:
+          type: number
+          description: Ingreso minimo oro
+        scoring:
+          type: string
+          description: Calificación crediticia
+        requestType:
+          type: string
+          description: Tipo de solicitud
+        group:
+          type: string
+          description: Grupo
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        productInstanceRecord:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+        evaluateCC:
+          type: string
+          description: Evaluate cc
+        account:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+        requestedAmount:
+          type: number
+          description: Monto requerido
+        companyReference:
+          type: string
+          description: Referencia de la compañia
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch'
+        productInstanceReference:
+          type: string
+          description: Indica el identificador del producto
+        user:
+          type: string
+          description: Nombre de usuario
+        commission:
+          type: object
+          properties:
+            creationCommissionAmount:
+              type: number
+              description: Creación de la comisión de la cantidad
+            creationCommissionCode:
+              type: string
+              description: Creación de la comisión del código
+            annualCommissionAmount:
+              type: number
+              description: Cantidad de la comisión anúal
+            annualCommissionCode:
+              type: string
+              description: Código de la cantidad de la comisión
+            annualCommissionCodeAdditional:
+              type: string
+              description: Código adicional de la cantidad de la comisión
+            additionalRateAmount:
+              type: number
+              description: Importe de tasa adicional
+        creditLimit:
+          $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCreditLimit.creditLimit'
+    lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCreditCardLogFacility.creditCardLogFacility:
+      type: object
+      properties:
+        failedTransactionAttempts:
+          type: number
+          description: numero de intentos fallidos al ingresar el pin
+        primaryCreditCard:
+          type: boolean
+          description: indica si la tarjeta es primaria
+        supplementaryCard:
+          type: boolean
+          description: indica si tiene tarjetas asociadas
+        cardHolder:
+          type: boolean
+        defaultAccount:
+          type: boolean
+          description: indica si es la cuenta por defecto
+        cardContractReference:
+          type: string
+        cashAdvancedIndicator:
+          type: boolean
+          description: indica si es posible realizar disposicion de efectivo
+    lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.creditCardStatement:
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.paymentCard'
+        creditCardFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCreditCardFacility.creditCardFacility'
+        creditCardLogFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCreditCardLogFacility.creditCardLogFacility'
+        institutionReference:
+          type: number
+          description: Número de institución
+        institutionName:
+          type: string
+          description: Nombre de la institución
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        cardPaymentAgreement:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCardPaymentAgreement.cardPaymentAgreement'
+        currency:
+          type: object
+          properties:
+            currencyCode:
+              type: string
+              description: Código de la moneda.
+            currencyId:
+              type: string
+              description: Id de la moneda.
+        productInstanceRecord:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch'
+        loanFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.loanFacility'
+        companyReference:
+          type: string
+        transactionDate:
+          type: array
+          items:
+            type: object
+            properties:
+              transactionDate:
+                type: string
+              transactionDateType:
+                type: string
+                enum:
+                - TransactionInitiatedDate
+                - TransactionUpdatedDate
+                - TransactionCutoffDate
+                - TransactionDischargeDate
+                - TransactionLastUpdate
+                - TransactionRegister
+                - TransactionExpiryDate
+                - TransactionCancellationDate
+                - TransactionContractDate
+                - TransactionStartDate
+                - TransactionInvoiceDate
+                - TransactionGraceDate
+                - TransactionDueDate
+                - TransactionPenalityDate
+    lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCreditLimit.creditLimit:
+      type: object
+      properties:
+        amount:
+          type: string
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCreditProfile.creditProfile:
+      type: object
+      properties:
+        overdueAirtimeBalance:
+          type: string
+          description: Monto vencido aire
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        monthlyAirtimePayment:
+          type: string
+          description: Abono mensual aire
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        totalAirtimeBalance:
+          type: string
+          description: Saldo total aire.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        overdueRestructureBalance:
+          type: string
+          description: Monto vencido reestructuracion
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        monthlyRestructurePayment:
+          type: string
+          description: Abono mensual reestructuracion
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        totalRestructureBalance:
+          type: string
+          description: Saldo total reestructuracion.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        overdueMembersBalance:
+          type: string
+          description: Monto vencido afiliado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        monthlyMembersPayment:
+          type: string
+          description: Abono mensual afiliado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        totalMembersBalance:
+          type: string
+          description: Saldo total afiliado.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        scoring:
+          type: string
+          description: Scoring
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        paymentTimeliness:
+          type: string
+          description: Puntualidad
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        paymentEfficiencyPercentage:
+          type: string
+          description: Puntualidad
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        monthsOfTenure:
+          type: string
+          description: Puntualidad
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        reason:
+          type: string
+          description: Causa de la situación que tiene el crédito del cliente en Coppel
+        furnitureOverdueBalance:
+          type: string
+          description: Saldo vencido en muebles
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        clothingOverdueBalance:
+          type: string
+          description: Saldo vencido en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanOverdueBalance:
+          type: string
+          description: Saldo vencido en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        furnitureCurrentBalance:
+          type: string
+          description: Saldo en muebles
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        clothingCurrentBalance:
+          type: string
+          description: Saldo en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanCurrentBalance:
+          type: string
+          description: Saldo en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        furniturePayment:
+          type: string
+          description: Abono en muebles
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        clothingPayment:
+          type: string
+          description: Abono en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanPayment:
+          type: string
+          description: Abono en ropa
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        lastPurchase:
+          type: string
+          description: Indica la fecha de última compra del cliente en Coppel
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        lastPayment:
+          type: string
+          description: Indica la fecha de último pago del cliente en Coppel
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanApproved:
+          type: string
+          description: Prestamo autorizado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanAmount:
+          type: string
+          description: Monto autorizado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        loanOfficer:
+          type: string
+          description: Representante del prestamo
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        limit:
+          type: string
+          description: Limite de credito
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        creditLine:
+          type: string
+          description: Linea de credito
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        specialSituation:
+          type: string
+          description: Situacion especial
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        description:
+          type: string
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryRetrieveProductInformationRq.libraryDeviceAssignment.deviceAssignment:
+      type: object
+      properties:
+        issuedDeviceAllocation:
+          type: object
+          properties:
+            issuedDeviceType:
+              type: string
+              description: '''Indica la plataforma del dispositivo'' * IOS = IOS *
+                ANDROID = ANDROID * WEBAPP = WEBAPP'
+              enum:
+              - IOS
+              - ANDROID
+              - WEBAPP
+        deviceIdentification:
+          type: string
+          description: Código hash de la huella digital del dispositivo.
+        issueLocation:
+          $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRq.libraryDeviceAssignment.libraryIssueLocation.issueLocation'
+        deviceDescription:
+          type: string
+          description: Datos adicionales sobre el dispositivo.
+        versionNumber:
+          type: string
+          description: versión del sistema operativo.
+        deviceProperty:
+          type: object
+          properties:
+            model:
+              type: string
+              description: "modelo de dispositivo. Si se omite, se analiza desde el\
+                \ agente de usuario."
+            sdk:
+              type: string
+              description: Versión de SDK usada.
+        issuedDeviceStatus:
+          type: string
+          description: '''Estado de la sesión'' * Alive = Sesion Activa * Closed =
+            Sesion Cerrada * Deleted = Sesion Eliminada'
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        issuedDeviceConfiguration:
+          type: string
+          description: Configuración estándar de seguridad
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice:
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        gender:
+          type: string
+          description: '''El género de la persona obtenido de ocr'' * M = Masculino*
+            F = Femenino'
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        voterKey:
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        ocr:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cic:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: valor de la línea ZLM.
+            description: Objeto que define las líneas ZLM.
+        personName:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonName.personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryIdentifications.identifications:
+      type: array
+      items:
+        required:
+        - identifier
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+                x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+                format: date
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+                format: date
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: '''Indica el tipo de documento de identidad'' * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social'
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            type: object
+            properties:
+              customerReference:
+                type: string
+                description: Identificador único del cliente.
+              customerCreditRatingStatusType:
+                type: string
+                description: Tipo de estado de la calificación crediticia del cliente.
+              customerCreditRatingSchedule:
+                type: string
+                description: Agenda o programación de la calificación de crédito.
+              customerCreditRatingAssessmentRecord:
+                type: string
+                description: Registro detallado de la evaluación crediticia del cliente.
+              assessmentCustomerBehaviorModelReference:
+                type: string
+                description: Referencia al modelo de comportamiento del cliente utilizado
+                  para la evaluación.
+              creditRatingAssessmentType:
+                type: string
+                description: Tipo de evaluación de calificación crediticia realizada.
+              creditRatingAssessmentDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+              creditRatingBlackListType:
+                type: string
+                description: "Tipo de lista negra de calificación crediticia, si aplica."
+              creditRatingAssessmentWorkProducts:
+                type: string
+                description: Productos de trabajo resultantes de la evaluación de
+                  calificación crediticia.
+              creditRatingAssessmentResult:
+                type: string
+                description: Resultado final de la evaluación de calificación crediticia.
+              customerCreditRatingRecord:
+                type: string
+                description: Registro histórico de calificaciones crediticias del
+                  cliente.
+              customerCreditRatingNarrative:
+                type: string
+                description: Descripción o narrativa detallada relacionada con la
+                  calificación crediticia del cliente.
+              customerCreditRatingDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+            description: Informacion sobre el estado de crédito del cliente
+    lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryInterest.interest:
+      type: array
+      items:
+        type: object
+        properties:
+          interestRate:
+            type: string
+            description: Indica la tasa de interes del prestamo
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          interestType:
+            type: string
+            description: '''Indica el tipo de interes'' * Fixed = Interes Fijo * Overdue
+              = Interes por Mora * Forfeit = Interes perdido'
+            enum:
+            - Fixed
+            - Overdue
+            - Forfeit
+            - Accrual
+            - AccrualInterest
+            - ValidInterest
+            - ExpiredInterest
+            - CurrentInterest
+            - MonthlyInterest
+            - DelinquencyInterest
+            - PastdueInterest
+            - AccruedInterest
+            - ArrearsInterest
+          interestTax:
+            type: number
+          interestAmount:
+            type: string
+    lib.libraryRetrieveProductInformationRq.libraryDeviceAssignment.libraryIssueLocation.issueLocation:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.location'
+    lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.loanAccount:
+      type: object
+      properties:
+        accountIdentification:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountIdentification.accountIdentification'
+        accountBalance:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryAccountBalance.accountBalance'
+        accountLien:
+          type: object
+          properties:
+            lienType:
+              type: number
+            lienDefinition:
+              type: string
+            lienPurpose:
+              type: string
+        depositsAndWithdrawals:
+          type: object
+          properties:
+            accumulatedDeposit:
+              type: number
+        transactionalProfile:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryTransactionalProfile.transactionalProfile'
+    lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.loanFacility:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        loanAccount:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.loanAccount'
+        loanTerm:
+          type: number
+          description: Indica el plazo del prestamo
+        loanNumber:
+          type: string
+          description: Indica el numero del prestamo
+        promoter:
+          type: string
+          description: Indica el promotor
+        loanAmount:
+          type: string
+          description: Indica el monto del prestamo
+        loanCapacity:
+          type: number
+          description: Indica el monto total de la capacidad del prestamo
+        productInstanceRecord:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+        loanType:
+          type: string
+          description: '''Indica el tipo de prestamo'' * ConsumerLoan = Prestamo consumo'
+          enum:
+          - ConsumerLoan
+        loanFrequency:
+          type: number
+          description: Indica la frecuencia de pago del prestamo
+        isFixedRate:
+          type: boolean
+          description: Indica si el producto maneja una tasa fina
+        loanOriginationDate:
+          type: string
+        loanStatus:
+          type: string
+        loanMaturity:
+          type: number
+        loanApplicableRate:
+          type: object
+          properties:
+            rate:
+              type: object
+              properties:
+                rateValue:
+                  type: string
+                  description: Valor de la tasa.
+                rateUnit:
+                  type: string
+                  description: Unidad de la tasa.
+                ratePeriod:
+                  type: string
+                  description: Período de la tasa.
+                rateCapitalUnit:
+                  type: string
+                  description: Unidad de capital de la tasa.
+        loanAgreement:
+          type: array
+          items:
+            type: object
+            properties:
+              initialBalance:
+                type: string
+                description: Indica el saldo inicial
+              monthlyPayment:
+                type: string
+                description: Indica el monto mensual a pagar
+              interestAmount:
+                type: string
+                description: Indica el monto mensual de interes a pagar
+              monthlyNumberPayment:
+                type: string
+                description: Indica el numero de meses de pago
+              interest:
+                $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryInterest.interest'
+              period:
+                type: string
+                description: Indica el periodo del prestamo
+              serviceFees:
+                $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryServiceFees.serviceFees'
+              capitalBalance:
+                type: string
+                description: Indica el monto de capital del prestamo
+              paymentDate:
+                type: string
+                description: Indica la fecha de pago del prestamo
+                format: date
+              finalBalance:
+                type: string
+                description: Indica el monto final del prestamo
+              termDays:
+                type: string
+                description: Indica los dias de periodo del prestamo
+              openDate:
+                type: string
+                description: Indica la fecha de apertura del prestamo
+                format: date
+              totalAmountPayment:
+                type: string
+                description: Indica el monto total a pagar
+              overduePayments:
+                type: number
+                description: Indica el monto de pagos vencidos
+              minimumPayment:
+                type: string
+                description: Indica el monto minimo a pagar
+              amount:
+                type: string
+                description: Indica el monto segun contrato a pagar
+              totalLiquidity:
+                type: number
+                description: Indica el monto de liquidez
+              savings:
+                type: number
+                description: Indica el monto de ahorro
+              annualRate:
+                type: string
+                description: Indica la tasa anual fija
+              accruedInterest:
+                type: number
+                description: Indica el monto de ahorro
+              productInstanceRecord:
+                $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+              loanAmount:
+                type: string
+              loanDescription:
+                type: string
+        loanProduct:
+          required:
+          - bankingProduct
+          type: object
+          properties:
+            bankingProduct:
+              type: object
+              properties:
+                productType:
+                  type: string
+                  enum:
+                  - LoanProduct
+                  - CurrentAccountProduct
+                  - SavingAccountProduct
+        interest:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryInterest.interest'
+        fees:
+          type: object
+          properties:
+            transactionFeeCharge:
+              type: number
+              description: Monto del servicio.
+            feeArrangement:
+              type: object
+              properties:
+                feeType:
+                  type: string
+                feeAmount:
+                  type: number
+              description: Monto de comisiones
+            feeTransaction:
+              type: object
+              properties:
+                feeAmount:
+                  type: number
+              description: Monto de iva
+            delinquencyFee:
+              type: object
+              properties:
+                feeAmount:
+                  type: number
+                feeRate:
+                  type: number
+              description: Monto de moratorios pagados
+        repayment:
+          type: object
+          properties:
+            repaymentTransactions:
+              type: number
+            repaymentTransactionPaymentLastDate:
+              type: string
+            repaymentTransactionPaymentDueDate:
+              type: string
+        transactionHoldFacility:
+          required:
+          - transactionHoldCustomer
+          - transactionHoldProduct
+          type: object
+          properties:
+            transactionHoldCustomer:
+              type: object
+              properties:
+                transactionHoldReason:
+                  type: number
+                transactionHoldCode:
+                  type: string
+                transactionHoldCodeDescription:
+                  type: string
+            transactionHoldProduct:
+              type: object
+              properties:
+                transactionHoldReason:
+                  type: number
+                transactionHoldCode:
+                  type: string
+                transactionHoldCodeDescription:
+                  type: string
+        limit:
+          type: object
+          properties:
+            limitAmount:
+              type: number
+              description: Monto limite
+        billingCycleEndDay:
+          type: number
+        cancelationDate:
+          type: string
+          format: date
+        availableCreditLineAmount:
+          type: number
+        account:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+        serviceFees:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryServiceFees.serviceFees'
+        loanConsumptionIndicator:
+          type: number
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.location:
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          country:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código ISO alfa-2 o alfa-3 válido del país.
+                default: All
+              name:
+                type: string
+                description: Nombre del País
+          city:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código de la ciudad
+              name:
+                type: string
+                description: "Indica el nombre de la ciudad, normalmente que pertenece\
+                  \ a una dirección"
+          region:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la region
+          state:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryState.state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          postalAddress:
+            type: string
+            description: Dirección postal.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: '''Indica el tipo de direccion'' * IP_ADDRESS =  Direccion
+              IP  * DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS =
+              Direccion de una persona * INE_ADDRESS = Direccion retornada por el
+              INE * BIRTH_PLACE = Direccion de Nacimiento'
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+          countyDistrict:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          neighborhoodList:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          province:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la provincia
+              code:
+                type: string
+                description: Código de la provincia
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          housingType:
+            type: string
+            description: Identificador del catálogo de tipo de vivienda. - 1. Propia
+              - 2. Rentada - 3. Familiar - 4. Huesped - 5. Pagandola/Hipotecada/Infonavit
+              - 6. Prestada
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          apartment:
+            type: string
+            description: numero de apartamento
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          addressWorkingInhabitantsNumber:
+            type: string
+            description: Numero de trabajadores en el sitio de trabajo
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          locationInegiCode:
+            type: string
+            description: Referencia de la localidad con respecto al Inegi
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          currentAddressTime:
+            type: string
+            description: Años en el domicilio actual
+          addressInhabitantsNumber:
+            type: string
+            description: Numbero de habitantes en el domicilio
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+            x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryRetrieveProductInformationRq.libraryPageFacility.pageFacility:
+      type: object
+      properties:
+        pageSize:
+          type: number
+          description: Cantidad de registros por paginas
+        totalPages:
+          type: number
+          description: Número de paginas
+        currentPage:
+          type: number
+          description: Pagina actual
+        lastRegister:
+          type: number
+          description: Pagina actual
+        counter:
+          type: number
+          description: Pagina actual
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference:
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryIdentifications.identifications'
+        personName:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonName.personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        location:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.location'
+        gender:
+          type: string
+          description: '''El género de la persona '' * M = Masculino * F = Femenino'
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryContactPoint.contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        maritalStatus:
+          type: string
+          description: Estado civil.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        birthPlace:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryBirthPlace.birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+        resourceSupplierType:
+          type: boolean
+          description: Origen de recursos
+          example: true
+        partyName:
+          type: string
+          description: Nombre del cliente
+        maritalStatusDurationYears:
+          type: string
+          description: Años de Estado Civil
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        maritalStatusDurationMonths:
+          type: string
+          description: Meses de Estado Civil
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        economicActivityIdentification:
+          type: string
+          description: Actividad económica
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        economicSubActivityIdentification:
+          type: string
+          description: Sub Actividad económica
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        housingType:
+          type: string
+          description: Identificador del catálogo de tipo de vivienda. - 1. Propia
+            - 2. Rentada - 3. Familiar - 4. Huesped - 5. Pagandola/Hipotecada/Infonavit
+            - 6. Prestada
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del tipo de persona
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.paymentCard:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Indica el numero del plastico o de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cardExpiryDate:
+          type: string
+          description: Fecha de expireción de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cardHolderName:
+          type: string
+          description: Indica el nombre del plastico o de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cardType:
+          type: string
+          description: Indica el tipo de la tarjeta
+        referenceId:
+          type: string
+          description: secuencia del registro en el repositorio
+        deviceStatus:
+          type: string
+          description: Estado del dispositivo
+        deviceStatusDetail:
+          type: string
+          description: Descripcion del Estado del dispositivo
+        cardHolderType:
+          type: string
+          description: Indica el tipo de titular de la tarjeta
+        haveApplication:
+          type: boolean
+          description: Indica si la tarjeta tiene uns reposicion
+        paymentCardType:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.libraryPaymentCardType.paymentCardType'
+        cardClassification:
+          type: string
+          description: indica si la tarjeta es digital o fisica
+        creationDate:
+          type: string
+          description: fecha de creacion de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        deviceIdentificationCard:
+          type: string
+          description: id de la tarjeta
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        deviceStatusCode:
+          type: string
+          description: codigo del estado de la tarjeta
+        cardPlasticReference:
+          type: number
+          description: numero de instacia de la tarjeta
+        deviceStatusDescription:
+          type: string
+          description: description de estado de la tarjeta
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.libraryPaymentCardType.paymentCardType:
+      type: object
+      properties:
+        cardType:
+          type: string
+          description: Indica el tipo de la tarjeta
+        productInstanceRecord:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+        bin:
+          type: string
+          description: Indica el bin de la tarjeta
+        principalKey:
+          type: string
+          description: Indica la clave de la tarjeta
+        key:
+          type: string
+          description: Indica la clave de la tarjeta
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile:
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        role:
+          type: string
+          description: Rol del PEP.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        publicPosition:
+          type: boolean
+          description: ¿Cuenta con un cargo público? PEP
+        pepFamily:
+          type: boolean
+          description: ¿Se encuentra algún familiar dentro de algún cargo público?
+        civilAssociation:
+          type: boolean
+          description: ¿Se encuentra dentro de una asociación civil?
+        associationDescription:
+          type: string
+          description: Asociación civil acotado a 50 caracteres
+        ownershipStake:
+          type: string
+          description: Participacion accionaria
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonName.personName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullName:
+          type: string
+          description: Nombre completo
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullNameMrz:
+          type: string
+          description: Nombre completo segun documento de identidad
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        alias:
+          type: string
+          description: Apodo
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.personProfile:
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        biometricType:
+          type: string
+        pepProfile:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile'
+        partyType:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType'
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        economicActivity:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity'
+        segment:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del segmento.
+            code:
+              type: string
+              description: Código del segmento.
+            segment:
+              type: string
+              description: Trama o segmento relacionado con la orden de pago.
+            sequence:
+              type: number
+              description: secuencia del segmento
+        group:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del grupo.
+            code:
+              type: string
+              description: Código del grupo.
+        subGroup:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del subgrupo.
+            code:
+              type: string
+              description: Código del subgrupo.
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        residencyYear:
+          type: string
+          description: Año de residencia.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+        monthlyIncome:
+          type: string
+          description: Ingreso  Mensual acotado
+        hasIncomeProof:
+          type: string
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        resourceIdentification:
+          type: string
+          description: Tipo de ingreso
+    lib.libraryRetrieveProductInformationRs.libraryProductInformation.productInformation:
+      type: array
+      items:
+        type: object
+        properties:
+          partyReference:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+          paymentCard:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.paymentCard'
+          cardPaymentAgreement:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCardPaymentAgreement.cardPaymentAgreement'
+          cardPaymentInvolvement:
+            $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCardPaymentInvolvement.cardPaymentInvolvement'
+          creditCardLogFacility:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryCreditCardStatement.libraryCreditCardLogFacility.creditCardLogFacility'
+          rewardPointsAccount:
+            $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryRewardPointsAccount.rewardPointsAccount'
+          account:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+          productInstanceRecord:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord'
+          loanFacility:
+            $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.loanFacility'
+          creditLimit:
+            $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCreditLimit.creditLimit'
+          bankBranch:
+            $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch'
+          cancellationemployeeReference:
+            type: string
+            description: numero de empleado
+          cancellationReason:
+            type: string
+            description: motivo de cancelacion
+          cancellationTransactionReference:
+            type: string
+            description: folio de cancelacion
+          statusInstanceRecord:
+            type: object
+            properties:
+              statusCode:
+                type: string
+                description: Codigo del estado de la instancia
+              message:
+                type: string
+                description: Descripcion sobre el estado de la instancia
+              status:
+                type: string
+                description: status de la solicitud
+            description: Contiene la informacion registrada de una instancia ante
+              un evento
+          acronym:
+            type: string
+            description: siglas
+          creditProfile:
+            $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryCreditProfile.creditProfile'
+          transactionDate:
+            type: array
+            items:
+              type: object
+              properties:
+                transactionDate:
+                  type: string
+                transactionDateType:
+                  type: string
+                  enum:
+                  - TransactionInitiatedDate
+                  - TransactionUpdatedDate
+                  - TransactionCutoffDate
+                  - TransactionDischargeDate
+                  - TransactionLastUpdate
+                  - TransactionRegister
+                  - TransactionExpiryDate
+                  - TransactionCancellationDate
+                  - TransactionContractDate
+                  - TransactionStartDate
+                  - TransactionInvoiceDate
+                  - TransactionGraceDate
+                  - TransactionDueDate
+                  - TransactionPenalityDate
+          requestType:
+            type: string
+            description: tipo de solicitud
+          execution:
+            type: string
+            description: ejecucion
+          record:
+            type: string
+            description: ejecucion
+    lib.libraryCreateAccountBalanceDetailsRq.libraryProductInstanceRecord.productInstanceRecord:
+      type: object
+      properties:
+        productInstanceReference:
+          type: string
+          description: Indica el identificador del producto
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        productInstanceReferenceName:
+          type: string
+          description: Indica el nombre del producto
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        productSubType:
+          type: string
+          description: Clasificación secundaria del producto
+    lib.libraryCreateAccountBalanceDetailsRs.libraryRetainedBalanceDetail.retainedBalanceDetail:
+      type: array
+      items:
+        type: object
+        properties:
+          releaseDate:
+            type: string
+            description: Indica la fecha de liberacion del monto retenido
+          transactionNumber:
+            type: string
+            description: Número de la transacción
+          amount:
+            type: string
+            description: Cantidad de dinero.
+          detail:
+            type: string
+            description: Indica la informacion de referencia
+          releaseDays:
+            type: number
+            description: dias restantes.
+    lib.libraryRetrieveProductInformationRs.libraryProductInformation.libraryRewardPointsAccount.rewardPointsAccount:
+      type: object
+      properties:
+        rewardPointsIndicator:
+          type: boolean
+          description: indica si la tarjeta de credito esta inscripta en el programa
+            de puntos de la tarjeta infininte
+    lib.libraryCreateAccountBalanceDetailsRs.libraryLoanFacility.libraryServiceFees.serviceFees:
+      type: object
+      properties:
+        taxRate:
+          type: string
+          description: Indica la tasa de impuestos del prestamo
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        taxDateRate:
+          type: string
+          description: Indica la fecha de pago del monto de impuesto
+          format: date
+        totalAmount:
+          type: number
+          description: Indica el monto total
+        totalAmountTax:
+          type: string
+          description: Indica el monto de impuestos de la semana
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        overdueTax:
+          type: string
+          description: Indica el monto de impuesto vencido
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        arrearsTax:
+          type: string
+          description: Indica el monto de impuestos moratorios a pagar
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        monthlyTax:
+          type: string
+          description: Indica el monto mensual actual de de impuestos de interes a
+            pagar
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        currentTax:
+          type: string
+          description: Indica el monto de impuestos de interes actual
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.libraryLocation.libraryState.state:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        name:
+          type: string
+          description: Nombre del estado
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+      description: Informacion sobre el estado
+    lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.libraryTransactionalProfile.transactionalProfile:
+      type: object
+      properties:
+        accountUseType:
+          type: string
+          description: "Código del catálogo type_origin_use que indica el uso que\
+            \ se le dará a la cuenta. Ejemplo:   01 = AHORROS   14 = INVERSION   18\
+            \ = GESTIONAR MIS GASTOS PERSONALES   19 = ADMINISTRA MI NEGOCIO"
+          enum:
+          - "01"
+          - "14"
+          - "18"
+          - "19"
+        depositRange:
+          type: string
+          description: "Código del catálogo de los montos de movimientos que indica\
+            \ el rango del monto de los depósitos esperados en la cuenta. Ejemplo:\
+            \   01 = 0 hasta 2,500   02 = 2,501 hasta 5,000   03 = 5,001 hasta 20,000\
+            \   04 = 20,001 hasta 50,000   05 = 50,001 hasta 25,000,000   06 = 25,000,001\
+            \ hasta 50,000,000   07 = 50,000,001 hasta 100,000,000   08 = Más de 100,000,000"
+          enum:
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+        withdrawalRange:
+          type: string
+          description: "Código del catálogo de los montos de movimientos que indica\
+            \ el rango del monto de los retiros de la cuenta que se estima realizar.\
+            \ Ejemplo:   01 = 0 hasta 2,500   02 = 2,501 hasta 5,000   03 = 5,001\
+            \ hasta 20,000   04 = 20,001 hasta 50,000   05 = 50,001 hasta 25,000,000\
+            \   06 = 25,000,001 hasta 50,000,000   07 = 50,000,001 hasta 100,000,000\
+            \   08 = Más de 100,000,000"
+          enum:
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+        depositCount:
+          type: string
+          description: "Código del catálogo del número de movimientos que indica el\
+            \ rango de número de depósitos que se estima recibir al mes en la cuenta.\
+            \ Ejemplo:   01 = 1 hasta 5   02 = 6 hasta 10   03 = 11 hasta 20   04\
+            \ = 21 hasta 50   05 = Más de 50"
+          enum:
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+        withdrawalCount:
+          type: string
+          description: "Código del catálogo del número de movimientos que indica el\
+            \ rango de número de retiros que se estima realizar en la cuenta al mes.\
+            \ Ejemplo:   01 = 1 hasta 5   02 = 6 hasta 10   03 = 11 hasta 20   04\
+            \ = 21 hasta 50   05 = Más de 50"
+          enum:
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "05"
+        sourceOfFunds:
+          type: string
+          description: "Código del catálogo type_origin_resources que indica la procedencia\
+            \ de los recursos de la cuenta. Ejemplo:   01 = AHORROS   02 = NOMINA\
+            \   03 = HERENCIA   04 = NEGOCIO PROPIO   12 = SERVICIOS/COMERCIO   14\
+            \ = REMESA FAMILIAR   19 = HONORARIOS   20 = PRESTAMO"
+          enum:
+          - "01"
+          - "02"
+          - "03"
+          - "04"
+          - "12"
+          - "14"
+          - "19"
+          - "20"
+        monthlyRange:
+          type: string
+          description: "Código del catálogo del monto mensual que indica el rango\
+            \ del monto que se estima manejar al mes en la cuenta. Ejemplo:   01 =\
+            \ 0.00 hasta 1,000.00 MN   02 = 1,000.01 hasta 2,500.00 MN   03 = 2,500.01\
+            \ hasta 5,000.00 MN   04 = 5,000.01 hasta 10,000.00 MN   05 = 10,000.01\
+            \ hasta 25,000.00 MN   06 = 25,000.01 hasta 50,000.00 MN   07 = 50,000.01\
+            \ hasta 100,000.00 MN   08 = Más de 100,000.00 MN"
+          enum:
+          - "01"
+          - "02"
+          - "02"
+          - "04"
+          - "05"
+          - "06"
+          - "07"
+          - "08"
+    lib.libraryExecuteCustomerCreditRatingRq.executeCustomerCreditRatingRq:
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        applicationReferenceId:
+          type: string
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingRq.libraryBankBranch.bankBranch'
+        companyReference:
+          type: string
+          description: Referencia de la compañia
+          example: string
+        employeeNumber:
+          type: string
+          description: Número único asignado a cada empleado.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        amount:
+          type: string
+          description: Monto
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        bankReference:
+          type: string
+          description: Referencia única del banco.
+        requestNumber:
+          type: string
+          description: Número de la solicitud de crédito
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: Descripción del segmento.
+              code:
+                type: string
+                description: Código del segmento.
+              segment:
+                type: string
+                description: Trama o segmento relacionado con la orden de pago.
+              sequence:
+                type: number
+                description: secuencia del segmento
+        sequence:
+          type: number
+          description: secuencia del segmento
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        organisation:
+          type: object
+          properties:
+            organisationName:
+              type: string
+              description: Nombre oficial de la organización.
+    lib.libraryExecuteCustomerCreditRatingRs.executeCustomerCreditRatingRs:
+      required:
+      - details
+      type: object
+      properties:
+        applicationReferenceId:
+          type: string
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+    lib.libraryRetrieveProductInformationRq.retrieveProductInformationRq:
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRq.libraryDeviceAssignment.deviceAssignment'
+        channelFacility:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryChannelFacility.channelFacility'
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPartyReference.partyReference'
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+        account:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryAccount.account'
+        queryType:
+          type: string
+          description: TIpo de consulta
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreateAccountBalanceDetailsRq.libraryPaymentCard.paymentCard'
+        limit:
+          type: string
+          description: Limite
+        execution:
+          type: string
+          description: Limite
+        pageFacility:
+          $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRq.libraryPageFacility.pageFacility'
+    lib.libraryRetrieveProductInformationRs.retrieveProductInformationRs:
+      type: object
+      properties:
+        productInformation:
+          $ref: '#/components/schemas/lib.libraryRetrieveProductInformationRs.libraryProductInformation.productInformation'
+    lib.libraryCaptureTransactionalProfileRq.captureTransactionalProfileRq:
+      type: object
+      properties:
+        loanAccount:
+          $ref: '#/components/schemas/lib.libraryCaptureTransactionalProfileRq.libraryLoanAccount.loanAccount'
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureTransactionalProfileRs.captureTransactionalProfileRs:
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+          x-annotation-lib.libraryCaptureTransactionalProfileRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

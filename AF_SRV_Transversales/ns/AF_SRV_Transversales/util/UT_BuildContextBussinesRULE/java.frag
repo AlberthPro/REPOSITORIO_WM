@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">UT_BuildContextBussinesRULE</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">U3RyaW5nIHJ1bGVOYW1lID0gSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGluZS5nZXRDdXJzb3Io
+KSwgInJ1bGVOYW1lIik7DQpTdHJpbmcgcHJlUnVsZU5hbWUgPSBydWxlTmFtZS5zdWJzdHJpbmco
+cnVsZU5hbWUubGFzdEluZGV4T2YoIl8iKS00LCBydWxlTmFtZS5sYXN0SW5kZXhPZigiXyIpKTsN
+ClN0cmluZyBzaG9ydFVVSUQgPSBJRGF0YVV0aWwuZ2V0U3RyaW5nKHBpcGVsaW5lLmdldEN1cnNv
+cigpLCAiVVVJRCIpOw0Kc2hvcnRVVUlEID0gc2hvcnRVVUlELnN1YnN0cmluZygwLCBzaG9ydFVV
+SUQubGFzdEluZGV4T2YoIi0iKSk7DQpTdHJpbmcgcmVxdWVzdERhdGUgPSBJRGF0YVV0aWwuZ2V0
+U3RyaW5nKHBpcGVsaW5lLmdldEN1cnNvcigpLCAiaW5pdFRpbWUiKTsNClN0cmluZyB0aW1lc3Ry
+ID0gcmVxdWVzdERhdGUucmVwbGFjZUFsbCgiW1xcLy46IF0iLCAiIik7DQoNClN0cmluZyBjdXN0
+b21JRCA9IHByZVJ1bGVOYW1lKyItIitzaG9ydFVVSUQrIi0iK3RpbWVzdHI7DQpJRGF0YVV0aWwu
+cHV0KHBpcGVsaW5lLmdldEN1cnNvcigpLCAiY3VzdG9tSUQiLCBjdXN0b21JRCk7</value>
+</Values>

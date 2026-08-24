@@ -1,0 +1,2989 @@
+openapi: 3.0.0
+info:
+  title: Dom Counterparty Risk
+  version: 1.5.0
+servers:
+- url: "https://${HOST_NAME}/accountManagement/counterpartyRisk"
+  variables:
+    HOST_NAME:
+      default: HOST_NAME
+paths:
+  /v1/customerCreditRatingCC/retrieve:
+    post:
+      description: cálculo del círculo de crédito a través de un Store Procedure.
+      operationId: POST_v1-customerCreditRatingCC-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveCustomerCreditRatingCCRq'
+            example:
+              partyReference:
+                companyReference: B277B9D408D34013A4BE9FA416B72638
+                referenceId: B277B9D408D34013A4BE9FA416B72638
+              applicationReferenceId: ACCT-98765
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveCustomerCreditRatingCCRs'
+              example:
+                status: "000"
+                customerCreditRatingState:
+                  creditRatingAssessmentResult: X
+                compromiseRecord: "0"
+                message: COMPORTAMIENTO NULO EN SIC
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/retrieve:
+    post:
+      description: se encarga de realizar consultas a buró de crédito para obtener
+        los antecedentes crediticios de los clientes que están realizando un trámite
+        para una solicitud de tarjeta de crédito con el fin de considerar estos antecedentes
+        para su posible aprobación o rechazo a la solicitud.
+      operationId: POST_v1-customerCreditRating-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveCustomerCreditRatingRq'
+            example:
+              companyReference: "001"
+              applicationReferenceId: ACCT-98765
+              organisation:
+                organisationName: BC
+              branch: "123"
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              bankReference: BC
+              requestNumber: "600159029482"
+              segments:
+              - segment: INTL11600560310283             007MX0000ZM30561006CJSsTVRkICCMX000000000SP03     0000000PN05EVANS0016NO
+                  PROPORCIONADO0204MURT04080-19-010513EAMU900101TF20802MX090111101S1201M170201PA
+                sequence: 1
+              - segment: INTL11600560310283             007MX0000ZM30561006CJSsTVRkICCMX000000000SP03     0000000PN05EVANS0016NO
+                  PROPORCIONADO0204MURT04080-19-010513EAMU900101TF20802MX090111101S1201M170201PA
+                sequence: 2
+              - segment: INTL11600560310283             007MX0000ZM30561006CJSsTVRkICCMX000000000SP03     0000000PN05EVANS0016NO
+                  PROPORCIONADO0204MURT04080-19-010513EAMU900101TF20802MX090111101S1201M170201PA
+                sequence: 3
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveCustomerCreditRatingRs'
+              example:
+                segments:
+                - segment: INTL11760021049113             MX1010BB3056100610PN09HERNANDEZ0008BAUTIS
+                  sequence: 1
+                - segment: 41900240102602012702UU280831072022290830062022TL08310820220210FINANCIERAU
+                  sequence: 2
+                - segment: RO DE CREDITO 0402CC0502MX060900000000009011IQ08050920220110BB3056100602
+                  sequence: 3
+                consumptionRecordStatus: Consulta exitosa
+                registerStatus: "0"
+                dateInsert: 04/22/2022
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/evaluate:
+    post:
+      description: Operación encargada de obtener la información crediticia de un
+        cliente.
+      operationId: POST_v1-customerCreditRating-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluateCustomerCreditRatingStateRq'
+            example:
+              partyReference:
+                personName:
+                  familyName: 92EAF3719159C372F3D50337E0A14F57
+                  secondLastName: 08B3D5FA8337D8C29F10AB5909F20C56
+                  firstName: 464E07AFC9E46359FB480839150595C5
+                  secondName: 41EF894026A8CD4DA247105A6036DB70
+                dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                identifications:
+                - identifier:
+                    identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                  personIdentificationType: Registro Federal Contribuyentes
+              creditConsultType: Supplier
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.evaluateCustomerCreditRatingStateRs'
+              example:
+                customerCreditRatingState:
+                  creditRatingBlackListType: None
+                  creditRatingAssessmentResult: Positive
+                  customerCreditRatingNarrative: Customer has maintained a good credit
+                    score consistently.
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/update:
+    post:
+      description: "Esta Api realiza el cambio de SIC consultada a la otra SIC, como\
+        \ respaldo en caso de no tener respuesta de la primera SIC (Sociedad de Informació\
+        n Crediticia) consultada."
+      operationId: POST_v1-customerCreditRating-update
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateCustomerCreditRatingRq'
+            example:
+              applicationReferenceId: ACCT-98765
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              organisation:
+                organisationName: BC
+              sicDecisionStatus: "1"
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.updateCustomerCreditRatingRs'
+              example:
+                sicDecisionStatus: "1"
+                applicationReferenceId: ACCT-98765
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/reasonsRejection/retrieve:
+    get:
+      description: Operación encargada de obtener la información de los motivos de
+        rechazo de un cliente
+      operationId: GET_v1-reasonsRejection-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: codeReasonsRejection
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: companyReference
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveReasonsRejectionRs'
+              example:
+                reasonRejection:
+                - name: Excellent
+                  detail: None
+                  rejectionType: None
+                - name: Excellent
+                  detail: None
+                  rejectionType: None
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerSpecialConditions/retrieve:
+    post:
+      description: Api de dominio encargada de obtener la información de los clientes
+        con situacion especial.
+      operationId: POST_v1-customerSpecialConditions-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveCustomerSpecialConditionsRq'
+            example:
+              option: "3"
+              customerSpecialConditions:
+                customerSpecialConditionsReference: "123"
+                partyReference:
+                  referenceId: f5c4aa0648d87d54176a1e77000b6be8
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveCustomerSpecialConditionsRs'
+              example:
+                customerSpecialConditions:
+                  companyReference: Excellent
+                  customerSpecialConditionsReference: "1234"
+                  customerSpecialConditionsTime: 12:23
+                  specialConditions:
+                  - name: Excellent
+                    code: None
+                    specialConditionType: T
+                  partyReference:
+                    referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                    referenceId: f5c4aa0648d87d54176a1e77000b6be8
+                  bankBranch:
+                    branchReference: BRANCH456
+                  statusInstanceRecord:
+                    statusCode: "00000"
+                    status: SE
+                    message: sssss
+                  customerSpecialConditionsDate:
+                    dateContent: BRANCH456
+                  detail: 12:23
+                  customerReference: 12:23
+                  statusDetail: 12:23
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerSpecialConditions/initiate:
+    post:
+      description: Api de dominio encargada de guardar la información de los clientes
+        con situacion especial.
+      operationId: POST_v1-customerSpecialConditions-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateCustomerSpecialConditionsRq'
+            example:
+              option: "3"
+              customerSpecialConditions:
+                companyReference: "001"
+                customerSpecialConditionsReference: "1234"
+                customerSpecialConditionsTime: 12:23
+                specialConditions:
+                - name: Excellent
+                  code: None
+                  specialConditionType: T
+                partyReference:
+                  referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                  referenceId: f5c4aa0648d87d54176a1e77000b6be8
+                bankBranch:
+                  branchReference: BRANCH456
+                statusInstanceRecord:
+                  statusCode: "00000"
+                  status: SE
+                  message: sssss
+                customerSpecialConditionsDate:
+                  dateContent: BRANCH456
+                detail: 12:23
+                customerReference: 12:23
+                statusDetail: 12:23
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerSpecialConditions/update:
+    patch:
+      description: Api de dominio encargada de actualizar la información de los clientes
+        con situacion especial.
+      operationId: PATCH_v1-customerSpecialConditions-update
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateCustomerSpecialConditionsRq'
+            example:
+              option: "3"
+              customerSpecialConditions:
+                customerSpecialConditionsReference: "1234"
+                partyReference:
+                  referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                statusInstanceRecord:
+                  statusCode: "00000"
+                  status: SE
+                  message: sssss
+                statusDetail: 12:23
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerSpecialConditions/control:
+    patch:
+      description: Api de dominio encargada de actualizar el estatus de la información
+        de los clientes con situacion especial.
+      operationId: PATCH_v1-customerSpecialConditions-control
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.controlCustomerSpecialConditionsRq'
+            example:
+              customerSpecialConditions:
+                customerSpecialConditionsReference: "1234"
+                partyReference:
+                  referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/economicActivityRisk/retrieve:
+    post:
+      description: "Api de dominio para consultar las actividades que clasifican como\
+        \ una actividad de riesgo en base a los catálogos de tipo de vivienda y tipos\
+        \ de fuente de ingresos, así como también se evalúa la inestabilidad en la\
+        \ vivienda."
+      operationId: POST_v1-economicActivityRisk-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveEconomicActivityRiskRq'
+            example:
+              economicActivityIdentification: "1"
+              economicSubActivityIdentification: "3"
+              housingType: "3"
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveEconomicActivityRiskRs'
+              example:
+                economicActivityRiskRetail: "true"
+                economicActivityRisk: "true"
+                housingTypeRiskRetail: "true"
+                housingTypeRisk: "false"
+                detail: Abogado Litigante
+                statusInstanceRecord:
+                  statusCode: "110"
+                  message: Rechazo por ocupacion de Riesgo Abogado Litigante
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerSpecialConditions/evaluate:
+    post:
+      description: "Realiza la consulta del cliente en Coppel para validar si tiene\
+        \ alguna situación especial marcada en Coppel, el cual puede ser de utilidad\
+        \ para identificar si esté es apto para el ofertamiento de un producto de\
+        \ crédito."
+      operationId: POST_v1-customerSpecialConditions-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluateCustomerSpecialConditionsRq'
+            example:
+              bankBranch:
+                branchReference: ABC123
+              option: "1"
+              key: "1"
+              privateKey: "1"
+              timeout: 1
+              partyReference:
+                referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.evaluateCustomerSpecialConditionsRs'
+              example:
+                exist: true
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/execute:
+    patch:
+      description: "Operación encargada de recopilar los valores de la consulta al\
+        \ Buro de Credito, segmentar los valores y insertar la informacion de las\
+        \ cuentas del cliente."
+      operationId: PATCH_v1-customerCreditRating-execute
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.executeCustomerCreditRatingStateRq'
+            example:
+              bankBranch:
+                branchReference: ABC123
+                name: BC
+              companyReference: "001"
+              employeeNumber: informix
+              applicationReferenceId: ACCT-98765
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/initiate:
+    post:
+      description: "Se encarga de preparar la información del cliente para hacer una\
+        \ consulta hacia las instituciones crediticias ya sea Buró de Crédito o Cí\
+        rculo de crédito, con el fin de saber el comportamiento y antecedentes del\
+        \ cliente con créditos anteriores, esto para saber si el cliente es candidato\
+        \ para autorizar o rechazar un producto de crédito."
+      operationId: POST_v1-customerCreditRating-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateCustomerCreditRatingStateRq'
+            example:
+              bankBranch:
+                branchReference: ABC123
+              companyReference: "001"
+              employeeNumber: sddd
+              amount: sdffgsdf345234dfgsdfdfsdf
+              applicationReferenceId: ACCT-98765
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.initiateCustomerCreditRatingStateRs'
+              example:
+                applicationReferenceId: ACCT-98765
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                details:
+                - detail: INTL11600560310283007MX0000ZM30561006CJSsTVRkICCMX000000000SP030000000PN05EVANS0016NOPROPORCIONADO0204MURT04080-191-010513EAMU900101TF20802MX090111101S1201M170201PA
+                - detail: 24CALLE 037144088 12454 SN0107CAÑADAS0308CULIACAN0403SIN
+                - detail: 0505801781001HES05002680002**
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerCreditRating/capture:
+    put:
+      description: "Realizar la inserción de la respuesta de buro de crédito del cliente\
+        \ que está realizando la solicitud de una tarjeta de crédito en la base de\
+        \ datos informix, esto con la intención de dejar registro de las consultas\
+        \ que se hicieron hacia la institución crediticia y usarla en temas de reporterí\
+        as o auditorías"
+      operationId: PUT_v1-customerCreditRating-capture
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.captureCustomerCreditRatingStateRq'
+            example:
+              sequence: 14
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+              details:
+              - detail: INTL11600560310283007MX0000ZM30561006CJSsTVRkICCMX000000000SP030000000PN05EVANS0016NOPROPORCIONADO0204MURT04080-191-010513EAMU900101TF20802MX090111101S1201M170201PA
+              applicationReferenceId: ACCT-98765
+              statusInstanceRecord:
+                statusCode: ABC123
+              organisation:
+                organisationName: BC
+              bankBranch:
+                name: BC
+              password:
+                authenticationReferenceDataType: user
+                authenticationReferenceDataValue: user
+                passwordReference: A93B64AE1FB376A15EC21132E65B478F
+              statusCertification:
+              - statusInstanceRecord:
+                  status: UPDATE_BURO
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    lib.commonErrorRs:
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: estado de la peticion
+          example: Example
+    lib.updateCustomerCreditRatingRq:
+      $ref: '#/components/schemas/lib.libraryUpdateCustomerCreditRatingRq.updateCustomerCreditRatingRq'
+    lib.updateCustomerCreditRatingRs:
+      $ref: '#/components/schemas/lib.libraryUpdateCustomerCreditRatingRs.updateCustomerCreditRatingRs'
+    lib.retrieveCustomerCreditRatingRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerCreditRatingRq.retrieveCustomerCreditRatingRq'
+    lib.retrieveCustomerCreditRatingRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerCreditRatingRs.retrieveCustomerCreditRatingRs'
+    lib.evaluateCustomerCreditRatingStateRs:
+      required:
+      - customerCreditRatingState
+      type: object
+      properties:
+        customerCreditRatingState:
+          type: object
+          properties:
+            customerReference:
+              type: string
+              description: Identificador único del cliente.
+            customerCreditRatingStatusType:
+              type: string
+              description: Tipo de estado de la calificación crediticia del cliente.
+            customerCreditRatingSchedule:
+              type: string
+              description: Agenda o programación de la calificación de crédito.
+            customerCreditRatingAssessmentRecord:
+              type: string
+              description: Registro detallado de la evaluación crediticia del cliente.
+            assessmentCustomerBehaviorModelReference:
+              type: string
+              description: Referencia al modelo de comportamiento del cliente utilizado
+                para la evaluación.
+            creditRatingAssessmentType:
+              type: string
+              description: Tipo de evaluación de calificación crediticia realizada.
+            creditRatingAssessmentDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+            creditRatingBlackListType:
+              type: string
+              description: "Tipo de lista negra de calificación crediticia, si aplica."
+            creditRatingAssessmentWorkProducts:
+              type: string
+              description: Productos de trabajo resultantes de la evaluación de calificación
+                crediticia.
+            creditRatingAssessmentResult:
+              type: string
+              description: Resultado final de la evaluación de calificación crediticia.
+            customerCreditRatingRecord:
+              type: string
+              description: Registro histórico de calificaciones crediticias del cliente.
+            customerCreditRatingNarrative:
+              type: string
+              description: Descripción o narrativa detallada relacionada con la calificación
+                crediticia del cliente.
+            customerCreditRatingDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+    lib.evaluateCustomerCreditRatingStateRq:
+      $ref: '#/components/schemas/lib.libraryEvaluateCustomerCreditRatingStateRq.evaluateCustomerCreditRatingStateRq'
+    lib.retrieveReasonsRejectionRs:
+      type: object
+      properties:
+        reasonRejection:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la razon de rechazo
+              code:
+                type: string
+                description: Código de la razon de rechazo
+              detail:
+                type: string
+                description: Detalle de la razon de rechazo
+              rejectionType:
+                type: string
+                description: tipo o clasificacion del rechazo
+    lib.retrieveCustomerSpecialConditionsRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerSpecialConditionsRq.retrieveCustomerSpecialConditionsRq'
+    lib.retrieveCustomerSpecialConditionsRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerSpecialConditionsRs.retrieveCustomerSpecialConditionsRs'
+    lib.initiateCustomerSpecialConditionsRq:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerSpecialConditionsRq.initiateCustomerSpecialConditionsRq'
+    lib.updateCustomerSpecialConditionsRq:
+      $ref: '#/components/schemas/lib.libraryUpdateCustomerSpecialConditionsRq.updateCustomerSpecialConditionsRq'
+    lib.controlCustomerSpecialConditionsRq:
+      $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.controlCustomerSpecialConditionsRq'
+    lib.retrieveEconomicActivityRiskRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveEconomicActivityRiskRq.retrieveEconomicActivityRiskRq'
+    lib.retrieveEconomicActivityRiskRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveEconomicActivityRiskRs.retrieveEconomicActivityRiskRs'
+    lib.evaluateCustomerSpecialConditionsRq:
+      $ref: '#/components/schemas/lib.libraryEvaluateCustomerSpecialConditionsRq.evaluateCustomerSpecialConditionsRq'
+    lib.evaluateCustomerSpecialConditionsRs:
+      $ref: '#/components/schemas/lib.libraryEvaluateCustomerSpecialConditionsRs.evaluateCustomerSpecialConditionsRs'
+    lib.initiateCustomerCreditRatingStateRq:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerCreditRatingStateRq.initiateCustomerCreditRatingStateRq'
+    lib.initiateCustomerCreditRatingStateRs:
+      $ref: '#/components/schemas/lib.libraryInitiateCustomerCreditRatingStateRs.initiateCustomerCreditRatingStateRs'
+    lib.retrieveCustomerCreditRatingCCRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerCreditRatingCCRq.retrieveCustomerCreditRatingCCRq'
+    lib.retrieveCustomerCreditRatingCCRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveCustomerCreditRatingCCRs.retrieveCustomerCreditRatingCCRs'
+    lib.captureCustomerCreditRatingStateRq:
+      $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.captureCustomerCreditRatingStateRq'
+    lib.executeCustomerCreditRatingStateRq:
+      $ref: '#/components/schemas/lib.libraryExecuteCustomerCreditRatingStateRq.executeCustomerCreditRatingStateRq'
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.location'
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+        name:
+          type: string
+          description: Nombre de la Sucursal
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryBirthPlace.birthPlace:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.location'
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryContactPoint.contactPoint:
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryCountyDistrict.countyDistrict:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        code:
+          type: string
+          description: Código del distrito
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions:
+      type: object
+      properties:
+        specialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.librarySpecialConditions.specialConditions'
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        customerSpecialConditionsReference:
+          type: string
+          description: Id del registro
+        customerSpecialConditionsDate:
+          type: object
+          properties:
+            dateContent:
+              type: string
+              description: Contenido de la fecha.
+        customerSpecialConditionsTime:
+          type: string
+          description: Hora del registro
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        detail:
+          type: string
+          description: Detalle del registro
+        customerReference:
+          type: string
+          description: Identificador único del cliente.
+        statusDetail:
+          type: string
+          description: Detalle del registro
+    ? lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity
+    : type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice:
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: '''El género de la persona obtenido de ocr'' * M = Masculino*
+            F = Femenino'
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: valor de la línea ZLM.
+            description: Objeto que define las líneas ZLM.
+        personName:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonName.personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryIdentifications.identifications:
+      type: array
+      items:
+        required:
+        - identifier
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+                x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+                format: date
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+                format: date
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: '''Indica el tipo de documento de identidad'' * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social'
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            type: object
+            properties:
+              customerReference:
+                type: string
+                description: Identificador único del cliente.
+              customerCreditRatingStatusType:
+                type: string
+                description: Tipo de estado de la calificación crediticia del cliente.
+              customerCreditRatingSchedule:
+                type: string
+                description: Agenda o programación de la calificación de crédito.
+              customerCreditRatingAssessmentRecord:
+                type: string
+                description: Registro detallado de la evaluación crediticia del cliente.
+              assessmentCustomerBehaviorModelReference:
+                type: string
+                description: Referencia al modelo de comportamiento del cliente utilizado
+                  para la evaluación.
+              creditRatingAssessmentType:
+                type: string
+                description: Tipo de evaluación de calificación crediticia realizada.
+              creditRatingAssessmentDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+              creditRatingBlackListType:
+                type: string
+                description: "Tipo de lista negra de calificación crediticia, si aplica."
+              creditRatingAssessmentWorkProducts:
+                type: string
+                description: Productos de trabajo resultantes de la evaluación de
+                  calificación crediticia.
+              creditRatingAssessmentResult:
+                type: string
+                description: Resultado final de la evaluación de calificación crediticia.
+              customerCreditRatingRecord:
+                type: string
+                description: Registro histórico de calificaciones crediticias del
+                  cliente.
+              customerCreditRatingNarrative:
+                type: string
+                description: Descripción o narrativa detallada relacionada con la
+                  calificación crediticia del cliente.
+              customerCreditRatingDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+            description: Informacion sobre el estado de crédito del cliente
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.location:
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          country:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código ISO alfa-2 o alfa-3 válido del país.
+                default: All
+              name:
+                type: string
+                description: Nombre del País
+          city:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código de la ciudad
+              name:
+                type: string
+                description: "Indica el nombre de la ciudad, normalmente que pertenece\
+                  \ a una dirección"
+          region:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la region
+          state:
+            $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryState.state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          postalAddress:
+            type: string
+            description: Dirección postal.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: '''Indica el tipo de direccion'' * IP_ADDRESS =  Direccion
+              IP  * DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS =
+              Direccion de una persona * INE_ADDRESS = Direccion retornada por el
+              INE * BIRTH_PLACE = Direccion de Nacimiento'
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+          countyDistrict:
+            $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryCountyDistrict.countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          neighborhoodList:
+            $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryNeighborhoodList.neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          province:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la provincia
+              code:
+                type: string
+                description: Código de la provincia
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryNeighborhoodList.neighborhoodList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+            x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference:
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryIdentifications.identifications'
+        personName:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonName.personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        location:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.location'
+        gender:
+          type: string
+          description: '''El género de la persona '' * M = Masculino * F = Femenino'
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryContactPoint.contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        maritalStatus:
+          type: string
+          description: Estado civil.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        birthPlace:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryBirthPlace.birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPassword.password:
+      type: object
+      properties:
+        authenticationReferenceDataReference:
+          type: string
+          description: Referencia de autenticación.
+        authenticationReferenceDataType:
+          type: string
+          description: Tipo de referencia de autenticación.
+        authenticationReferenceDataValue:
+          type: string
+          description: Valor de referencia de autenticación.
+        passwordReference:
+          type: string
+          description: Referencia del nuevo password.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordTemplate:
+          type: string
+          description: Plantilla del password de autenticación.
+        passwordStoredValue:
+          type: string
+          description: Valor almacenado del password anterior.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        passwordValidFromToDate:
+          type: object
+          properties:
+            date:
+              type: string
+              description: Fecha de cambio del password.
+            lastUpdateTime:
+              type: string
+              description: Hora de cambio del password.
+        authenticationPasswordStoredValue:
+          type: string
+          description: Código OTP de 6 cifras
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordStoredHour:
+          type: string
+          description: Hora de generación de OTP
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordStoredDate:
+          type: string
+          description: Fecha de insercion
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        urlOneTimePassword:
+          type: string
+          description: "URL conformada por endpoint seguida de OTP, seguida de email"
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordStoredIdentification:
+          type: number
+          description: Llave de tabla autoincrementable
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        authenticationPasswordResult:
+          type: string
+          description: Mensaje de respuesta de servicio
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile:
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        role:
+          type: string
+          description: Rol del PEP.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonName.personName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.personProfile:
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        pepProfile:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile'
+        partyType:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType'
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        economicActivity:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity'
+        segment:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del segmento.
+            code:
+              type: string
+              description: Código del segmento.
+            segment:
+              type: string
+              description: Trama o segmento.
+            sequence:
+              type: number
+              description: orden en que se envia la secuencia de la trama
+        group:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del grupo.
+            code:
+              type: string
+              description: Código del grupo.
+        subGroup:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del subgrupo.
+            code:
+              type: string
+              description: Código del subgrupo.
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        residencyYear:
+          type: string
+          description: Año de residencia.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.librarySpecialConditions.specialConditions:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre de la condicion especial.
+          code:
+            type: string
+            description: Codigo de la condicion especial.
+          detail:
+            type: string
+            description: Detalle de la condicion especial.
+          specialConditionType:
+            type: string
+            description: Tipo de condicion especial.
+    lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.libraryLocation.libraryState.state:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        name:
+          type: string
+          description: Nombre del estado
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+      description: Informacion sobre el estado
+    lib.libraryCaptureCustomerCreditRatingStateRq.captureCustomerCreditRatingStateRq:
+      required:
+      - details
+      type: object
+      properties:
+        organisation:
+          type: object
+          properties:
+            organisationName:
+              type: string
+              description: Nombre oficial de la organización.
+        sequence:
+          type: number
+          description: Secuencia del mensaje a mostrar
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        password:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPassword.password'
+        statusCertification:
+          type: array
+          items:
+            type: object
+            properties:
+              statusInstanceRecord:
+                type: object
+                properties:
+                  statusCode:
+                    type: string
+                    description: Codigo del estado de la instancia
+                  message:
+                    type: string
+                    description: Descripcion sobre el estado de la instancia
+                  status:
+                    type: string
+                    description: status de la solicitud
+                description: Contiene la informacion registrada de una instancia ante
+                  un evento
+    lib.libraryEvaluateCustomerCreditRatingStateRq.evaluateCustomerCreditRatingStateRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        creditConsultType:
+          type: string
+    lib.libraryExecuteCustomerCreditRatingStateRq.executeCustomerCreditRatingStateRq:
+      type: object
+      properties:
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        employeeNumber:
+          type: string
+          description: Numero del empleado
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+    lib.libraryInitiateCustomerCreditRatingStateRq.initiateCustomerCreditRatingStateRq:
+      type: object
+      properties:
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        employeeNumber:
+          type: string
+          description: Numero del empleado
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        amount:
+          type: string
+          description: Monto de la solicitud.
+          x-annotation-lib.libraryCaptureCustomerCreditRatingStateRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiateCustomerCreditRatingStateRs.initiateCustomerCreditRatingStateRs:
+      required:
+      - details
+      type: object
+      properties:
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        details:
+          type: array
+          items:
+            type: object
+            properties:
+              detail:
+                type: string
+    lib.libraryRetrieveCustomerCreditRatingRq.retrieveCustomerCreditRatingRq:
+      type: object
+      properties:
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        companyReference:
+          type: string
+          description: Referencia a la empresa.
+        branch:
+          type: string
+          description: Código de la sucursal.
+        organisation:
+          type: object
+          properties:
+            organisationName:
+              type: string
+              description: Nombre oficial de la organización.
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        bankReference:
+          type: string
+          description: Referencia única del banco
+        requestNumber:
+          type: string
+          description: Indica el número de solicitud
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: Descripción del segmento.
+              code:
+                type: string
+                description: Código del segmento.
+              segment:
+                type: string
+                description: Trama o segmento.
+              sequence:
+                type: number
+                description: orden en que se envia la secuencia de la trama
+    lib.libraryRetrieveCustomerCreditRatingRs.retrieveCustomerCreditRatingRs:
+      type: object
+      properties:
+        customerCreditRatingState:
+          type: object
+          properties:
+            customerReference:
+              type: string
+              description: Identificador único del cliente.
+            customerCreditRatingStatusType:
+              type: string
+              description: Tipo de estado de la calificación crediticia del cliente.
+            customerCreditRatingSchedule:
+              type: string
+              description: Agenda o programación de la calificación de crédito.
+            customerCreditRatingAssessmentRecord:
+              type: string
+              description: Registro detallado de la evaluación crediticia del cliente.
+            assessmentCustomerBehaviorModelReference:
+              type: string
+              description: Referencia al modelo de comportamiento del cliente utilizado
+                para la evaluación.
+            creditRatingAssessmentType:
+              type: string
+              description: Tipo de evaluación de calificación crediticia realizada.
+            creditRatingAssessmentDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+            creditRatingBlackListType:
+              type: string
+              description: "Tipo de lista negra de calificación crediticia, si aplica."
+            creditRatingAssessmentWorkProducts:
+              type: string
+              description: Productos de trabajo resultantes de la evaluación de calificación
+                crediticia.
+            creditRatingAssessmentResult:
+              type: string
+              description: Resultado final de la evaluación de calificación crediticia.
+            customerCreditRatingRecord:
+              type: string
+              description: Registro histórico de calificaciones crediticias del cliente.
+            customerCreditRatingNarrative:
+              type: string
+              description: Descripción o narrativa detallada relacionada con la calificación
+                crediticia del cliente.
+            customerCreditRatingDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+        segments:
+          type: array
+          items:
+            type: object
+            properties:
+              description:
+                type: string
+                description: Descripción del segmento.
+              code:
+                type: string
+                description: Código del segmento.
+              segment:
+                type: string
+                description: Trama o segmento.
+              sequence:
+                type: number
+                description: orden en que se envia la secuencia de la trama
+        consumptionRecordStatus:
+          type: string
+        registerStatus:
+          type: string
+          description: Status del registro
+        status:
+          type: string
+          description: Status de la operacion
+    lib.libraryUpdateCustomerCreditRatingRq.updateCustomerCreditRatingRq:
+      type: object
+      properties:
+        organisation:
+          type: object
+          properties:
+            organisationName:
+              type: string
+              description: Nombre oficial de la organización.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        sicDecisionStatus:
+          type: string
+          description: Estado del fallo del SIC
+    lib.libraryUpdateCustomerCreditRatingRs.updateCustomerCreditRatingRs:
+      type: object
+      properties:
+        sicDecisionStatus:
+          type: string
+          description: Estado del fallo del SIC
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+    lib.libraryRetrieveCustomerCreditRatingCCRq.retrieveCustomerCreditRatingCCRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        applicationReferenceId:
+          type: string
+          description: Id referente
+    lib.libraryRetrieveCustomerCreditRatingCCRs.retrieveCustomerCreditRatingCCRs:
+      required:
+      - customerCreditRatingState
+      type: object
+      properties:
+        status:
+          type: string
+          description: Es el estatus de la solicitud de un cliente
+        customerCreditRatingState:
+          type: object
+          properties:
+            customerReference:
+              type: string
+              description: Identificador único del cliente.
+            customerCreditRatingStatusType:
+              type: string
+              description: Tipo de estado de la calificación crediticia del cliente.
+            customerCreditRatingSchedule:
+              type: string
+              description: Agenda o programación de la calificación de crédito.
+            customerCreditRatingAssessmentRecord:
+              type: string
+              description: Registro detallado de la evaluación crediticia del cliente.
+            assessmentCustomerBehaviorModelReference:
+              type: string
+              description: Referencia al modelo de comportamiento del cliente utilizado
+                para la evaluación.
+            creditRatingAssessmentType:
+              type: string
+              description: Tipo de evaluación de calificación crediticia realizada.
+            creditRatingAssessmentDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+            creditRatingBlackListType:
+              type: string
+              description: "Tipo de lista negra de calificación crediticia, si aplica."
+            creditRatingAssessmentWorkProducts:
+              type: string
+              description: Productos de trabajo resultantes de la evaluación de calificación
+                crediticia.
+            creditRatingAssessmentResult:
+              type: string
+              description: Resultado final de la evaluación de calificación crediticia.
+            customerCreditRatingRecord:
+              type: string
+              description: Registro histórico de calificaciones crediticias del cliente.
+            customerCreditRatingNarrative:
+              type: string
+              description: Descripción o narrativa detallada relacionada con la calificación
+                crediticia del cliente.
+            customerCreditRatingDate:
+              type: object
+              properties:
+                dateContent:
+                  type: string
+                  description: Contenido de la fecha.
+        compromiseRecord:
+          type: string
+          description: Compromiso de la solicitud del cliente
+        message:
+          type: string
+          description: Descripcion de Creditos Motivo de Rechazo
+    lib.libraryControlCustomerSpecialConditionsRq.controlCustomerSpecialConditionsRq:
+      type: object
+      properties:
+        customerSpecialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions'
+    lib.libraryEvaluateCustomerSpecialConditionsRq.evaluateCustomerSpecialConditionsRq:
+      required:
+      - key
+      - privateKey
+      - timeout
+      type: object
+      properties:
+        bankBranch:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryBankBranch.bankBranch'
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryCaptureCustomerCreditRatingStateRq.libraryPartyReference.partyReference'
+        key:
+          type: string
+          description: Valor llave de Ejecución para el servicio
+          example: string
+        privateKey:
+          type: string
+          description: Valor llave privada para Ejecución del servicio
+          example: string
+        timeout:
+          type: number
+          description: Tiempo de Espera Consulta
+          example: 12
+        option:
+          type: string
+          description: Opción
+    lib.libraryEvaluateCustomerSpecialConditionsRs.evaluateCustomerSpecialConditionsRs:
+      required:
+      - exist
+      type: object
+      properties:
+        exist:
+          type: boolean
+          description: Valor resultado
+          example: true
+    lib.libraryInitiateCustomerSpecialConditionsRq.initiateCustomerSpecialConditionsRq:
+      type: object
+      properties:
+        option:
+          type: string
+          description: Opción
+        customerSpecialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions'
+    lib.libraryRetrieveCustomerSpecialConditionsRq.retrieveCustomerSpecialConditionsRq:
+      type: object
+      properties:
+        option:
+          type: string
+          description: Opción
+        customerSpecialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions'
+    lib.libraryRetrieveCustomerSpecialConditionsRs.retrieveCustomerSpecialConditionsRs:
+      type: object
+      properties:
+        customerSpecialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions'
+    lib.libraryUpdateCustomerSpecialConditionsRq.updateCustomerSpecialConditionsRq:
+      type: object
+      properties:
+        option:
+          type: string
+          description: Opción
+        customerSpecialConditions:
+          $ref: '#/components/schemas/lib.libraryControlCustomerSpecialConditionsRq.libraryCustomerSpecialConditions.customerSpecialConditions'
+    lib.libraryRetrieveEconomicActivityRiskRq.retrieveEconomicActivityRiskRq:
+      required:
+      - economicActivityIdentification
+      - economicSubActivityIdentification
+      - housingType
+      type: object
+      properties:
+        economicActivityIdentification:
+          type: string
+          description: Actividad económica
+        economicSubActivityIdentification:
+          type: string
+          description: Sub Actividad económica
+        housingType:
+          type: string
+          description: Identificador del catálogo de tipo de vivienda. - 1. Propia
+            - 2. Rentada - 3. Familiar - 4. Huesped - 5. Pagandola/Hipotecada/Infonavit
+            - 6. Prestada
+    lib.libraryRetrieveEconomicActivityRiskRs.retrieveEconomicActivityRiskRs:
+      required:
+      - detail
+      - economicActivityRisk
+      - economicActivityRiskRetail
+      - housingTypeRisk
+      - housingTypeRiskRetail
+      type: object
+      properties:
+        economicActivityRiskRetail:
+          type: string
+          description: Indica si el cliente presenta ocupación de alto riesgo para
+            Coppel
+        economicActivityRisk:
+          type: string
+          description: Indica si el cliente presenta ocupación de alto riesgo para
+            BanCoppel
+        housingTypeRiskRetail:
+          type: string
+          description: Indica si el cliente presenta riesgo en el tipo de vivienda
+            para Coppel.
+        housingTypeRisk:
+          type: string
+          description: Indica si el cliente presenta riesgo en el tipo de vivienda
+            para BanCoppel.
+        detail:
+          type: string
+          description: Proporciona una descripción detallada de la actividad/subactividad
+            del cliente
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+  responses:
+    trait_common-responses.responses201_201:
+      description: Created
+    trait_common-responses.responses204_204:
+      description: No Content
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

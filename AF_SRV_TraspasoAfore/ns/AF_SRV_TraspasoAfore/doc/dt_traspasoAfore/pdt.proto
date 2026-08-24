@@ -1,0 +1,131 @@
+message AF_SRV_TraspasoAfore_doc_dt_traspasoAfore {
+optional  AF_SRV_TraspasoAfore_doc_dt_contextoTransaccional contextoTransaccional = 1;
+optional  AF_SRV_TraspasoAfore_doc_dt_datosControl datosControl = 2;
+optional  AF_SRV_TraspasoAfore_doc_dt_trabajador dt_trabajador = 4;
+optional  AF_SRV_Transversales_doc_dt_response dt_response = 5;
+optional  pub_publish_envelope _env = 536870910;
+}
+message AF_SRV_TraspasoAfore_doc_dt_trabajador {
+optional  string CURP = 13;
+optional  string numCelular = 14;
+optional  string tipoCedulaIdentificacion = 15;
+optional  string first_name = 16;
+optional  string middle_name = 17;
+optional  string ptrnl_surnam = 18;
+optional  string mtrnl_surnam = 19;
+optional  string rfc = 20;
+optional  string gender = 21;
+optional  string NSS = 22;
+optional  string email = 23;
+repeated  AF_SRV_TraspasoAfore_doc_common_doc_Type_Beneficiario Beneficiario = 24;
+}
+message AF_SRV_TraspasoAfore_doc_common_doc_Type_Beneficiario {
+optional  string beneId = 1;
+optional  string firstName = 2;
+optional  string middleName = 3;
+optional  string ptrnlSurnam = 4;
+optional  string mtrnlSurnam = 5;
+optional  string relatnShip = 6;
+optional  string porcnt = 7;
+optional  string CURP = 8;
+}
+message AF_SRV_TraspasoAfore_doc_dt_datosControl {
+optional  string requestNumber = 1;
+optional  string requestChannel = 2;
+optional  string requestStatus = 3;
+optional  string numberProduct = 4;
+optional  string branchOffice = 5;
+optional  bool requestRenapoStatus = 7;
+optional  bool requestNssStatus = 8;
+optional  bool requestIneStatus = 9;
+optional  bool requestProcesarStatus = 10;
+optional  string frontScreenName = 15;
+optional  string processStageNum = 11;
+optional  string processStageName = 12;
+optional  string applicationProcessStatus = 13;
+optional  AF_SRV_TraspasoAfore_doc_dt_datosControl_validaciones validaciones = 14;
+}
+message AF_SRV_TraspasoAfore_doc_dt_datosControl_validaciones {
+optional  bool clienteAfore = 19;
+optional  bool validacionCurp = 20;
+optional  string validacionRenapo = 21;
+optional  string estadoSolicitud = 22;
+optional  int64 fechaEnvioProcesar = 23;
+optional  bool consultaIMSS = 24;
+optional  bool huellasAPcorrectas = 25;
+optional  bool consultaPROCESAR = 26;
+optional  bool huellasTrabajador = 27;
+optional  string generacionSello = 28;
+optional  bool consultaHuellasQuemadas = 29;
+optional  bool expedienteEnrolamiento = 30;
+optional  bool emailValido = 31;
+optional  string telefonoValido = 32;
+optional  bool revalidarHuellas = 33;
+optional  bool consultaPROCESAR2 = 34;
+optional  bool llegoFolioPROCESAR = 35;
+}
+message AF_SRV_Transversales_doc_dt_response {
+optional  string code = 1;
+optional  string msg = 2;
+optional  string dateResponse = 3;
+optional  string serviceResponse = 4;
+optional  string processResponse = 5;
+}
+message AF_SRV_TraspasoAfore_doc_dt_contextoTransaccional {
+optional  string txId = 1;
+optional  string txStartDate = 2;
+optional  string stepId = 3;
+optional  string processDefinitionName = 4;
+optional  string processInstanceId = 5;
+optional  string customProcessInstanceId = 6;
+optional  string taskId = 7;
+optional  string customTaskId = 8;
+optional  string stepName = 9;
+optional  string applicationUserId = 10;
+optional  string executorUserId = 11;
+optional  string stopInstance = 12;
+optional  string completeTask = 13;
+}
+message pub_publish_envelope {
+optional  string activation = 1;
+optional  int32 appLastSeqn = 2;
+optional  string appPassword = 3;
+optional  int32 appSeqn = 4;
+optional  string appUserName = 5;
+optional  int32 priority = 6;
+optional  string businessContext = 7;
+repeated  int32 controlLabel = 8;
+optional  string errorsTo = 9;
+optional  string errorRequestsTo = 10;
+optional  string locale = 11;
+optional  int32 maxResults = 12;
+optional  string replyTo = 13;
+optional  int32 runLevel = 14;
+optional  bytes signature = 15;
+optional  string signatureType = 16;
+optional  int32 startResult = 17;
+optional  int32 tag = 18;
+optional  string trackId = 19;
+optional  string transactionId = 20;
+optional  string transformState = 21;
+optional  int32 age = 22;
+optional  string connectionIntegrity = 23;
+optional  string destId = 24;
+optional  int64 enqueueTime = 25;
+optional  string logBroker = 26;
+optional  string logHost = 27;
+optional  string pubDistinguishedName = 28;
+optional  string pubId = 29;
+optional  bytes pubNetAddr = 30;
+optional  int64 pubSeqn = 31;
+repeated  int32 pubLabel = 32;
+optional  int64 recvTime = 33;
+repeated  pub_publish_envelope_route route = 34;
+optional  string uuid = 35;
+optional  string status = 36;
+}
+message pub_publish_envelope_route {
+optional  string broker = 1;
+optional  int64 recvTime = 2;
+optional  int64 enqueueTime = 3;
+}

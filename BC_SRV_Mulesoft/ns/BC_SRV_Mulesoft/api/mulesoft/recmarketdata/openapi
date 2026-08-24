@@ -1,0 +1,403 @@
+openapi: 3.0.0
+info:
+  title: Rec Market Data
+  contact: {}
+  version: 1.0.0
+servers:
+- url: "https://${HOST_NAME}/experience/marketData"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/partyLocationReference/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1PartyLocationReferenceEvaluate_POST
+      description: Servicio de experiencia encargado de obtener el id de la calle
+        del cliente.
+      operationId: V1PartyLocationReferenceEvaluate_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluatePartyLocationReferenceRq'
+              - example:
+                  location:
+                  - street:
+                      streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+        required: false
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluatePartyLocationReferenceRs'
+                - example:
+                    location:
+                    - street:
+                        streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+                        streetCode: A93B64AE1FB376A15EC21132E65B478F
+              example:
+                location:
+                - street:
+                    streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+                    streetCode: A93B64AE1FB376A15EC21132E65B478F
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    evaluatePartyLocationReferenceRq:
+      title: evaluatePartyLocationReferenceRq
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    evaluatePartyLocationReferenceRs:
+      title: evaluatePartyLocationReferenceRs
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+            - RESIDENCE_INVOICE
+          countyDistrict:
+            $ref: '#/components/schemas/countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+      description: Informacion sobre el estado
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+    countyDistrict:
+      title: countyDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito

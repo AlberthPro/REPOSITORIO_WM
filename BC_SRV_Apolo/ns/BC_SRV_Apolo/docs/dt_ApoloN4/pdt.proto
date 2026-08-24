@@ -1,0 +1,112 @@
+message BC_SRV_Apolo_docs_dt_ApoloN4 {
+optional  BC_SRV_Transversales_docs_dt_ContextoTransaccional dt_ContextoTransaccional = 1;
+optional  BC_SRV_Transversales_docs_dt_authenticate dt_authenticate = 2;
+optional  BC_SRV_Apolo_docs_dt_registerEndorsement endorsement = 3;
+optional  BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure partyRelationshipProcedure = 4;
+optional  BC_SRV_Apolo_docs_dt_evaluateOnboardingPhoneParty partyReference = 5;
+optional  BC_SRV_Apolo_docs_dt_ApoloN4_productInstanceRecord productInstanceRecord = 6;
+optional  pub_publish_envelope _env = 536870910;
+}
+message BC_SRV_Apolo_docs_dt_ApoloN4_productInstanceRecord {
+optional  string productInstanceReference = 1;
+optional  string productInstanceReferenceName = 2;
+optional  int64 productInstanceSequenceNumber = 3;
+optional  string productInstanceNextReferenceName = 4;
+}
+message BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure {
+optional  BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure_partyReference partyReference = 2;
+}
+message BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure_partyReference {
+repeated  BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure_partyReference_contactPoint contactPoint = 14;
+}
+message BC_SRV_Apolo_docs_dt_ApoloN4_partyRelationshipProcedure_partyReference_contactPoint {
+optional  string contactPointValue = 5;
+optional  string contactPointActiveStatus = 9;
+optional  string registrationDate = 7;
+optional  string contactPointType = 8;
+}
+message BC_SRV_Transversales_docs_dt_ContextoTransaccional {
+optional  string txId = 1;
+optional  string sessionDialogueIdentification = 18;
+optional  string txStartDate = 3;
+optional  string processDefinitionName = 10;
+optional  string processInstanceID = 2;
+optional  string customProcessInstanceId = 21;
+optional  string stepId = 4;
+optional  string stepName = 8;
+optional  string channelScreen = 15;
+optional  string taskId = 6;
+optional  string customTaskId = 7;
+optional  string applicationUserId = 11;
+optional  string executorUserId = 12;
+optional  string stopInstance = 13;
+optional  string completeTask = 14;
+optional  string product = 16;
+optional  string channel = 17;
+optional  string exitCode = 19;
+}
+message BC_SRV_Apolo_docs_dt_registerEndorsement {
+optional  string sessionDialogueIdentification = 1;
+repeated  BC_SRV_Apolo_docs_dt_registerEndorsement_endorsementManagement endorsementManagement = 2;
+}
+message BC_SRV_Apolo_docs_dt_registerEndorsement_endorsementManagement {
+optional  int32 endorsementType = 1;
+optional  string endorsementStatus = 2;
+optional  string endorsementDateTime = 3;
+}
+message BC_SRV_Apolo_docs_dt_evaluateOnboardingPhoneParty {
+repeated  BC_SRV_Apolo_docs_dt_evaluateOnboardingPhoneParty_contactPoint contactPoint = 1;
+}
+message BC_SRV_Apolo_docs_dt_evaluateOnboardingPhoneParty_contactPoint {
+optional  string contactPointValue = 1;
+optional  string contactPointType = 2;
+}
+message BC_SRV_Transversales_docs_dt_authenticate {
+optional  string token = 1;
+optional  string identity_session_token = 2;
+optional  string sessionId = 3;
+optional  string consumerRequestId = 4;
+}
+message pub_publish_envelope {
+optional  string activation = 1;
+optional  int32 appLastSeqn = 2;
+optional  string appPassword = 3;
+optional  int32 appSeqn = 4;
+optional  string appUserName = 5;
+optional  int32 priority = 6;
+optional  string businessContext = 7;
+repeated  int32 controlLabel = 8;
+optional  string errorsTo = 9;
+optional  string errorRequestsTo = 10;
+optional  string locale = 11;
+optional  int32 maxResults = 12;
+optional  string replyTo = 13;
+optional  int32 runLevel = 14;
+optional  bytes signature = 15;
+optional  string signatureType = 16;
+optional  int32 startResult = 17;
+optional  int32 tag = 18;
+optional  string trackId = 19;
+optional  string transactionId = 20;
+optional  string transformState = 21;
+optional  int32 age = 22;
+optional  string connectionIntegrity = 23;
+optional  string destId = 24;
+optional  int64 enqueueTime = 25;
+optional  string logBroker = 26;
+optional  string logHost = 27;
+optional  string pubDistinguishedName = 28;
+optional  string pubId = 29;
+optional  bytes pubNetAddr = 30;
+optional  int64 pubSeqn = 31;
+repeated  int32 pubLabel = 32;
+optional  int64 recvTime = 33;
+repeated  pub_publish_envelope_route route = 34;
+optional  string uuid = 35;
+optional  string status = 36;
+}
+message pub_publish_envelope_route {
+optional  string broker = 1;
+optional  int64 recvTime = 2;
+optional  int64 enqueueTime = 3;
+}

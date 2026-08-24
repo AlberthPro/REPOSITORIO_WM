@@ -1,0 +1,3669 @@
+openapi: 3.0.0
+info:
+  title: Dom Issued Device Administration
+  version: 1.7.0
+servers:
+- url: "https://${HOST_NAME}/operationalServices/issuedDeviceAdministration"
+  variables:
+    HOST_NAME:
+      default: HOST_NAME
+paths:
+  /v1/deviceAssignment/initiate:
+    post:
+      description: "Servicio de Dominio encargado de almacenar la informacion del\
+        \ dispositivo del usuario, durante el proceso de onboarding del cliente"
+      operationId: POST_v1-deviceAssignment-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateDeviceAssignmentRq'
+            example:
+              deviceAssignment:
+                issuedDeviceAllocation:
+                  issuedDeviceType: WEBAPP
+                deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                issueLocation:
+                  location:
+                  - ipAddress: 189.203.89.169
+                    longitude: 92EAF3719159C372F3D50337E0A14F57
+                    latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    locationAddressType: DEVICE_ADDRESS
+                deviceDescription: "[{'key':'userAgent', 'value':'Mozilla/5.0 (iPhone;\
+                  \ CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML,\
+                  \ like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'}]"
+                versionNumber: Android 11
+                deviceProperty:
+                  model: Motorola moto g(20)
+                  sdk: (Web Flow)
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.initiateDeviceAssignmentRs'
+              example:
+                deviceAssignment:
+                  issuedDeviceStatus: Alive
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/retrieve:
+    get:
+      description: Obtiene información sobre el dispositivo que el usuario estaba
+        usando durante la incorporación.
+      operationId: GET_v1-deviceAssignment-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveDeviceAssignmentRs'
+              example:
+                deviceAssignment:
+                  issueLocation:
+                    location:
+                    - locationAddressType: IP_ADDRESS
+                      locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                      ipAddress: 189.203.89.169
+                      country:
+                        name: Mexico
+                      city:
+                        name: 92EAF3719159C372F3D50337E0A14F57
+                      region:
+                        name: Mexico City
+                      longitude: 92EAF3719159C372F3D50337E0A14F57
+                      latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    - locationAddressType: DEVICE_ADDRESS
+                      longitude: 92EAF3719159C372F3D50337E0A14F57
+                      latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                      province:
+                        name: CA
+                      countyDistrict:
+                        name: 9FF0FDA9669BF74AD3A1C747F0713803
+                      city:
+                        name: 92EAF3719159C372F3D50337E0A14F57
+                      neighborhood: 464E07AFC9E46359FB480839150595C5
+                      street:
+                        streetName: C8CF053EF5CE7AD676E6E8C0925FE368
+                        streetNumber: A93B64AE1FB376A15EC21132E65B478F
+                      postalCode: 064A1B28141F5A118925852BBB124BAF
+                      country:
+                        code: 064A1B28141F5A118925852BBB124BAF
+                        name: México
+                  deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                  issuedDeviceAllocation:
+                    issuedDeviceType: WEBAPP
+                  versionNumber: Android 11
+                  deviceProperty:
+                    model: Motorola moto g(20)
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/initiate:
+    post:
+      description: Envía un código OTP( One Time Password) para validar un onboarding
+        mediante la definición de un tipo de medio de envío (SMS o Correo).
+      operationId: POST_v1-tokenAssignment-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateTokenAssignmentRq'
+            example:
+              partyReference:
+                personName:
+                  fullName: C8CF053EF5CE7AD676E6E8C0925FE368
+                contactPoint:
+                - contactPointType: Electronic Address
+                  contactPointValue: C8CF053EF5CE7AD676E6E8C0925FE368
+              endpoint: C8CF053EF5CE7AD676E6E8C0925FE368
+              sessionDialogueIdentification: C8CF053EF5CE7AD676E6E8C0925FE368
+              headline: Subject
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/register:
+    post:
+      description: Actualiza información sobre el dispositivo que el usuario estaba
+        usando durante la incorporación.
+      operationId: POST_v1-deviceAssignment-register
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.registerDeviceAssignmentRq'
+            example:
+              deviceAssignment:
+                sessionDialogueIdentification: 9FF0FDA9669BF74AD3A1C747
+                issueLocation:
+                  location:
+                  - ipAddress: 19.29.192.1
+                    country:
+                      name: MEXICO
+                    city:
+                      name: 92EAF3719159C372F3D50337E0A14F57
+                    region:
+                      name: NL
+                    longitude: 92EAF3719159C372F3D50337E0A14F57
+                    latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    locationAddressType: IP_ADDRESS
+                  - longitude: 92EAF3719159C372F3D50337E0A14F57
+                    latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+                    locationDescription: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    locationAddressType: DEVICE_ADDRESS
+                    country:
+                      code: MEX
+                deviceIdentification: dy3WZr8sHm8HDBej3XAq
+                issuedDeviceAllocation:
+                  issuedDeviceType: WEBAPP
+                deviceProperty:
+                  model: Motorola moto g(20)
+                  sdk: (Web Flow)
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/evaluate:
+    post:
+      description: Envía un código OTP obtenido mediante SMS para validar un onboarding.
+      operationId: POST_v1-tokenAssignment-evaluate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: identity-session-token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.evaluateTokenAssignmentRq'
+            example:
+              tokenAssignment:
+                tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                validationManagement:
+                - validationType: 1
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.evaluateTokenAssignmentRs'
+              example:
+                transactionSuccess: false
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/retrieve:
+    post:
+      description: retorna todos los token resgistrados en gemalto para un usuario.
+      operationId: POST_v1-tokenAssignment-retrieve
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.retrieveTokenAssignmentRq'
+            example:
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveTokenAssignmentRs'
+              example:
+                tokensAssignment:
+                - tokenAssignment:
+                    tokenIdentificationCode:
+                      identifierValue:
+                        value: TOKEN123456
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/{companyReference}/{customerReference}/retrieve:
+    get:
+      description: Consulta de Huella de cliente persona física
+      operationId: GET_v1-biometricAssignment-companyReference-customerReference-retrieve
+      parameters:
+      - name: companyReference
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: customerReference
+        in: path
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: employeeReference
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: branch
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.retrieveBiometricAssignmentRs'
+              example:
+                biometricAssignment:
+                  biometricType: Fingerprint
+                  biometricRegisteredDetail:
+                    rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                    leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                    date:
+                      registryDate: 2023-07-25
+                      changeDate: 2023-07-28
+                      lastChangeDate: 2023-07-30
+                    changeUser: user123
+                  sequence: 1
+                  status: Active
+                  username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                  bankBranch:
+                    branchReference: BR123
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/initiate:
+    post:
+      description: Operación encargada de realizar el registro de la huellas del cliente.
+      operationId: POST_v1-biometricAssignment-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiateBiometricAssignmentRq'
+            example:
+              biometricAssignment:
+                bankBranch:
+                  branchReference: BR123
+                biometricRegisteredDetail:
+                  leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                  rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                operatorNumber: operador
+                companyReference: "001"
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                  referenceIdCoppel: 41EF894026A8CD4DA247105A6036DB70
+                  employeeNumber: B277B9D408D34013A4BE9FA416B72638
+                  identifications:
+                  - identifier:
+                      identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                    personIdentificationType: Registro Federal Contribuyentes
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/biometricAssignment/update:
+    put:
+      description: Operación encargada de realiza la actualización de los datos biométricos
+        del cliente.
+      operationId: PUT_v1-biometricAssignment-update
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateBiometricAssigmentRq'
+            example:
+              biometricAssignment:
+                bankBranch:
+                  branchReference: BR123
+                biometricRegisteredDetail:
+                  leftFingerprint: E2B620EE553D212AB38E6B2B2E608F76
+                  rightFingerprint: 69691C7BDCC3CE6D5D8A1361F22D04AC
+                biometricType: Fingerprint
+                username: DBDF93DC6AE43DB67C56AB8A226DAA28
+                companyReference: "12"
+                partyReference:
+                  referenceId: A93B64AE1FB376A15EC21132E65B478F
+                  referenceIdCoppel: 41EF894026A8CD4DA247105A6036DB70
+                  employeeNumber: B277B9D408D34013A4BE9FA416B72638
+                  identifications:
+                  - identifier:
+                      identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                    personIdentificationType: Registro Federal Contribuyentes
+                device:
+                  ipAddress: 19.29.192.1
+                  verificationDevice: computer
+                  sensorDevice: sensor
+                  componentDevice: componente
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.updateBiometricAssigmentRs'
+              example:
+                biometricAssignment:
+                  sequence: 1
+                  message: mensaje
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignment/initiate:
+    post:
+      description: Proxy Api que permite la asignación de NIP(Cambio de NIP) de la
+        tarjeta de crédito.
+      operationId: POST_v1-passwordAssignment-initiate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.initiatePasswordAssignmentRq'
+            example:
+              issuedDeviceAllocation:
+                issuedDeviceReference:
+                  deviceIdentification: 464E07AFC9E46359FB480839150595C5
+              passwordAssignment:
+                passwordValue: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.initiatePasswordAssignmentRs'
+              example:
+                transactionFacility:
+                  processCode: "960000"
+                  trackingNumber: "709427"
+                  transactionalDate: 2023-10-19T13:46:47
+                  statusInstanceRecord:
+                    statusCode: "00"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/deviceAssignment/update:
+    patch:
+      description: En esta Api se lleva a cabo la actualización del estatus de activación
+        de una tarjeta de crédito.
+      operationId: PATCH_v1-deviceAssignment-update
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateDeviceAssignmentRq'
+            example:
+              paymentCard:
+                cardNumber: NDQzNTMzMjM0MzQzNDMyMQ==
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.updateDeviceAssignmentRs'
+              example:
+                transactionFacility:
+                  processCode: "960000"
+                  trackingNumber: "709427"
+                  transactionalDate: 2023-10-19T13:46:47
+                  authorizationReference: "245600"
+                  svfeIdentifier: "231019006413245600"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignmentLog/register:
+    post:
+      description: Api de experiencia que se encarga de insertar la información en
+        algunas tablas que corresponden a los pins en oficina o ATM.
+      operationId: POST_v1-passwordAssignmentLog-register
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.registerPasswordAssignmentLogRq'
+            example:
+              issuedDeviceAllocation:
+                issuedDeviceReference:
+                  deviceIdentification: 464E07AFC9E46359FB480839150595C5
+              passwordAssignment:
+                employeeNumber: 464E07AFC9E46359FB480839150595C5
+                bankBranch:
+                  branchReference: "223211"
+                configurationPasswordAssignment:
+                - name: tagResponse
+                  value: "1"
+                - name: Campo38
+                  value: "000000"
+                - name: TLVResponse
+                  value: "1"
+                - name: ip_pc
+                  value: 192.168.35.12
+                - name: trj_stfin
+                  value: "1"
+                - name: trj_stinicio
+                  value: "0"
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/capture:
+    put:
+      description: Este microservicio realiza una Inserción de la validación del código
+        OTP  para un cliente prospecto en la tabla Validations.
+      operationId: PUT_v1-tokenAssignment-capture
+      parameters:
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.captureTokenAssignmentRq'
+            example:
+              tokenAssignment:
+                sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                validationManagement:
+                - validationStatus: true
+                  validationDescription: Validación SIC- buró externo
+                  validationDateTime: 2023-06-28 05:22:32
+                  validationType: 2
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/passwordAssignment/create:
+    post:
+      description: En esta Api se lleva a cabo la creación de un pin para una tarjeta
+        de crédito en BPC.
+      operationId: POST_v1-passwordAssignment-create
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.createPasswordAssignmentRq'
+            example:
+              paymentCard:
+                cardNumber: D4DB7298729FCA8E66F1E69A28ECE2F0
+                partyReference:
+                  contactPoint:
+                  - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                    contactPointType: cellphone
+              cardPOSDeviceAllocation:
+                cardPOSDeviceIdentifier: "10000086"
+              allocation:
+                merchantReference: "10000084"
+                merchantType: "5999"
+              deviceAssignment:
+                deliverymethod: WS
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.createPasswordAssignmentRs'
+              example:
+                transactionFacility:
+                  processCode: "00"
+                  trackingNumber: dddd
+                  transactionalDate: 01/02/2024
+                  authorizationReference: xxxxx
+                  svfeIdentifier: xsdsdsd
+                passwordAssignment:
+                  passwordValue: 464E07AFC9E46359FB480839150595C5
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/tokenAssignment/update:
+    put:
+      description: Microservicio que actualiza un código OTP(One Time Password) utilizado
+        para validar el onboarding.
+      operationId: PUT_v1-tokenAssignment-update
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.updateTokenAssignmentRq'
+            example:
+              tokenAssignment:
+                tokenStoredValue: C8CF053EF5CE7AD676E6E8C0925FE368
+                sessionDialogueIdentification: 6499e10a3486062d71c04bb8
+                validationManagement:
+                - validationDescription: OTP validated
+        required: true
+      responses:
+        "204":
+          description: No Content
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/reporting/register:
+    post:
+      description: API que registra el log de las transacciones ejecutadas por la
+        app
+      operationId: POST_v1-reporting-register
+      parameters:
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.registerReportingRq'
+            example:
+              logEntryType: "002"
+              transactionFacility:
+                transactionNumber: "1003"
+              auditFacility:
+                transactionTime: "469"
+                transactionDate: 2020-07-19
+                environment: DEV
+                uuid: 072d6e0d-2ac8-42f9-96bb-e0e828e05c1
+                namespace: Negocio
+                apiName: /api/public/v2/channel/credit/cards/accounts/retrieve
+              bankBranch:
+                branchReference: "5011"
+              partyReference:
+                referenceId: "190000011"
+              statusInstanceRecord:
+                statusCode: "200"
+                status: "000000"
+              deviceAssignment:
+                deviceIdentification: "120001"
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/issuedDeviceAllocation/register:
+    post:
+      description: Inserta la geolocalización del cliente
+      operationId: POST_v1-issuedDeviceAllocation-register
+      parameters:
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: authorization
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.registerIssuedDeviceAllocationRq'
+            example:
+              transactionFacility:
+                transactionNumber: "1003"
+              auditFacility:
+                transactionTime: "469"
+                transactionDate: 2020-07-19
+              partyReference:
+                referenceId: "190000011"
+              channelFacility:
+                channelReferenceId: "1"
+              issueLocation:
+                location:
+                - longitude: 92EAF3719159C372F3D50337E0A14F57
+                  latitude: DBDF93DC6AE43DB67C56AB8A226DAA28
+              amount: 12345
+              recordIdentifier: branch1
+        required: true
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/debitCard/activate:
+    post:
+      description: Servicio de dominio encargado de ejecutar la generación de la tarjeta
+        digital para cuenta nivel 2.
+      operationId: POST_v1-debitCard-activate
+      parameters:
+      - name: consumerRequestId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: token
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/lib.activateDebitCardRq'
+            example:
+              issuedDevice:
+                issuedDeviceProductReference:
+                  accountReference:
+                    accountIdentification:
+                    - identifierValue: w/DeYm1kJGtAMYQxjDi1bw==
+                      accountIdentificationType: AccountNumber
+                issuedDevicePartyReference:
+                  referenceId: p9ct50elvqbihfozzvpcfg==
+                  personName:
+                    firstName: TFVJUw==
+                    secondName: REFOSUVM
+                    familyName: Q0FTVFJP
+                    secondLastName: Uk9KQVM=
+                  birthDate: MTk4Mi8wMy8wNQ==
+                userId: VVNFUjAwMQ==
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.activateDebitCardRs'
+              example:
+                statusInstanceRecord:
+                  statusCode: "00000"
+                  description: OK
+                debitCard:
+                  paymentCard:
+                    cardNumber: q8x9z7kP4mN2vL3jX5tY6w==
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/lib.commonErrorRs'
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    lib.commonErrorRs:
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: estado de la peticion
+          example: Example
+    lib.initiateDeviceAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryInitiateDeviceAssignmentRq.initiateDeviceAssignmentRq'
+    lib.initiateDeviceAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryInitiateDeviceAssignmentRs.initiateDeviceAssignmentRs'
+    lib.retrieveDeviceAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveDeviceAssignmentRs.retrieveDeviceAssignmentRs'
+    lib.evaluateTokenAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryEvaluateTokenAssignmentRq.evaluateTokenAssignmentRq'
+    lib.evaluateTokenAssignmentRs:
+      required:
+      - transactionSuccess
+      type: object
+      properties:
+        transactionSuccess:
+          type: boolean
+          example: false
+    lib.retrieveTokenAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryRetrieveTokenAssignmentRq.retrieveTokenAssignmentRq'
+    lib.retrieveTokenAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveTokenAssignmentRs.retrieveTokenAssignmentRs'
+    lib.retrieveBiometricAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryRetrieveBiometricAssignmentRs.retrieveBiometricAssignmentRs'
+    lib.initiateBiometricAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.initiateBiometricAssignmentRq'
+    lib.updateBiometricAssigmentRq:
+      $ref: '#/components/schemas/lib.libraryUpdateBiometricAssigmentRq.updateBiometricAssigmentRq'
+    lib.updateBiometricAssigmentRs:
+      $ref: '#/components/schemas/lib.libraryUpdateBiometricAssigmentRs.updateBiometricAssigmentRs'
+    lib.initiatePasswordAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRq.initiatePasswordAssignmentRq'
+    lib.initiatePasswordAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRs.initiatePasswordAssignmentRs'
+    lib.updateDeviceAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryUpdateDeviceAssignmentRq.updateDeviceAssignmentRq'
+    lib.updateDeviceAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryUpdateDeviceAssignmentRs.updateDeviceAssignmentRs'
+    lib.registerPasswordAssignmentLogRq:
+      $ref: '#/components/schemas/lib.libraryRegisterPasswordAssignmentLogRq.registerPasswordAssignmentLogRq'
+    lib.registerDeviceAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryRegisterDeviceAssignmentRq.registerDeviceAssignmentRq'
+    lib.initiateTokenAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.initiateTokenAssignmentRq'
+    lib.captureTokenAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.captureTokenAssignmentRq'
+    lib.createPasswordAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.createPasswordAssignmentRq'
+    lib.createPasswordAssignmentRs:
+      $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.createPasswordAssignmentRs'
+    lib.updateTokenAssignmentRq:
+      $ref: '#/components/schemas/lib.libraryUpdateTokenAssignmentRq.updateTokenAssignmentRq'
+    lib.registerReportingRq:
+      $ref: '#/components/schemas/lib.libraryReportingRegisterRq.registerReportingRq'
+    lib.registerIssuedDeviceAllocationRq:
+      $ref: '#/components/schemas/lib.libraryRegisterIssuedDeviceAllocationRq.registerIssuedDeviceAllocationRq'
+    lib.activateDebitCardRq:
+      $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.activateDebitCardRq'
+    lib.activateDebitCardRs:
+      $ref: '#/components/schemas/lib.libraryActivateDebitCardRs.activateDebitCardRs'
+    lib.libraryInitiateBiometricAssignmentRq.initiateBiometricAssignmentRq:
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.biometricAssignment'
+    lib.libraryRetrieveBiometricAssignmentRs.retrieveBiometricAssignmentRs:
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.biometricAssignment'
+    lib.libraryUpdateBiometricAssigmentRq.updateBiometricAssigmentRq:
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.biometricAssignment'
+    lib.libraryUpdateBiometricAssigmentRs.updateBiometricAssigmentRs:
+      type: object
+      properties:
+        biometricAssignment:
+          $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.biometricAssignment'
+    ? lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.libraryAccountReference.libraryAccountIdentification.accountIdentification
+    : type: array
+      items:
+        type: object
+        properties:
+          identifierValue:
+            type: string
+            description: Especifica el valor único del identificador.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          accountIdentificationType:
+            type: string
+            description: |
+              Indica el tipo de identificacion de la cuenta * Account Number = Tipo de identificacion de numero de cuenta * KeyAccountNumber = Tipo de identificacion de numero Clabe
+            enum:
+            - AccountNumber
+            - KeyAccountNumber
+    lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.libraryAccountReference.accountReference:
+      type: object
+      properties:
+        accountIdentification:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.libraryAccountReference.libraryAccountIdentification.accountIdentification'
+    lib.libraryCreatePasswordAssignmentRq.libraryAllocation.allocation:
+      type: object
+      properties:
+        merchantReference:
+          type: string
+          description: Id del comercio
+        merchantType:
+          type: string
+          description: tipo de comercio
+    lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.biometricAssignment:
+      type: object
+      properties:
+        biometricType:
+          type: string
+          description: Tipo de biométrica
+        biometricRegisteredDetail:
+          $ref: '#/components/schemas/lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.libraryBiometricRegisteredDetail.biometricRegisteredDetail'
+        sequence:
+          type: number
+          description: Secuencia
+        status:
+          type: string
+          description: Estatus
+        username:
+          type: string
+          description: Nombre del usuario
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        operatorNumber:
+          type: string
+          description: Número de operador
+        companyReference:
+          type: string
+          description: Referencia de la compañia
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+        device:
+          type: object
+          properties:
+            ipAddress:
+              type: string
+              description: Dirección IP del dispositivo.
+            verificationDevice:
+              type: string
+              description: Tipo principal del dispositivo usado.
+            sensorDevice:
+              type: string
+              description: Hardware que captura los datos biométricos.
+            componentDevice:
+              type: string
+              description: Dispositivos secundarios o componentes involucrados en
+                el proceso biométrico.
+        message:
+          type: string
+          description: Mensaje
+    lib.libraryInitiateBiometricAssignmentRq.libraryBiometricAssignment.libraryBiometricRegisteredDetail.biometricRegisteredDetail:
+      type: object
+      properties:
+        rightFingerprint:
+          type: string
+          description: Dato de la huella derecha
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        leftFingerprint:
+          type: string
+          description: Dato de la huella izquierda
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        date:
+          type: object
+          properties:
+            registryDate:
+              type: string
+              description: Fecha de registro
+            changeDate:
+              type: string
+              description: Fecha del cambio de registro
+            lastChangeDate:
+              type: string
+              description: Fecha del último cambio de registro
+        changeUser:
+          type: string
+          description: Cambio de usuario
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryBirthPlace.birthPlace:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.location'
+    lib.libraryCreatePasswordAssignmentRq.libraryCardPOSDeviceAllocation.cardPOSDeviceAllocation:
+      type: object
+      properties:
+        cardPOSDeviceIdentifier:
+          type: string
+          description: Id de la terminal
+    lib.libraryRegisterIssuedDeviceAllocationRq.libraryChnnelFacility.channelFacility:
+      type: object
+      properties:
+        channelReferenceId:
+          type: string
+          description: identificador de canal a consumir informix o bpc
+        description:
+          type: string
+          description: informacion adicional que describe el canal
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryCityReference.cityReference:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryContactPoint.contactPoint:
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        code:
+          type: string
+          description: Código del distrito
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryActivateDebitCardRs.libraryDebitCard.debitCard:
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryPaymentCard.paymentCard'
+    lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment:
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identificador de la sesion inicializada.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.issuedDeviceAllocation'
+        deviceIdentification:
+          type: string
+          description: Código hash de la huella digital del dispositivo.
+        issueLocation:
+          $ref: '#/components/schemas/lib.libraryRegisterIssuedDeviceAllocationRq.libraryIssueLocation.issueLocation'
+        deviceDescription:
+          type: string
+          description: Datos adicionales sobre el dispositivo.
+        versionNumber:
+          type: string
+          description: versión del sistema operativo.
+        deviceProperty:
+          type: object
+          properties:
+            model:
+              type: string
+              description: "modelo de dispositivo. Si se omite, se analiza desde el\
+                \ agente de usuario."
+            sdk:
+              type: string
+              description: Versión de SDK usada.
+        issuedDeviceStatus:
+          type: string
+          description: '''Estado de la sesión'' * Alive = Sesion Activa * Closed =
+            Sesion Cerrada * Deleted = Sesion Eliminada'
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        issuedDeviceConfiguration:
+          type: string
+          description: Configuración estándar de seguridad
+        deliverymethod:
+          type: string
+          description: Método de entrega del PIN en BPC
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice:
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: '''El género de la persona obtenido de ocr'' * M = Masculino*
+            F = Femenino'
+        voterKey:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        ocr:
+          maxLength: 13
+          minLength: 13
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cic:
+          maxLength: 9
+          minLength: 9
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: valor de la línea ZLM.
+            description: Objeto que define las líneas ZLM.
+        personName:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonName.personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryIdentifications.identifications:
+      type: array
+      items:
+        required:
+        - identifier
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+                x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+                format: date
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+                format: date
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: '''Indica el tipo de documento de identidad'' * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social'
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            type: object
+            properties:
+              customerReference:
+                type: string
+                description: Identificador único del cliente.
+              customerCreditRatingStatusType:
+                type: string
+                description: Tipo de estado de la calificación crediticia del cliente.
+              customerCreditRatingSchedule:
+                type: string
+                description: Agenda o programación de la calificación de crédito.
+              customerCreditRatingAssessmentRecord:
+                type: string
+                description: Registro detallado de la evaluación crediticia del cliente.
+              assessmentCustomerBehaviorModelReference:
+                type: string
+                description: Referencia al modelo de comportamiento del cliente utilizado
+                  para la evaluación.
+              creditRatingAssessmentType:
+                type: string
+                description: Tipo de evaluación de calificación crediticia realizada.
+              creditRatingAssessmentDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+              creditRatingBlackListType:
+                type: string
+                description: "Tipo de lista negra de calificación crediticia, si aplica."
+              creditRatingAssessmentWorkProducts:
+                type: string
+                description: Productos de trabajo resultantes de la evaluación de
+                  calificación crediticia.
+              creditRatingAssessmentResult:
+                type: string
+                description: Resultado final de la evaluación de calificación crediticia.
+              customerCreditRatingRecord:
+                type: string
+                description: Registro histórico de calificaciones crediticias del
+                  cliente.
+              customerCreditRatingNarrative:
+                type: string
+                description: Descripción o narrativa detallada relacionada con la
+                  calificación crediticia del cliente.
+              customerCreditRatingDate:
+                type: object
+                properties:
+                  dateContent:
+                    type: string
+                    description: Contenido de la fecha.
+            description: Informacion sobre el estado de crédito del cliente
+    lib.libraryRegisterIssuedDeviceAllocationRq.libraryIssueLocation.issueLocation:
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.location'
+    lib.libraryActivateDebitCardRq.libraryIssuedDevice.issuedDevice:
+      type: object
+      properties:
+        issuedDeviceProductReference:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.issuedDeviceProductReference'
+        issuedDevicePartyReference:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDevicePartyReference.issuedDevicePartyReference'
+        userId:
+          type: string
+          description: usuario del sistema
+    lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.issuedDeviceAllocation:
+      type: object
+      properties:
+        issuedDeviceType:
+          type: string
+          description: '''Indica la plataforma del dispositivo'' * IOS = IOS * ANDROID
+            = ANDROID * WEBAPP = WEBAPP'
+          enum:
+          - IOS
+          - ANDROID
+          - WEBAPP
+        associatedPermissions:
+          type: string
+          description: '''Indica la configuracion del dispositivo'
+        issuedDeviceReference:
+          $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.libraryIssuedDeviceReference.issuedDeviceReference'
+    lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDevicePartyReference.issuedDevicePartyReference:
+      type: object
+      properties:
+        referenceId:
+          type: string
+          description: Id del cliente
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        personName:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonName.personName'
+        birthDate:
+          type: string
+          description: fecha de nacimiento
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.issuedDeviceProductReference:
+      type: object
+      properties:
+        accountReference:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.libraryIssuedDevice.libraryIssuedDeviceProductReference.libraryAccountReference.accountReference'
+    lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.libraryIssuedDeviceReference.issuedDeviceReference:
+      required:
+      - deviceIdentification
+      type: object
+      properties:
+        deviceIdentification:
+          type: string
+          description: Numero de identificacion unico del dispositivo
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        expiryDate:
+          type: string
+          description: Fecha de vencimiento del dispositivo
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estatus
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.location:
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          country:
+            type: object
+            properties:
+              code:
+                type: string
+                description: Código ISO alfa-2 o alfa-3 válido del país.
+                default: All
+              name:
+                type: string
+                description: Nombre del País
+          city:
+            $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryCityReference.cityReference'
+          region:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la region
+          state:
+            $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryState.state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+                x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+                  kind: AUDITABLE_DATA
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          postalAddress:
+            type: string
+            description: Dirección postal.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: '''Indica el tipo de direccion'' * IP_ADDRESS =  Direccion
+              IP  * DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS =
+              Direccion de una persona * INE_ADDRESS = Direccion retornada por el
+              INE * BIRTH_PLACE = Direccion de Nacimiento'
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+          countyDistrict:
+            $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryCountyDistrict.countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          houseNumber:
+            type: string
+            description: Numero de casa
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          lot:
+            type: string
+            description: Lote
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          building:
+            type: string
+            description: Edificio
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          neighborhoodList:
+            $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          province:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nombre de la provincia
+              code:
+                type: string
+                description: Código de la provincia
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryNeighborhoodList.neighborhoodList:
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference:
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryIdentifications.identifications'
+        personName:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonName.personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        location:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.location'
+        gender:
+          type: string
+          description: '''El género de la persona '' * M = Masculino * F = Femenino'
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        contactPoint:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryContactPoint.contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryIdentificationDevice.identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        maritalStatus:
+          type: string
+          description: Estado civil.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        birthPlace:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryBirthPlace.birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        totalOccupancy:
+          type: string
+          description: ocupación total
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType:
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryCreatePasswordAssignmentRs.libraryPasswordAssignment.passwordAssignment:
+      type: object
+      properties:
+        passwordAssignmentReference:
+          type: string
+          description: Numero de folio de la asignacion del dispositivo
+        dateContent:
+          type: string
+          description: Campo con formato “mmddhhmmss” (Mes-Dia-Hora-Minutos-Segundos)
+        timeContent:
+          type: string
+          description: Campo con formato “hhmmss” (Hora-Minutos-Segundos)
+        dayContent:
+          type: string
+          description: Campo con formato “mmdd” (Mes-Dia)
+        passwordValue:
+          type: string
+          description: password
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        employeeNumber:
+          type: string
+          description: Numero del empleado
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        detail:
+          type: string
+          description: detalle de la configuracion
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        configurationPasswordAssignment:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+                description: Valor representativo de un parámetro de configuración.
+              name:
+                type: string
+                description: Nombre representativo de un parámetro de configuración.
+    lib.libraryCreatePasswordAssignmentRq.libraryPaymentCard.paymentCard:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+          description: Indica el numero del plastico o de la tarjeta
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        cardExpiryDate:
+          type: string
+          description: Fecha de expireción de la tarjeta
+        cardHolderName:
+          type: string
+          description: Indica el nombre del plastico o de la tarjeta
+        cardType:
+          type: string
+          description: Indica el tipo de la tarjeta
+        deviceStatus:
+          type: string
+          description: Estado del dispositivo
+        cardHolderType:
+          type: string
+          description: Indica el tipo de titular de la tarjeta
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile:
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        role:
+          type: string
+          description: Rol del PEP.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonName.personName:
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        fullName:
+          type: string
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.personProfile:
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        pepProfile:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryPepProfile.pepProfile'
+        partyType:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryPartyType.partyType'
+        activitySector:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del sector de actividad.
+            code:
+              type: string
+              description: Código del sector de actividad.
+        economicActivity:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryPersonProfile.libraryEconomicActivity.economicActivity'
+        segment:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del segmento.
+            code:
+              type: string
+              description: Código del segmento.
+        group:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del grupo.
+            code:
+              type: string
+              description: Código del grupo.
+        subGroup:
+          type: object
+          properties:
+            description:
+              type: string
+              description: Descripción del subgrupo.
+            code:
+              type: string
+              description: Código del subgrupo.
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        residencyYear:
+          type: string
+          description: Año de residencia.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+    lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.libraryLocation.libraryState.state:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        name:
+          type: string
+          description: Nombre del estado
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+      description: Informacion sobre el estado
+    lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.tokenAssignment:
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          maxLength: 24
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        code:
+          type: string
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        description:
+          type: string
+          description: Descripción breve del token.
+        tokenPriority:
+          type: string
+          description: Indica la prioridad del token.
+        tokenStoredValue:
+          type: string
+          description: Código OTP de 6 cifras
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        tokenStoredHour:
+          type: string
+          description: Hora de generación de OTP
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        tokenStoredDate:
+          type: string
+          description: Fecha de insercion
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        tokenIdentificationCode:
+          $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.libraryTokenIdentificationCode.tokenIdentificationCode'
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+        providerChannel:
+          type: string
+          description: Proveedor del canal
+        validationManagement:
+          $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryValidationManagement.validationManagement'
+    lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.libraryTokenIdentificationCode.tokenIdentificationCode:
+      required:
+      - identifierValue
+      type: object
+      properties:
+        identifierValue:
+          type: object
+          properties:
+            value:
+              type: string
+              description: Valor único del código de identificación del token.
+              x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+                kind: AUDITABLE_DATA
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        identifierIssuingAuthority:
+          type: object
+          properties:
+            reference:
+              type: object
+              properties:
+                partyName:
+                  type: string
+                  description: Nombre de la entidad o partido que emite el identificador.
+            organisation:
+              type: object
+              properties:
+                organisationName:
+                  type: string
+                  description: Nombre oficial de la organización.
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryRetrieveTokenAssignmentRs.libraryTokensAssignment.tokensAssignment:
+      type: array
+      items:
+        type: object
+        properties:
+          tokenAssignment:
+            $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.tokenAssignment'
+    lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility:
+      type: object
+      properties:
+        processCode:
+          type: string
+          description: Resultado de la transacción SmartVista
+        trackingNumber:
+          type: string
+          description: Resultado de la transacción SmartVista
+        transactionalDate:
+          type: string
+          description: Resultado de la transacción SmartVista
+        authorizationReference:
+          type: string
+          description: Resultado de la transacción SmartVista
+        svfeIdentifier:
+          type: string
+          description: Resultado de la transacción SmartVista
+        transactionNumber:
+          type: string
+          description: Número de la transacción
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+            description:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+    lib.libraryCaptureTokenAssignmentRq.libraryValidationManagement.validationManagement:
+      type: array
+      description: Validación OTP
+      items:
+        type: object
+        properties:
+          validationCheckDigit:
+            type: string
+            description: Código ingresado en validación acotado a 6 caracteres
+            x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+              kind: AUDITABLE_DATA
+          validationStatus:
+            type: boolean
+            description: Estado de validacion
+          validationDescription:
+            type: string
+            description: Respuesta de servicio o Respuesta de validación acotado a
+              200 caracteres
+          validationDateTime:
+            type: string
+            description: Fecha de validacion
+          validationType:
+            type: number
+            description: tipo de validacion realizada por el cliente prospecto o por
+              el sistema. * 1 - Validación INE - Listas Nominales * 2 - Validación
+              OTP correo * 3 - Validación Correo Malware * 4 - Validación OTP celular
+              * 5 - Validación CURP * 6 - Validación RFC * 7 - Validación SIC- buró
+              externo * 8 - Validación de Domicilio * 9 - Validación de Domicilio
+              referencia * 10 - Pregunta validación PEP * 11 - Validación Dirección
+              INE * 12 - Validación Código Postal
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+    lib.libraryActivateDebitCardRq.activateDebitCardRq:
+      type: object
+      properties:
+        issuedDevice:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRq.libraryIssuedDevice.issuedDevice'
+    lib.libraryActivateDebitCardRs.activateDebitCardRs:
+      type: object
+      properties:
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+            description:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        debitCard:
+          $ref: '#/components/schemas/lib.libraryActivateDebitCardRs.libraryDebitCard.debitCard'
+    lib.libraryInitiateDeviceAssignmentRq.initiateDeviceAssignmentRq:
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryInitiateDeviceAssignmentRs.initiateDeviceAssignmentRs:
+      required:
+      - deviceAssignment
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryRegisterDeviceAssignmentRq.registerDeviceAssignmentRq:
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryRetrieveDeviceAssignmentRs.retrieveDeviceAssignmentRs:
+      required:
+      - deviceAssignment
+      type: object
+      properties:
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryUpdateDeviceAssignmentRq.updateDeviceAssignmentRq:
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryPaymentCard.paymentCard'
+        cardPOSDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryCardPOSDeviceAllocation.cardPOSDeviceAllocation'
+        allocation:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryAllocation.allocation'
+    lib.libraryUpdateDeviceAssignmentRs.updateDeviceAssignmentRs:
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility'
+    lib.libraryRegisterIssuedDeviceAllocationRq.registerIssuedDeviceAllocationRq:
+      required:
+      - auditFacility
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility'
+        auditFacility:
+          type: object
+          properties:
+            transactionTime:
+              type: string
+              description: Hora de la transacción
+            transactionDate:
+              type: string
+              description: Fecha transaccion
+            timeParseRequest:
+              type: string
+              description: Hora en que se realizó el request
+            timeParseResponse:
+              type: string
+              description: Hora en que se realizó el response
+            versionNumber:
+              type: string
+              description: Versión del servicio que se ejecuta
+            environment:
+              type: string
+              description: Representa el ambiente actual
+            uuid:
+              type: string
+              description: Identificador Único Universal
+            namespace:
+              type: string
+              description: Capa donde se encuentra la API
+            apiName:
+              type: string
+              description: Recurso de la API
+          description: Contiene la informacion de la auditoria de la transacción
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+        channelFacility:
+          $ref: '#/components/schemas/lib.libraryRegisterIssuedDeviceAllocationRq.libraryChnnelFacility.channelFacility'
+        issueLocation:
+          $ref: '#/components/schemas/lib.libraryRegisterIssuedDeviceAllocationRq.libraryIssueLocation.issueLocation'
+        amount:
+          type: number
+          description: Monto de la transacción
+        recordIdentifier:
+          type: string
+    lib.libraryCreatePasswordAssignmentRq.createPasswordAssignmentRq:
+      type: object
+      properties:
+        paymentCard:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryPaymentCard.paymentCard'
+        cardPOSDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryCardPOSDeviceAllocation.cardPOSDeviceAllocation'
+        allocation:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryAllocation.allocation'
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryCreatePasswordAssignmentRs.createPasswordAssignmentRs:
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility'
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryPasswordAssignment.passwordAssignment'
+    lib.libraryInitiatePasswordAssigmentRq.initiatePasswordAssignmentRq:
+      type: object
+      properties:
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryPasswordAssignment.passwordAssignment'
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.issuedDeviceAllocation'
+    lib.libraryInitiatePasswordAssigmentRs.initiatePasswordAssignmentRs:
+      type: object
+      properties:
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility'
+    lib.libraryRegisterPasswordAssignmentLogRq.registerPasswordAssignmentLogRq:
+      type: object
+      properties:
+        passwordAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryPasswordAssignment.passwordAssignment'
+        issuedDeviceAllocation:
+          $ref: '#/components/schemas/lib.libraryInitiatePasswordAssigmentRq.libraryIssuedDeviceAllocation.issuedDeviceAllocation'
+    lib.libraryReportingRegisterRq.registerReportingRq:
+      required:
+      - auditFacility
+      type: object
+      properties:
+        logEntryType:
+          type: string
+          description: Tipo de operación de log
+        transactionFacility:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRs.libraryTransactionFacility.transactionFacility'
+        auditFacility:
+          type: object
+          properties:
+            transactionTime:
+              type: string
+              description: Hora de la transacción
+            transactionDate:
+              type: string
+              description: Fecha transaccion
+            timeParseRequest:
+              type: string
+              description: Hora en que se realizó el request
+            timeParseResponse:
+              type: string
+              description: Hora en que se realizó el response
+            versionNumber:
+              type: string
+              description: Versión del servicio que se ejecuta
+            environment:
+              type: string
+              description: Representa el ambiente actual
+            uuid:
+              type: string
+              description: Identificador Único Universal
+            namespace:
+              type: string
+              description: Capa donde se encuentra la API
+            apiName:
+              type: string
+              description: Recurso de la API
+          description: Contiene la informacion de la auditoria de la transacción
+        bankBranch:
+          type: object
+          properties:
+            branchReference:
+              type: string
+              description: Referencia de la Sucursal
+            name:
+              type: string
+              description: Nombre de la Sucursal
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+        statusInstanceRecord:
+          type: object
+          properties:
+            statusCode:
+              type: string
+              description: Codigo del estado de la instancia
+            message:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+            status:
+              type: string
+              description: status de la solicitud
+            description:
+              type: string
+              description: Descripcion sobre el estado de la instancia
+          description: Contiene la informacion registrada de una instancia ante un
+            evento
+        deviceAssignment:
+          $ref: '#/components/schemas/lib.libraryCreatePasswordAssignmentRq.libraryDeviceAssignment.deviceAssignment'
+    lib.libraryCaptureTokenAssignmentRq.captureTokenAssignmentRq:
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.tokenAssignment'
+    lib.libraryEvaluateTokenAssignmentRq.evaluateTokenAssignmentRq:
+      required:
+      - tokenAssignment
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.tokenAssignment'
+    lib.libraryInitiateTokenAssignmentRq.initiateTokenAssignmentRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+        templateHtml:
+          type: string
+        urlOneTimePassword:
+          type: string
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        sessionDialogueIdentification:
+          type: string
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+        headline:
+          type: string
+        endpoint:
+          type: string
+          x-annotation-lib.libraryCaptureTokenAssignmentRq.annotation.customControlAttributes:
+            kind: AUDITABLE_DATA
+    lib.libraryRetrieveTokenAssignmentRq.retrieveTokenAssignmentRq:
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/lib.libraryInitiateTokenAssignmentRq.libraryPartyReference.partyReference'
+    lib.libraryRetrieveTokenAssignmentRs.retrieveTokenAssignmentRs:
+      type: object
+      properties:
+        tokensAssignment:
+          $ref: '#/components/schemas/lib.libraryRetrieveTokenAssignmentRs.libraryTokensAssignment.tokensAssignment'
+    lib.libraryUpdateTokenAssignmentRq.updateTokenAssignmentRq:
+      type: object
+      properties:
+        tokenAssignment:
+          $ref: '#/components/schemas/lib.libraryCaptureTokenAssignmentRq.libraryTokenAssignment.tokenAssignment'
+  responses:
+    trait_common-responses.responses201_201:
+      description: Created
+    trait_common-responses.responses204_204:
+      description: No Content
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

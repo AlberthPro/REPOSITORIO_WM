@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="6e395120-0632-4d66-9a51-be55e688ea45" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="FP_SolicitudVacaciones"
+  packageName="PD_Pruebas" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="solicitudVacacionesDoc"
+    name="{ProcessNamespace}solicitudVacacionesDoc" type="{PD_Pruebas.doc}solicitudVacacionesDoc"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Validar solicitud vacacionesInputEnv"
+    name="{ProcessNamespace}AU.Validar solicitud vacacionesInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Validar solicitud vacacionesOutputEnv"
+    name="{ProcessNamespace}AU.Validar solicitud vacacionesOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Registrar solicitud vacacionesInputEnv"
+    name="{ProcessNamespace}AU.Registrar solicitud vacacionesInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="rnReciboPago_1" name="{ProcessNamespace}rnReciboPago_1" type="{PD_Pruebas.doc}rn_reciboPago"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="AU.Registrar solicitud vacacionesOutputEnv"
+    name="{ProcessNamespace}AU.Registrar solicitud vacacionesOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="6444a103-368a-466d-89b9-8f699a2e95e2" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="55c8e31a-e4b3-4a30-bab2-4fd49c21c3b2"
+      label="Solicitud de Vacaciones" logicalServer="Default"
+      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
+      x="53" y="48">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <pool Id="651d3e9c-71a4-43ec-b96a-a000fbeb93f1" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false"
+    label="Solicitud de Vacaciones" labelBlue="255" labelGreen="204"
+    labelRed="153" logicalServer="" loopMaximum="0" loopMaximumField=""
+    name="6" orientation="horizontal" red="128" retryCount="0"
+    stepLock="false" uid="P7" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <receiveStep Id="bc4433a0-4290-4f33-9abe-896d5bd0219c"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="28"
+      isStartStepServiceRequired="true"
+      label="EVI.Solicitud vacaciones ingresada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default"
+      outputMessageType="{PD_Pruebas.doc}solicitudVacacionesDoc"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S10" useCorrelation="false" width="28"
+      x="73" y="84">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/ControlProceso"
+        fieldPath="solicitudVacacionesDoc/ControlProceso"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="b59f848f-7b02-47a2-8747-4ff320e37c0e"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="GWD.¿Solicitud aprobada?" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S17"
+      useCorrelation="false" width="34" x="705" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="f38ba453-29b4-47fb-af62-1da1f9618238"
+      eventType="END" height="28"
+      label="EVF.Solicitud vacaciones completada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" stepLock="false" uid="S28"
+      useCorrelation="false" width="28" x="1219" y="84">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="3424e9ee-ff65-4f47-845d-3bc251e524cc"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="GWC.registra respuesta" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S21"
+      useCorrelation="false" width="34" x="821" y="81">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="36a2e633-bf35-4c7f-afcc-b6bd4785537d"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="GWD.Cumple política" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S47"
+      useCorrelation="false" width="34" x="501" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="26416f81-f743-496a-baa9-2f68a55982d3"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="GWD.Loop prueba" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S58"
+      useCorrelation="false" width="34" x="911" y="81">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="c4870616-9d4e-42b2-9420-655560a2fdbc"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="GWC.Loop prueba" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S61"
+      useCorrelation="false" width="34" x="293" y="81">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <invokeStep Id="c8431b59-3e8d-4583-99eb-ad121ebe6a4b"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="PD_Pruebas.srv"
+      invokeId="PD_Pruebas.srv:consultaHistVacaciones" invokeLocation=""
+      invokeName="consultaHistVacaciones" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="AS.Consulta histórico vacaciones" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S11" useCorrelation="false" width="93"
+      x="160" y="68">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+    </invokeStep>
+    <invokeStep Id="ffa3e49e-543d-451c-ab2b-d8deac70436c"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_SolicitudVacacionesTasks"
+      invokeId="38E9B2D6-05BE-D7CE-9B77-A77C294FA247" invokeLocation=""
+      invokeName="AU.Validar solicitud vacaciones" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Validar solicitud vacaciones" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S13" useCorrelation="false"
+      width="93" x="578" y="68">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <input name="{ProcessNamespace}AU.Validar solicitud vacacionesInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <output name="{ProcessNamespace}AU.Validar solicitud vacacionesOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/ControlProceso"
+        fieldPath="solicitudVacacionesDoc/ControlProceso"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+    </invokeStep>
+    <invokeStep Id="8b4e5ae7-892d-4cfa-b8bc-00f1cc75dfcb"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="PD_Pruebas.srv"
+      invokeId="PD_Pruebas.srv:actualizarRegVacaciones"
+      invokeLocation="" invokeName="actualizarRegVacaciones"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="AS.Actualizar registro vacaciones" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S24" useCorrelation="false" width="93"
+      x="1009" y="68">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/ControlProceso"
+        fieldPath="solicitudVacacionesDoc/ControlProceso"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="b948ebc1-de8d-43fe-b2d1-796cae1c986e"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/FP_SolicitudVacacionesTasks"
+      invokeId="16C3A341-4B0C-6483-F300-73CCF2B828D8" invokeLocation=""
+      invokeName="AU.Registrar solicitud vacaciones" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="AU.Registrar solicitud vacaciones" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S15" useCorrelation="false"
+      width="93" x="785" y="233">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <input name="{ProcessNamespace}AU.Registrar solicitud vacacionesInputEnv"/>
+      <input name="{ProcessNamespace}rnReciboPago_1"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <output name="{ProcessNamespace}AU.Registrar solicitud vacacionesOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="e03dbd60-922a-440f-8666-b1bbcc91387d"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="PD_Pruebas.srv"
+      invokeId="PD_Pruebas.srv:politicaVacaciones" invokeLocation=""
+      invokeName="politicaVacaciones" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="RN.Política vacaciones" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      ornamentKey="32_business_process.png"
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S55"
+      useCorrelation="false" width="93" x="372" y="68">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/ControlProceso"
+        fieldPath="solicitudVacacionesDoc/ControlProceso"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="INPUT"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}solicitudVacacionesDoc"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+      <loggedField fieldAlias="solicitudVacacionesDoc"
+        fieldPath="solicitudVacacionesDoc"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc" fieldPath=""
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/fechaTx"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/processInstanceID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/taskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customProcessID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        fieldPath="solicitudVacacionesDoc/contextoTransaccional/customTaskID"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitante"
+        fieldPath="solicitudVacacionesDoc/Solicitante"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/numEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        fieldPath="solicitudVacacionesDoc/Solicitante/nombreEmpleado"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        fieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        fieldPath="solicitudVacacionesDoc/Solicitante/diasDisponibles"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/Solicitud"
+        fieldPath="solicitudVacacionesDoc/Solicitud"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        fieldPath="solicitudVacacionesDoc/Solicitud/diasSolicitados"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaInicio"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        fieldPath="solicitudVacacionesDoc/Solicitud/fechaFIn"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField fieldAlias="solicitudVacacionesDoc/ControlProceso"
+        fieldPath="solicitudVacacionesDoc/ControlProceso"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+      <loggedField
+        fieldAlias="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        fieldPath="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+        logicalDataItem="{ProcessNamespace}solicitudVacacionesDoc" mode="OUTPUT"/>
+    </invokeStep>
+    <transition Id="f5d92f4f-6ed8-4f43-b5f2-ba5a91323cf3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S10"
+      sourceLocation="101,98" sourceTerminal="RIGHT" target="S11"
+      targetLocation="160,98" targetTerminal="LEFT" uid="T12">
+      <bendpoint index="0" location="212,147" weight="0.5"/>
+      <bendpoint index="1" location="212,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="626b89a9-a83e-41c2-9d82-d3ee8911fb27" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S24"
+      sourceLocation="1102,98" sourceTerminal="RIGHT" target="S28"
+      targetLocation="1219,98" targetTerminal="LEFT" uid="T29">
+      <bendpoint index="0" location="1242,147" weight="0.5"/>
+      <bendpoint index="1" location="1242,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="129463a0-9a56-4423-88ae-5c3997625f0a" blue="255"
+      conditionDescription="Si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S47" sourceLocation="535,98" sourceTerminal="RIGHT"
+      target="S13" targetLocation="578,98" targetTerminal="LEFT" uid="T49">
+      <bendpoint index="0" location="638,147" weight="0.5"/>
+      <bendpoint index="1" location="638,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="9" x="633" y="133">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+          leftOperand="{ProcessNamespace}solicitudVacacionesDoc"
+          operator="=" rightOperand="'Si'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="608f9fda-ead9-4ef3-8159-19a4acd6ec28" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S13"
+      sourceLocation="671,98" sourceTerminal="RIGHT" target="S17"
+      targetLocation="705,98" targetTerminal="LEFT" uid="T50">
+      <bendpoint index="0" location="770,147" weight="0.5"/>
+      <bendpoint index="1" location="770,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a4c62cb3-1002-457b-85e8-71067d7553d9" blue="255"
+      conditionDescription="Si"
+      conditionText="solicitudVacacionesDoc/solicitudVacacionesDoc/ControlProceso/respJefeInmediato = Si"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S17" sourceLocation="722,115" sourceTerminal="BOTTOM"
+      target="S15" targetLocation="785,263" targetTerminal="LEFT" uid="T51">
+      <bendpoint index="0" location="805,312" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="9" x="725" y="224">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="solicitudVacacionesDoc/ControlProceso/respJefeInmediato"
+          leftOperand="{ProcessNamespace}solicitudVacacionesDoc"
+          operator="=" rightOperand="'Si'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="1fc00643-334c-4a13-904b-d9348d1bd411" blue="255"
+      conditionDescription="No" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S17" sourceLocation="739,98" sourceTerminal="RIGHT"
+      target="S21" targetLocation="821,98" targetTerminal="LEFT" uid="T52">
+      <bendpoint index="0" location="862,147" weight="0.5"/>
+      <bendpoint index="1" location="862,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="13" x="809" y="133">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7c7bdd03-d39b-4e55-9208-f54a6c213810" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S15"
+      sourceLocation="878,263" sourceTerminal="RIGHT" target="S21"
+      targetLocation="838,115" targetTerminal="BOTTOM" uid="T53">
+      <bendpoint index="0" location="921,312" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="dac19cd5-e746-4b0e-bb96-598309f89623" blue="255"
+      conditionDescription="No"
+      conditionText="solicitudVacacionesDoc/solicitudVacacionesDoc/ControlProceso/politicaVacaciones = No"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S47" sourceLocation="518,81" sourceTerminal="TOP"
+      target="S21" targetLocation="838,81" targetTerminal="TOP" uid="T54">
+      <bendpoint index="0" location="601,93" weight="0.5"/>
+      <bendpoint index="1" location="921,93" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="13" x="611" y="103">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="solicitudVacacionesDoc/ControlProceso/politicaVacaciones"
+          leftOperand="{ProcessNamespace}solicitudVacacionesDoc"
+          operator="=" rightOperand="'No'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="5571e44e-9919-43c2-bc93-132b4df8400f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S21"
+      sourceLocation="855,98" sourceTerminal="RIGHT" target="S58"
+      targetLocation="911,98" targetTerminal="LEFT" uid="T59">
+      <bendpoint index="0" location="966,147" weight="0.5"/>
+      <bendpoint index="1" location="966,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="7de6f647-f621-454b-979c-10c24d56be7b" blue="255"
+      conditionDescription="jefe=salir"
+      conditionText="solicitudVacacionesDoc/solicitudVacacionesDoc/Solicitante/jefeInmediato = salir"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S58" sourceLocation="945,98" sourceTerminal="RIGHT"
+      target="S24" targetLocation="1009,98" targetTerminal="LEFT" uid="T60">
+      <bendpoint index="0" location="1060,147" weight="0.5"/>
+      <bendpoint index="1" location="1060,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="44" x="1040" y="133">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator=""
+          leftFieldPath="solicitudVacacionesDoc/Solicitante/jefeInmediato"
+          leftOperand="{ProcessNamespace}solicitudVacacionesDoc"
+          operator="=" rightOperand="'salir'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="49e61f86-0dc2-486a-ae5d-ac87e364acf6" blue="255"
+      conditionDescription="" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S58" sourceLocation="928,81" sourceTerminal="TOP"
+      target="S61" targetLocation="310,81" targetTerminal="TOP" uid="T64">
+      <bendpoint index="0" location="1011,78" weight="0.5"/>
+      <bendpoint index="1" location="393,78" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="34" x="753" y="57">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a66545ae-2a55-41a7-9b95-5c0ed68b1b1f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S11"
+      sourceLocation="253,98" sourceTerminal="RIGHT" target="S61"
+      targetLocation="293,98" targetTerminal="LEFT" uid="T65">
+      <bendpoint index="0" location="356,147" weight="0.5"/>
+      <bendpoint index="1" location="356,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="450bb8d6-1925-4229-901c-e354e1c55ef0" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S61"
+      sourceLocation="327,98" sourceTerminal="RIGHT" target="S55"
+      targetLocation="372,98" targetTerminal="LEFT" uid="T66">
+      <bendpoint index="0" location="432,147" weight="0.5"/>
+      <bendpoint index="1" location="432,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="39fa0b94-2e7a-413a-a670-0e7eefb01b6b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S55"
+      sourceLocation="465,98" sourceTerminal="RIGHT" target="S47"
+      targetLocation="501,98" targetTerminal="LEFT" uid="T67">
+      <bendpoint index="0" location="566,147" weight="0.5"/>
+      <bendpoint index="1" location="566,147" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="59963d81-2492-413f-812f-428935e2234b" blue="255"
+      green="255" height="206" label="Jefe inmediato" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Jefe inmediato" red="255"
+      uid="W8" width="1298">
+      <documentation/>
+    </swimlane>
+    <swimlane Id="7257de44-54bb-4a09-83b9-8fb6efa9bc17" blue="255"
+      green="255" height="160" label="Asistente de RH" labelBlue="255"
+      labelGreen="238" labelRed="221" name="Asistente de RH" red="255"
+      uid="W9" width="1298">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

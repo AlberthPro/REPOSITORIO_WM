@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="PD_Pruebas.FP_Prueba.FP_Prueba_1.Default:AU_Valida_datos_personales_QueueTask">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY NAME="Link" FROM="/OnboardingClient;4;0;BC_SRV_Onboarding.docs:OnboardingClient" TO="/TaskData;2;0/OnboardingClient;2;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/AU.Valida datos personalesInputEnv;4;0;pub.task:TaskQueueInfo" TO="/TaskQueueInfo;4;0;pub.task:TaskQueueInfo">
+</MAPCOPY>
+</MAP>
+</INVOKE>
+</FLOW>

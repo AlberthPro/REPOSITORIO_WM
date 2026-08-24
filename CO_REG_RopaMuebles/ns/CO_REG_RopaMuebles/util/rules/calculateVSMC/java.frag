@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="name">calculateVSMC</value>
+  <value name="encodeutf8">true</value>
+  <value name="body">dHJ5IHsNCkRvdWJsZSBzbWMgPSBEb3VibGUudmFsdWVPZihJRGF0YVV0aWwuZ2V0U3RyaW5nKHBp
+cGVsaW5lLmdldEN1cnNvcigpLCAic21jIikpOw0KRG91YmxlIHRvdGFsQmFsYW5jZT0gRG91Ymxl
+LnZhbHVlT2YoSURhdGFVdGlsLmdldFN0cmluZyhwaXBlbGluZS5nZXRDdXJzb3IoKSwgInRvdGFs
+QmFsYW5jZSIpKTsNCg0KRG91YmxlIHZzbWM9dG90YWxCYWxhbmNlL3NtYzsNCg0KLy9DYWxjdWxv
+IGNvbiBkb3MgZGVjaW1hbGVzDQpCaWdEZWNpbWFsIGJkID0gQmlnRGVjaW1hbC52YWx1ZU9mKHZz
+bWMpOw0KYmQgPSBiZC5zZXRTY2FsZSgyLCBSb3VuZGluZ01vZGUuSEFMRl9VUCk7DQp2c21jPSBi
+ZC5kb3VibGVWYWx1ZSgpOw0KDQoNCklEYXRhVXRpbC5wdXQocGlwZWxpbmUuZ2V0Q3Vyc29yKCks
+ICJ2c21jIiwgdnNtYyk7DQoJDQp9Y2F0Y2ggKEV4Y2VwdGlvbiBlMSkgew0KICAgIHRocm93IG5l
+dyBSdW50aW1lRXhjZXB0aW9uKGUxLmdldE1lc3NhZ2UoKSk7DQp9</value>
+</Values>

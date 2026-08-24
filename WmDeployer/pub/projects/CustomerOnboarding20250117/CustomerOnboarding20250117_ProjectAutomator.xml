@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><DeployerSpec exitOnError="true" sourceType="Runtime">
+<DeployerServer>
+<host>${machinename}:${isport}</host>
+<user>${Username}</user>
+<pwd>${Password}</pwd>
+<!--<pwdHandle>$(PasswordHandle)</pwdHandle>-->
+</DeployerServer>
+<Environment>
+<IS>
+<isalias name="IS_Bancoppel">
+<host>10.209.23.55</host>
+<port>5555</port>
+<user>Administrator</user>
+<pwd>${Password}</pwd>
+<!--<pwdHandle>$(PasswordHandle)</pwdHandle>-->
+<useSSL>false</useSSL>
+<version>10.15</version>
+<installDeployerResource>false</installDeployerResource>
+<Test>false</Test>
+<executeACL>Internal</executeACL>
+</isalias>
+</IS>
+</Environment>
+<Projects projectPrefix="">
+<Project description="updated de la regla 7" name="CustomerOnboarding20250117" overwrite="false" type="Runtime">
+<DeploymentSet defaultDependencyAction="fulladd" description="" mode="Deploy" name="myDeploymentSet" otherRegExp="" packageRegExp="*" srcAlias="IS_Bancoppel" type="IS">
+<Package name="SRV_Bancoppel" srcAlias="IS_Bancoppel"/>
+</DeploymentSet>
+<DeploymentBuild description="" name="build_BC_QA_20250117"/>
+</Project>
+</Projects>
+</DeployerSpec>

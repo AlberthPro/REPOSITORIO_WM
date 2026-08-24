@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Values version="2.0">
+  <value name="node_type">webMethods/trigger</value>
+  <value name="node_subtype">unknown</value>
+  <value name="node_nsName">BC_BPM_Apolo.FP_ApoloN4.FP_ApoloN4_1.Default:transitionTrigger</value>
+  <value name="node_pkg">BC_BPM_Apolo</value>
+  <value name="is_public">false</value>
+  <value name="trigger_type">broker-trigger</value>
+  <record name="trigger" javaclass="com.wm.util.Values">
+    <value name="concurrent">true</value>
+    <value name="auditOption">0</value>
+    <record name="auditSettings" javaclass="com.wm.util.Values">
+      <value name="document_data">0</value>
+      <value name="startExecution">false</value>
+      <value name="stopExecution">false</value>
+      <value name="onError">true</value>
+    </record>
+    <record name="redeliveryOptions" javaclass="com.wm.util.Values">
+      <value name="max">-1</value>
+      <value name="delayInterval">10000</value>
+      <value name="onRedeliveryFailure">0</value>
+      <value name="resumeTaskSvcName">wm.prt.admin:monitorPRTDB</value>
+    </record>
+    <value name="maxConcurrentThreads">10</value>
+    <value name="inDoubtDetection">false</value>
+    <value name="resolveWithHistory">false</value>
+    <value name="resolutionHistoryTTL">7200000</value>
+    <value name="uniqueId">xCzJJ25nI5WP8/A12Yt1VQ8HjDA=</value>
+    <value name="executeUser">Administrator</value>
+    <array name="conditions" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:CallActivityReturn</value>
+            <null name="filter"/>
+            <value name="umFilter">ParentModelID = 'BC_BPM_Apolo/FP_ApoloN4' and ParentModelVersion = '1'</value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleCallActivityReturn</value>
+          <value name="conditionName">Call Activity Return Event</value>
+        </record>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
+            <null name="filter"/>
+            <value name="umFilter">( ProcessModelID = 'BC_BPM_Apolo/FP_ApoloN4' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S205', 'S223', 'S198', 'S19', 'S30', 'S211', 'S11', 'S24', 'S18', 'S16', 'S13', 'S28', 'S10', 'S203', 'S32', 'S12', 'S9', 'S27', 'S226', 'S26', 'S29', 'S14', 'S25', 'S23', 'S15' )  ) </value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
+          <value name="conditionName">Inbound transitions</value>
+        </record>
+      </record>
+    </array>
+    <value name="processingSuspended">false</value>
+    <value name="retrievalSuspended">false</value>
+    <value name="transportAckSize">1</value>
+    <value name="deliverEnabled">true</value>
+    <value name="executeEnabled">true</value>
+    <value name="ordering">0</value>
+    <value name="joinTimeout">86400000</value>
+    <value name="serialSuspendOnError">false</value>
+    <value name="docsPrefetchMax">10</value>
+    <value name="docsPrefetchMin">4</value>
+    <value name="priorityEnabled">false</value>
+    <null name="namedObjectString"/>
+  </record>
+</Values>

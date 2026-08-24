@@ -1,0 +1,368 @@
+openapi: 3.0.0
+info:
+  title: Web methods
+  contact: {}
+  version: 1.0.0
+servers:
+- url: "https://${HOST_NAME}/businessRule/webMethods"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /startInstanceDiscovery:
+    post:
+      operationId: startInstanceDiscovery_POST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/startInstanceRq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/startIntanceRs'
+        "401":
+          description: Access Denied
+      security:
+      - basicAuth: []
+  /taskData:
+    post:
+      operationId: taskData_POST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/resubmitTaskRq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resubmitTaskRs'
+      security:
+      - basicAuth: []
+  /searchTaskByParam:
+    post:
+      operationId: searchTaskByParam_POST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/searchTaskByParamRq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/searchTaskByParamRs'
+        "401":
+          description: Access Denied
+      security:
+      - basicAuth: []
+  /completeTask:
+    post:
+      operationId: completeTask_POST_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/completeTaskRq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/completeTaskRs'
+        "401":
+          description: Access Denied
+      security:
+      - basicAuth: []
+components:
+  schemas:
+    startInstanceRq:
+      type: object
+      properties:
+        endorsement:
+          $ref: '#/components/schemas/endorsement'
+        partyRelationshipProcedure:
+          $ref: '#/components/schemas/partyRelationshipProcedure'
+    startIntanceRs:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "200"
+        message:
+          type: string
+          example: Instancia de proceso FP_DIscovery iniciada
+    resubmitTaskRq:
+      type: object
+      properties:
+        resubmitTask:
+          $ref: '#/components/schemas/resubmitTask'
+        taskData:
+          $ref: '#/components/schemas/taskData'
+    resubmitTaskRs:
+      type: object
+      properties:
+        response:
+          type: object
+          properties:
+            code:
+              type: string
+              example: "Resubmitted pipeline at step: S105"
+            response:
+              type: boolean
+              example: true
+    searchTaskByParamRq:
+      type: object
+      properties:
+        taskID:
+          type: string
+          example: "10379"
+    searchTaskByParamRs:
+      type: object
+      properties:
+        TaskInfo:
+          $ref: '#/components/schemas/taskInfo'
+        TaskData:
+          type: object
+          properties:
+            dt_validacionTelefono:
+              type: object
+              properties:
+                endorsement:
+                  $ref: '#/components/schemas/endorsement'
+    completeTaskRq:
+      type: object
+      properties:
+        completeTask:
+          type: boolean
+          example: true
+        taskID:
+          type: string
+          example: "10351"
+        GenericDocument:
+          type: object
+          properties:
+            tokenAssignment:
+              $ref: '#/components/schemas/tokenAssignment'
+    completeTaskRs:
+      type: object
+      properties:
+        status:
+          type: string
+          example: "SOAPException( Server.userException: [POP.017.0033] You can not\
+            \ update non-Active task: 10351 )"
+        code:
+          type: string
+          example: "500"
+    endorsement:
+      required:
+      - endorsementManagement
+      - sessionDialogueIdentification
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        endorsementManagement:
+          $ref: '#/components/schemas/endorsementManagement'
+    partyRelationshipProcedure:
+      $ref: '#/components/schemas/partyReference'
+    partyReference:
+      type: object
+      properties:
+        contactPoint:
+          type: array
+          items:
+            $ref: '#/components/schemas/contactPoint'
+    endorsementManagement:
+      required:
+      - endorsementType
+      type: object
+      properties:
+        endorsementType:
+          type: integer
+          example: 1
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          - 5
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+          - 13
+        endorsementStatus:
+          type: string
+          enum:
+          - active
+        endorsementDateTime:
+          type: string
+    contactPoint:
+      required:
+      - contactPointType
+      type: object
+      properties:
+        contactPointValue:
+          type: string
+          description: Medio de contacto
+        contactPointType:
+          type: string
+          enum:
+          - cellphone
+          - Electronic Address
+          - phone Number
+          - work Phone Number
+    resubmitTask:
+      type: object
+      properties:
+        stepName:
+          type: string
+          example: ""
+        stepId:
+          type: string
+          example: S105
+        processInstanceId:
+          type: string
+          example: b0a529e6-b869-4c20-a3f3-b3dec515a0b3
+    taskInfo:
+      type: object
+      properties:
+        name:
+          type: string
+          example: TU. Ingresar codigo OPT
+        description:
+          type: string
+        createdDate:
+          type: string
+          example: 2025-09-18T19:15:46.325Z
+        lastModifiedDate:
+          type: string
+          example: 2025-09-18T19:15:46.342Z
+        taskID:
+          type: string
+          example: "10379"
+        customTaskID:
+          type: string
+        createdBy:
+          type: string
+          example: administrator
+        lastModifiedBy:
+          type: string
+          example: administrator
+        lastAcceptedBy:
+          type: string
+          example: administrator
+        lastAcceptedDate:
+          type: string
+        status:
+          type: string
+          example: active
+        priority:
+          type: string
+          example: none
+        acceptedByList:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        assignedToList:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
+        taskUrl:
+          type: string
+          example: /758B535A-F6F5-E182-EBC9-CC286A9DC484.task.app.details.page?wmp10258.requestID=0.5494897501624627&wmp10258.taskID=10379
+        taskTypeID:
+          type: string
+          example: 758B535A-F6F5-E182-EBC9-CC286A9DC484
+        taskVersionNumber:
+          type: integer
+          example: 2
+        processInstanceID:
+          type: string
+          example: ecfddb54-49e4-4569-8b5b-5502e5d69e9a
+        rootProcessInstanceID:
+          type: string
+        processModelID:
+          type: string
+          example: PD_BPM_Discovery/SP_Disc_ValidacionTelefono
+        processModelVersion:
+          type: string
+          example: "1"
+        stepID:
+          type: string
+          example: S105
+        processIteration:
+          type: string
+          example: "1"
+        stepIteration:
+          type: string
+          example: "1"
+        delegatedToList:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        delegatedFromList:
+          type: array
+          items:
+            type: object
+            additionalProperties: {}
+        isMandatory:
+          type: integer
+          example: 0
+        taskScheduleDate:
+          type: string
+    taskData:
+      type: object
+      additionalProperties: {}
+    tokenAssignment:
+      type: object
+      properties:
+        code:
+          type: string
+          example: 1276c190f7197fd82d7f0ad19c1c93d2
+        validationManagement:
+          type: array
+          items:
+            $ref: '#/components/schemas/validationManagement'
+    validationManagement:
+      type: object
+      properties:
+        validationType:
+          type: integer
+          example: 1
+        validationCheckDigit:
+          type: string
+          example: OSDNFO3J4NO35645N7O45N32
+        validationStatus:
+          type: boolean
+          example: false
+        validationDescription:
+          type: string
+          example: Validación SIC- buró externo
+        validationDateTime:
+          type: string
+          example: 2023-06-28 05:22:32
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic

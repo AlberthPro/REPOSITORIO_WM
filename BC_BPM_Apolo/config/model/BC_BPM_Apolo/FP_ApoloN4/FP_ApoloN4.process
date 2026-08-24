@@ -1,0 +1,1297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="f8e5a1c6-b19e-4446-8117-683aee826304" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="FP_ApoloN4" packageName="BC_BPM_Apolo"
+  processCategory="" rnSync="false" runtimeVersion="1"
+  transitionLabelPref="description" unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_validacionTelefono"
+    name="{ProcessNamespace}dt_validacionTelefono" type="{BC_SRV_Apolo.docs}dt_validacionTelefono"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_validacionDomicilio"
+    name="{ProcessNamespace}dt_validacionDomicilio" type="{BC_SRV_Apolo.docs}dt_validacionDomicilio"/>
+  <logicalDataItem Id="" description="" dimension="0" label="dt_pld"
+    name="{ProcessNamespace}dt_pld" type="{BC_SRV_Apolo.docs}dt_pld"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_videoselfie" name="{ProcessNamespace}dt_videoselfie" type="{BC_SRV_Apolo.docs}dt_videoselfie"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_serviciosDigitales"
+    name="{ProcessNamespace}dt_serviciosDigitales" type="{BC_SRV_Apolo.docs}dt_serviciosDigitales"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_validacionCorreo"
+    name="{ProcessNamespace}dt_validacionCorreo" type="{BC_SRV_Apolo.docs}dt_validacionCorreo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_expedienteDigital"
+    name="{ProcessNamespace}dt_expedienteDigital" type="{BC_SRV_Apolo.docs}dt_expedienteDigital"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_bienvenida" name="{ProcessNamespace}dt_bienvenida" type="{BC_SRV_Apolo.docs}dt_bienvenida"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_validacionCliente"
+    name="{ProcessNamespace}dt_validacionCliente" type="{BC_SRV_Apolo.docs}dt_validacionCliente"/>
+  <logicalDataItem Id="" description="" dimension="0" label="dt_pep"
+    name="{ProcessNamespace}dt_pep" type="{BC_SRV_Apolo.docs}dt_pep"/>
+  <logicalDataItem Id="" description="" dimension="0" label="dt_ApoloN4"
+    name="{BC_SRV_Apolo.docs}dt_ApoloN4" type="{BC_SRV_Apolo.docs}dt_ApoloN4"/>
+  <logicalDataItem Id="" description="" dimension="0" label="dt_ApoloN4"
+    name="{ProcessNamespace}dt_ApoloN4" type="{BC_SRV_Apolo.docs}dt_ApoloN4"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_terminaProceso"
+    name="{BC_SRV_Apolo.docs}dt_terminaProceso" type="{BC_SRV_Apolo.docs}dt_terminaProceso"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_terminaProceso" name="{ProcessNamespace}dt_terminaProceso" type="{BC_SRV_Apolo.docs}dt_terminaProceso"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_seleccionarOferta"
+    name="{ProcessNamespace}dt_seleccionarOferta" type="{BC_SRV_Apolo.docs}dt_seleccionarOferta"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_perfilamiento" name="{ProcessNamespace}dt_perfilamiento" type="{BC_SRV_Apolo.docs}dt_perfilamiento"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_perfilTransaccional"
+    name="{ProcessNamespace}dt_perfilTransaccional" type="{BC_SRV_Apolo.docs}dt_perfilTransaccional"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_altaBeneficiarios"
+    name="{ProcessNamespace}dt_altaBeneficiarios" type="{BC_SRV_Apolo.docs}dt_altaBeneficiarios"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <pool Id="366a43cb-a916-4457-a3ee-5e9e97731665" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="FP_ApoloN4"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="5"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P6" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <receiveStep Id="ccf032eb-ef4e-429a-bdb6-9e84abdce2d9"
+      allowsSynchronousReply="false" edaEventQName="" edaSubFilter=""
+      edaSubFilterLang="" eventType="START"
+      externalizeConditions="false" height="28"
+      isStartStepServiceRequired="true" label="EVI.Producto N4 iniciado"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      outputMessageType="{BC_SRV_Apolo.docs}dt_ApoloN4"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S8" useCorrelation="false" width="28" x="63" y="123">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{BC_SRV_Apolo.docs}dt_ApoloN4"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="4d87284c-91a7-4e06-b4fe-d56c46e4b3ed"
+      externalizeConditions="false" gatewayType="PARALLEL" height="34"
+      label="COP.1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S9"
+      useCorrelation="false" width="34" x="130" y="120">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <terminateStep Id="b75d35cc-86c0-43ad-a0a7-ce6b018f2f57"
+      escalateFailure="true" height="30"
+      label="EVF.Producto N4 completado" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" stepLock="false"
+      terminateStatus="DONE" uid="S10" useCorrelation="false" width="28"
+      x="1746" y="277">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </terminateStep>
+    <terminateStep Id="07c8253c-0f90-4599-ab0f-7dff161d3f8c"
+      escalateFailure="true" height="28"
+      label="EVF.Producto N4 cancelado" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" stepLock="false" terminateStatus="DONE"
+      uid="S11" useCorrelation="false" width="28" x="1746" y="387">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </terminateStep>
+    <receiveStep Id="415175ed-84ed-4a92-b356-b3d2b9f2ff20"
+      allowsSynchronousReply="false"
+      correlationFieldName="processInstanceID" edaEventQName=""
+      edaSubFilter="" edaSubFilterLang="" eventType="INTERMEDIATE_CATCH"
+      externalizeConditions="false" height="28"
+      isStartStepServiceRequired="true" label="INT.Correlación"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      outputMessageType="{BC_SRV_Apolo.docs}dt_terminaProceso"
+      receiveProtocol="SUBSCRIPTION" receiveType="EMPTY"
+      stepLock="false" uid="S12" useCorrelation="true" width="28"
+      x="1486" y="276">
+      <documentation/>
+      <join joinType="unspecified" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <output name="{BC_SRV_Apolo.docs}dt_terminaProceso"/>
+      <wmExpressionFilter/>
+    </receiveStep>
+    <gatewayStep Id="8b5392c7-6315-4d8b-b24b-6d3f335eabd5"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.1" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S205"
+      useCorrelation="false" width="34" x="1403" y="273">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="c5f1cd0a-5752-460e-8661-1c56490ad0a6"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.exitCode" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S211"
+      useCorrelation="false" width="34" x="1565" y="273">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <invokeStep Id="d2bd4ccf-dc54-455f-992d-a30a1b4b7b06"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="EMPTY" isCompensating="false"
+      isTestAfter="false" label="Preparación" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S13"
+      useCorrelation="false" width="93" x="204" y="107">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="6a3c7598-721b-4609-a22b-c705f0215927"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="" invokeLocation=""
+      invokeName="" invokeType="EMPTY" isCompensating="false"
+      isTestAfter="false" label="Términos y Condiciones"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S14"
+      useCorrelation="false" width="93" x="341" y="107">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="7acccbf3-2d6b-4922-a9b6-492f3c598818"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ValidacionTelefono" invokeLocation=""
+      invokeName="SP_ValidacionTelefono" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Validación Teléfono" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S15" useCorrelation="false" width="93"
+      x="482" y="107">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <input name="{BC_SRV_Apolo.docs}dt_ApoloN4"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <output name="{BC_SRV_Apolo.docs}dt_ApoloN4"/>
+      <extendedProperty name="noneStartEvents" value="S32"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_validacionTelefono;{BC_SRV_Apolo.docs}dt_validacionTelefono;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_validacionTelefono;{BC_SRV_Apolo.docs}dt_validacionTelefono;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="e73377cf-8a96-4c0a-8dac-e81bf8526a6d"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="BC_SRV_Apolo.srv"
+      invokeId="BC_SRV_Apolo.srv:terminarProcesoN4" invokeLocation=""
+      invokeName="terminarProcesoN4" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TS.Termina Proceso" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S16" useCorrelation="false" width="93"
+      x="1616" y="371">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_terminaProceso"/>
+      <input name="{ProcessNamespace}dt_ApoloN4"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="cda40a5f-4b7f-4878-999a-abbcf4e7ef75"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ValidacionDomicilio" invokeLocation=""
+      invokeName="SP_ValidacionDomicilio" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Validación Domicilio" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S18" useCorrelation="false" width="93"
+      x="890" y="108">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionDomicilio"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionDomicilio"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_validacionDomicilio;{BC_SRV_Apolo.docs}dt_validacionDomicilio;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_validacionDomicilio;{BC_SRV_Apolo.docs}dt_validacionDomicilio;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="eade179d-3a7e-4690-89f8-166fbb59a9c7"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="BC_BPM_Apolo/SP_PLD"
+      invokeLocation="" invokeName="SP_PLD" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false" label="PLD"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="CALL_ACTIVITY" stepLock="false"
+      uid="S19" useCorrelation="false" width="93" x="1254" y="108">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pld"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pld"/>
+      <extendedProperty name="noneStartEvents" value="S10"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_pld;{BC_SRV_Apolo.docs}dt_pld;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_pld;{BC_SRV_Apolo.docs}dt_pld;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="ee1fed96-6b69-487c-8de1-3867ce4d659f"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_PruebaVidaVideoselfie" invokeLocation=""
+      invokeName="SP_PruebaVidaVideoselfie" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Prueba Vida y Videoselfie" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S23" useCorrelation="false" width="93"
+      x="619" y="262">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_videoselfie"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_videoselfie"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_videoselfie;{BC_SRV_Apolo.docs}dt_videoselfie;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_videoselfie;{BC_SRV_Apolo.docs}dt_videoselfie;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="86f1a992-76d4-48af-bc6c-914710ccb6ce"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ServiciosDigitales" invokeLocation=""
+      invokeName="SP_ServiciosDigitales" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Servicios Digitales" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S24" useCorrelation="false" width="93"
+      x="762" y="262">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_serviciosDigitales"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_serviciosDigitales"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_serviciosDigitales;{BC_SRV_Apolo.docs}dt_serviciosDigitales;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_serviciosDigitales;{BC_SRV_Apolo.docs}dt_serviciosDigitales;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="3d6c20c1-b353-476b-9e09-13c4de73057e"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ValidacionCorreo" invokeLocation=""
+      invokeName="SP_ValidacionCorreo" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Validación Correo" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S25" useCorrelation="false" width="93"
+      x="890" y="262">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionCorreo"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionCorreo"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_validacionCorreo;{BC_SRV_Apolo.docs}dt_validacionCorreo;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_validacionCorreo;{BC_SRV_Apolo.docs}dt_validacionCorreo;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="7283673d-17f3-46a9-aa08-f85ecf9e17db"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ExpedienteDigital" invokeLocation=""
+      invokeName="SP_ExpedienteDigital" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Expediente Digital" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S26" useCorrelation="false" width="93"
+      x="1016" y="261">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_expedienteDigital"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_expedienteDigital"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_expedienteDigital;{BC_SRV_Apolo.docs}dt_expedienteDigital;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_expedienteDigital;{BC_SRV_Apolo.docs}dt_expedienteDigital;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="880c8b92-e5ae-41a4-9694-bc16f38e268b"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_Bienvenida" invokeLocation=""
+      invokeName="SP_Bienvenida" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false" label="Bienvenida"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="CALL_ACTIVITY" stepLock="false"
+      uid="S27" useCorrelation="false" width="93" x="1150" y="262">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_bienvenida"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_bienvenida"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_bienvenida;{BC_SRV_Apolo.docs}dt_bienvenida;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_bienvenida;{BC_SRV_Apolo.docs}dt_bienvenida;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="4644731a-07cd-4d9b-9ba5-d2668f61ca78"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv"
+      invokeId="BC_SRV_Apolo.srv:establecerCorrelacionN4"
+      invokeLocation="BC_SRV_Apolo.srv:establecerCorrelacionTDC"
+      invokeName="establecerCorrelacionN4" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TS.Establecer correlación" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S28"
+      useCorrelation="false" width="93" x="100" y="192">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_ApoloN4"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_ApoloN4"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="368bf6d7-d319-4274-948e-05cc48846986"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_ValidacionCliente" invokeLocation=""
+      invokeName="SP_ValidacionCliente" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Validación Cliente" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S29" useCorrelation="false" width="93"
+      x="627" y="108">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionCliente"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionCliente"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_validacionCliente;{BC_SRV_Apolo.docs}dt_validacionCliente;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_validacionCliente;{BC_SRV_Apolo.docs}dt_validacionCliente;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="2b7d8f60-d453-4f16-ad8c-3871f09b1da9"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="" invokeId="BC_BPM_Apolo/SP_PEP"
+      invokeLocation="" invokeName="SP_PEP" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false" label="PEP (KYC)"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="CALL_ACTIVITY" stepLock="false"
+      uid="S30" useCorrelation="false" width="93" x="1137" y="108">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_pep"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_pep"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_pep;{BC_SRV_Apolo.docs}dt_pep;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_pep;{BC_SRV_Apolo.docs}dt_pep;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="73a0ebf0-3203-4cf2-8d96-c1566d2ed02b"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_SeleccionOferta" invokeLocation=""
+      invokeName="SP_SeleccionOferta" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Selección Oferta" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S32" useCorrelation="false" width="93"
+      x="1016" y="108">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_seleccionarOferta"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_seleccionarOferta"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="noneStartEvents" value="S8"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_seleccionarOferta;{BC_SRV_Apolo.docs}dt_seleccionarOferta;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_seleccionarOferta;{BC_SRV_Apolo.docs}dt_seleccionarOferta;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="139f3dca-f53a-4c7f-b3a6-09088c8ba7de"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_Perfilamiento" invokeLocation=""
+      invokeName="SP_Perfilamiento" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="SP.Perfilamiento" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S198" useCorrelation="false" width="93"
+      x="762" y="107">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_perfilamiento"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_perfilamiento"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="noneStartEvents" value="S9"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_perfilamiento;{BC_SRV_Apolo.docs}dt_perfilamiento;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_perfilamiento;{BC_SRV_Apolo.docs}dt_perfilamiento;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="6b3142c2-b9e7-4d0a-8e68-fa2587a50d58"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv"
+      invokeId="BC_SRV_Apolo.srv:cerrarCorrelacionN4" invokeLocation=""
+      invokeName="cerrarCorrelacionN4" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TS.Cerrar correlación N4" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S203"
+      useCorrelation="false" width="93" x="1279" y="261">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_ApoloN4"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_ApoloN4"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="1e32ba6b-cdc8-437e-9d93-a06778b21ae4"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_PerfilTransaccional" invokeLocation=""
+      invokeName="SP_PerfilTransaccional" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Perfil Transaccional" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S223" useCorrelation="false" width="93"
+      x="482" y="260">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_perfilTransaccional"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_perfilTransaccional"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="noneStartEvents" value="S8"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_perfilTransaccional;{BC_SRV_Apolo.docs}dt_perfilTransaccional;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_perfilTransaccional;{BC_SRV_Apolo.docs}dt_perfilTransaccional;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="03b3c3fd-fa7f-4ec9-92da-3b64535c6ccc"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer=""
+      invokeId="BC_BPM_Apolo/SP_AltaBeneficiarios" invokeLocation=""
+      invokeName="SP_AltaBeneficiarios" invokeType="REFPROCESS"
+      isCompensating="false" isTestAfter="false"
+      label="Alta Beneficiarios" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="CALL_ACTIVITY"
+      stepLock="false" uid="S226" useCorrelation="false" width="93"
+      x="341" y="260">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_altaBeneficiarios"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_altaBeneficiarios"/>
+      <extendedProperty name="noneStartEvents" value="S8"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="refProcessOutput" value="[IPart:dt_altaBeneficiarios;{BC_SRV_Apolo.docs}dt_altaBeneficiarios;false]"/>
+      <extendedProperty name="startMessageEvents" value=""/>
+      <extendedProperty name="catchEventProtocol" value="[SUBSCRIPTION]"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <extendedProperty name="refProcessInput" value="[IPart:dt_altaBeneficiarios;{BC_SRV_Apolo.docs}dt_altaBeneficiarios;false]"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="866550f1-e3cf-422c-908f-3c4740b03066" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="164,137" sourceTerminal="RIGHT" target="S13"
+      targetLocation="204,137" targetTerminal="LEFT" uid="T114">
+      <bendpoint index="0" location="252,188" weight="0.5"/>
+      <bendpoint index="1" location="252,188" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="badfad0c-7936-487c-aed5-c06733fc6da5" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S24"
+      sourceLocation="855,292" sourceTerminal="RIGHT" target="S25"
+      targetLocation="890,292" targetTerminal="LEFT" uid="T169">
+      <bendpoint index="0" location="940,343" weight="0.5"/>
+      <bendpoint index="1" location="940,343" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="8fb34bf0-34d4-4d72-9ae3-50ba26e3a5f3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S9"
+      sourceLocation="146,154" sourceTerminal="BOTTOM" target="S28"
+      targetLocation="146,191" targetTerminal="TOP" uid="T180">
+      <bendpoint index="0" location="215,222" weight="0.5"/>
+      <bendpoint index="1" location="215,222" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="95446d80-4615-452a-992f-27cfc6ba3743" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S13"
+      sourceLocation="297,137" sourceTerminal="RIGHT" target="S14"
+      targetLocation="341,137" targetTerminal="LEFT" uid="T13">
+      <bendpoint index="0" location="388,188" weight="0.5"/>
+      <bendpoint index="1" location="388,188" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="bac590cc-fb49-45e3-a652-fbe9a041c75f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S30"
+      sourceLocation="1230,138" sourceTerminal="RIGHT" target="S19"
+      targetLocation="1254,138" targetTerminal="LEFT" uid="T189">
+      <bendpoint index="0" location="1310,189" weight="0.5"/>
+      <bendpoint index="1" location="1310,189" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="53e4346f-6242-48a0-9251-96f82f3a95cc" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S8"
+      sourceLocation="91,137" sourceTerminal="RIGHT" target="S9"
+      targetLocation="130,137" targetTerminal="LEFT" uid="T113">
+      <bendpoint index="0" location="178,188" weight="0.5"/>
+      <bendpoint index="1" location="178,188" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="21629226-f5fa-4cfe-9566-394c8e41e8a8" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S14"
+      sourceLocation="434,137" sourceTerminal="RIGHT" target="S15"
+      targetLocation="482,137" targetTerminal="LEFT" uid="T17">
+      <bendpoint index="0" location="526,188" weight="0.5"/>
+      <bendpoint index="1" location="526,188" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="8c8b6df1-ab6c-4c7e-a9f1-290a37af49a2" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S25"
+      sourceLocation="983,292" sourceTerminal="RIGHT" target="S26"
+      targetLocation="1016,291" targetTerminal="LEFT" uid="T172">
+      <bendpoint index="0" location="1068,343" weight="0.5"/>
+      <bendpoint index="1" location="1068,342" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="d0b22ddf-1d1b-4843-ba3f-1cd299fd9d8c" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S15"
+      sourceLocation="575,137" sourceTerminal="RIGHT" target="S29"
+      targetLocation="627,138" targetTerminal="LEFT" uid="T183">
+      <bendpoint index="0" location="670,188" weight="0.5"/>
+      <bendpoint index="1" location="670,189" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="d81f73dc-02e2-4f09-9a8b-ed03305975a8" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S23"
+      sourceLocation="712,292" sourceTerminal="RIGHT" target="S24"
+      targetLocation="762,292" targetTerminal="LEFT" uid="T33">
+      <bendpoint index="0" location="806,343" weight="0.5"/>
+      <bendpoint index="1" location="806,343" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="325bc969-ef55-4545-8cee-7199ee92d020" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S18"
+      sourceLocation="983,138" sourceTerminal="RIGHT" target="S32"
+      targetLocation="1016,138" targetTerminal="LEFT" uid="T35">
+      <bendpoint index="0" location="1068,189" weight="0.5"/>
+      <bendpoint index="1" location="1068,189" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="0e0f5469-54da-494e-a12b-ae7076155089" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S32"
+      sourceLocation="1109,138" sourceTerminal="RIGHT" target="S30"
+      targetLocation="1137,138" targetTerminal="LEFT" uid="T36">
+      <bendpoint index="0" location="1192,189" weight="0.5"/>
+      <bendpoint index="1" location="1192,189" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a2bbee8b-4725-4b5f-82f1-4dfc10c348c2" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S26"
+      sourceLocation="1109,291" sourceTerminal="RIGHT" target="S27"
+      targetLocation="1150,292" targetTerminal="LEFT" uid="T40">
+      <bendpoint index="0" location="1198,342" weight="0.5"/>
+      <bendpoint index="1" location="1198,343" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="18de07ee-1b3c-48da-a2fb-046cda5b49a3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S16"
+      sourceLocation="1709,401" sourceTerminal="RIGHT" target="S11"
+      targetLocation="1746,401" targetTerminal="LEFT" uid="T192">
+      <bendpoint index="0" location="1796,452" weight="0.5"/>
+      <bendpoint index="1" location="1796,452" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="fda67c74-b27d-4432-9bbe-c736a5b8b910" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S29"
+      sourceLocation="720,138" sourceTerminal="RIGHT" target="S198"
+      targetLocation="762,137" targetTerminal="LEFT" uid="T199">
+      <bendpoint index="0" location="810,189" weight="0.5"/>
+      <bendpoint index="1" location="810,188" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="afd4270b-8a45-4246-a0e2-fbdc535dac4b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S198"
+      sourceLocation="855,137" sourceTerminal="RIGHT" target="S18"
+      targetLocation="890,138" targetTerminal="LEFT" uid="T200">
+      <bendpoint index="0" location="940,188" weight="0.5"/>
+      <bendpoint index="1" location="940,189" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="6dd8234e-c995-4a72-8108-a16a20b5db08" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S27"
+      sourceLocation="1243,291" sourceTerminal="RIGHT" target="S203"
+      targetLocation="1279,291" targetTerminal="LEFT" uid="T204">
+      <bendpoint index="0" location="1330,342" weight="0.5"/>
+      <bendpoint index="1" location="1330,342" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ec8f3233-3f33-49c8-92d2-8c5a8f99523f" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S28"
+      sourceLocation="146,252" sourceTerminal="BOTTOM" target="S205"
+      targetLocation="1420,307" targetTerminal="BOTTOM" uid="T207">
+      <bendpoint index="0" location="215,399" weight="0.5"/>
+      <bendpoint index="1" location="1489,399" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="5f86f21f-c6af-4f70-b47e-a7838fd92986" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S203"
+      sourceLocation="1372,291" sourceTerminal="RIGHT" target="S205"
+      targetLocation="1403,290" targetTerminal="LEFT" uid="T208">
+      <bendpoint index="0" location="1456,342" weight="0.5"/>
+      <bendpoint index="1" location="1456,341" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="9c09699f-7a0e-4f4c-9cf7-fd2d1e1cb3f2" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S205"
+      sourceLocation="1437,290" sourceTerminal="RIGHT" target="S12"
+      targetLocation="1486,290" targetTerminal="LEFT" uid="T209">
+      <bendpoint index="0" location="1530,341" weight="0.5"/>
+      <bendpoint index="1" location="1530,341" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="e4f264f5-f62d-4946-b64f-d3d0743449c1" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S12"
+      sourceLocation="1514,290" sourceTerminal="RIGHT" target="S211"
+      targetLocation="1565,290" targetTerminal="LEFT" uid="T212">
+      <bendpoint index="0" location="1608,341" weight="0.5"/>
+      <bendpoint index="1" location="1608,341" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ee870d20-e66b-481b-bf7a-44c839f1e7e9" blue="255"
+      conditionDescription=">= 1" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S211" sourceLocation="1582,307" sourceTerminal="BOTTOM"
+      target="S16" targetLocation="1616,401" targetTerminal="LEFT" uid="T213">
+      <bendpoint index="0" location="1651,452" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="21" x="1657" y="426">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="0bc1b3fa-c813-45be-9edc-4e5ec5d2edab" blue="255"
+      conditionDescription="&lt; 1"
+      conditionText="dt_terminaProceso/exitCode &lt; 1"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S211" sourceLocation="1599,290" sourceTerminal="RIGHT"
+      target="S10" targetLocation="1746,292" targetTerminal="LEFT" uid="T215">
+      <bendpoint index="0" location="1740,341" weight="0.5"/>
+      <bendpoint index="1" location="1740,343" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="15" x="1684" y="319">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="exitCode"
+          leftOperand="{BC_SRV_Apolo.docs}dt_terminaProceso"
+          operator="&lt;" rightOperand="'1'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="c6e2a05c-8225-41c0-a30b-e391d3c841fd" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S223"
+      sourceLocation="575,290" sourceTerminal="RIGHT" target="S23"
+      targetLocation="619,292" targetTerminal="LEFT" uid="T225">
+      <bendpoint index="0" location="666,341" weight="0.5"/>
+      <bendpoint index="1" location="666,343" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="de0da765-01d7-4634-9763-2c30a46887c0" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S19"
+      sourceLocation="1347,133" sourceTerminal="RIGHT" target="S226"
+      targetLocation="341,290" targetTerminal="LEFT" uid="T227">
+      <bendpoint index="0" location="1426,184" weight="0.5"/>
+      <bendpoint index="1" location="1426,262" weight="0.5"/>
+      <bendpoint index="2" location="400,262" weight="0.5"/>
+      <bendpoint index="3" location="400,341" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="fa3b772f-06d2-4002-9f38-9d65beab9d5c" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S226"
+      sourceLocation="434,290" sourceTerminal="RIGHT" target="S223"
+      targetLocation="482,290" targetTerminal="LEFT" uid="T228">
+      <bendpoint index="0" location="526,341" weight="0.5"/>
+      <bendpoint index="1" location="526,341" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <swimlane Id="1b20dccd-83e1-460a-8ffd-76921b72980c" blue="255"
+      green="255" height="506" label="webMethods" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods" red="255"
+      uid="W8" width="1922">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="b071e9c8-2cb3-4251-b73f-20418d779cdc" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="e0ba6824-fb3e-421c-be03-d701f3897a70"
+      label="FP_ApoloN4" logicalServer="Default" poolName="5"
+      stepLock="false" uid="S7" useCorrelation="false" x="39" y="50">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

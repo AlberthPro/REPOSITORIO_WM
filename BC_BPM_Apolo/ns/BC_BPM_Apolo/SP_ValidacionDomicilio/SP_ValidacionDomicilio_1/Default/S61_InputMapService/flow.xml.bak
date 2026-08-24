@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="BC_BPM_Apolo.SP_ValidacionDomicilio.SP_ValidacionDomicilio_1.Default:S61_QueueTask">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY NAME="Link" FROM="/dt_validacionDomicilio;4;0;BC_SRV_Apolo.docs:dt_validacionDomicilio" TO="/TaskData;2;0/dt_validacionDomicilio;2;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/TU.Mostrar dirección comprobanteInputEnv;4;0;pub.task:TaskQueueInfo" TO="/TaskQueueInfo;4;0;pub.task:TaskQueueInfo">
+</MAPCOPY>
+</MAP>
+</INVOKE>
+</FLOW>

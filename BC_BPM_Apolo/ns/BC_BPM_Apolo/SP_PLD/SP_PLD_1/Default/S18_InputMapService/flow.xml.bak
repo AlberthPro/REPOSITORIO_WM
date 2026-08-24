@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="BC_BPM_Apolo.SP_PLD.SP_PLD_1.Default:S18_QueueTask">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY NAME="Link" FROM="/dt_pld;4;0;BC_SRV_Apolo.docs:dt_pld" TO="/TaskData;2;0/dt_pld;2;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/TU.Seleccionar persona créditoInputEnv;4;0;pub.task:TaskQueueInfo" TO="/TaskQueueInfo;4;0;pub.task:TaskQueueInfo">
+</MAPCOPY>
+</MAP>
+</INVOKE>
+</FLOW>

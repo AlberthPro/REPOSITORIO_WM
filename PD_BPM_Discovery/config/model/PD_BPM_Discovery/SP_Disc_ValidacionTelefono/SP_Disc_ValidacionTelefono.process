@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<businessProcessDiagram xmlns="http://www.webmethods.com/bpm/2006/"
+  Id="8e29bc92-de81-473c-bcd8-10f053091821" bpmnStyle="false" build="1"
+  canvasPool="1" creator="Usuario" description=""
+  failProcessOnStepFailure="false" focalRole="Focal role"
+  generateEDAEvents="true" name="SP_Disc_ValidacionTelefono"
+  packageName="PD_BPM_Discovery" processCategory="" rnSync="false"
+  runtimeVersion="1" transitionLabelPref="description"
+  unSynchJoinDeadPath="true" version="10.2.0">
+  <kpiDimensions/>
+  <systemKPIs>
+    <systemKPI Id="" description="" name="Volume" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Cycle Time" unitOfMeasure=""/>
+    <systemKPI Id="" description="" name="Error Count" unitOfMeasure=""/>
+  </systemKPIs>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="ProcessData" name="{ProcessNamespace}ProcessData" type="{pub.prt}ProcessData"/>
+  <logicalDataItem Id="6561553f-9f13-4056-be00-97eab8038e53"
+    description="" dimension="0" label="dt_validacionTelefono"
+    name="{ProcessNamespace}dt_validacionTelefono" type="{PD_SRV_Discovery.docs}dt_validacionTelefono"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar mensaje salidaInputEnv"
+    name="{ProcessNamespace}TU.Mostrar mensaje salidaInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar mensaje salidaOutputEnv"
+    name="{ProcessNamespace}TU.Mostrar mensaje salidaOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar teléfono válidoInputEnv"
+    name="{ProcessNamespace}TU.Mostrar teléfono válidoInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Mostrar teléfono válidoOutputEnv"
+    name="{ProcessNamespace}TU.Mostrar teléfono válidoOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Ingresar código OTPInputEnv"
+    name="{ProcessNamespace}TU.Ingresar código OTPInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Ingresar código OTPOutputEnv"
+    name="{ProcessNamespace}TU.Ingresar código OTPOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <timeout calendarAlias="" calendarTime="0:0:0"
+    dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+    dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+    dynamicFieldName="" isCalendarTimeout="false" isStaticTimeout="true"
+    isXPathTimeout="false" pipelineCalendarAlias=""
+    pipelineCalendarDays="" pipelineCalendarHours=""
+    pipelineCalendarMinutes="" timeoutStyle="RELATIVE"
+    timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+  <input name="{ProcessNamespace}dt_validacionTelefono"/>
+  <output name="{ProcessNamespace}dt_validacionTelefono"/>
+  <pool Id="ae0d3675-3128-44ce-9969-16923f28b6bd" blue="128"
+    containerType="BPMN_SUBPROCESS" external="false"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false"
+    label="BB003 - Validación teléfono (Prueba de vida)" labelBlue="255"
+    labelGreen="204" labelRed="153" logicalServer="" loopMaximum="0"
+    loopMaximumField="" name="5" orientation="horizontal" red="128"
+    retryCount="0" stepLock="false" uid="P6" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="ef04d3fa-3f37-4242-be9f-ea0e735292b2" blue="0"
+      green="196" height="37" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Bus_evaluateOnboardingPhoneParty" uid="N23" width="251"
+      x="251" y="275">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="d8b0d808-84d5-4b09-815a-ddff86aa8b31" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Dom_updatePartyRelationshipProcedure" uid="N24" width="228"
+      x="508" y="278">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="054245d0-db2b-42ef-ab21-141e134a2002" blue="0"
+      green="196" height="37" label="annotationNode"
+      name="annotationNode" red="255"
+      text="Bus_evaluateOnboardingPartySIC" uid="N25" width="235"
+      x="852" y="275">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="620ccc2c-f001-42ba-9854-c597ebae8101" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="Dom_registerEndorsement"
+      uid="N22" width="162" x="72" y="278">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="fab78572-384a-4d17-9c94-03b77b5151e8" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="webHook = PHONE_VALIDATION"
+      uid="N130" width="193" x="735" y="219">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="131b85e7-0d1b-4c82-80ad-de2e594e1f42" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="webHook = OFFICE" uid="N132"
+      width="128" x="1097" y="273">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <annotationNode Id="400ea8c8-3de4-4b1d-9af1-9e5ea2e30773" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255"
+      text="webHook = PHONE_VALIDATED (new)" uid="N135" width="222"
+      x="1148" y="2">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <gatewayStep Id="e3428f11-3cc3-4c0e-9736-63ebf9f0aca1"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC. Reenvio_EdiciónTel" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S9"
+      useCorrelation="false" width="34" x="298" y="62">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="e328c312-6474-4199-9ef5-049f913fdd63"
+      description="Bus_EvaluateOnBoardingPhonePartyV1.sessionDialogRecord.existingCustomer"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Telefono asignado" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S12"
+      useCorrelation="false" width="34" x="490" y="62">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="be11b0e9-ece1-48a8-bf8d-8c6c67a2d142"
+      eventType="START" height="28"
+      label="EVI.Validación teléfono inciada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default"
+      receiveProtocol="SUBSCRIPTION" stepLock="false" uid="S8"
+      useCorrelation="false" width="28" x="83" y="65">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </noneEventStep>
+    <gatewayStep Id="c9203637-78c8-4c09-92e1-b91c38e3a488"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Salida" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S13"
+      useCorrelation="false" width="34" x="1071" y="194">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="960b80af-1f94-4fdf-a7ad-d0335fa24682"
+      eventType="END" height="28"
+      label="EVF.Validación teléfono cancelada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" stepLock="false" uid="S10"
+      useCorrelation="false" width="28" x="1262" y="197">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <gatewayStep Id="a0e7d652-0b6c-4d68-bc7c-e2b565a2803e"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.OTP correcto" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S11"
+      useCorrelation="false" width="34" x="1023" y="63">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="1489021b-1fab-411a-a50d-f54b70da3ab0"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC. OTP inorrecto" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S114"
+      useCorrelation="false" width="34" x="692" y="62">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <noneEventStep Id="b87b9153-448d-4ae4-95d1-ed8f4a3b9a17"
+      eventType="END" height="28"
+      label="EVF.Validación teléfono finalizada" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" stepLock="false" uid="S14"
+      useCorrelation="false" width="28" x="1262" y="66">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <invokeStep Id="b632d12f-c99b-4ee2-be78-12dc5a269235"
+      description="https://docs.google.com/document/d/1g-a_fqNDb1YbcmpJ1kJ_nJn9e3w3YcnK/edit?tab=t.0"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="PD_SRV_Discovery.srv"
+      invokeId="PD_SRV_Discovery.srv:registrarAprobacion"
+      invokeLocation="" invokeName="registrarAprobacion"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Registrar aprobación" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S15" useCorrelation="false" width="93"
+      x="159" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="f3466fe4-4b54-4db5-8ac9-b59486622b14"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="PD_SRV_Discovery.srv"
+      invokeId="PD_SRV_Discovery.srv:registrarDatosCliente"
+      invokeLocation="" invokeName="registrarDatosCliente"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.RegistrarDatosCliente" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S16" useCorrelation="false" width="93"
+      x="558" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="5d019c30-a529-4439-aafe-3920cbb1946b"
+      description="https://docs.google.com/document/d/1z-eDwuRmzGjWa2qe05AT4qLGKHE0q6wz/edit"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="PD_SRV_Discovery.srv"
+      invokeId="PD_SRV_Discovery.srv:validarTelefono"
+      invokeLocation="PD_SRV_Discovery.srv:validacionTelefono"
+      invokeName="validarTelefono" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false"
+      label="TS.Validar teléfono y generar OTP" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S20"
+      useCorrelation="false" width="93" x="365" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="df1ad5e9-36b8-4f87-bcf7-32a5d2857cbf"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/PD_PAN_Discovery"
+      invokeId="758B535A-F6F5-E182-EBC9-CC286A9DC484" invokeLocation=""
+      invokeName="TU. Ingresar codigo OPT" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Ingresar código OTP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S105" useCorrelation="false" width="93" x="760" y="49">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}TU.Ingresar código OTPInputEnv"/>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <loggedField fieldAlias="dt_validacionTelefono" fieldPath=""
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas" fieldPath="compuertas"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/clienteCoppel"
+        fieldPath="compuertas/clienteCoppel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/OTPcorrecto"
+        fieldPath="compuertas/OTPcorrecto"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/contadorOTP"
+        fieldPath="compuertas/contadorOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/contadorEdicion"
+        fieldPath="compuertas/contadorEdicion"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/exitCode"
+        fieldPath="compuertas/exitCode"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="codigoOTP" fieldPath="codigoOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="reenvioOTP" fieldPath="reenvioOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="edicionTel" fieldPath="edicionTel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}TU.Ingresar código OTPOutputEnv"/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+      <loggedField fieldAlias="dt_validacionTelefono" fieldPath=""
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas" fieldPath="compuertas"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/clienteCoppel"
+        fieldPath="compuertas/clienteCoppel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/OTPcorrecto"
+        fieldPath="compuertas/OTPcorrecto"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/contadorOTP"
+        fieldPath="compuertas/contadorOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/contadorEdicion"
+        fieldPath="compuertas/contadorEdicion"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/exitCode"
+        fieldPath="compuertas/exitCode"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="codigoOTP" fieldPath="codigoOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="reenvioOTP" fieldPath="reenvioOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="edicionTel" fieldPath="edicionTel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+    </invokeStep>
+    <invokeStep Id="5f5d380c-8a45-461f-80c1-7fd1c7d7e2fe"
+      description="https://docs.google.com/document/d/1hvUhIewh-ilQQPwVjq6ygkgUXBZ7ViPS/edit#bookmark=id.lnxbz9"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="PD_SRV_Discovery.srv"
+      invokeId="PD_SRV_Discovery.srv:validarOTP" invokeLocation=""
+      invokeName="validarOTP" invokeType="ISSERVICE"
+      isCompensating="false" isTestAfter="false" label="TS.Validar OTP"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      loopMaximum="0" loopMaximumField="" retryCount="0"
+      routingRuleSet="" ruleType="WMRULE" stepLock="false" uid="S18"
+      useCorrelation="false" width="93" x="891" y="50">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <loggedField fieldAlias="dt_validacionTelefono" fieldPath=""
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas" fieldPath="compuertas"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/clienteCoppel"
+        fieldPath="compuertas/clienteCoppel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/OTPcorrecto"
+        fieldPath="compuertas/OTPcorrecto"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/contadorOTP"
+        fieldPath="compuertas/contadorOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/contadorEdicion"
+        fieldPath="compuertas/contadorEdicion"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="compuertas/exitCode"
+        fieldPath="compuertas/exitCode"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="codigoOTP" fieldPath="codigoOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="reenvioOTP" fieldPath="reenvioOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="edicionTel" fieldPath="edicionTel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="endorsement" fieldPath="endorsement"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField
+        fieldAlias="endorsement/sessionDialogueIdentification"
+        fieldPath="endorsement/sessionDialogueIdentification"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField fieldAlias="endorsement/endorsementManagement"
+        fieldPath="endorsement/endorsementManagement"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField
+        fieldAlias="endorsement/endorsementManagement/endorsementType"
+        fieldPath="endorsement/endorsementManagement/endorsementType"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField
+        fieldAlias="endorsement/endorsementManagement/endorsementStatus"
+        fieldPath="endorsement/endorsementManagement/endorsementStatus"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <loggedField
+        fieldAlias="endorsement/endorsementManagement/endorsementDateTime"
+        fieldPath="endorsement/endorsementManagement/endorsementDateTime"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="INPUT"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+      <loggedField fieldAlias="dt_validacionTelefono" fieldPath=""
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="codigoOTP" fieldPath="codigoOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="reenvioOTP" fieldPath="reenvioOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="edicionTel" fieldPath="edicionTel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas" fieldPath="compuertas"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/clienteCoppel"
+        fieldPath="compuertas/clienteCoppel"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/OTPcorrecto"
+        fieldPath="compuertas/OTPcorrecto"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/contadorOTP"
+        fieldPath="compuertas/contadorOTP"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/contadorEdicion"
+        fieldPath="compuertas/contadorEdicion"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+      <loggedField fieldAlias="compuertas/exitCode"
+        fieldPath="compuertas/exitCode"
+        logicalDataItem="{ProcessNamespace}dt_validacionTelefono" mode="OUTPUT"/>
+    </invokeStep>
+    <invokeStep Id="54690f41-a718-48e5-a057-5706a15eeda9"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/PD_PAN_Discovery"
+      invokeId="758B535A-F6F5-E182-EBC9-CC286A9DC484" invokeLocation=""
+      invokeName="TU. Ingresar codigo OPT" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Mostrar mensaje salida" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S21" useCorrelation="false" width="93" x="1129" y="181">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <input name="{ProcessNamespace}TU.Mostrar mensaje salidaInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <output name="{ProcessNamespace}TU.Mostrar mensaje salidaOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <invokeStep Id="652274b5-59bc-4fbe-a24a-df931c1cb077"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/PD_PAN_Discovery"
+      invokeId="758B535A-F6F5-E182-EBC9-CC286A9DC484" invokeLocation=""
+      invokeName="TU. Ingresar codigo OPT" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Mostrar teléfono válido" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" retryCount="0" routingRuleSet=""
+      ruleType="TASK" stepLock="false" uid="S19" useCorrelation="false"
+      width="93" x="1129" y="50">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_validacionTelefono"/>
+      <input name="{ProcessNamespace}TU.Mostrar teléfono válidoInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_validacionTelefono"/>
+      <output name="{ProcessNamespace}TU.Mostrar teléfono válidoOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
+    <transition Id="f3dcb892-fb33-4e02-94c0-856069dd35f3" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S20"
+      sourceLocation="458,79" sourceTerminal="RIGHT" target="S12"
+      targetLocation="490,79" targetTerminal="LEFT" uid="T83">
+      <bendpoint index="0" location="564,199" weight="0.5"/>
+      <bendpoint index="1" location="564,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="40dde197-8f52-4dae-9b0b-d41aa2503fe1" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S15"
+      sourceLocation="252,79" sourceTerminal="RIGHT" target="S9"
+      targetLocation="298,79" targetTerminal="LEFT" uid="T63">
+      <bendpoint index="0" location="364,199" weight="0.5"/>
+      <bendpoint index="1" location="364,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ae9c3d73-0911-4d72-ae11-35eddb115e32" blue="255"
+      conditionDescription="No"
+      conditionText="dt_validacionTelefono/compuertas/clienteCoppel = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S12" sourceLocation="524,79" sourceTerminal="RIGHT"
+      target="S16" targetLocation="558,79" targetTerminal="LEFT" uid="T84">
+      <bendpoint index="0" location="630,199" weight="0.5"/>
+      <bendpoint index="1" location="630,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="13" x="623" y="181">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/clienteCoppel"
+          leftOperand="{ProcessNamespace}dt_validacionTelefono"
+          operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="18501da0-9883-4d46-882f-a565dd844c52" blue="255"
+      conditionDescription="No" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S9" sourceLocation="332,79" sourceTerminal="RIGHT"
+      target="S20" targetLocation="365,79" targetTerminal="LEFT" uid="T66">
+      <bendpoint index="0" location="438,199" weight="0.5"/>
+      <bendpoint index="1" location="438,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="29" red="255" width="35" x="422" y="166">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="ff502510-79cd-4a06-a5b4-037c927c2523" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S8"
+      sourceLocation="111,79" sourceTerminal="RIGHT" target="S15"
+      targetLocation="159,79" targetTerminal="LEFT" uid="T100">
+      <bendpoint index="0" location="224,199" weight="0.5"/>
+      <bendpoint index="1" location="224,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="e7db9f0e-656d-4fbf-9b1d-16b5ecbd0414" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S18"
+      sourceLocation="891,80" sourceTerminal="RIGHT" target="S11"
+      targetLocation="1023,80" targetTerminal="LEFT" uid="T74">
+      <bendpoint index="0" location="970,200" weight="0.5"/>
+      <bendpoint index="1" location="970,200" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="22f19ce3-1065-4fe3-bcb0-51d37e790cee" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S105"
+      sourceLocation="853,79" sourceTerminal="RIGHT" target="S18"
+      targetLocation="891,80" targetTerminal="LEFT" uid="T107">
+      <bendpoint index="0" location="962,199" weight="0.5"/>
+      <bendpoint index="1" location="962,200" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="45d43d97-f7a5-4331-9654-fe6f09f76049" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S13"
+      sourceLocation="1071,211" sourceTerminal="RIGHT" target="S21"
+      targetLocation="1129,211" targetTerminal="LEFT" uid="T92">
+      <bendpoint index="0" location="1150,331" weight="0.5"/>
+      <bendpoint index="1" location="1150,331" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="91f4ed0f-8414-4dfd-850b-371efd4d96db" blue="255"
+      conditionDescription="Si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S11" sourceLocation="1057,80" sourceTerminal="RIGHT"
+      target="S19" targetLocation="1129,80" targetTerminal="LEFT" uid="T97">
+      <bendpoint index="0" location="1182,200" weight="0.5"/>
+      <bendpoint index="1" location="1182,200" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="16" red="255" width="12" x="1189" y="180">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="3c3a5cab-3370-4fb1-9c26-4f86f2775de0" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S16"
+      sourceLocation="651,79" sourceTerminal="RIGHT" target="S114"
+      targetLocation="692,79" targetTerminal="LEFT" uid="T115">
+      <bendpoint index="0" location="760,199" weight="0.5"/>
+      <bendpoint index="1" location="760,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="a5898c5c-7f64-4c3f-9875-e1f89533772e" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S114"
+      sourceLocation="726,79" sourceTerminal="RIGHT" target="S105"
+      targetLocation="760,79" targetTerminal="LEFT" uid="T116">
+      <bendpoint index="0" location="832,199" weight="0.5"/>
+      <bendpoint index="1" location="832,199" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="48a00583-9a06-4b39-bbf8-efd0d83d7899" blue="255"
+      conditionDescription="Reenvio OTP &lt; 3 intentos"
+      conditionText="dt_validacionTelefono/compuertas/OTPcorrecto = reenvioEdicion"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S11" sourceLocation="1040,63" sourceTerminal="TOP"
+      target="S9" targetLocation="315,62" targetTerminal="TOP" uid="T117">
+      <bendpoint index="0" location="1130,157" weight="0.5"/>
+      <bendpoint index="1" location="405,157" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="121" x="927" y="138">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/OTPcorrecto"
+          leftOperand="{ProcessNamespace}dt_validacionTelefono"
+          operator="=" rightOperand="'reenvioEdicion'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="adb82bb8-2557-4b67-84c2-40553a4a77fd" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S19"
+      sourceLocation="1222,80" sourceTerminal="RIGHT" target="S14"
+      targetLocation="1262,80" targetTerminal="LEFT" uid="T120">
+      <bendpoint index="0" location="1332,200" weight="0.5"/>
+      <bendpoint index="1" location="1332,200" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="c0e6dbdf-07f9-4589-b292-59c796683367" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S21"
+      sourceLocation="1222,211" sourceTerminal="RIGHT" target="S10"
+      targetLocation="1262,211" targetTerminal="LEFT" uid="T121">
+      <bendpoint index="0" location="1332,331" weight="0.5"/>
+      <bendpoint index="1" location="1332,331" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="98b8b35f-76fe-490f-a4b1-87027e2b5d75" blue="255"
+      conditionDescription="OTP incorrecto 3 intentos"
+      conditionText="dt_validacionTelefono/compuertas/OTPcorrecto = OTPIncorrecto"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S11" sourceLocation="1040,97" sourceTerminal="BOTTOM"
+      target="S114" targetLocation="709,96" targetTerminal="BOTTOM" uid="T124">
+      <bendpoint index="0" location="1130,256" weight="0.5"/>
+      <bendpoint index="1" location="799,256" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="122" x="1008" y="261">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/OTPcorrecto"
+          leftOperand="{ProcessNamespace}dt_validacionTelefono"
+          operator="=" rightOperand="'OTPIncorrecto'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="4769b376-145b-4bbb-a286-34990cf9d5c3" blue="255"
+      conditionDescription="> 3 intentos"
+      conditionText="dt_validacionTelefono/compuertas/OTPcorrecto = maximoIntentos"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S11" sourceLocation="1057,80" sourceTerminal="RIGHT"
+      target="S13" targetLocation="1088,194" targetTerminal="TOP" uid="T125">
+      <bendpoint index="0" location="1178,200" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="56" x="1151" y="261">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/OTPcorrecto"
+          leftOperand="{ProcessNamespace}dt_validacionTelefono"
+          operator="=" rightOperand="'maximoIntentos'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="5c4117e7-fd9a-4cf0-889c-d14699529825" blue="255"
+      conditionDescription="Si" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S12" sourceLocation="507,96" sourceTerminal="BOTTOM"
+      target="S13" targetLocation="1071,211" targetTerminal="LEFT" uid="T126">
+      <bendpoint index="0" location="597,331" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="9" x="601" y="261">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+    <annotationFlow Id="2a9d3aea-7afc-46ad-bbb3-ef6bc03b533f" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S20" sourceLocation="411,109" sourceTerminal="BOTTOM"
+      target="N23" targetLocation="339,275" targetTerminal="TOP" uid="T67">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="c7b70c49-8a2a-4db2-80d3-91ee17ceb75a" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S16" sourceLocation="604,109" sourceTerminal="BOTTOM"
+      target="N24" targetLocation="618,278" targetTerminal="TOP" uid="T70">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="331837f2-b46d-46af-bb0d-5485d6ce3bfd" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S18" sourceLocation="937,110" sourceTerminal="BOTTOM"
+      target="N25" targetLocation="969,275" targetTerminal="TOP" uid="T127">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="86e609aa-daae-4905-952b-7466d1a4afca" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S15" sourceLocation="205,109" sourceTerminal="BOTTOM"
+      target="N22" targetLocation="153,278" targetTerminal="TOP" uid="T128">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="13c1f3eb-7df6-421a-90aa-e7c365da5b28" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S105" sourceLocation="806,109" sourceTerminal="BOTTOM"
+      target="N130" targetLocation="831,219" targetTerminal="TOP" uid="T131">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="23ece6ec-3123-4bf3-ab9d-d18539ffe1a5" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S21" sourceLocation="1175,241" sourceTerminal="BOTTOM"
+      target="N132" targetLocation="1161,273" targetTerminal="TOP" uid="T133">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <annotationFlow Id="8f7528df-d75b-4c06-bd80-187e6376fdcb" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S19" sourceLocation="1175,50" sourceTerminal="TOP"
+      target="N135" targetLocation="1259,34" targetTerminal="BOTTOM" uid="T137">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
+    <swimlane Id="d28d5f14-86d5-417d-bab2-1469b087ff08" blue="255"
+      green="255" height="320" label="webMethods IS" labelBlue="255"
+      labelGreen="238" labelRed="221" name="webMethods IS" red="255"
+      uid="W8" width="1370">
+      <documentation/>
+    </swimlane>
+  </pool>
+  <pool Id="7719443b-b6c7-43b6-9f8e-1246f010c145" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <poolReference Id="a098d534-7bc9-489e-8bc3-25ef09c86f8c"
+      label="BB003 - Validación teléfono (Prueba de vida)"
+      logicalServer="Default" poolName="5" stepLock="false" uid="S7"
+      useCorrelation="false" x="60" y="119">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
+  <documentation/>
+</businessProcessDiagram>

@@ -1,0 +1,281 @@
+---
+swagger: "2.0"
+info:
+  version: "1.20.2"
+  title: "Bus Customer Management"
+schemes:
+- "https"
+consumes:
+- "application/json"
+produces:
+- "application/json"
+paths:
+  /v1/partyApplicationRequest/evaluate:
+    post:
+      description: "Servicio que valida el periodo de una solicitud."
+      operationId: "POST_v1-partyApplicationRequest-evaluate"
+      parameters:
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/partyApplicationRequest/evaluate/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/partyProfile/evaluate:
+    post:
+      description: "Operación encargada de realizar la evaluación del perfil del prospecto."
+      operationId: "POST_v1-partyProfile-evaluate"
+      parameters:
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/partyProfile/evaluate/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/onBoardingCreditCardWelcomeKit/activate:
+    post:
+      description: "Servicio de negocio encargado de recuperar los contratos y adjuntarlos\
+        \ para enviar un correo electrónico de Welcome Kit al prospecto."
+      operationId: "POST_v1-onBoardingCreditCardWelcomeKit-activate"
+      parameters:
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "identity-session-token"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/onBoardingCreditCardWelcomeKit/activate/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/onBoardingPartyDigitalService/execute:
+    put:
+      description: "Servicio de negocio encargado de iniciar el proceso de servicios\
+        \ digitales."
+      operationId: "PUT_v1-onBoardingPartyDigitalService-execute"
+      parameters:
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "identity-session-token"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/onBoardingPartyDigitalService/execute/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/customerRelationshipInvolvement/create:
+    post:
+      description: "Servicio encargado de realizar el registro de las referencias\
+        \ proporcionadas por el cliente solicitante del crédito en el proceso de la\
+        \ captura de los paramétricos del cliente para la evaluación de la solicitud."
+      operationId: "POST_v1-customerRelationshipInvolvement-create"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/customerRelationshipInvolvement/create/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/internalReporting/execute:
+    put:
+      description: "Servicio de negocio encargado de realizar el registro de los datos\
+        \ paramétricos del cliente solicitante del crédito para la evaluación de la\
+        \ solicitud."
+      operationId: "PUT_v1-internalReporting-execute"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/internalReporting/execute/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/customerRelationshipInvolvementPep/create:
+    post:
+      description: "Servicio encargado de realizar el registro de la informacion PEP\
+        \ del cliente ."
+      operationId: "POST_v1-customerRelationshipInvolvementPep-create"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/customerRelationshipInvolvementPep/create/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/internalCustomerCreditRating/execute:
+    put:
+      description: "Este servicio recopila los datos del cliente y de la solicitud\
+        \ para evaluar el historial crediticio. Armamos una trama de información y\
+        \ la enviamos a un servicio de Coppel, que realiza la evaluación y nos devuelve\
+        \ el resultado. Guardamos esta respuesta para agilizar el proceso de dictamen\
+        \ de la tarjeta de crédito."
+      operationId: "PUT_v1-internalCustomerCreditRating-execute"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/internalCustomerCreditRating/execute/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/internalCustomerReporting/execute:
+    put:
+      description: "Esta API consulta el historial crediticio del cliente y, basá\
+        ndose en el motor de scoring interno, almacena el resultado del dictamen de\
+        \ evaluación de la solicitud. Su función principal es replicar la decisió\
+        n final para la aprobación de la tarjeta de crédito BanCoppel Visa Clásica,\
+        \ además de gestionar la información sobre los costos asociados a dicho producto."
+      operationId: "PUT_v1-internalCustomerReporting-execute"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/internalCustomerReporting/execute/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/customerRelationshipInvolvement/evaluate:
+    post:
+      description: "Servicio encargado de determinar si el flujo continúa sin intervenció\
+        n o si realiza una inserción de KO."
+      operationId: "POST_v1-customerRelationshipInvolvement-evaluate"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/customerRelationshipInvolvement/evaluate/request/request.json"
+      responses:
+        default:
+          description: ""
+  /v1/certifiedTelecoScoring/register:
+    post:
+      description: "Servicio de negocio encargado de consultar el score de telecomunicaciones\
+        \ a través del Servicio de GranData. Representado a través de 101 variables\
+        \ que proporcionan información utilizable en validaciones de procesos crediticios."
+      operationId: "POST_v1-certifiedTelecoScoring-register"
+      parameters:
+      - name: "token"
+        in: "header"
+        required: true
+        type: "string"
+      - name: "consumerRequestId"
+        in: "header"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: true
+        schema:
+          type: "string"
+          example: "Can not resolve example/certifiedTelecoScoring/register/request/request.json"
+      responses:
+        default:
+          description: ""
+x-basePath: "${HOST_NAME}/customerManagement"

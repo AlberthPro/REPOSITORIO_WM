@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FLOW VERSION="3.0" CLEANUP="true">
+
+  <!-- nodes -->
+
+<INVOKE SERVICE="AF_BPM_TraspasoAsistido.FP_TraspasoAsistidoAfore.FP_TraspasoAsistidoAfore_1.Bancoppel_DEV:AU_Capturar_IMSS_QueueTask">
+
+  <!-- nodes -->
+
+<MAP MODE="INPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY NAME="Link" FROM="/TraspasoAsistido;4;0;AF_SRV_TraspasoAsistido.docs:TraspasoAsistido" TO="/TaskData;2;0/TraspasoAsistido;2;0">
+</MAPCOPY>
+
+<MAPCOPY NAME="Link" FROM="/ProcessData;4;0;pub.prt:ProcessData" TO="/TaskData;2;0/ProcessData;2;0">
+</MAPCOPY>
+
+<MAPCOPY FROM="/AU.Capturar IMSSInputEnv;4;0;pub.task:TaskQueueInfo" TO="/TaskQueueInfo;4;0;pub.task:TaskQueueInfo">
+</MAPCOPY>
+</MAP>
+</INVOKE>
+</FLOW>

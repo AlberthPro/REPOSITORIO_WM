@@ -1,0 +1,4872 @@
+openapi: 3.0.0
+info:
+  title: Rec Customer Management
+  contact: {}
+  version: 1.19.1
+servers:
+- url: "https://${HOST_NAME}/experience/customerManagement"
+  variables:
+    HOST_NAME:
+      default: DefaultParameterValue
+paths:
+  /v1/partyApplicationRequest/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1PartyApplicationRequestEvaluate_POST
+      description: Servicio que valida el periodo de una solicitud.
+      operationId: V1PartyApplicationRequestEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluatePartyApplicationRequestRq'
+              - example:
+                  evaluatePartyApplicationRequest:
+                    partyReference:
+                      identifications:
+                      - identifier:
+                          'identifierValue ': A93B64AE1FB376A15EC21132E65B478F
+                      dateOfBirth: f5c4aa0648d87d54176a1e77000b6be8
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        secondName: da598699cef750ee8e5ef3b2daf47719
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                        secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                    validationManagement:
+                    - validationType: 13
+            example:
+              evaluatePartyApplicationRequest:
+                partyReference:
+                  identifications:
+                  - identifier:
+                      'identifierValue ': A93B64AE1FB376A15EC21132E65B478F
+                  dateOfBirth: f5c4aa0648d87d54176a1e77000b6be8
+                  personName:
+                    firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                    secondName: da598699cef750ee8e5ef3b2daf47719
+                    familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                validationManagement:
+                - validationType: 13
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluatePartyApplicationRequestRs'
+                - example:
+                    evaluatePartyApplicationRequest:
+                      validationManagement:
+                      - validationStatus: true
+              example:
+                evaluatePartyApplicationRequest:
+                  validationManagement:
+                  - validationStatus: true
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/partyProfile/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1PartyProfileEvaluate_POST
+      description: operación encargada de ejecutar el step 20 de la app
+      operationId: V1PartyProfileEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluatePartyProfileRq'
+              - example:
+                  sessionDialogueIdentification: 6d7563686f2070657272656f20696e74656e736f
+                  companyReference: "001"
+                  partyReference:
+                    referenceId: IFNlZ3VyaWRh
+                    economicActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                    economicSubActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                    housingType: c4ca4238a0b923820dcc509a6f75849b
+                    identifications:
+                    - identifier:
+                        identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                      personIdentificationType: Registro Federal Contribuyentes
+                    referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                    personName:
+                      fullName: 1276c190f7197fd82d7f0ad19c1c93d2
+                      fullNameMrz: 1276c190f7197fd82d7f0ad19c1c93d2
+                  incomeProfile:
+                    organisation:
+                      organisationName: Grupo F123
+                    jobTitle:
+                      name: Director General
+                      code: "12"
+                    otherIncome:
+                    - incomeType: 1
+                    lengthOfService: 2
+                    workUnit: Unidad 1
+                    supervisor: Juan Perez
+                    salaryAmount: 464E07AFC9E46359FB480839150595C5
+                    salaryFrequency: 1
+                    governmentIdentification: 10
+                    workforceSize: "50"
+                  customerSpecialConditions:
+                    customerSpecialConditionsReference: "1234"
+                    customerSpecialConditionsTime: 12:23
+                    specialConditions:
+                    - name: Excellent
+                      code: None
+                      specialConditionType: None
+                    statusInstanceRecord:
+                      statusCode: "00000"
+                      status: SE
+                      message: sssss
+                    customerSpecialConditionsDate:
+                      dateContent: BRANCH456
+                    detail: 12:23
+                    customerReference: 12:23
+                    statusDetail: 12:23
+                  applicationReferenceId: ACCT-98765
+                  productInstanceRecord:
+                    productInstanceReference: string
+                  reasonRejection:
+                  - name: Excellent
+                    code: None
+                    detail: None
+                    rejectionType: None
+                  creditProfile:
+                    creditLine: 464E07AFC9E46359FB480839150595C5
+            example:
+              sessionDialogueIdentification: 6d7563686f2070657272656f20696e74656e736f
+              companyReference: "001"
+              partyReference:
+                referenceId: IFNlZ3VyaWRh
+                economicActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                economicSubActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                housingType: c4ca4238a0b923820dcc509a6f75849b
+                identifications:
+                - identifier:
+                    identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                  personIdentificationType: Registro Federal Contribuyentes
+                referenceIdCoppel: f5c4aa0648d87d54176a1e77000b6be8
+                personName:
+                  fullName: 1276c190f7197fd82d7f0ad19c1c93d2
+                  fullNameMrz: 1276c190f7197fd82d7f0ad19c1c93d2
+              incomeProfile:
+                organisation:
+                  organisationName: Grupo F123
+                jobTitle:
+                  name: Director General
+                  code: "12"
+                otherIncome:
+                - incomeType: 1
+                lengthOfService: 2
+                workUnit: Unidad 1
+                supervisor: Juan Perez
+                salaryAmount: 464E07AFC9E46359FB480839150595C5
+                salaryFrequency: 1
+                governmentIdentification: 10
+                workforceSize: "50"
+              customerSpecialConditions:
+                customerSpecialConditionsReference: "1234"
+                customerSpecialConditionsTime: 12:23
+                specialConditions:
+                - name: Excellent
+                  code: None
+                  specialConditionType: None
+                statusInstanceRecord:
+                  statusCode: "00000"
+                  status: SE
+                  message: sssss
+                customerSpecialConditionsDate:
+                  dateContent: BRANCH456
+                detail: 12:23
+                customerReference: 12:23
+                statusDetail: 12:23
+              applicationReferenceId: ACCT-98765
+              productInstanceRecord:
+                productInstanceReference: string
+              reasonRejection:
+              - name: Excellent
+                code: None
+                detail: None
+                rejectionType: None
+              creditProfile:
+                creditLine: 464E07AFC9E46359FB480839150595C5
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluatePartyProfileRs'
+                - example:
+                    statusInstanceRecord:
+                      statusCode: "202"
+                      message: En ejecución
+              example:
+                statusInstanceRecord:
+                  statusCode: "202"
+                  message: En ejecución
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/onBoardingCreditCardWelcomeKit/activate:
+    post:
+      tags:
+      - v1
+      summary: V1OnBoardingCreditCardWelcomeKitActivate_POST
+      description: Servicio de negocio encargado de recuperar los contratos y adjuntarlos
+        para enviar un correo electrónico de Welcome Kit al prospecto.
+      operationId: V1OnBoardingCreditCardWelcomeKitActivate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/activateOnBoardingCreditCardWelcomeKitRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                  onBoardingCreditCardWelcomeKit:
+                    creditCardApplication:
+                      notificationEmailSubject: Exit
+                    partyReference:
+                      contactPoint:
+                      - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                        contactPointType: Electronic Address
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+              onBoardingCreditCardWelcomeKit:
+                creditCardApplication:
+                  notificationEmailSubject: Exit
+                partyReference:
+                  contactPoint:
+                  - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                    contactPointType: Electronic Address
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/activateOnBoardingCreditCardWelcomeKitRs'
+                - example:
+                    creditCardNotification:
+                      notificationMessageIdentification: exit
+                      notificationMessageStatus: ok
+                      notificationDeliveryStatus: ok
+              example:
+                creditCardNotification:
+                  notificationMessageIdentification: exit
+                  notificationMessageStatus: ok
+                  notificationDeliveryStatus: ok
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/onBoardingPartyDigitalService/execute:
+    put:
+      tags:
+      - v1
+      summary: V1OnBoardingPartyDigitalServiceExecute_PUT
+      description: Servicio de negocio encargado de iniciar el proceso de servicios
+        digitales.
+      operationId: V1OnBoardingPartyDigitalServiceExecute_PUT
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: identity-session-token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/executeOnBoardingPartyDigitalServiceRq'
+              - example:
+                  onBoardingPartyDigitalService:
+                    endorsement:
+                      sessionDialogueIdentification: '*9FF0FDA9669BF74AD3A1C747'
+                      endorsementManagement:
+                      - endorsementType: 1
+                        endorsementStatus: 6499e10a3486062d71c04bb8
+                        endorsementDateTime: 2024-05-13 2:35:59
+                      digitalServicesEndorsement:
+                        partyReference:
+                          referenceId: '*9FF0FDA9669BF74AD3A1C747'
+            example:
+              onBoardingPartyDigitalService:
+                endorsement:
+                  sessionDialogueIdentification: '*9FF0FDA9669BF74AD3A1C747'
+                  endorsementManagement:
+                  - endorsementType: 1
+                    endorsementStatus: 6499e10a3486062d71c04bb8
+                    endorsementDateTime: 2024-05-13 2:35:59
+                  digitalServicesEndorsement:
+                    partyReference:
+                      referenceId: '*9FF0FDA9669BF74AD3A1C747'
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/executeOnBoardingPartyDigitalServiceRs'
+                - example:
+                    onBoardingPartyDigitalService:
+                      digitalServiceNumber:
+                        trackingCode: Code Tracking
+              example:
+                onBoardingPartyDigitalService:
+                  digitalServiceNumber:
+                    trackingCode: Code Tracking
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/create:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementCreate_POST
+      description: Servicio encargado de realizar el registro de las referencias proporcionadas
+        por el cliente solicitante del crédito en el proceso de la captura de los
+        paramétricos del cliente para la evaluación de la solicitud.
+      operationId: V1CustomerRelationshipInvolvementCreate_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createCustomerRelationshipInvolvementRq'
+              - example:
+                  sessionDialogueIdentification: 67ec2d271943947d0f3f5559
+                  applicationReferenceId: sd232312
+                  partyReference:
+                    referenceId: "0599983736"
+                  customerRelationshipInvolvement:
+                    dateTime: 2025-06-12 10:00:59
+                    partyRelationshipType: E
+                    customerRelationshipInvolvementType: CONYUGE
+                    partyReference:
+                      dateOfBirth: 2005-05-10
+                      maritalStatus: C
+                      personName:
+                        firstName: Mauro
+                        secondName: ""
+                        familyName: Bonilla
+                        secondLastName: Velazquez
+                      contactPoint:
+                      - contactPointValue: "7722233601"
+                        contactPointType: cellphone
+                        contactPointActiveStatus: true
+                        registrationDate: 2025-04-08 11:36:00
+            example:
+              sessionDialogueIdentification: 67ec2d271943947d0f3f5559
+              applicationReferenceId: sd232312
+              partyReference:
+                referenceId: "0599983736"
+              customerRelationshipInvolvement:
+                dateTime: 2025-06-12 10:00:59
+                partyRelationshipType: E
+                customerRelationshipInvolvementType: CONYUGE
+                partyReference:
+                  dateOfBirth: 2005-05-10
+                  maritalStatus: C
+                  personName:
+                    firstName: Mauro
+                    secondName: ""
+                    familyName: Bonilla
+                    secondLastName: Velazquez
+                  contactPoint:
+                  - contactPointValue: "7722233601"
+                    contactPointType: cellphone
+                    contactPointActiveStatus: true
+                    registrationDate: 2025-04-08 11:36:00
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/createCustomerRelationshipInvolvementRs'
+                - example:
+                    rfc:
+                      partyReference:
+                        identifications:
+                        - identifier:
+                            identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                          personIdentificationType: Registro Federal Contribuyentes
+              example:
+                rfc:
+                  partyReference:
+                    identifications:
+                    - identifier:
+                        identifierValue: BA5B324317B90CE3CE579BB98416E3EA
+                      personIdentificationType: Registro Federal Contribuyentes
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/internalReporting/execute:
+    put:
+      tags:
+      - v1
+      summary: V1InternalReportingExecute_PUT
+      description: Servicio de recepcion encargado de realizar el registro de los
+        datos paramétricos del cliente solicitante del crédito para la evaluación
+        de la solicitud.
+      operationId: V1InternalReportingExecute_PUT
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/executeInternalReportingRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                  applicationReferenceId: "212321312"
+                  partyReference:
+                    referenceId: IFNlZ3VyaWRh
+                    activitySector:
+                      code: "3"
+                    economicActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                    economicSubActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                    maritalStatus: BA5B324317B90CE3CE579BB98416E3EA
+                    maritalStatusDurationYears: "2"
+                    maritalStatusDurationMonths: "5"
+                    gender: 69691c7bdcc3ce6d5d8a1361f22d04ac
+                    housingType: c4ca4238a0b923820dcc509a6f75849b
+                    personProfile:
+                      partyType:
+                        code: "01"
+                      hasIncomeProof: BA5B324317B90CE3CE579BB98416E3EA
+                      resourceIdentification: BA5B324317B90CE3CE579BB98416E3EA
+                      numberOfDependents: CA51BFDCEC77F2BF342C5194B3695A3C
+                      educationalLevel: "1"
+                      monthlyIncome: BA5B324317B90CE3CE579BB98416E3EA
+                      group:
+                        code: "2"
+                      segment:
+                        code: "4"
+                      subGroup:
+                        code: "5"
+                      economicActivity:
+                        companyName: Bancoppel
+                        lastEmploymentDurationYears: "2"
+                        lastEmploymentDurationMonths: "9"
+                        currentEmploymentDurationYears: "1"
+                        currentEmploymentDurationMonths: "3"
+                    contactPoint:
+                    - contactPointValue: 464E07AFC9E46359FB480839150595C5
+                  incomeProfile:
+                    organisation:
+                      organisationName: Grupo F123
+                    jobTitle:
+                      name: Director General
+                      code: "12"
+                    otherIncome:
+                    - incomeType: 1
+                    lengthOfService: 2
+                    workUnit: Unidad 1
+                    supervisor: Juan Perez
+                    salaryAmount: 464E07AFC9E46359FB480839150595C5
+                    salaryFrequency: 1
+                    governmentIdentification: 10
+                    workforceSize: "50"
+                  familyProfile:
+                    location:
+                    - currentAddressTime: "2"
+                      addressInhabitantsNumber: "3"
+                      addressWorkingInhabitantsNumber: "4"
+                  creditCardApplication:
+                    applicationNumber: GAFA9603064C3
+                    requestStatus: AP
+                    productInstanceRecord:
+                      productInstanceReference: "056"
+                    productOrderReason: Compras en tiendas / comercios
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+              applicationReferenceId: "212321312"
+              partyReference:
+                referenceId: IFNlZ3VyaWRh
+                activitySector:
+                  code: "3"
+                economicActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                economicSubActivityIdentification: U2VydmljaW9zIGRlIFNlZ3VyaWRhZCBQdWJsaWNhIChNdW5pY2lwYWwp
+                maritalStatus: BA5B324317B90CE3CE579BB98416E3EA
+                maritalStatusDurationYears: "2"
+                maritalStatusDurationMonths: "5"
+                gender: 69691c7bdcc3ce6d5d8a1361f22d04ac
+                housingType: c4ca4238a0b923820dcc509a6f75849b
+                personProfile:
+                  partyType:
+                    code: "01"
+                  hasIncomeProof: BA5B324317B90CE3CE579BB98416E3EA
+                  resourceIdentification: BA5B324317B90CE3CE579BB98416E3EA
+                  numberOfDependents: CA51BFDCEC77F2BF342C5194B3695A3C
+                  educationalLevel: "1"
+                  monthlyIncome: BA5B324317B90CE3CE579BB98416E3EA
+                  group:
+                    code: "2"
+                  segment:
+                    code: "4"
+                  subGroup:
+                    code: "5"
+                  economicActivity:
+                    companyName: Bancoppel
+                    lastEmploymentDurationYears: "2"
+                    lastEmploymentDurationMonths: "9"
+                    currentEmploymentDurationYears: "1"
+                    currentEmploymentDurationMonths: "3"
+                contactPoint:
+                - contactPointValue: 464E07AFC9E46359FB480839150595C5
+              incomeProfile:
+                organisation:
+                  organisationName: Grupo F123
+                jobTitle:
+                  name: Director General
+                  code: "12"
+                otherIncome:
+                - incomeType: 1
+                lengthOfService: 2
+                workUnit: Unidad 1
+                supervisor: Juan Perez
+                salaryAmount: 464E07AFC9E46359FB480839150595C5
+                salaryFrequency: 1
+                governmentIdentification: 10
+                workforceSize: "50"
+              familyProfile:
+                location:
+                - currentAddressTime: "2"
+                  addressInhabitantsNumber: "3"
+                  addressWorkingInhabitantsNumber: "4"
+              creditCardApplication:
+                applicationNumber: GAFA9603064C3
+                requestStatus: AP
+                productInstanceRecord:
+                  productInstanceReference: "056"
+                productOrderReason: Compras en tiendas / comercios
+        required: true
+      responses:
+        "204":
+          description: No Content
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvementPep/create:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementPepCreate_POST
+      description: Servicio encargado de realizar el registro de la informacion PEP
+        del cliente .
+      operationId: V1CustomerRelationshipInvolvementPepCreate_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/createCustomerRelationshipInvolvementPepRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                  applicationReferenceId: sd232312
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                    companyReference: "001"
+                  customerRelationshipInvolvement:
+                    partyReference:
+                      location:
+                      - locationDescription: b98f83032f6e8ca0c8f5a38bca1e3d75
+                      referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        secondName: da598699cef750ee8e5ef3b2daf47719
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                        secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                        marriedName: 07232a5d792f96d44ac593e43d6592c3
+                      maritalStatus: GAFA9603064C3
+                      gender: GAFA9603064C3
+                      nationality: GAFA9603064C3
+                      personProfile:
+                        pepProfile:
+                          ownershipStake: 75
+                          publicPosition: true
+                          pepFamily: true
+                          role: Gobernador
+                          civilAssociation: false
+                          pepRole: HERMANO
+                          associationDescription: N/A
+                      contactPoint:
+                      - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                        contactPointType: cellphone
+                        contactPointDetail: Extension 3456
+                        contactPointStatus: V
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Numero Identificacion
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Codigo Identificacion
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Registro Federal Contribuyentes
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+                      dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                    partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    dateTime: 2024-05-13 2:35:59
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+              applicationReferenceId: sd232312
+              partyReference:
+                referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                companyReference: "001"
+              customerRelationshipInvolvement:
+                partyReference:
+                  location:
+                  - locationDescription: b98f83032f6e8ca0c8f5a38bca1e3d75
+                  referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                  personName:
+                    firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                    secondName: da598699cef750ee8e5ef3b2daf47719
+                    familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                    marriedName: 07232a5d792f96d44ac593e43d6592c3
+                  maritalStatus: GAFA9603064C3
+                  gender: GAFA9603064C3
+                  nationality: GAFA9603064C3
+                  personProfile:
+                    pepProfile:
+                      ownershipStake: 75
+                      publicPosition: true
+                      pepFamily: true
+                      role: Gobernador
+                      civilAssociation: false
+                      pepRole: HERMANO
+                      associationDescription: N/A
+                  contactPoint:
+                  - contactPointValue: +93a44faeb0b52452bcd6cf1cc7fae9ba
+                    contactPointType: cellphone
+                    contactPointDetail: Extension 3456
+                    contactPointStatus: V
+                  identifications:
+                  - identifier:
+                      identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personIdentificationType: Numero Identificacion
+                  - identifier:
+                      identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personIdentificationType: Codigo Identificacion
+                  - identifier:
+                      identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personIdentificationType: Registro Federal Contribuyentes
+                  - identifier:
+                      identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personIdentificationType: ClaveUnicaRegistroPoblacion
+                  dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                dateTime: 2024-05-13 2:35:59
+        required: true
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/internalCustomerCreditRating/execute:
+    put:
+      tags:
+      - v1
+      summary: V1InternalCustomerCreditRatingExecute_PUT
+      description: "Este servicio recopila los datos del cliente y de la solicitud\
+        \ para evaluar el historial crediticio. Armamos una trama de información y\
+        \ la enviamos a un servicio de Coppel, que realiza la evaluación y nos devuelve\
+        \ el resultado. Guardamos esta respuesta para agilizar el proceso de dictamen\
+        \ de la tarjeta de crédito."
+      operationId: V1InternalCustomerCreditRatingExecute_PUT
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/executeInternalCustomerCreditRatingRq'
+              - example:
+                  sessionDialogueIdentification: GAFA9603064C3
+                  partyReference:
+                    referenceId: A93B64AE1FB376A15EC21132E65B478F
+                    personProfile:
+                      partyType:
+                        description: YmF0
+                  applicationReferenceId: ACCT-98765
+                  incomeProfile:
+                    otherIncome:
+                    - incomeType: 1
+                    salaryFrequency: 5
+                    salaryAmount: "7000"
+                  customerRelationshipInvolvementCollection:
+                  - customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                      customerRelationshipInvolvementType: CONYUGE
+                  - customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                        personName:
+                          fullName: da598699cef750ee8e5ef3b2daf47719
+                        contactPoint:
+                        - contactPointValue: GAFA9603064C3
+                          contactPointType: cellphone
+                      customerRelationshipInvolvementType: REFERENCIA
+                      partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+                  - customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                        personName:
+                          fullName: da598699cef750ee8e5ef3b2daf47719
+                        contactPoint:
+                        - contactPointValue: GAFA9603064C3
+                          contactPointType: cellphone
+                      customerRelationshipInvolvementType: REFERENCIA
+                      partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+            example:
+              sessionDialogueIdentification: GAFA9603064C3
+              partyReference:
+                referenceId: A93B64AE1FB376A15EC21132E65B478F
+                personProfile:
+                  partyType:
+                    description: YmF0
+              applicationReferenceId: ACCT-98765
+              incomeProfile:
+                otherIncome:
+                - incomeType: 1
+                salaryFrequency: 5
+                salaryAmount: "7000"
+              customerRelationshipInvolvementCollection:
+              - customerRelationshipInvolvement:
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                  customerRelationshipInvolvementType: CONYUGE
+              - customerRelationshipInvolvement:
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                    personName:
+                      fullName: da598699cef750ee8e5ef3b2daf47719
+                    contactPoint:
+                    - contactPointValue: GAFA9603064C3
+                      contactPointType: cellphone
+                  customerRelationshipInvolvementType: REFERENCIA
+                  partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+              - customerRelationshipInvolvement:
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                    personName:
+                      fullName: da598699cef750ee8e5ef3b2daf47719
+                    contactPoint:
+                    - contactPointValue: GAFA9603064C3
+                      contactPointType: cellphone
+                  customerRelationshipInvolvementType: REFERENCIA
+                  partyRelationshipType: 15276e7fd43ab63d6b0a6a3bc03f313f
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/executeInternalCustomerCreditRatingRs'
+                - example:
+                    requestStatus: RT
+              example:
+                requestStatus: RT
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/internalCustomerReporting/execute:
+    put:
+      tags:
+      - v1
+      summary: V1InternalCustomerReportingExecute_PUT
+      description: "Esta API consulta el historial crediticio del cliente y, basá\
+        ndose en el motor de scoring interno, almacena el resultado del dictamen de\
+        \ evaluación de la solicitud. Su función principal es replicar la decisió\
+        n final para la aprobación de la tarjeta de crédito BanCoppel Visa Clásica,\
+        \ además de gestionar la información sobre los costos asociados a dicho producto."
+      operationId: V1InternalCustomerReportingExecute_PUT
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/executeInternalCustomerReportingRq'
+              - example:
+                  sessionDialogueIdentification: GAFA9603064C3
+                  applicationReferenceId: ACCT-98765
+            example:
+              sessionDialogueIdentification: GAFA9603064C3
+              applicationReferenceId: ACCT-98765
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/executeInternalCustomerReportingRs'
+                - example:
+                    requestStatus: RT
+                    totalCost:
+                      totalAnnualCost: "4.5"
+                      totalAnnualCommission: "4500.00"
+                      totalOrdinaryAnnualInterestRate: "6.3"
+                    creditHistory:
+                      requestedAmount: "14500.00"
+              example:
+                requestStatus: RT
+                totalCost:
+                  totalAnnualCost: "4.5"
+                  totalAnnualCommission: "4500.00"
+                  totalOrdinaryAnnualInterestRate: "6.3"
+                creditHistory:
+                  requestedAmount: "14500.00"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/customerRelationshipInvolvement/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1CustomerRelationshipInvolvementEvaluate_POST
+      description: Servicio encargado de determinar si el flujo continúa sin intervención
+        o si realiza una inserción de KO.
+      operationId: V1CustomerRelationshipInvolvementEvaluate_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluateCustomerRelationshipInvolvementRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluateCustomerRelationshipInvolvementRs'
+                - example:
+                    statusInstanceRecord:
+                      status: "true"
+              example:
+                statusInstanceRecord:
+                  status: "true"
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/certifiedTelecoScoring/register:
+    post:
+      tags:
+      - v1
+      summary: V1CertifiedTelecoScoringRegister_POST
+      description: Servicio de negocio encargado de consultar el score de telecomunicaciones
+        a través del Servicio de GranData. Representado a través de 101 variables
+        que proporcionan información utilizable en validaciones de procesos crediticios.
+      operationId: V1CertifiedTelecoScoringRegister_POST
+      parameters:
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerCertifiedTelecoScoringRq'
+              - example:
+                  certifiedTelecoScoring:
+                    partyReferenceDataDirectoryEntry:
+                      partyReference:
+                        referenceId: B277B9D408D34013A4BE9FA416B72638
+                    channelFacility:
+                      channelReferenceId: "1"
+            example:
+              certifiedTelecoScoring:
+                partyReferenceDataDirectoryEntry:
+                  partyReference:
+                    referenceId: B277B9D408D34013A4BE9FA416B72638
+                channelFacility:
+                  channelReferenceId: "1"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content: {}
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/partyAgeEligibility/evaluate:
+    post:
+      tags:
+      - v1
+      summary: V1PartyAgeEligibilityEvaluate_POST
+      description: Servicio que valida la política de edad y registra automáticamente
+        el Knockout en caso de incumplimiento.
+      operationId: V1PartyAgeEligibilityEvaluate_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/evaluatePartyAgeEligibilityRq'
+              - example:
+                  sessionDialogueIdentification: b98f83032f6e8ca0c8f5a38bca1e3d75
+                  partyReference:
+                    referenceId: E56B64AE1FB376A15EC56FI2E65B490
+                    dateOfBirth: A77B64AE1FB37G615EC21132E65B475F
+                    personName:
+                      familyName: A93B64AE1FB376A15EC21132E65B478F
+                      secondLastName: 23FFSE66655EC21132E65B478F
+                      firstName: A93B64543DYTR888132E65B478F
+                      secondName: 6YRDCEE376A15EC21132E65BN897
+            example:
+              sessionDialogueIdentification: b98f83032f6e8ca0c8f5a38bca1e3d75
+              partyReference:
+                referenceId: E56B64AE1FB376A15EC56FI2E65B490
+                dateOfBirth: A77B64AE1FB37G615EC21132E65B475F
+                personName:
+                  familyName: A93B64AE1FB376A15EC21132E65B478F
+                  secondLastName: 23FFSE66655EC21132E65B478F
+                  firstName: A93B64543DYTR888132E65B478F
+                  secondName: 6YRDCEE376A15EC21132E65BN897
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/evaluatePartyAgeEligibilityRs'
+                - example:
+                    return: false
+              example:
+                return: false
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Request Timeout
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Request Timeout
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+  /v1/beneficiaryProfile/register:
+    post:
+      tags:
+      - v1
+      summary: V1BeneficiaryProfileRegister_POST
+      description: Este microservicio es responsable de generar el registro del beneficiario
+        como prospecto en las bases de datos Informix y YugabyteDB.
+      operationId: V1BeneficiaryProfileRegister_POST
+      parameters:
+      - name: consumerRequestId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: token
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      - name: sessionId
+        in: header
+        description: ""
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+          example: Example
+      requestBody:
+        description: ""
+        content:
+          application/json:
+            schema:
+              allOf:
+              - $ref: '#/components/schemas/registerBeneficiaryProfileRq'
+              - example:
+                  sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+                  customerRelationshipInvolvement:
+                    partyReference:
+                      referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                      personName:
+                        firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                        secondName: da598699cef750ee8e5ef3b2daf47719
+                        familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                        secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                        marriedName: B277B9D408D34013A4BE9FA416B72638
+                      dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                      contactPoint:
+                      - contactPointValue: GAFA9603064C3
+                        contactPointType: phone Number
+                      - contactPointValue: B277B9D408D34013A4BE9FA416B72638
+                        contactPointType: Electronic Address
+                        contactPointDetail: extension 123
+                      - contactPointType: cellphone
+                        contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                      identifications:
+                      - identifier:
+                          identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                        personIdentificationType: Registro Federal Contribuyentes
+                      - identifier:
+                          identifierValue: B277B9D408D34013A4BE9FA416B72638
+                        personIdentificationType: Documentos Migratorios De No Emigrantes
+                      - identifier:
+                          identifierValue: B277B9D408D34013A4BE9FA416B72638
+                        personIdentificationType: ClaveUnicaRegistroPoblacion
+                      - identifier:
+                          identifierValue: B277B9D408D34013A4BE9FA416B72638
+                        personIdentificationType: Codigo Identificacion
+                      - identifier:
+                          identifierValue: B277B9D408D34013A4BE9FA416B72638
+                        personIdentificationType: Numero Identificacion
+                      - identifier:
+                          identifierValue: B277B9D408D34013A4BE9FA416B72638
+                        personIdentificationType: Numero Identificacion Social
+                      companyReference: B277B9D408D34013A4BE9FA416B72638
+                      bankBranch:
+                        branchReference: B27
+                      personProfile:
+                        profileType: PF
+                        segment:
+                          code: B277B9D408D34013A4BE9FA416B72638
+                        group:
+                          code: B277B9D408D34013A4BE9FA416B72638
+                        subGroup:
+                          code: B277B9D408D34013A4BE9FA416B72638
+                        residency: B277B9D408D34013A4BE9FA416B72638
+                        pepProfile:
+                          role: B277B9D408D34013A4BE9FA416B72638
+                          relatives: B277B9D408D34013A4BE9FA416B72638
+                        accountOpeningOperator:
+                          operatorReferenceid: "12345"
+                        accountOpeningAuthorizer:
+                          authorizerReferenceId: "67890"
+                        guardian: B277B9D408D34013A4BE9FA416B72638
+                        guardianReferenceId: B277B9D408D34013A4BE9FA416B72638
+                        spouse: B277B9D408D34013A4BE9FA416B72638
+                        spouseReferenceId: B277B9D408D34013A4BE9FA416B72638
+                        burialInsurance: B277B9D408D34013A4BE9FA416B72638
+                        educationalLevel: B277B9D408D34013A4BE9FA416B72638
+                        residencyPlace: B277B9D408D34013A4BE9FA416B72638
+                        residencyYear: B277B9D408D34013A4BE9FA416B72638
+                        propertyName: B277B9D408D34013A4BE9FA416B72638
+                        mortgage: 345000.67
+                      customerType: B277B9D408D34013A4BE9FA416B72638
+                      activitySector:
+                        code: "05"
+                      economicActivity: B277B9D408D34013A4BE9FA416B72638
+                      specificActivity: COMERCIO
+                      birthPlace:
+                        location:
+                        - country:
+                            code: B277B9D408D34013A4BE9FA416B72638
+                      nationality: B277B9D408D34013A4BE9FA416B72638
+                      maritalStatus: B277B9D408D34013A4BE9FA416B72638
+                      matrimonialRegime: B277B9D408D34013A4BE9FA416B72638
+                      profession: B277B9D408D34013A4BE9FA416B72638
+                      gender: B277B9D408D34013A4BE9FA416B72638
+                      referenceIdCoppel: B277B9D408D34013A4BE9FA416B72638
+                      location:
+                      - cardinalPoint: NORTE
+                        city:
+                          code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                        country:
+                          code: MX
+                        countyDistrict:
+                          inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                          name: c4ca4238a0b923820dcc509a6f75849b
+                          code: 751d31dd6b56b26b29dac2c0e1839e34
+                        externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                        houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                        internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                        housingUnit: b5b41fac0361d157d9673ecb926af5ae
+                        locationAddressType: PARTY_ADDRESS
+                        locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                        locationInegiCode: "105010001"
+                        locationObservations: d41e0312b78db54d2e464dd97e54178a
+                        neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                        postalCode: 049d64bd087ad59d9e5320df965a4820
+                        province:
+                          code: 751d31dd6b56b26b29dac2c0e1839e34
+                        state:
+                          code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                          inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                        street:
+                          streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                      dependents: B277B9D408D34013A4BE9FA416B72638
+                      totalOccupancy: B277B9D408D34013A4BE9FA416B72638
+                  ine:
+                    documentContent:
+                      ocrData:
+                        identificationDevice:
+                          voterKey: B277B9D408D34013A4BE9FA416B72638
+                  sequence: "236670474"
+                  user: "98681012"
+            example:
+              sessionDialogueIdentification: 751d31dd6b56b26b29dac2c0e1839e34
+              customerRelationshipInvolvement:
+                partyReference:
+                  referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+                  personName:
+                    firstName: 1276c190f7197fd82d7f0ad19c1c93d2
+                    secondName: da598699cef750ee8e5ef3b2daf47719
+                    familyName: 15276e7fd43ab63d6b0a6a3bc03f313f
+                    secondLastName: 07232a5d792f96d44ac593e43d6592c3
+                    marriedName: B277B9D408D34013A4BE9FA416B72638
+                  dateOfBirth: A93B64AE1FB376A15EC21132E65B478F
+                  contactPoint:
+                  - contactPointValue: GAFA9603064C3
+                    contactPointType: phone Number
+                  - contactPointValue: B277B9D408D34013A4BE9FA416B72638
+                    contactPointType: Electronic Address
+                    contactPointDetail: extension 123
+                  - contactPointType: cellphone
+                    contactPointValue: 24c53cacba758b4fee3bebc22d9a63d3
+                  identifications:
+                  - identifier:
+                      identifierValue: A93B64AE1FB376A15EC21132E65B478F
+                    personIdentificationType: Registro Federal Contribuyentes
+                  - identifier:
+                      identifierValue: B277B9D408D34013A4BE9FA416B72638
+                    personIdentificationType: Documentos Migratorios De No Emigrantes
+                  - identifier:
+                      identifierValue: B277B9D408D34013A4BE9FA416B72638
+                    personIdentificationType: ClaveUnicaRegistroPoblacion
+                  - identifier:
+                      identifierValue: B277B9D408D34013A4BE9FA416B72638
+                    personIdentificationType: Codigo Identificacion
+                  - identifier:
+                      identifierValue: B277B9D408D34013A4BE9FA416B72638
+                    personIdentificationType: Numero Identificacion
+                  - identifier:
+                      identifierValue: B277B9D408D34013A4BE9FA416B72638
+                    personIdentificationType: Numero Identificacion Social
+                  companyReference: B277B9D408D34013A4BE9FA416B72638
+                  bankBranch:
+                    branchReference: B27
+                  personProfile:
+                    profileType: PF
+                    segment:
+                      code: B277B9D408D34013A4BE9FA416B72638
+                    group:
+                      code: B277B9D408D34013A4BE9FA416B72638
+                    subGroup:
+                      code: B277B9D408D34013A4BE9FA416B72638
+                    residency: B277B9D408D34013A4BE9FA416B72638
+                    pepProfile:
+                      role: B277B9D408D34013A4BE9FA416B72638
+                      relatives: B277B9D408D34013A4BE9FA416B72638
+                    accountOpeningOperator:
+                      operatorReferenceid: "12345"
+                    accountOpeningAuthorizer:
+                      authorizerReferenceId: "67890"
+                    guardian: B277B9D408D34013A4BE9FA416B72638
+                    guardianReferenceId: B277B9D408D34013A4BE9FA416B72638
+                    spouse: B277B9D408D34013A4BE9FA416B72638
+                    spouseReferenceId: B277B9D408D34013A4BE9FA416B72638
+                    burialInsurance: B277B9D408D34013A4BE9FA416B72638
+                    educationalLevel: B277B9D408D34013A4BE9FA416B72638
+                    residencyPlace: B277B9D408D34013A4BE9FA416B72638
+                    residencyYear: B277B9D408D34013A4BE9FA416B72638
+                    propertyName: B277B9D408D34013A4BE9FA416B72638
+                    mortgage: 345000.67
+                  customerType: B277B9D408D34013A4BE9FA416B72638
+                  activitySector:
+                    code: "05"
+                  economicActivity: B277B9D408D34013A4BE9FA416B72638
+                  specificActivity: COMERCIO
+                  birthPlace:
+                    location:
+                    - country:
+                        code: B277B9D408D34013A4BE9FA416B72638
+                  nationality: B277B9D408D34013A4BE9FA416B72638
+                  maritalStatus: B277B9D408D34013A4BE9FA416B72638
+                  matrimonialRegime: B277B9D408D34013A4BE9FA416B72638
+                  profession: B277B9D408D34013A4BE9FA416B72638
+                  gender: B277B9D408D34013A4BE9FA416B72638
+                  referenceIdCoppel: B277B9D408D34013A4BE9FA416B72638
+                  location:
+                  - cardinalPoint: NORTE
+                    city:
+                      code: b98f83032f6e8ca0c8f5a38bca1e3d75
+                    country:
+                      code: MX
+                    countyDistrict:
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                      name: c4ca4238a0b923820dcc509a6f75849b
+                      code: 751d31dd6b56b26b29dac2c0e1839e34
+                    externalHouseNumber: d3d9446802a44259755d38e6d163e820
+                    houseNumber: 6512bd43d9caa6e02c990b0a82652dca
+                    internalHouseNumber: b5b41fac0361d157d9673ecb926af5ae
+                    housingUnit: b5b41fac0361d157d9673ecb926af5ae
+                    locationAddressType: PARTY_ADDRESS
+                    locationDescription: 837605ddb5847fe471dd3dd01fef9443
+                    locationInegiCode: "105010001"
+                    locationObservations: d41e0312b78db54d2e464dd97e54178a
+                    neighborhood: 4e1dccc679b3bbda511dd1e4f2864fd0
+                    postalCode: 049d64bd087ad59d9e5320df965a4820
+                    province:
+                      code: 751d31dd6b56b26b29dac2c0e1839e34
+                    state:
+                      code: de40a6e304bf5a88b2ea9f4fb90c3a0c
+                      inegiCode: b5b41fac0361d157d9673ecb926af5ae
+                    street:
+                      streetName: dbdf93dc6ae43db67c56ab8a226daa28
+                  dependents: B277B9D408D34013A4BE9FA416B72638
+                  totalOccupancy: B277B9D408D34013A4BE9FA416B72638
+              ine:
+                documentContent:
+                  ocrData:
+                    identificationDevice:
+                      voterKey: B277B9D408D34013A4BE9FA416B72638
+              sequence: "236670474"
+              user: "98681012"
+        required: true
+      responses:
+        "200":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/registerBeneficiaryProfileRs'
+                - example:
+                    customerRelationshipInvolvement:
+                      partyReference:
+                        referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+              example:
+                customerRelationshipInvolvement:
+                  partyReference:
+                    referenceId: 5F600B3C636E509D8B739C57EC1AAA4F
+        "400":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "400"
+                    status: FAILED
+                    message: Bad Request
+              example:
+                statusCode: "400"
+                status: FAILED
+                message: Bad Request
+        "401":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "401"
+                    status: FAILED
+                    message: Unauthorized
+              example:
+                statusCode: "401"
+                status: FAILED
+                message: Unauthorized
+        "403":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "403"
+                    status: FAILED
+                    message: Forbidden
+              example:
+                statusCode: "403"
+                status: FAILED
+                message: Forbidden
+        "404":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "404"
+                    status: FAILED
+                    message: Not Found
+              example:
+                statusCode: "404"
+                status: FAILED
+                message: Not Found
+        "408":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "408"
+                    status: FAILED
+                    message: Time Out
+              example:
+                statusCode: "408"
+                status: FAILED
+                message: Time Out
+        "500":
+          description: ""
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/commonErrorRs'
+                - example:
+                    statusCode: "500"
+                    status: FAILED
+                    message: Internal Server Error
+              example:
+                statusCode: "500"
+                status: FAILED
+                message: Internal Server Error
+components:
+  schemas:
+    commonErrorRs:
+      title: commonErrorRs
+      required:
+      - message
+      - status
+      - statusCode
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo de respuesta interno
+          example: Example
+        message:
+          type: string
+          description: Mensaje de resultado
+          example: Example
+        status:
+          type: string
+          description: Estado de la peticion
+          example: Example
+    evaluatePartyApplicationRequestRq:
+      title: evaluatePartyApplicationRequestRq
+      type: object
+      properties:
+        evaluatePartyApplicationRequest:
+          $ref: '#/components/schemas/evaluatePartyApplicationRequest'
+    evaluatePartyProfileRq:
+      title: evaluatePartyProfileRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        companyReference:
+          type: string
+          description: Referencia de la compañia
+          example: string
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        incomeProfile:
+          $ref: '#/components/schemas/incomeProfile'
+        creditProfile:
+          $ref: '#/components/schemas/creditProfile'
+        customerSpecialConditions:
+          $ref: '#/components/schemas/customerSpecialConditions'
+        key:
+          type: string
+          description: Llave o nombre del resultado de la validacion
+        privateKey:
+          type: string
+          description: Valor llave privada para Ejecución del servicio
+          example: string
+        timeout:
+          type: number
+          description: Tiempo de Espera Consulta
+          example: 12
+        applicationReferenceId:
+          type: string
+          description: Número del credito
+          example: string
+        productInstanceRecord:
+          $ref: '#/components/schemas/productInstanceRecord'
+        reasonRejection:
+          $ref: '#/components/schemas/reasonRejection'
+    activateOnBoardingCreditCardWelcomeKitRq:
+      title: activateOnBoardingCreditCardWelcomeKitRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        onBoardingCreditCardWelcomeKit:
+          type: object
+          properties:
+            creditCardApplication:
+              $ref: '#/components/schemas/creditCardApplication'
+            partyReference:
+              $ref: '#/components/schemas/partyReference'
+    executeOnBoardingPartyDigitalServiceRq:
+      title: executeOnBoardingPartyDigitalServiceRq
+      type: object
+      properties:
+        onBoardingPartyDigitalService:
+          type: object
+          properties:
+            endorsement:
+              $ref: '#/components/schemas/endorsement'
+    createCustomerRelationshipInvolvementRq:
+      title: createCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    executeInternalReportingRq:
+      title: executeInternalReportingRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        incomeProfile:
+          $ref: '#/components/schemas/incomeProfile'
+        familyProfile:
+          $ref: '#/components/schemas/familyProfile'
+        creditCardApplication:
+          $ref: '#/components/schemas/creditCardApplication'
+    createCustomerRelationshipInvolvementPepRq:
+      title: createCustomerRelationshipInvolvementPepRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    executeInternalCustomerCreditRatingRq:
+      title: executeInternalCustomerCreditRatingRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        incomeProfile:
+          $ref: '#/components/schemas/incomeProfile'
+        requestedAmount:
+          type: number
+          description: Monto requerido
+        customerRelationshipInvolvementCollection:
+          type: array
+          items:
+            type: object
+            properties:
+              customerRelationshipInvolvement:
+                $ref: '#/components/schemas/customerRelationshipInvolvement'
+    executeInternalCustomerReportingRq:
+      title: executeInternalCustomerReportingRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        applicationReferenceId:
+          type: string
+          description: Número de solicitud
+    evaluateCustomerRelationshipInvolvementRq:
+      title: evaluateCustomerRelationshipInvolvementRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+    registerCertifiedTelecoScoringRq:
+      title: registerCertifiedTelecoScoringRq
+      type: object
+      properties:
+        certifiedTelecoScoring:
+          type: object
+          properties:
+            partyReferenceDataDirectoryEntry:
+              $ref: '#/components/schemas/partyRetailReferenceDataDirectoryEntry'
+            channelFacility:
+              $ref: '#/components/schemas/channelFacility'
+    evaluatePartyAgeEligibilityRq:
+      title: evaluatePartyAgeEligibilityRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    registerBeneficiaryProfileRq:
+      title: registerBeneficiaryProfileRq
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+        ine:
+          $ref: '#/components/schemas/ine'
+        sequence:
+          type: string
+        user:
+          type: string
+    evaluatePartyApplicationRequestRs:
+      title: evaluatePartyApplicationRequestRs
+      type: object
+      properties:
+        evaluatePartyApplicationRequest:
+          $ref: '#/components/schemas/evaluatePartyApplicationRequest'
+    evaluatePartyProfileRs:
+      title: evaluatePartyProfileRs
+      type: object
+      properties:
+        statusInstanceRecord:
+          $ref: '#/components/schemas/statusInstanceRecord'
+    activateOnBoardingCreditCardWelcomeKitRs:
+      title: activateOnBoardingCreditCardWelcomeKitRs
+      type: object
+      properties:
+        creditCardNotification:
+          $ref: '#/components/schemas/creditCardNotification'
+    executeOnBoardingPartyDigitalServiceRs:
+      title: executeOnBoardingPartyDigitalServiceRs
+      type: object
+      properties:
+        onBoardingPartyDigitalService:
+          type: object
+          properties:
+            digitalServiceNumber:
+              type: object
+              properties:
+                trackingCode:
+                  type: string
+    createCustomerRelationshipInvolvementRs:
+      title: createCustomerRelationshipInvolvementRs
+      type: object
+      properties:
+        rfc:
+          $ref: '#/components/schemas/rfc'
+    executeInternalCustomerCreditRatingRs:
+      title: executeInternalCustomerCreditRatingRs
+      type: object
+      properties:
+        requestStatus:
+          type: string
+          description: "Estatus de la evaluación del producto acotada a 2 caracteres\
+            \ tales como: - EA En Analisis - RT Rechazada - AP Autorizacion de Apertura\
+            \ - AN Anulada por el Cliente - PC Solicitud- re Calificada - RA REQUIERE\
+            \ AUTORIZACIÓN - CN Cancelada - RP Rechazo por Precalificación - CM Cancelació\
+            n por Mesa de Control - EC Evaluacion Coppel - PA re Autorizada - BC En\
+            \ Buro de Credito - CC En Circulo de Credito - ST Supervisión Telefónica\
+            \ - MC Mesa de Control - EE En Estudio Supervision - OS Enviada a Orden\
+            \ de Supervision - LC En Determinación de Línea - CE Catalogo de domicilio\
+            \ en estudio - OA Orden Supervision en Aclaracion - AT Autorizada - IN\
+            \ Intermedio"
+          enum:
+          - EA
+          - RT
+          - AP
+          - AN
+          - PC
+          - RA
+          - CN
+          - RP
+          - CM
+          - EC
+          - PA
+          - BC
+          - CC
+          - ST
+          - MC
+          - EE
+          - OS
+          - LC
+          - CE
+          - OA
+          - AT
+          - IN
+    executeInternalCustomerReportingRs:
+      title: executeInternalCustomerReportingRs
+      type: object
+      properties:
+        creditHistory:
+          $ref: '#/components/schemas/creditHistory'
+        totalCost:
+          $ref: '#/components/schemas/totalCost'
+        requestStatus:
+          type: string
+          description: "Estatus de la evaluación del producto acotada a 2 caracteres\
+            \ tales como: - EA En Analisis - RT Rechazada - AP Autorizacion de Apertura\
+            \ - AN Anulada por el Cliente - PC Solicitud- re Calificada - RA REQUIERE\
+            \ AUTORIZACIÓN - CN Cancelada - RP Rechazo por Precalificación - CM Cancelació\
+            n por Mesa de Control - EC Evaluacion Coppel - PA re Autorizada - BC En\
+            \ Buro de Credito - CC En Circulo de Credito - ST Supervisión Telefónica\
+            \ - MC Mesa de Control - EE En Estudio Supervision - OS Enviada a Orden\
+            \ de Supervision - LC En Determinación de Línea - CE Catalogo de domicilio\
+            \ en estudio - OA Orden Supervision en Aclaracion - AT Autorizada - IN\
+            \ Intermedio - CP Captura Paramétrico - TC Telecomunicaciones"
+          enum:
+          - EA
+          - RT
+          - AP
+          - AN
+          - PC
+          - RA
+          - CN
+          - RP
+          - CM
+          - EC
+          - PA
+          - BC
+          - CC
+          - ST
+          - MC
+          - EE
+          - OS
+          - LC
+          - CE
+          - OA
+          - AT
+          - IN
+          - CP
+          - TC
+    evaluateCustomerRelationshipInvolvementRs:
+      title: evaluateCustomerRelationshipInvolvementRs
+      type: object
+      properties:
+        statusInstanceRecord:
+          $ref: '#/components/schemas/statusInstanceRecord'
+    evaluatePartyAgeEligibilityRs:
+      title: evaluatePartyAgeEligibilityRs
+      type: object
+      properties:
+        return:
+          type: boolean
+          description: Estatus de la validación de edad(true o false)
+    registerBeneficiaryProfileRs:
+      title: registerBeneficiaryProfileRs
+      type: object
+      properties:
+        customerRelationshipInvolvement:
+          $ref: '#/components/schemas/customerRelationshipInvolvement'
+    activitySector:
+      title: activitySector
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del sector de actividad.
+        code:
+          type: string
+          description: Código del sector de actividad.
+    bankBranch:
+      title: bankBranch
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+        branchReference:
+          type: string
+          description: Referencia de la Sucursal
+        name:
+          type: string
+          description: Nombre de la Sucursal
+    birthPlace:
+      title: birthPlace
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    channelFacility:
+      title: channelFacility
+      type: object
+      properties:
+        channelReferenceId:
+          type: string
+          description: identificador de canal a consumir informix o bpc
+        description:
+          type: string
+          description: informacion adicional que describe el canal
+    cityReference:
+      title: cityReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código de la ciudad
+        name:
+          type: string
+          description: "Indica el nombre de la ciudad, normalmente que pertenece a\
+            \ una dirección"
+    confidence:
+      title: confidence
+      type: object
+      properties:
+        addressOcrConfidence:
+          type: number
+          description: Nivel de confianza address
+        streetOcrConfidence:
+          type: number
+          description: Nivel de confianza street
+        neighborhoodOcrConfidence:
+          type: number
+          description: Nivel de confianza colony
+        postalCodeOcrConfidence:
+          type: number
+          description: Nivel de confianza postalCode
+        cityOcrConfidence:
+          type: number
+          description: Nivel de confianza city
+        stateOcrConfidence:
+          type: number
+          description: Nivel de confianza state
+      description: Objeto que almacena los niveles de confianza de los datos obtenidos
+        en el proceso del OCR
+    contactPoint:
+      title: contactPoint
+      type: array
+      description: Medio utilizado para la comunicación.
+      items:
+        type: object
+        properties:
+          contactPointValue:
+            type: string
+            description: Número telefónico
+          contactPointType:
+            type: string
+            description: Indica el tipo de punto de contacto * cellphone = numero
+              celular * Electronic Address = email * work Phone Number = telefono
+              de trabajo * other Phone Number = otro telefono * phone Number = telefono
+              residencial
+            enum:
+            - cellphone
+            - Electronic Address
+            - phone Number
+            - work Phone Number
+            - other Phone Number
+            - postalCode
+          contactPointDetail:
+            type: string
+            description: Detalles sobre el número telefónico ingresado
+          contactPointStatus:
+            type: string
+            description: Indica proceso válido para el numero telefónico
+          contactPointActiveStatus:
+            type: boolean
+            description: Indica el envio exitoso
+          contactPointProviderName:
+            type: string
+            description: Nombre del proovedor de servicio del punto de contacto
+          registrationDate:
+            type: string
+            description: Fecha de insercion
+    content:
+      title: content
+      type: object
+      properties:
+        base64Image:
+          type: string
+          description: Formato base 64 que representa una imagen.
+        classification:
+          type: boolean
+          description: Indica si se realizó alguna clasificación sobre la imágen.
+        readability:
+          type: boolean
+          description: Indica si la imágen es leíble por el servidor.
+        sharpness:
+          type: number
+          description: Indica la nitidez de la imágen.
+        correctSharpness:
+          type: boolean
+          description: Indica si el sharpness es correcto.
+        glare:
+          type: number
+          description: Indica la cantidad de reflejo en una imágen.
+        correctGlare:
+          type: boolean
+          description: Indica si el glare es correcto.
+        horizontalResolution:
+          type: number
+          description: El valor se basa en la resolución de la foto recortada. Un
+            valor bajo significa que después de realizar el recorte tenemos una mala
+            calidad de imagen. Recomendamos volver a intentar la captura si el valor
+            es inferior a 155.
+        typeOfId:
+          type: string
+          description: Clasificación de la imágen
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación
+        location:
+          $ref: '#/components/schemas/location'
+        issueName:
+          type: string
+          description: "Descripción de la identificación. Podría contener código de\
+            \ país, estado, tipo de identificación, subtipo de identificación."
+        curpCheck:
+          type: boolean
+          description: Solo para cédulas mexicanas. Indicador que indica si curp se
+            leyó correctamente.
+        documentStatus:
+          type: string
+          description: Estado del contenido * Alive = contenido activo * Closed =
+            comtenido cerrado * Deleted = contenido eliminado
+          enum:
+          - Alive
+          - Closed
+          - Deleted
+        failReason:
+          type: string
+          description: Razón del error de clasificación. * UNKNOWN_DOCUMENT_TYPE =
+            tipo de documento desconocido * WRONG_DOCUMENT_SIDE = lado incorrecto
+            del documento * WRONG_ONE_SIDED_DOCUMENT = Documento de una lado incorrecto*
+            DOCUMENT_NOT_READABLE = Documento no se puede leer * UNABLE_TO_ALIGN_DOCUMENT
+            = Documento no alineado * ID_TYPE_UNACCEPTABLE = Documento invalido *
+            UNEXPECTED_ERROR_OCCURRED = Error inesperado
+          enum:
+          - UNKNOWN_DOCUMENT_TYPE
+          - WRONG_DOCUMENT_SIDE
+          - WRONG_ONE_SIDED_DOCUMENT
+          - DOCUMENT_NOT_READABLE
+          - UNABLE_TO_ALIGN_DOCUMENT
+          - ID_TYPE_UNACCEPTABLE
+          - UNEXPECTED_ERROR_OCCURRED
+    contractRegister:
+      title: contractRegister
+      type: array
+      items:
+        type: object
+        properties:
+          documentContent:
+            $ref: '#/components/schemas/documentContent'
+    countryDistrict:
+      title: countryDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+    countryReference:
+      title: countryReference
+      type: object
+      properties:
+        code:
+          type: string
+          description: Código ISO alfa-2 o alfa-3 válido del país.
+          default: All
+        name:
+          type: string
+          description: Nombre del País
+    countyDistrict:
+      title: countyDistrict
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del distrito
+        code:
+          type: string
+          description: Código del distrito
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+    creditCardApplication:
+      title: creditCardApplication
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Identifica la sesión de incorporación que se inicializa. Se
+            puede usar para obtener datos sobre esa sesión en llamadas futuras.
+        creditPlan:
+          $ref: '#/components/schemas/creditPlan'
+        monthlyIncome:
+          type: number
+          description: Ingreso mensual
+        minimumIncomeGold:
+          type: number
+          description: Ingreso minimo oro
+        scoring:
+          type: string
+          description: Calificación crediticia
+        requestType:
+          type: string
+          description: Tipo de solicitud
+        group:
+          type: string
+          description: Grupo
+        evaluateCC:
+          type: string
+          description: Evaluate cc
+        applicationReferenceId:
+          type: string
+          description: Id referente
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        requestNumber:
+          type: string
+          description: Número de la solicitud de crédito acotado a 20 caracteres
+        applicationNumber:
+          type: string
+        productOrderReason:
+          type: string
+          description: ¿Pregunta para qué quiere solicitar un producto?
+        requestStatus:
+          type: string
+          description: "Estatus de la evaluación del producto acotada a 2 caracteres\
+            \ tales como: - EA En Analisis - RT Rechazada - AP Autorizacion de Apertura\
+            \ - AN Anulada por el Cliente - PC Solicitud- re Calificada - RA REQUIERE\
+            \ AUTORIZACIÓN - CN Cancelada - RP Rechazo por Precalificación - CM Cancelació\
+            n por Mesa de Control - EC Evaluacion Coppel - PA re Autorizada - BC En\
+            \ Buro de Credito - CC En Circulo de Credito - ST Supervisión Telefónica\
+            \ - MC Mesa de Control - EE En Estudio Supervision - OS Enviada a Orden\
+            \ de Supervision - LC En Determinación de Línea - CE Catalogo de domicilio\
+            \ en estudio - OA Orden Supervision en Aclaracion - AT Autorizada - IN\
+            \ Intermedio"
+          enum:
+          - EA
+          - RT
+          - AP
+          - AN
+          - PC
+          - RA
+          - CN
+          - RP
+          - CM
+          - EC
+          - PA
+          - BC
+          - CC
+          - ST
+          - MC
+          - EE
+          - OS
+          - LC
+          - CE
+          - OA
+          - AT
+          - IN
+        productInstanceRecord:
+          $ref: '#/components/schemas/productInstanceRecord'
+        applicationOfferDate:
+          type: string
+          description: Vigencia de oferta con el siguiente formato yyyy-MM-dd
+        applicationContractNumber:
+          type: string
+          description: Número de Contrato acotado a 20 caracteres
+        registerStatus:
+          type: string
+          description: ' A - Activo B - Inactivo C - Cancelado D - Pendiente E - Terminado
+            F - Aceptado G - Rechazado H - Orden Supervisión'
+          enum:
+          - A
+          - B
+          - C
+          - D
+          - E
+          - F
+          - G
+          - H
+        validityDate:
+          type: string
+        contractRegister:
+          $ref: '#/components/schemas/contractRegister'
+        notificationEmailSubject:
+          type: string
+        requestChannel:
+          type: number
+          description: Medio de la solicitud
+    creditCardNotification:
+      title: creditCardNotification
+      type: object
+      properties:
+        notificationMessageIdentification:
+          type: string
+        notificationMessageStatus:
+          type: string
+        notificationDeliveryStatus:
+          type: string
+    creditHistory:
+      title: creditHistory
+      type: object
+      properties:
+        acountRecord:
+          type: object
+          properties:
+            numberOfAccounts:
+              type: array
+              items:
+                type: object
+                properties:
+                  accountType:
+                    type: string
+                    enum:
+                    - quantityOpenAccountSix
+                    - udisAmountAccount
+                    - ffDifAccount
+                    - udisAmountAccout
+                    - servicelessAccount
+                    - amountsType
+                    - servicePaymentsAccount
+                    - mortgageServiceAccount
+                    - mortgageServicePaymentAccount
+                    - retailAccount
+                    - leaseAccount
+                    - retailStoreAccount
+                    - minimumPaymentAccount
+                    - ffStatusAccount
+                    - sicRequestAccount
+                    - expiredCreditAccount
+                    - openAccountsSixMonths
+                  amount:
+                    type: number
+        mopRecord:
+          type: object
+          properties:
+            mopAmount:
+              type: array
+              items:
+                type: object
+                properties:
+                  amountType:
+                    type: string
+                    enum:
+                    - currentMOPMaxAmount
+                    - accountKey
+                    - udisMOPAmount
+                    - currentMOPMAxAmount
+                    - sixMonthsMOPHistory
+                    - sixMonthsMaxMOPAccount
+                    - udisAmount
+                    - twelveMonthsMOPHistory
+                    - twelveMonthsMOPInstitutionHistory
+                    - twelveMonthsUDISHistory
+                    - twelveMonthsMOPAccount
+                    - twelveMonthsFiveMOPAccount
+                    - twelveMonthsFiveServerlessMOPAccount
+                    - recentSixMonthsFourMOPAccount
+                    - recentSixMonthsFiveMOPAccount
+                    - recentSixMonthsMOPAccount
+                    - rejectionUDIS
+                    - thirtyMonthsFourMOPAccount
+                    - thirtyMonthsFiveMOPAccount
+                    - thirtyMonthsMOPAccount
+                    - recentThirtyMonthsFourMOPAccount
+                    - recentThirtyMonthsFiveMOPAccount
+                    - recentThirtyMonthsMOPAccount
+                    - maxMOPAccounts
+                    - thirtyMonthsRejectionMOPAccount
+                    - thirtyMonthsRejectionUDISAccount
+                    - operationKeyMOPAccount
+                    - maxMOPInstitutionHistoryAmount
+                    - mopBankAccount
+                    - mopHighBankHistoryAccount
+                    - mopBankHistoryAccount
+                    - mopBankAccountsTL26
+                    - mopBankAccountsTL38
+                    - mopBankAccountsTL27
+                    - highMopBankAccounts
+                    - mopServiceAccountsTL26
+                    - mopServiceAccountsTL38
+                    - mopServiceAccountsTL27
+                    - highMopServiceAccounts
+                    - mopTwelveMonthsServiceAccountsTL26
+                    - mopTwelveMonthsServiceAccountsTL38
+                    - mopTwelveMonthsServiceAccountsTL27
+                    - highMopTwelveMonthsServiceAccounts
+                    - maxMOPBankAccounts
+                    - maxMOPBankHistoryAccounts
+                    - maxMOPHistoryAccount
+                    - maxMOPTL26
+                    - maxMOPTL38
+                    - maxMOPTL27
+                    - mopAccounts3
+                  amount:
+                    type: number
+            numberOfAccounts:
+              type: array
+              items:
+                type: object
+                properties:
+                  accountType:
+                    type: string
+                    enum:
+                    - expiredCreditAccount
+                  amount:
+                    type: number
+        creditStatus:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: number
+              type:
+                type: string
+                enum:
+                - fcStatus
+        creditHistoryParameters:
+          type: array
+          items:
+            type: object
+            properties:
+              parameterIdentifier:
+                type: number
+              parameterType:
+                type: string
+                enum:
+                - maxMonthParameter
+                - oldestMonthsPercentage
+                - worstMOPHistoryParameter
+                - accountHistoryParameter
+                - maxAccountOpenDate
+                - accountServerlessHistoryParameter
+                - openAccountParameter
+                - lastRequestParameter
+                - worstTwelveMonthMOPParameter
+                - worstMOPParameter
+        monthlyAverage:
+          type: number
+        oldestAccount:
+          type: number
+        historyProspectMonths:
+          type: number
+        clientRequest:
+          type: number
+        allowedMonths:
+          type: number
+        monthAverage:
+          type: number
+        creditEfficiency:
+          type: number
+        creditExperience:
+          type: number
+        experienceReferenceId:
+          type: string
+        expiredBalance:
+          type: number
+        expiredCoppelBalance:
+          type: number
+        historyMonths:
+          type: string
+        historyPaymentStatus:
+          type: string
+        minimumIncome:
+          type: number
+        minimumMonths:
+          type: number
+        paymentRecord:
+          type: number
+        percentage:
+          type: number
+        reservedAmount:
+          type: number
+        reservedBalance:
+          type: number
+        totalExpiredPayment:
+          type: number
+        totalPayment:
+          type: number
+        transactionType:
+          type: string
+        LSM:
+          type: number
+        additionalHistoryDetails:
+          type: array
+          items:
+            type: object
+            properties:
+              details:
+                type: string
+        creditReason:
+          type: number
+        decreasingAmount:
+          type: number
+        decreasingPercentage:
+          type: number
+        historyObservation:
+          type: string
+        increasingAmount:
+          type: number
+        increasingPercentage:
+          type: number
+        mcRevision:
+          type: string
+        message:
+          type: string
+        oldestAverageAge:
+          type: number
+        originHistory:
+          type: array
+          items:
+            type: object
+            properties:
+              origin:
+                type: string
+        parametric:
+          type: string
+        percentageStatus:
+          type: string
+        requestedAmount:
+          type: string
+        totalExpenses:
+          type: number
+        totalParametric:
+          type: number
+        value:
+          type: number
+        voucher:
+          type: number
+    creditPlan:
+      title: creditPlan
+      type: object
+      properties:
+        creditPlanMinimumAmount:
+          type: number
+          description: Cantidad mínima del plan de crédito
+        creditPlanMaximumAmount:
+          type: number
+          description: Cantidad máxima del plan de crédito
+        creditPlanReference:
+          type: string
+          description: Referencia del plan de crédito
+        creditPlanName:
+          type: string
+          description: Nombre del plan de crédito
+        creditPlanType:
+          type: string
+          description: Tipo del plan de crédito
+        creditPlanLimit:
+          type: number
+          description: Limite del plan de crédito
+    creditProfile:
+      title: creditProfile
+      type: object
+      properties:
+        overdueAirtimeBalance:
+          type: string
+          description: Monto vencido aire
+        monthlyAirtimePayment:
+          type: string
+          description: Abono mensual aire
+        totalAirtimeBalance:
+          type: string
+          description: Saldo total aire.
+        overdueRestructureBalance:
+          type: string
+          description: Monto vencido reestructuracion
+        monthlyRestructurePayment:
+          type: string
+          description: Abono mensual reestructuracion
+        totalRestructureBalance:
+          type: string
+          description: Saldo total reestructuracion.
+        overdueMembersBalance:
+          type: string
+          description: Monto vencido afiliado
+        monthlyMembersPayment:
+          type: string
+          description: Abono mensual afiliado
+        totalMembersBalance:
+          type: string
+          description: Saldo total afiliado.
+        scoring:
+          type: string
+          description: Scoring
+        paymentTimeliness:
+          type: string
+          description: Puntualidad
+        paymentEfficiencyPercentage:
+          type: string
+          description: Puntualidad
+        monthsOfTenure:
+          type: string
+          description: Puntualidad
+        reason:
+          type: string
+          description: Causa de la situación que tiene el crédito del cliente en Coppel
+        furnitureOverdueBalance:
+          type: string
+          description: Saldo vencido en muebles
+        clothingOverdueBalance:
+          type: string
+          description: Saldo vencido en ropa
+        loanOverdueBalance:
+          type: string
+          description: Saldo vencido en ropa
+        furnitureCurrentBalance:
+          type: string
+          description: Saldo en muebles
+        clothingCurrentBalance:
+          type: string
+          description: Saldo en ropa
+        loanCurrentBalance:
+          type: string
+          description: Saldo en ropa
+        furniturePayment:
+          type: string
+          description: Abono en muebles
+        clothingPayment:
+          type: string
+          description: Abono en ropa
+        loanPayment:
+          type: string
+          description: Abono en ropa
+        lastPurchase:
+          type: string
+          description: Indica la fecha de última compra del cliente en Coppel
+        lastPayment:
+          type: string
+          description: Indica la fecha de último pago del cliente en Coppel
+        loanApproved:
+          type: string
+          description: Prestamo autorizado
+        loanAmount:
+          type: string
+          description: Monto autorizado
+        loanOfficer:
+          type: string
+          description: Representante del prestamo
+        limit:
+          type: string
+          description: Limite de credito
+        creditLine:
+          type: string
+          description: Linea de credito
+        specialSituation:
+          type: string
+          description: Situacion especial
+        creditApproved:
+          type: string
+          description: Situacion especial
+    customerCreditRatingState:
+      title: customerCreditRatingState
+      type: object
+      properties:
+        customerReference:
+          type: string
+          description: Identificador único del cliente.
+        customerCreditRatingStatusType:
+          type: string
+          description: Tipo de estado de la calificación crediticia del cliente.
+        customerCreditRatingSchedule:
+          type: string
+          description: Agenda o programación de la calificación de crédito.
+        customerCreditRatingAssessmentRecord:
+          type: string
+          description: Registro detallado de la evaluación crediticia del cliente.
+        assessmentCustomerBehaviorModelReference:
+          type: string
+          description: Referencia al modelo de comportamiento del cliente utilizado
+            para la evaluación.
+        creditRatingAssessmentType:
+          type: string
+          description: Tipo de evaluación de calificación crediticia realizada.
+        creditRatingAssessmentDate:
+          $ref: '#/components/schemas/dateContent'
+        creditRatingBlackListType:
+          type: string
+          description: "Tipo de lista negra de calificación crediticia, si aplica."
+        creditRatingAssessmentWorkProducts:
+          type: string
+          description: Productos de trabajo resultantes de la evaluación de calificación
+            crediticia.
+        creditRatingAssessmentResult:
+          type: string
+          description: Resultado final de la evaluación de calificación crediticia.
+        customerCreditRatingRecord:
+          type: string
+          description: Registro histórico de calificaciones crediticias del cliente.
+        customerCreditRatingNarrative:
+          type: string
+          description: Descripción o narrativa detallada relacionada con la calificación
+            crediticia del cliente.
+        customerCreditRatingDate:
+          $ref: '#/components/schemas/dateContent'
+    customerRelationshipInvolvement:
+      title: customerRelationshipInvolvement
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        customerRelationshipInvolvementType:
+          type: string
+          description: Tipo de Rol A - PEP B - CONYUGE C - REFERENCIA
+        partyRelationshipType:
+          type: string
+          description: "Parentesco acotado a 1 posición que puede contener los siguientes\
+            \ valores: A - ABUELO (A) B - SOBRINO (A) C - CUÑADO (A) E - ESPOSO(A)\
+            \ / CÓNYUGE H - HERMANO (A) I - AMIGO(A)/CONOCIDO(A) J - HIJO (A) N -\
+            \ NIETO (A) P - PADRE / MADRE R - PRIMO(A) T - TIO (A) U - SUEGRO (A)"
+        dateTime:
+          type: string
+          description: Fecha de validación
+        sequence:
+          type: number
+          description: Secuencia del mensaje a mostrar
+    customerSpecialConditions:
+      title: customerSpecialConditions
+      type: object
+      properties:
+        specialConditions:
+          $ref: '#/components/schemas/specialConditions'
+        companyReference:
+          type: string
+          description: Empresa relacionada con la línea de crédito.
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        customerSpecialConditionsReference:
+          type: string
+          description: Id del registro
+        customerSpecialConditionsDate:
+          $ref: '#/components/schemas/dateContent'
+        customerSpecialConditionsTime:
+          type: string
+          description: Hora del registro
+        statusInstanceRecord:
+          $ref: '#/components/schemas/statusInstanceRecord'
+        detail:
+          type: string
+          description: Detalle del registro
+        customerReference:
+          type: string
+          description: Identificador único del cliente.
+        statusDetail:
+          type: string
+          description: Detalle del registro
+    dateContent:
+      title: dateContent
+      type: object
+      properties:
+        dateContent:
+          type: string
+          description: Contenido de la fecha.
+    digitalServicesEndorsement:
+      title: digitalServicesEndorsement
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    documentContent:
+      title: documentContent
+      type: object
+      properties:
+        ocrData:
+          $ref: '#/components/schemas/ocrData'
+        page:
+          $ref: '#/components/schemas/page'
+    economicActivity:
+      title: economicActivity
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción de la actividad económica.
+        code:
+          type: string
+          description: Código de la actividad económica.
+        lastEmploymentDurationYears:
+          type: string
+          description: Número de años en el empleo anterior
+        lastEmploymentDurationMonths:
+          type: string
+          description: ¿Cuántos meses trabajaste en tu empleo anterior?
+        currentEmploymentDurationYears:
+          type: string
+          description: Número de años en el empleo actual
+        currentEmploymentDurationMonths:
+          type: string
+          description: ¿Cuántos meses trabajaste en tu empleo actual?
+        companyName:
+          type: string
+          description: Nombre de la empresa
+    endorsement:
+      title: endorsement
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Llave generada por Incode ligada al cliente prospecto
+        endorsementManagement:
+          type: array
+          items:
+            type: object
+            properties:
+              endorsementType:
+                type: number
+                description: Tipo de consentimiento otorgado por el cliente prospecto
+                  * 1 - ¿Eres Cliente Bancoppel? * 2 - Términos & Condiciones * 3
+                  - Aviso de Privacidad * 4 - Aceptación Validación ante INE * 5 -
+                  Aceptación Validación SIC * 6 - Aceptación Consulta Información
+                  Línea Celular * 7.- Ubicación dispositivo * 8 - Domicilio Actual
+                  * 9 - Camara y microfono *10 - Servicios Digitales *11 - Retomar
+                  solicitud *12 - Grabacion *13 - Permiso ingresar informacion con
+                  Coppel
+                enum:
+                - 1
+                - 2
+                - 3
+                - 4
+                - 5
+                - 6
+                - 7
+                - 8
+                - 9
+                - 10
+                - 11
+                - 12
+                - 13
+              endorsementStatus:
+                type: string
+              endorsementDateTime:
+                type: string
+              endorsementDescription:
+                type: string
+        digitalServicesEndorsement:
+          $ref: '#/components/schemas/digitalServicesEndorsement'
+        statusCode:
+          type: string
+        responseMessage:
+          type: string
+    evaluatePartyApplicationRequest:
+      title: evaluatePartyApplicationRequest
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+        validationManagement:
+          $ref: '#/components/schemas/validationManagement'
+    familyProfile:
+      title: familyProfile
+      type: object
+      properties:
+        location:
+          $ref: '#/components/schemas/location'
+    group:
+      title: group
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del grupo.
+        code:
+          type: string
+          description: Código del grupo.
+    identificationDevice:
+      title: identificationDevice
+      type: object
+      properties:
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento formato timestamp
+        gender:
+          type: string
+          description: El género de la persona obtenido de ocr * M = Masculino* F
+            = Femenino
+        voterKey:
+          type: string
+          description: Clave de elector como se lee de id. Solo para identificaciones
+            mexicanas.
+        curp:
+          maxLength: 18
+          minLength: 18
+          type: string
+          description: ID de formulario de lectura. Solo para identificaciones mexicanas.
+        ocr:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        cic:
+          type: string
+          description: Este campo se lee desde el reverso de la identificación; solo
+            para identificaciones mexicanas
+        emissionNumber:
+          type: string
+          description: Número de emisión.
+        expireAt:
+          type: string
+          description: Fecha de caducidad.
+        expirationDate:
+          type: string
+          description: Año de vencimiento de la identificación.
+        issueDate:
+          type: number
+          description: Año de emisión de la identificación.
+        machineReadZone:
+          $ref: '#/components/schemas/machineReadZone'
+        personName:
+          $ref: '#/components/schemas/personName'
+        registrationDate:
+          type: string
+          description: Fecha de registro
+        dateOfBirthCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        documentNumberCheckDigit:
+          type: string
+          description: Dígito de verificación del número de documento leído de MRZ.
+        expirationDateCheckDigit:
+          type: string
+          description: Dígito de verificación de fecha de caducidad leído de MRZ.
+        dateofBirthMrz:
+          type: string
+          description: Dígito de verificación de fecha de nacimiento leído de MRZ.
+        nationality:
+          type: string
+          description: Nacionalidad otenida del OCR.
+        rfcfamilyNameLetter:
+          type: string
+          description: Dígito que indica la letra representativa del apellido familiar.
+        rfcFirstNameLetter:
+          type: string
+          description: Dígito que indica la letra representativa del primer nombre.
+        rfcWordValidationResult:
+          type: boolean
+          description: Resultado de la vlaidacion de Word RFC
+        rfcHomoClave:
+          type: string
+          description: Homo Clave generada a partir de los caracteres del RFC
+        rfcVerificationCode:
+          type: string
+          description: Resultado de la verificación del RFC
+    identifications:
+      title: identifications
+      type: array
+      items:
+        type: object
+        properties:
+          identifier:
+            type: object
+            properties:
+              identifierValue:
+                type: string
+                description: Especifica el valor único del identificador.
+              issuingAuthority:
+                type: string
+                description: Nombre de la entidad que emite o proporciona el identificador.
+              issuingAuthorityType:
+                type: string
+                description: Tipo o categoría de la entidad emisora.
+              identifierStartDate:
+                type: string
+                description: Fecha en la que el identificador fue emitido o comenzó
+                  a ser válido.
+              identifierEndDate:
+                type: string
+                description: Fecha de expiración o finalización de la validez del
+                  identificador.
+              identifierHolderName:
+                type: string
+                description: Nombre de la persona o entidad que posee o está asociada
+                  con el identificador.
+          personIdentificationType:
+            type: string
+            description: Indica el tipo de documento de identidad * ClaveUnicaRegistroPoblacion
+              =  Clave Unica Registro Poblacion * Codigo Cliente = Codigo Cliente  *
+              Registro Federal Contribuyentes = Registro Federal Contribuyentes *
+              Numero Persona Coppel = Numero Persona Coppel * Documentos Migratorios
+              De No Emigrantes = Documentos Migratorios De No Emigrantes  * Codigo
+              Identificacion = Codigo Identificacion * Numero Identificacion = Numero
+              Identificacion * Numero Identificacion Social = Numero Identificacion
+              Social
+            enum:
+            - ClaveUnicaRegistroPoblacion
+            - Codigo Cliente
+            - Registro Federal Contribuyentes
+            - Numero Persona Coppel
+            - Documentos Migratorios De No Emigrantes
+            - Codigo Identificacion
+            - Numero Identificacion
+            - Numero Identificacion Social
+          file:
+            type: string
+            description: Archivo relacionado con la identificación.
+          folioDigit:
+            type: string
+            description: Dígito del folio asociado.
+          provinceDigit:
+            type: string
+            description: Dígito representativo de la provincia.
+          specialIdentDigit:
+            type: string
+            description: Dígito especial de identificación.
+          personDocumentType:
+            type: string
+            description: Tipo de documento de la persona.
+          customerCreditRatingState:
+            $ref: '#/components/schemas/customerCreditRatingState'
+    incomeProfile:
+      title: incomeProfile
+      type: object
+      properties:
+        jobTitle:
+          $ref: '#/components/schemas/jobTitle'
+        organisation:
+          $ref: '#/components/schemas/organisation'
+        lengthOfService:
+          type: number
+          description: antiguedad en el trabajo
+        workUnit:
+          type: string
+          description: departamento o area
+        salaryAmount:
+          type: string
+          description: Monto de salario percibido
+        salaryFrequency:
+          type: number
+          description: Frecuencia de salario
+        governmentIdentification:
+          type: number
+          description: Identificacion del sistema de cotizacion
+        supervisor:
+          type: string
+          description: Nombre del jefe inmediato
+        workforceSize:
+          type: string
+          description: Cantidad de empleados
+        otherIncome:
+          $ref: '#/components/schemas/otherIncome'
+        sequence:
+          type: integer
+          description: Identificador del registro
+    ine:
+      title: ine
+      type: object
+      properties:
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        result:
+          type: string
+          description: Resultado de la acción INE
+        scrapingStatus:
+          type: string
+          description: Resultado del proceso de scraping
+        url:
+          type: string
+          description: Direccion URL que lleva a una captura de pantalla del scraping
+        documentContent:
+          $ref: '#/components/schemas/documentContent'
+    jobTitle:
+      title: jobTitle
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+      description: Informacion sobre el trabajo
+    location:
+      title: location
+      type: array
+      items:
+        type: object
+        properties:
+          ipAddress:
+            type: string
+            description: Dirección IP del dispositivo desde el que se está ejecutando
+              el onboarding.
+          locationDescription:
+            type: string
+            description: Detalles de la locación
+          country:
+            $ref: '#/components/schemas/countryReference'
+          city:
+            $ref: '#/components/schemas/cityReference'
+          cityNumber:
+            type: number
+          region:
+            $ref: '#/components/schemas/region'
+          state:
+            $ref: '#/components/schemas/state'
+          longitude:
+            type: string
+            description: Longitud de geolocalización del usuario.
+          latitude:
+            type: string
+            description: Latitud de geolocalización del usuario.
+          cardinalPoint:
+            type: string
+            description: Punto Cardinal
+            enum:
+            - NORTE
+            - SUR
+            - ESTE
+            - OESTE
+          isHousingUnit:
+            type: boolean
+            description: Es una unidad habitacional
+          street:
+            type: object
+            properties:
+              streetName:
+                type: string
+                description: Nombre de la calle que normalmente acompaña una direcció
+                  n.
+              streetCode:
+                type: string
+                description: Codigo de la calle que normalmente acompaña una direcció
+                  n.
+              streetNumber:
+                type: string
+                description: Numero de la calle que normalmente acompaña una direcció
+                  n.
+          neighborhood:
+            type: string
+            description: "Barrio, nombre común (mSubLocality)."
+          postalAddress:
+            type: string
+            description: Dirección postal.
+          isInvalidAddress:
+            type: string
+            description: Indica si la dirección es válida.
+          emissionDate:
+            type: string
+            description: "Emisión, fecha de registro."
+          locationAddressType:
+            type: string
+            description: Indica el tipo de direccion * IP_ADDRESS =  Direccion IP  *
+              DEVICE_ADDRESS = Direccion de un dispositivo * PARTY_ADDRESS = Direccion
+              de una persona * INE_ADDRESS = Direccion retornada por el INE * BIRTH_PLACE
+              = Direccion de Nacimiento
+            enum:
+            - IP_ADDRESS
+            - DEVICE_ADDRESS
+            - PARTY_ADDRESS
+            - INE_ADDRESS
+            - BIRTH_PLACE
+            - RESIDENCE_INVOICE
+            - PERSON_REFERENCE
+          countryDistrict:
+            $ref: '#/components/schemas/countryDistrict'
+          countyDistrict:
+            $ref: '#/components/schemas/countyDistrict'
+          sector:
+            type: string
+            description: Nombre del sector donde se vive.
+          houseNumber:
+            type: string
+            description: Numero de casa
+          couse:
+            type: string
+            description: Complemento de ubicación (indicación)
+          stage:
+            type: string
+            description: Etapa
+          lot:
+            type: string
+            description: Lote
+          building:
+            type: string
+            description: Edificio
+          locationReferencePoint:
+            type: string
+            description: Complemento de domicilio.
+          neighborhoodList:
+            $ref: '#/components/schemas/neighborhoodList'
+          isFullAddress:
+            type: boolean
+            description: Dirección domiciliaria completa.
+          internalHouseNumber:
+            type: string
+            description: Indica el número interior del domicilio
+          externalHouseNumber:
+            type: string
+            description: Indica el número exterior del domicilio
+          housingType:
+            type: string
+          province:
+            $ref: '#/components/schemas/province'
+          postalCode:
+            type: string
+            description: Indica el codigo postal
+          apartment:
+            type: string
+            description: numero de apartamento
+          addressWorkingInhabitantsNumber:
+            type: string
+            description: Numero de trabajadores en el sitio de trabajo
+          locationObservations:
+            type: string
+            description: Observaciones referentes al domicilio
+          isCurrentAddress:
+            type: boolean
+            description: indica si es el domicilio actual
+          sessionDialogueIdentification:
+            type: string
+            description: Llave generada por Incode ligada al cliente prospecto
+          block:
+            type: string
+            description: Bloque o manzana de la locacion
+          neighborhoodNumber:
+            type: string
+            description: "Codigo Barrio, número común (mSubLocality)."
+          locationInegiCode:
+            type: string
+            description: Referencia de la localidad con respecto al Inegi
+          entryPoint:
+            type: string
+            description: Indica el punto de entrada
+          currentAddressTime:
+            type: string
+            description: Años en el domicilio actual
+          addressInhabitantsNumber:
+            type: string
+            description: Numbero de habitantes en el domicilio
+          housingUnit:
+            type: string
+            description: Unidad habitacional
+    machineReadZone:
+      title: machineReadZone
+      type: array
+      items:
+        type: object
+        properties:
+          value:
+            type: string
+            description: valor de la línea ZLM.
+        description: Objeto que define las líneas ZLM.
+    neighborhoodList:
+      title: neighborhoodList
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre del Barrio.
+    ocrData:
+      title: ocrData
+      type: object
+      properties:
+        personName:
+          $ref: '#/components/schemas/personName'
+        location:
+          $ref: '#/components/schemas/location'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        confidence:
+          $ref: '#/components/schemas/confidence'
+        dateTime:
+          type: string
+      description: Datos sacados del OCR aplicado a los documentos
+    organisation:
+      title: organisation
+      type: object
+      properties:
+        organisationName:
+          type: string
+          description: Nombre oficial de la organización.
+    otherIncome:
+      title: otherIncome
+      type: array
+      items:
+        type: object
+        properties:
+          incomeAmount:
+            type: number
+            description: Monto del ingreso
+          incomeLocation:
+            type: string
+            description: "Local, extranjero, ambos"
+          incomeSource:
+            type: string
+            description: Fuente de ingresos
+          incomeType:
+            type: number
+            description: "1.  AHORROS 2.  NOMINA 3.  HERENCIA 4.  NEGOCIO PROPIO 5.\
+              \  PENSION 6.  VENTA DE NEGOCIOS O PROPIEDADES 7.  OBSEQUIOIS/DONACIONES\
+              \ 8.  APUESTAS, JUES O SORTEOS 9.  OTRO 10.  CREDITOS 11.  RECURSOS\
+              \ DE TERCEROS 12.  SERVICIOS/COMERCIOS 13.  PRODUCCION/MANOFACTURA 14.\
+              \  REMESAS FAMILIAR 15.  BECA 16.  TANDA 17.  RENTA 18.  HONORARIOS\
+              \ 19.  PRESTAMO"
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+            - 14
+            - 15
+            - 16
+            - 17
+            - 18
+            - 19
+    page:
+      title: page
+      type: array
+      items:
+        type: object
+        properties:
+          content:
+            $ref: '#/components/schemas/content'
+          type:
+            type: string
+            description: Indica el tipo de la imágen. * selfie =  Selfie * videoSelfie
+              = Video Selfie * domiciliary-invoice = Comprobante de dpmicilio * front-document
+              = Anverso del documento de identidad * back-document = Reverso del documento
+              de identidad
+            enum:
+            - selfie
+            - videoSelfie
+            - domiciliary-invoice
+            - front-document
+            - back-document
+            - contract
+            - pdf-linetime
+            - graph-pdf
+            - validity-chain-pdf
+            - nom-151-document
+            - nom-151-detail
+            - signature
+            - pdf-validantions-consents
+            - croppedFrontID
+            - croppedBackID
+          documentLink:
+            type: string
+          documentIdentifier:
+            type: string
+            description: Identificador del documento
+          contract:
+            type: string
+    partyReference:
+      title: partyReference
+      type: object
+      properties:
+        identifications:
+          $ref: '#/components/schemas/identifications'
+        personName:
+          $ref: '#/components/schemas/personName'
+        dateOfBirth:
+          type: string
+          description: Fecha de nacimiento
+        location:
+          $ref: '#/components/schemas/location'
+        gender:
+          type: string
+          description: El género de la persona  * M = Masculino * F = Femenino
+        status:
+          type: string
+          description: Estado de validacion de un proceso.
+        nationality:
+          type: string
+          description: Nacionalidad del usuario.
+        contactPoint:
+          $ref: '#/components/schemas/contactPoint'
+        identificationDevice:
+          $ref: '#/components/schemas/identificationDevice'
+        customerType:
+          type: string
+          description: Tipo de cliente.
+        referenceId:
+          type: string
+          description: Id del cliente
+        referenceIdCoppel:
+          type: string
+          description: Id Coppel del cliente
+        marketing:
+          type: string
+          description: Marketing
+        profession:
+          type: string
+          description: Actividad profesional del cliente
+        matrimonialRegime:
+          type: string
+          description: Régimen matrimonial.
+        maritalStatus:
+          type: string
+          description: Estado civil.
+        birthPlace:
+          $ref: '#/components/schemas/birthPlace'
+        personProfile:
+          $ref: '#/components/schemas/personProfile'
+        companyReference:
+          type: string
+          description: Referencia de empresa
+        employeeNumber:
+          type: string
+          description: id de empleado que realizo la transaccion
+        bankBranch:
+          $ref: '#/components/schemas/bankBranch'
+        totalOccupancy:
+          type: string
+          description: ocupación total
+        specificActivity:
+          type: string
+          description: actividad especifica
+        economicActivity:
+          type: string
+          description: actividad economica
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        dependents:
+          type: string
+          description: dependientes
+        customerReference:
+          type: string
+          description: Referencia del cliente
+        businessName:
+          type: string
+          description: Nombre comercial
+        partyName:
+          type: string
+          description: Nombre del cliente
+        maritalStatusDurationYears:
+          type: string
+          description: Años de Estado Civil
+        maritalStatusDurationMonths:
+          type: string
+          description: Meses de Estado Civil
+        economicActivityIdentification:
+          type: string
+          description: Actividad económica
+        economicSubActivityIdentification:
+          type: string
+          description: Sub Actividad económica
+        housingType:
+          type: string
+          description: Identificador del catálogo de tipo de vivienda. - 1. Propia
+            - 2. Rentada - 3. Familiar - 4. Huesped - 5. Pagandola/Hipotecada/Infonavit
+            - 6. Prestada
+    partyRetailReferenceDataDirectoryEntry:
+      title: partyRetailReferenceDataDirectoryEntry
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+    partyType:
+      title: partyType
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del tipo de persona
+        description:
+          type: string
+          description: Descripción del tipo de persona.
+    pepProfile:
+      title: pepProfile
+      type: object
+      properties:
+        relatives:
+          type: string
+          description: Indica si tiene familiares.
+        role:
+          type: string
+          description: Rol del PEP.
+        publicPosition:
+          type: boolean
+          description: ¿Cuenta con un cargo público? PEP
+        pepFamily:
+          type: boolean
+          description: ¿Se encuentra algún familiar dentro de algún cargo público?
+        civilAssociation:
+          type: boolean
+          description: ¿Se encuentra dentro de una asociación civil?
+        associationDescription:
+          type: string
+          description: Asociación civil acotado a 50 caracteres
+        ownershipStake:
+          type: number
+          description: Participacion accionaria
+        pepRole:
+          type: string
+          description: Cargo familiar PEP acotado a 50 caracteres
+    personName:
+      title: personName
+      type: object
+      properties:
+        firstName:
+          type: string
+          description: Primer nombre del usuario
+        secondName:
+          type: string
+          description: Segundo nombre del usuario
+        familyName:
+          type: string
+          description: Primer apellido del usuario
+        secondLastName:
+          type: string
+          description: Segundo apellido del usuario
+        marriedName:
+          type: string
+          description: Apellido de Matrimonio
+        firstNameMrz:
+          type: string
+          description: Primer nombre
+        familyNameMrz:
+          type: string
+          description: Nombre Familiar
+        fullNameMrz:
+          type: string
+          description: Nombre completo
+        fullName:
+          type: string
+          description: Nombre completo
+        alias:
+          type: string
+          description: Apodo
+    personProfile:
+      title: personProfile
+      type: object
+      properties:
+        profileType:
+          type: string
+          description: Tipo de perfil.
+        residency:
+          type: string
+          description: Lugar de residencia.
+        pepProfile:
+          $ref: '#/components/schemas/pepProfile'
+        partyType:
+          $ref: '#/components/schemas/partyType'
+        activitySector:
+          $ref: '#/components/schemas/activitySector'
+        economicActivity:
+          $ref: '#/components/schemas/economicActivity'
+        segment:
+          $ref: '#/components/schemas/segment'
+        group:
+          $ref: '#/components/schemas/group'
+        subGroup:
+          $ref: '#/components/schemas/subGroup'
+        numberOfDependents:
+          type: string
+          description: Número de dependientes.
+        guardian:
+          type: string
+          description: Tutor o guardián.
+        guardianReferenceId:
+          type: string
+          description: Referencia del tutor o guardián.
+        spouse:
+          type: string
+          description: Cónyuge.
+        spouseReferenceId:
+          type: string
+          description: Referencia del cónyuge.
+        burialInsurance:
+          type: string
+          description: Seguro de entierro.
+        educationalLevel:
+          type: string
+          description: Nivel educativo.
+        residencyPlace:
+          type: string
+          description: Lugar de residencia.
+        residencyYear:
+          type: string
+          description: Año de residencia.
+        propertyName:
+          type: string
+          description: Nombre de la propiedad.
+        mortgage:
+          type: number
+          description: Monto de la hipoteca.
+        biometricType:
+          type: string
+          description: Tipo de biometria.
+        smsConfiguration:
+          type: string
+          description: Indica si acepta mensajeria SMS.
+        monthlyIncome:
+          type: string
+          description: Ingreso  Mensual acotado
+        hasIncomeProof:
+          type: string
+        resourceIdentification:
+          type: string
+          description: Tipo de ingreso
+        accountOpeningOperator:
+          type: object
+          properties:
+            operatorReferenceid:
+              type: string
+              description: Id de referencia del operador de apertura de cuenta.
+        accountOpeningAuthorizer:
+          type: object
+          properties:
+            authorizerReferenceId:
+              type: string
+              description: Id de referencia del autorizador de apertura de cuenta.
+    productInstanceRecord:
+      title: productInstanceRecord
+      type: object
+      properties:
+        productInstanceReference:
+          type: string
+          description: Indica el identificador del producto
+        productInstanceReferenceName:
+          type: string
+          description: Indica el nombre del producto
+        productSubType:
+          type: string
+          description: Clasificación secundaria del producto
+        productInstanceIdentification:
+          type: string
+          description: ID del producto relacionado al expediente.
+        productInstanceType:
+          type: string
+          description: Type del producto relacionado al expediente.
+    province:
+      title: province
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la provincia
+        code:
+          type: string
+          description: Código de la provincia
+    reasonRejection:
+      title: reasonRejection
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre de la razon de rechazo
+          code:
+            type: string
+            description: Código de la razon de rechazo
+          detail:
+            type: string
+            description: Detalle de la razon de rechazo
+          rejectionType:
+            type: string
+            description: tipo o clasificacion del rechazo
+    region:
+      title: region
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre de la region
+    rfc:
+      title: rfc
+      type: object
+      properties:
+        partyReference:
+          $ref: '#/components/schemas/partyReference'
+      description: Objeto que indica la informacion sacada del RFC
+    segment:
+      title: segment
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del segmento.
+        code:
+          type: string
+          description: Código del segmento.
+    specialConditions:
+      title: specialConditions
+      type: array
+      items:
+        type: object
+        properties:
+          name:
+            type: string
+            description: Nombre de la condicion especial.
+          code:
+            type: string
+            description: Codigo de la condicion especial.
+          detail:
+            type: string
+            description: Detalle de la condicion especial.
+          specialConditionType:
+            type: string
+            description: Tipo de condicion especial.
+    state:
+      title: state
+      type: object
+      properties:
+        code:
+          type: string
+          description: Codigo del estado
+        name:
+          type: string
+          description: Nombre del estado
+        inegiCode:
+          type: string
+          description: Nombre del municipio con respecto al Inegi
+      description: Informacion sobre el estado
+    statusInstanceRecord:
+      title: statusInstanceRecord
+      type: object
+      properties:
+        statusCode:
+          type: string
+          description: Codigo del estado de la instancia
+        message:
+          type: string
+          description: Descripcion sobre el estado de la instancia
+        status:
+          type: string
+          description: status de la solicitud
+      description: Contiene la informacion registrada de una instancia ante un evento
+    subGroup:
+      title: subGroup
+      type: object
+      properties:
+        description:
+          type: string
+          description: Descripción del subgrupo.
+        code:
+          type: string
+          description: Código del subgrupo.
+    totalCost:
+      title: totalCost
+      type: object
+      properties:
+        sessionDialogueIdentification:
+          type: string
+          description: Llave generada por Incode ligada al cliente prospecto
+        totalAnnualCost:
+          type: string
+        totalAnnualCommission:
+          type: string
+        totalOrdinaryAnnualInterestRate:
+          type: string
+    validationManagement:
+      title: validationManagement
+      type: array
+      description: Validacion realizada del cliente prospecto o por el sistema
+      items:
+        type: object
+        properties:
+          validationCheckDigit:
+            type: string
+            description: Código ingresado en validación acotado a 6 caracteres
+          validationStatus:
+            type: boolean
+            description: Estado de validacion
+          validationDescription:
+            type: string
+            description: Respuesta de servicio o Respuesta de validación acotado a
+              200 caracteres
+          validationDateTime:
+            type: string
+            description: Fecha de validacion
+          validationType:
+            type: number
+            description: tipo de validacion realizada por el cliente prospecto o por
+              el sistema. * 1 - Validación INE - Listas Nominales * 2 - Validación
+              OTP correo * 3 - Validación Correo Malware * 4 - Validación OTP celular
+              * 5 - Validación CURP * 6 - Validación RFC * 7 - Validación SIC- buró
+              externo * 8 - Validación de Domicilio * 9 - Validación de Domicilio
+              referencia * 10 - Pregunta validación PEP * 11 - Validación Dirección
+              INE * 12 - Validación Código Postal * 13 - Validación de solicitud con
+              su estado Activo * 14 - Validación de solicitud con su estado Rechazado
+            enum:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+            - 6
+            - 7
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 13
+            - 14
