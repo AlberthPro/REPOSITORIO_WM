@@ -128,6 +128,33 @@ public final class util
 
 
 
+	public static final void UT_ConcatMultiString (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(UT_ConcatMultiString)>> ---
+		// @sigtype java 3.5
+		// [i] field:1:required toConcat
+		// [o] field:0:required string
+		String[] list = IDataUtil.getStringArray(pipeline.getCursor(), "toConcat");
+		if (list == null) throw new RuntimeException("Los campos de nombre no pueden ser nulos");
+		String output  = "";
+		int index = 0;
+		for (String item : list){
+		if (item!=null){
+		output += item;
+		if (index<list.length-1)
+		output = output + " "; 
+		index++;
+		}
+		}
+		IDataUtil.put(pipeline.getCursor(), "string", output);
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void compareDates (IData pipeline)
         throws ServiceException
 	{

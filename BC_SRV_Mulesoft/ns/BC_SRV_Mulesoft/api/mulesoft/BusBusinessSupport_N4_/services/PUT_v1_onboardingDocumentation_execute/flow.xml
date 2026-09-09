@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <FLOW VERSION="3.0" CLEANUP="true">
+  <COMMENT></COMMENT>
 
   <!-- nodes -->
 
@@ -223,6 +224,47 @@
                 <value name="form_qualified">false</value>
                 <value name="is_global">false</value>
               </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_usereditable">true</value>
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">identity-session-token</value>
+                <value name="field_type">string</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <array name="field_options" type="value" depth="1">
+                </array>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">string</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
             </array>
             <value name="rec_closed">true</value>
             <value name="modifiable">true</value>
@@ -293,7 +335,27 @@
                   <value name="field_password">false</value>
                 </record>
                 <value name="is_public">false</value>
-                <value name="field_name">onboardingDocumentContract</value>
+                <value name="field_name">creditCardApplication</value>
+                <value name="field_type">record</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">IData</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+                <array name="rec_fields" type="record" depth="1">
+                </array>
+                <value name="modifiable">true</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">record</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">partyReference</value>
                 <value name="field_type">record</value>
                 <value name="field_dim">0</value>
                 <value name="wrapper_type">IData</value>
@@ -357,11 +419,11 @@
 </DATA>
 </MAPSET>
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/requestInfo;4;0;BC_SRV_Apolo.docs:dt_requestInfo/url;1;0">
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="true" FIELD="/requestInfo;4;0;BC_SRV_Apolo.docs:dt_requestInfo/url;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">%BusBusinessSupportN4%businessSupport/n4/v1/onBoardingDocumentContract/initiate</value>
+  <value name="xml">%BusBusinessSupportN4%businessSupport/n4/v1/onboardingDocumentation/execute</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -389,7 +451,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">post</value>
+  <value name="xml">put</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -516,19 +578,6 @@
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
-        <value name="is_public">false</value>
-        <value name="field_name">response</value>
-        <value name="field_type">recref</value>
-        <value name="field_dim">0</value>
-        <value name="nillable">true</value>
-        <value name="form_qualified">false</value>
-        <value name="is_global">false</value>
-        <value name="modifiable">true</value>
-        <value name="rec_ref">BC_SRV_Apolo.docs:docType_GenericServiceResponse</value>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="node_type">record</value>
-        <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
           <value name="field_largerEditor">false</value>
@@ -581,6 +630,20 @@
         <value name="field_type">record</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <array name="rec_fields" type="record" depth="1">
+        </array>
+        <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">executeOnboardingDocumentationV1Rs</value>
+        <value name="field_type">record</value>
+        <value name="field_dim">0</value>
         <value name="nillable">true</value>
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
@@ -749,7 +812,7 @@
 
   <!-- nodes -->
 
-<MAPCOPY FROM="/response;2;0" TO="/response(1);4;0;BC_SRV_Apolo.docs:docType_GenericServiceResponse">
+<MAPCOPY FROM="/response;2;0" TO="/executeOnboardingDocumentationV1Rs;2;0">
 </MAPCOPY>
 </MAP>
 </SEQUENCE>

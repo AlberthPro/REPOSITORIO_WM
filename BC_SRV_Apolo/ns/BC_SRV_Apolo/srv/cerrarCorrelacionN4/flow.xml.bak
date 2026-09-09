@@ -66,7 +66,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">cerrarCorrelacion.xml</value>
+  <value name="xml">cerrarCorrelacionN4.xml</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>
@@ -161,7 +161,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">cerrarCorrelacion.xml</value>
+  <value name="xml">cerrarCorrelacionN4.xml</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">field</value>
     <value name="node_subtype">unknown</value>
@@ -180,7 +180,7 @@
 </INVOKE>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>Map termina proceso correlación</COMMENT>
+  <COMMENT>Map N4 termina proceso correlación</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -214,7 +214,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">dt_ApoloTDC</value>
+        <value name="field_name">dt_ApoloN4</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
@@ -223,7 +223,7 @@
         <value name="is_global">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloTDC</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -237,6 +237,26 @@
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
         <value name="rec_ref">BC_SRV_Apolo.docs:dt_terminaProceso</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -276,7 +296,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">dt_ApoloTDC</value>
+        <value name="field_name">dt_ApoloN4</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
@@ -285,7 +305,27 @@
         <value name="is_global">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloTDC</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -294,9 +334,6 @@
 </MAPSOURCE>
 
   <!-- nodes -->
-
-<MAPCOPY FROM="/dt_ApoloTDC;4;0;BC_SRV_Apolo.docs:dt_ApoloTDC/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/processInstanceID;1;0" TO="/dt_terminaProcesoTDC;4;0;BC_SRV_Apolo.docs:dt_terminaProceso/processInstanceID;1;0">
-</MAPCOPY>
 
 <MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_terminaProcesoTDC;4;0;BC_SRV_Apolo.docs:dt_terminaProceso/exitCode;1;0">
   <DATA ENCODING="XMLValues" I18N="true">
@@ -326,10 +363,13 @@
 </Values>
 </DATA>
 </MAPSET>
+
+<MAPCOPY FROM="/ProcessData;4;0;pub.prt:ProcessData/ProcessInstanceID;1;0" TO="/dt_terminaProcesoTDC;4;0;BC_SRV_Apolo.docs:dt_terminaProceso/processInstanceID;1;0">
+</MAPCOPY>
 </MAP>
 
 <INVOKE TIMEOUT="" SERVICE="pub.publish:publish" VALIDATE-IN="$none" VALIDATE-OUT="$none">
-  <COMMENT>Publish a termina proceso TDC</COMMENT>
+  <COMMENT>Publish a termina proceso N4</COMMENT>
 
   <!-- nodes -->
 
@@ -443,7 +483,7 @@
           <value name="field_password">false</value>
         </record>
         <value name="is_public">false</value>
-        <value name="field_name">dt_ApoloTDC</value>
+        <value name="field_name">dt_ApoloN4</value>
         <value name="field_type">recref</value>
         <value name="field_dim">0</value>
         <value name="wrapper_type">IData</value>
@@ -452,7 +492,7 @@
         <value name="is_global">false</value>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
-        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloTDC</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_ApoloN4</value>
       </record>
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
@@ -466,6 +506,26 @@
         <value name="is_global">false</value>
         <value name="modifiable">true</value>
         <value name="rec_ref">BC_SRV_Apolo.docs:dt_terminaProceso</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">ProcessData</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">pub.prt:ProcessData</value>
       </record>
     </array>
     <value name="modifiable">true</value>

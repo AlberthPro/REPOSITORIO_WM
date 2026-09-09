@@ -41,12 +41,12 @@
     uid="P7" useCorrelation="false">
     <documentation/>
     <businessKPIs/>
-    <fontData boldFont="false" italicFont="false"/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
     <annotationNode Id="8f3c002b-5a7c-4e09-8712-b58cd0ddbafa" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
-      text="Bus_activateOnboardingDebitCardWelcomeKit" uid="N15"
-      width="257" x="190" y="167">
+      text="Bus_executeOnboardingDocumentation" uid="N15" width="226"
+      x="190" y="167">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -61,6 +61,19 @@
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="0" green="0" red="0"/>
       </fontData>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+    </noneEventStep>
+    <noneEventStep Id="68725a45-9e62-4b46-88df-caa30ae54483"
+      eventType="END" height="28" label="EVF.Bienvenida TDD completada"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      stepLock="false" uid="S12" useCorrelation="false" width="28"
+      x="347" y="78">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
       <output name="{ProcessNamespace}dt_bienvenida"/>
       <extendedProperty name="retries" value="0"/>
       <extendedProperty name="retryInterval" value="60000"/>
@@ -69,14 +82,15 @@
       dynamicReferenceProcess="false" externalizeConditions="false"
       height="60" inputMessageType="Unconfigured"
       invokeContainer="BC_SRV_Apolo.srv.bb_bienvenida"
-      invokeId="BC_SRV_Apolo.srv.bb_bienvenida:N4activarTarjeta"
-      invokeLocation="" invokeName="N4activarTarjeta"
+      invokeId="BC_SRV_Apolo.srv.bb_bienvenida:N4EnviarContrato"
+      invokeLocation="" invokeName="N4EnviarContrato"
       invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
-      label="TS.Activar tarjeta N4" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" loopMaximum="0" loopMaximumField=""
-      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
-      ruleType="WMRULE" stepLock="false" uid="S10"
-      useCorrelation="false" width="93" x="180" y="62">
+      label="TS.Enviar contratos bienvenida  N4" labelHeight="-1"
+      labelWidth="-1" logicalServer="Default" loopMaximum="0"
+      loopMaximumField="" outputMessageType="Unconfigured"
+      retryCount="0" routingRuleSet="" ruleType="WMRULE"
+      stepLock="false" uid="S10" useCorrelation="false" width="93"
+      x="180" y="62">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -97,20 +111,6 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </invokeStep>
-    <noneEventStep Id="68725a45-9e62-4b46-88df-caa30ae54483"
-      eventType="END" height="28" label="EVF.Bienvenida TDD completada"
-      labelHeight="-1" labelWidth="-1" logicalServer="Default"
-      stepLock="false" uid="S12" useCorrelation="false" width="28"
-      x="347" y="78">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <output name="{ProcessNamespace}dt_bienvenida"/>
-      <extendedProperty name="retries" value="0"/>
-      <extendedProperty name="retryInterval" value="60000"/>
-    </noneEventStep>
     <invokeStep Id="c64e10ed-5ba1-4779-a03f-ea7d840a6ce5"
       dynamicReferenceProcess="false" externalizeConditions="false"
       height="60" inputMessageType="Unconfigured"
@@ -184,7 +184,7 @@
     <annotationFlow Id="1e80a5d0-0291-4d1a-bee8-56a09a7863ed" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S10" sourceLocation="232,122" sourceTerminal="BOTTOM"
-      target="N15" targetLocation="318,167" targetTerminal="TOP" uid="T16">
+      target="N15" targetLocation="288,167" targetTerminal="TOP" uid="T16">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -195,7 +195,7 @@
     <swimlane Id="71d400b2-79df-47aa-aeca-a2d130b9c9f9" blue="255"
       green="255" height="306" label="webMethods" labelBlue="255"
       labelGreen="238" labelRed="221" name="webMethods" red="255"
-      uid="W8" width="501">
+      uid="W8" width="663">
       <documentation/>
     </swimlane>
   </pool>
@@ -209,13 +209,13 @@
     uid="P2" useCorrelation="false">
     <documentation/>
     <businessKPIs/>
-    <fontData boldFont="false" italicFont="false"/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
     <poolReference Id="c67129bc-d035-46ff-80a4-61f2c48ca0c1"
       label="SP_Bienvenida_TDD" logicalServer="Default" poolName="6"
       stepLock="false" uid="S3" useCorrelation="false" x="30" y="39">
       <documentation/>
       <businessKPIs/>
-      <fontData boldFont="false" italicFont="false"/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
     </poolReference>
     <timeout calendarAlias="" calendarTime="0:0:0"
       dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""

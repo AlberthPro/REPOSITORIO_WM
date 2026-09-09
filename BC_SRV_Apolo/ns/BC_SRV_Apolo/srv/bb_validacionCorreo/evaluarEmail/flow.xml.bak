@@ -5,7 +5,7 @@
 
   <!-- nodes -->
 
-<INVOKE TIMEOUT="" SERVICE="pub.flow:savePipelineToFile" VALIDATE-IN="$none" VALIDATE-OUT="$none" DISABLED="true">
+<INVOKE TIMEOUT="" SERVICE="pub.flow:savePipelineToFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -84,7 +84,7 @@
 </MAP>
 </INVOKE>
 
-<INVOKE TIMEOUT="" SERVICE="pub.flow:restorePipelineFromFile" VALIDATE-IN="$none" VALIDATE-OUT="$none">
+<INVOKE TIMEOUT="" SERVICE="pub.flow:restorePipelineFromFile" VALIDATE-IN="$none" VALIDATE-OUT="$none" DISABLED="true">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -775,6 +775,17 @@
                 <Boolean name="readOnly">false</Boolean>
                 <Boolean name="writeOnly">false</Boolean>
               </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">unknown</value>
+                <value name="node_subtype">unknown</value>
+                <value name="is_public">false</value>
+                <value name="field_name">sessionId</value>
+                <value name="field_type">string</value>
+                <value name="field_dim">0</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+              </record>
             </array>
             <value name="modifiable">true</value>
           </record>
@@ -921,6 +932,9 @@
 </MAPCOPY>
 
 <MAPCOPY FROM="/dt_validacionCorreo;4;0;BC_SRV_Apolo.docs:dt_validacionCorreo/evaluateEmailParty;2;0/customerContactSessionProcedure;2;0" TO="/requestBody;2;0/evaluateOnBoardingEmailPartyRq;4;0;BC_SRV_Mulesoft.api.mulesoft.bussalesandservice.docTypes:evaluateOnBoardingEmailPartyRq/customerContactSessionProcedure;4;0;BC_SRV_Mulesoft.api.mulesoft.bussalesandservice.docTypes:customerContactSessionProcedure">
+</MAPCOPY>
+
+<MAPCOPY FROM="/dt_validacionCorreo;4;0;BC_SRV_Apolo.docs:dt_validacionCorreo/dt_authenticate;4;0;BC_SRV_Transversales.docs:dt_authenticate/sessionId;1;0" TO="/params;2;0/header;2;0/sessionId;1;0">
 </MAPCOPY>
 </MAP>
 

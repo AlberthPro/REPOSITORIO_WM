@@ -515,6 +515,81 @@ public final class util
 
 
 
+	public static final void UT_RetrieveDocumentFromBB (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(UT_RetrieveDocumentFromBB)>> ---
+		// @sigtype java 3.5
+		// [i] field:0:required path
+		// [i] record:0:required document
+		// [o] object:0:required documentFounded
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		
+		try {
+		IData taskData = (IData) IDataUtil.get(pipelineCursor, "TaskData");
+		
+		String path = IDataUtil.getString(pipelineCursor, "path");
+		
+		if (taskData == null) {
+		throw new ServiceException("TaskData es null");
+		}
+		
+		if (path == null || path.trim().isEmpty()) {
+		throw new ServiceException("path es null o vac\u00EDo");
+		}
+		
+		String[] paths = path.trim().split(";");
+		
+		IData finalResult = null;
+		
+		for (String currentPath : paths) {
+		
+		currentPath = currentPath.trim();
+		
+		if (currentPath.isEmpty()) {
+		continue;
+		}
+		
+		String[] parts = currentPath.split("/");
+		
+		IData result = findAndBuild(
+		    taskData,
+		    parts,
+		    0
+		);
+		
+		if (result != null) {
+		
+		if (finalResult == null) {
+		    finalResult = result;
+		} else {
+		    mergeIDataSteps(finalResult, result);
+		}
+		}
+		}
+		
+		if (finalResult == null) {
+		throw new ServiceException(
+		"No se encontro ningun path: " + path
+		);
+		}
+		
+		IDataUtil.put(
+		pipelineCursor,
+		"documentFounded",
+		finalResult
+		);
+		
+		} finally {
+		pipelineCursor.destroy();
+		}
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void UT_StringToBoolean (IData pipeline)
         throws ServiceException
 	{
@@ -612,8 +687,290 @@ public final class util
 	}
 
 	// --- <<IS-START-SHARED>> ---
-	    private static String escapeJson(String value) {
-	    if (value == null) return "";
+	private static void mergeIDataSteps(
+	        IData target,
+	        IData source) {
+	
+	    if (target == null || source == null) {
+	        return;
+	    }
+	
+	    IDataCursor sourceCursor = source.getCursor();
+	
+	    try {
+	
+	        while (sourceCursor.next()) {
+	
+	            String key = sourceCursor.getKey();
+	            Object value = sourceCursor.getValue();
+	
+	            if (key == null) {
+	                continue;
+	            }
+	
+	            IDataCursor targetCursor = target.getCursor();
+	
+	            try {
+	
+	                boolean found = false;
+	
+	                while (targetCursor.next()) {
+	
+	                    if (key.equals(targetCursor.getKey())) {
+	
+	                        Object existingValue =
+	                                targetCursor.getValue();
+	
+	                        /*
+	                         * Si ambos son IData,
+	                         * combinamos sus hijos.
+	                         */
+	                        if (existingValue instanceof IData &&
+	                            value instanceof IData) {
+	
+	                            mergeIData(
+	                                    (IData) existingValue,
+	                                    (IData) value
+	                            );
+	
+	                        } else {
+	
+	                            targetCursor.setValue(value);
+	                        }
+	
+	                        found = true;
+	                        break;
+	                    }
+	                }
+	
+	                /*
+	                 * Si el elemento no existe en el target,
+	                 * lo agregamos.
+	                 */
+	                if (!found) {
+	
+	                    IDataCursor insertCursor = target.getCursor();
+	
+	                    try {
+	                        IDataUtil.put(
+	                                insertCursor,
+	                                key,
+	                                value
+	                        );
+	                    } finally {
+	                        insertCursor.destroy();
+	                    }
+	                }
+	
+	            } finally {
+	                targetCursor.destroy();
+	            }
+	        }
+	
+	    } finally {
+	        sourceCursor.destroy();
+	    }
+	}
+	
+	private static IData findAndBuild(
+	            IData data,
+	            String[] path,
+	            int index) {
+	
+	        if (data == null || index >= path.length) {
+	            return null;
+	        }
+	
+	        IDataCursor cursor = data.getCursor();
+	
+	        try {
+	
+	            while (cursor.next()) {
+	
+	                String key = cursor.getKey();
+	                Object value = cursor.getValue();
+	
+	                if (key == null) {
+	                    continue;
+	                }
+	
+	                /*
+	                 * Encontramos el elemento actual
+	                 * del path.
+	                 */
+	                if (key.equals(path[index])) {
+	
+	                    /*
+	                     * \u00DAltimo elemento del path.
+	                     *
+	                     * Ejemplo:
+	                     *
+	                     * dt_expedienteDigital/documentation
+	                     *                                
+	                     */
+	                    if (index == path.length - 1) {
+	
+	                        IData result =
+	                                IDataFactory.create();
+	
+	                        IDataCursor resultCursor =
+	                                result.getCursor();
+	
+	                        try {
+	                            IDataUtil.put(
+	                                    resultCursor,
+	                                    key,
+	                                    value
+	                            );
+	                        } finally {
+	                            resultCursor.destroy();
+	                        }
+	
+	                        return result;
+	                    }
+	
+	                    /*
+	                     * Todav\u00EDa faltan elementos.
+	                     *
+	                     * Bajamos al siguiente nivel.
+	                     */
+	                    IData childResult =
+	                            findChild(
+	                                    value,
+	                                    path,
+	                                    index + 1
+	                            );
+	
+	                    if (childResult != null) {
+	
+	                        /*
+	                         * Reconstruimos la estructura.
+	                         *
+	                         * childResult:
+	                         *
+	                         * documentation
+	                         *
+	                         * se convierte en:
+	                         *
+	                         * dt_expedienteDigital
+	                         *    documentation
+	                         */
+	                        IData result =
+	                                IDataFactory.create();
+	
+	                        IDataCursor resultCursor =
+	                                result.getCursor();
+	
+	                        try {
+	                            IDataUtil.put(
+	                                    resultCursor,
+	                                    key,
+	                                    childResult
+	                            );
+	                        } finally {
+	                            resultCursor.destroy();
+	                        }
+	
+	                        return result;
+	                    }
+	                }
+	
+	                /*
+	                 * No encontramos el elemento actual
+	                 * en este nivel.
+	                 *
+	                 * Buscamos recursivamente dentro
+	                 * de cualquier IData.
+	                 */
+	                if (value instanceof IData) {
+	
+	                    IData result =
+	                            findAndBuild(
+	                                    (IData) value,
+	                                    path,
+	                                    index
+	                            );
+	
+	                    if (result != null) {
+	                        return result;
+	                    }
+	                }
+	
+	                /*
+	                 * Soporte para IData[]
+	                 */
+	                if (value instanceof IData[]) {
+	
+	                    IData[] array = (IData[]) value;
+	
+	                    for (IData item : array) {
+	
+	                        IData result =
+	                                findAndBuild(
+	                                    item,
+	                                    path,
+	                                    index
+	                                );
+	
+	                        if (result != null) {
+	                            return result;
+	                        }
+	                    }
+	                }
+	            }
+	
+	        } finally {
+	            cursor.destroy();
+	        }
+	
+	        return null;
+	    }
+	
+	
+	    /**
+	     * Contin\u00FAa la b\u00FAsqueda dentro del elemento
+	     * que ya coincidi\u00F3 con una parte del path.
+	     */
+	    private static IData findChild(
+	            Object value,
+	            String[] path,
+	            int index) {
+	
+	        if (value instanceof IData) {
+	
+	            return findAndBuild(
+	                    (IData) value,
+	                    path,
+	                    index
+	            );
+	        }
+	
+	        if (value instanceof IData[]) {
+	
+	            IData[] array = (IData[]) value;
+	
+	            for (IData item : array) {
+	
+	                IData result =
+	                        findAndBuild(
+	                            item,
+	                            path,
+	                            index
+	                        );
+	
+	                if (result != null) {
+	                    return result;
+	                }
+	            }
+	        }
+	
+	        return null;
+	    }
+	
+	
+		
+		private static String escapeJson(String value) {
+		    if (value == null) return "";
 	
 	    return value
 	            .replace("\\", "\\\\")

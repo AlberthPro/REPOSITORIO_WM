@@ -97,10 +97,10 @@
       </fontData>
     </annotationNode>
     <annotationNode Id="4fe369f7-f9b5-46a6-926d-cd15284edafa" blue="0"
-      green="196" height="32" label="annotationNode"
+      green="196" height="46" label="annotationNode"
       name="annotationNode" red="255"
-      text="Bus_evaluateOnboardingEmailParty" uid="N45" width="206"
-      x="524" y="202">
+      text="Bus_evaluateOnboardingEmailParty&#xd;&#xa;Bus_evaluateOnboardingEmailPartyV2 (N4)"
+      uid="N45" width="244" x="524" y="202">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -108,7 +108,7 @@
     <annotationNode Id="a7bb60be-9203-4d4d-8938-2720be552051" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
-      text="Bus_updateOnboardingEmailPartyV2" uid="N52" width="212"
+      text="Bus_updateOnboardingEmailParty" uid="N52" width="198"
       x="814" y="202">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
@@ -999,7 +999,7 @@
     </transition>
     <transition Id="511dafd0-5e10-49ca-91b0-9700889e8b66" blue="255"
       conditionDescription="Ok"
-      conditionText="dt_validacionCorreo/compuertas/hasOTPError = false"
+      conditionText="dt_validacionCorreo/compuertas/hasOTPError = false and&#xa;dt_validacionCorreo/edicionEmail = false"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S18" sourceLocation="1320,121" sourceTerminal="RIGHT"
       target="S71" targetLocation="1356,122" targetTerminal="LEFT" uid="T72">
@@ -1012,7 +1012,10 @@
         </fontData>
       </labelLayout>
       <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/hasOTPError"
+        <row chainOperator="and" leftFieldPath="compuertas/hasOTPError"
+          leftOperand="{ProcessNamespace}dt_validacionCorreo"
+          operator="=" rightOperand="'false'"/>
+        <row chainOperator="" leftFieldPath="edicionEmail"
           leftOperand="{ProcessNamespace}dt_validacionCorreo"
           operator="=" rightOperand="'false'"/>
       </wmExpression>
@@ -1131,7 +1134,7 @@
     <annotationFlow Id="90bcdda4-8ba2-4e21-ab1c-a5903a4dfaca" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S43" sourceLocation="612,151" sourceTerminal="BOTTOM"
-      target="N45" targetLocation="627,202" targetTerminal="TOP" uid="T46">
+      target="N45" targetLocation="642,202" targetTerminal="TOP" uid="T46">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1140,7 +1143,7 @@
     <annotationFlow Id="bc46d021-8fd3-44d6-aec0-129cc91eb95a" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S50" sourceLocation="903,151" sourceTerminal="BOTTOM"
-      target="N52" targetLocation="920,202" targetTerminal="TOP" uid="T53">
+      target="N52" targetLocation="913,202" targetTerminal="TOP" uid="T53">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>

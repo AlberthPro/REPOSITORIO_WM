@@ -41,6 +41,9 @@
   <logicalDataItem Id="" description="" dimension="0"
     label="TU.Mostrar vselfie validaOutputEnv"
     name="{ProcessNamespace}TU.Mostrar vselfie validaOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="dt_contextoTransaccional"
+    name="{ProcessNamespace}dt_contextoTransaccional" type="{BC_SRV_Transversales.docs}dt_ContextoTransaccional"/>
   <timeout calendarAlias="" calendarTime="0:0:0"
     dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
     dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
@@ -81,7 +84,7 @@
     <wmExpression/>
   </pool>
   <pool Id="4ced7068-e190-4611-a23a-b033f31a574d" blue="128"
-    containerType="BPMN_SUBPROCESS" external="false"
+    containerType="BPMN_SUBPROCESS" errorHandler="S75" external="false"
     externalizeConditions="false" green="128" isCollapsed="false"
     isCompensating="false" isTestAfter="false"
     label="SP_PruebaVidaVideoselfie" labelBlue="255" labelGreen="204"
@@ -170,10 +173,11 @@
       <extendedProperty name="retryInterval" value="60000"/>
     </noneEventStep>
     <gatewayStep Id="7cec5de6-b1e1-4948-9e37-52a6a58ba78f"
-      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
-      label="COD.Score" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" retryCount="0" stepLock="false" uid="S16"
-      useCorrelation="false" width="34" x="1260" y="129">
+      description=" " externalizeConditions="false"
+      gatewayType="EXCLUSIVE" height="34" label="COD.Score"
+      labelHeight="-1" labelWidth="-1" logicalServer="Default"
+      retryCount="0" stepLock="false" uid="S16" useCorrelation="false"
+      width="34" x="1260" y="129">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -604,6 +608,37 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </invokeStep>
+    <invokeStep Id="2a7d549c-717e-4ca3-8bbf-d13c450a564d"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Transversales.srv"
+      invokeId="BC_SRV_Transversales.srv:procesarError"
+      invokeLocation="" invokeName="procesarError"
+      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
+      label="TS.Error_Videselfie" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
+      ruleType="WMRULE" stepLock="false" uid="S75"
+      useCorrelation="false" width="93" x="86" y="415">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_contextoTransaccional"/>
+      <wmExpression/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
     <transition Id="23bd5e2b-bd4a-4225-a460-4d00ee7454d4" blue="255"
       conditionDescription=">=3 OR score fail"
       conditionText="dt_videoselfie/compuertas/countSelfie >= 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = true"
@@ -835,7 +870,7 @@
     </transition>
     <transition Id="51c729ca-e95d-49b6-930f-b1364ab2a3ca" blue="255"
       conditionDescription="count&lt;3"
-      conditionText="dt_videoselfie/compuertas/countSelfie &lt; 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = true"
+      conditionText="dt_videoselfie/compuertas/countSelfie &lt; 3 and&#xa;dt_videoselfie/compuertas/hasErrorSelfie = true and&#xa;dt_videoselfie/cancel = false"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S16" sourceLocation="1276,129" sourceTerminal="TOP"
       target="S44" targetLocation="931,128" targetTerminal="TOP" uid="T53">
@@ -850,8 +885,11 @@
       <wmExpression>
         <row chainOperator="and" leftFieldPath="compuertas/countSelfie"
           leftOperand="{ProcessNamespace}dt_videoselfie" operator="&lt;" rightOperand="'3'"/>
-        <row chainOperator="" leftFieldPath="compuertas/hasErrorSelfie"
+        <row chainOperator="and"
+          leftFieldPath="compuertas/hasErrorSelfie"
           leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'true'"/>
+        <row chainOperator="" leftFieldPath="cancel"
+          leftOperand="{ProcessNamespace}dt_videoselfie" operator="=" rightOperand="'false'"/>
       </wmExpression>
     </transition>
     <transition Id="23ece253-d024-4d31-b14f-f7ec3c56c19b" blue="255"
