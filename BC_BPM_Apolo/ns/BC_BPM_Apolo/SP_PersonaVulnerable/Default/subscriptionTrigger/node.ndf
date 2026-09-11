@@ -3,7 +3,7 @@
 <Values version="2.0">
   <value name="node_type">webMethods/trigger</value>
   <value name="node_subtype">unknown</value>
-  <value name="node_nsName">BC_BPM_Apolo.SP_ValidacionTelefono.SP_ValidacionTelefono_1.Default:transitionTrigger</value>
+  <value name="node_nsName">BC_BPM_Apolo.SP_PersonaVulnerable.Default:subscriptionTrigger</value>
   <value name="node_pkg">BC_BPM_Apolo</value>
   <value name="is_public">false</value>
   <value name="trigger_type">broker-trigger</value>
@@ -26,19 +26,19 @@
     <value name="inDoubtDetection">false</value>
     <value name="resolveWithHistory">false</value>
     <value name="resolutionHistoryTTL">7200000</value>
-    <value name="uniqueId">HLmZNyKGI3j72pte//BEqYipV28=</value>
+    <value name="uniqueId">iRgArJOK7QDqIO1gDnAn1RFNOTk=</value>
     <value name="executeUser">Administrator</value>
     <array name="conditions" type="record" depth="1">
       <record javaclass="com.wm.util.Values">
         <value name="type">simple</value>
         <record name="data" javaclass="com.wm.util.Values">
           <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
-            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
+            <value name="messageType">wm.prt.dispatch:CallActivityStart</value>
             <null name="filter"/>
-            <value name="umFilter">( ProcessModelID = 'BC_BPM_Apolo/SP_ValidacionTelefono' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S162', 'S156', 'S152', 'S38', 'S31', 'S37', 'S36', 'S44', 'S30', 'S35', 'S144', 'S41', 'S42', 'S141', 'S40', 'S39', 'S32', 'S140' )  ) </value>
+            <value name="umFilter">ProcessModelID = 'BC_BPM_Apolo/SP_PersonaVulnerable'</value>
           </record>
-          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
-          <value name="conditionName">Inbound transitions</value>
+          <value name="serviceName">wm.prt.dispatch:handleCallActivityStart</value>
+          <value name="conditionName">Call Activity Start Event</value>
         </record>
       </record>
     </array>
@@ -55,4 +55,5 @@
     <value name="priorityEnabled">false</value>
     <null name="namedObjectString"/>
   </record>
+  <value name="LOCK_REQUIRED">true</value>
 </Values>
