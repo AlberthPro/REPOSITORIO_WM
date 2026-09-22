@@ -243,43 +243,6 @@
           <value name="suppressUnsatisfiedJoin">false</value>
           <null name="defaultTransition"/>
         </idatacodable>
-        <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
-          <value name="stepId">S20</value>
-          <value name="stepLabel">TS.Regresar flujo principal 1</value>
-          <value name="isStart">false</value>
-          <value name="isSynchronizationPoint">false</value>
-          <array name="inputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S19</value>
-            </idatacodable>
-          </array>
-          <value name="servicePackage">BC_BPM_Apolo</value>
-          <value name="serviceName">BC_BPM_Apolo.SP_ValidacionCliente.SP_ValidacionCliente_1.Default:TS_Regresar_flujo_principal_1</value>
-          <array name="outputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="isXpathCond">false</value>
-              <value name="targetServerId">Default</value>
-              <value name="targetStepId">S24</value>
-              <null name="pipeKeys"/>
-              <null name="deadPathTargets"/>
-              <value name="compensating">false</value>
-            </idatacodable>
-          </array>
-          <value name="timeoutMs">0</value>
-          <value name="stepTimeoutMs">0</value>
-          <value name="timeoutType"></value>
-          <value name="stepTimeoutType">relative</value>
-          <value name="retryMax">0</value>
-          <value name="stepRetryCount">0</value>
-          <value name="stepRetryInterval">60000</value>
-          <value name="isSubEnd">false</value>
-          <value name="isXPathJoinExpression">false</value>
-          <value name="beginsCompensatingTransaction">false</value>
-          <value name="skip">false</value>
-          <value name="parallelExecute">false</value>
-          <value name="suppressUnsatisfiedJoin">false</value>
-          <value name="forCompensation">false</value>
-        </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
           <value name="stepId">S66</value>
           <value name="stepLabel">COD.clienteBancoppel</value>
@@ -371,22 +334,6 @@
           <value name="parallelExecute">false</value>
           <value name="suppressUnsatisfiedJoin">false</value>
           <value name="forCompensation">false</value>
-        </idatacodable>
-        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
-          <value name="stepId">S24</value>
-          <value name="stepLabel">EVF.Validación cliente cancelada 1</value>
-          <value name="isSynchronizationPoint">false</value>
-          <array name="inputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S20</value>
-            </idatacodable>
-          </array>
-          <value name="timeoutMs">0</value>
-          <value name="timeoutType"></value>
-          <value name="stepRetryCount">0</value>
-          <value name="stepRetryInterval">60000</value>
-          <value name="parallelExecute">false</value>
-          <value name="suppressUnsatisfiedJoin">false</value>
         </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
           <value name="stepId">S67</value>
@@ -831,54 +778,6 @@
           <value name="forCompensation">false</value>
         </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
-          <value name="stepId">S31</value>
-          <value name="stepLabel">COD.executorUserId</value>
-          <value name="isStart">false</value>
-          <value name="isSynchronizationPoint">false</value>
-          <array name="inputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S10</value>
-            </idatacodable>
-          </array>
-          <array name="outputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">%dt_validacionCliente/dt_ContextoTransaccional/executorUserId% = "Modyo"</value>
-              <value name="isXpathCond">false</value>
-              <value name="targetServerId">Default</value>
-              <value name="targetStepId">S19</value>
-              <array name="pipeKeys" type="value" depth="1">
-                <value>dt_validacionCliente</value>
-              </array>
-              <null name="deadPathTargets"/>
-              <value name="compensating">false</value>
-            </idatacodable>
-          </array>
-          <value name="timeoutMs">0</value>
-          <value name="stepTimeoutMs">0</value>
-          <value name="timeoutType"></value>
-          <value name="stepTimeoutType">relative</value>
-          <value name="retryMax">0</value>
-          <value name="stepRetryCount">0</value>
-          <value name="stepRetryInterval">0</value>
-          <value name="isSubEnd">false</value>
-          <value name="isXPathJoinExpression">false</value>
-          <value name="beginsCompensatingTransaction">false</value>
-          <value name="skip">false</value>
-          <value name="parallelExecute">false</value>
-          <value name="suppressUnsatisfiedJoin">false</value>
-          <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!(%dt_validacionCliente/dt_ContextoTransaccional/executorUserId% = "Modyo")</value>
-            <value name="isXpathCond">false</value>
-            <value name="targetServerId">Default</value>
-            <value name="targetStepId">S34</value>
-            <array name="pipeKeys" type="value" depth="1">
-              <value>dt_validacionCliente</value>
-            </array>
-            <null name="deadPathTargets"/>
-            <value name="compensating">false</value>
-          </idatacodable>
-        </idatacodable>
-        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
           <value name="stepId">S53</value>
           <value name="stepLabel">COC.Loop front</value>
           <value name="isStart">false</value>
@@ -1016,7 +915,7 @@
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
-              <value name="targetStepId">S31</value>
+              <value name="targetStepId">S34</value>
               <array name="pipeKeys" type="value" depth="1">
                 <value>dt_validacionCliente</value>
               </array>
@@ -1119,22 +1018,6 @@
           <value name="suppressUnsatisfiedJoin">false</value>
           <value name="forCompensation">false</value>
         </idatacodable>
-        <idatacodable javaclass="com.wm.app.prt.model.EndNoneEvent">
-          <value name="stepId">S12</value>
-          <value name="stepLabel">EVF.Validación cliente finalizada 1</value>
-          <value name="isSynchronizationPoint">false</value>
-          <array name="inputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S19</value>
-            </idatacodable>
-          </array>
-          <value name="timeoutMs">0</value>
-          <value name="timeoutType"></value>
-          <value name="stepRetryCount">0</value>
-          <value name="stepRetryInterval">60000</value>
-          <value name="parallelExecute">false</value>
-          <value name="suppressUnsatisfiedJoin">false</value>
-        </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.ServiceTask">
           <value name="stepId">S34</value>
           <value name="stepLabel">TS.Registrar aprobación INE</value>
@@ -1142,7 +1025,7 @@
           <value name="isSynchronizationPoint">false</value>
           <array name="inputs" type="idatacodable" depth="1">
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S31</value>
+              <value name="sourceStepId">S10</value>
             </idatacodable>
           </array>
           <value name="servicePackage">BC_BPM_Apolo</value>
@@ -1390,54 +1273,6 @@
           <value name="outputMappingService">BC_BPM_Apolo.SP_ValidacionCliente.SP_ValidacionCliente_1.Default:TU_Capturar_INE_OutputMapService</value>
         </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
-          <value name="stepId">S19</value>
-          <value name="stepLabel">COD.Detiene instancia</value>
-          <value name="isStart">false</value>
-          <value name="isSynchronizationPoint">false</value>
-          <array name="inputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionInputDef">
-              <value name="sourceStepId">S31</value>
-            </idatacodable>
-          </array>
-          <array name="outputs" type="idatacodable" depth="1">
-            <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">%dt_validacionCliente/dt_ContextoTransaccional/stopInstance% = "true"</value>
-              <value name="isXpathCond">false</value>
-              <value name="targetServerId">Default</value>
-              <value name="targetStepId">S20</value>
-              <array name="pipeKeys" type="value" depth="1">
-                <value>dt_validacionCliente</value>
-              </array>
-              <null name="deadPathTargets"/>
-              <value name="compensating">false</value>
-            </idatacodable>
-          </array>
-          <value name="timeoutMs">0</value>
-          <value name="stepTimeoutMs">0</value>
-          <value name="timeoutType"></value>
-          <value name="stepTimeoutType">relative</value>
-          <value name="retryMax">0</value>
-          <value name="stepRetryCount">0</value>
-          <value name="stepRetryInterval">0</value>
-          <value name="isSubEnd">false</value>
-          <value name="isXPathJoinExpression">false</value>
-          <value name="beginsCompensatingTransaction">false</value>
-          <value name="skip">false</value>
-          <value name="parallelExecute">false</value>
-          <value name="suppressUnsatisfiedJoin">false</value>
-          <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!(%dt_validacionCliente/dt_ContextoTransaccional/stopInstance% = "true")</value>
-            <value name="isXpathCond">false</value>
-            <value name="targetServerId">Default</value>
-            <value name="targetStepId">S12</value>
-            <array name="pipeKeys" type="value" depth="1">
-              <value>dt_validacionCliente</value>
-            </array>
-            <null name="deadPathTargets"/>
-            <value name="compensating">false</value>
-          </idatacodable>
-        </idatacodable>
-        <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
           <value name="stepId">S130</value>
           <value name="stepLabel">COD.registerDocuCode</value>
           <value name="isStart">false</value>
@@ -1487,6 +1322,6 @@
         </idatacodable>
       </array>
     </idatacodable>
-    <Date name="timestamp" type="java.util.Date">Tue Aug 11 00:50:49 UTC 2026</Date>
+    <Date name="timestamp" type="java.util.Date">Tue Sep 22 19:11:42 UTC 2026</Date>
   </record>
 </IDataXMLCoder>

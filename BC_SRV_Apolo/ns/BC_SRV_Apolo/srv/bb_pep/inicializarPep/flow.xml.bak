@@ -66,7 +66,7 @@
 
   <!-- nodes -->
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="true" GLOBALVARIABLES="false" FIELD="/dt_pep;4;0;BC_SRV_Apolo.docs:dt_pep">
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_pep;4;0;BC_SRV_Apolo.docs:dt_pep">
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
@@ -97,7 +97,7 @@
       <value name="sessionId"></value>
       <value name="consumerRequestId"></value>
     </record>
-    <record name="createCustomerRelationshipInvolvementPepRq" javaclass="com.wm.util.Values">
+    <record name="createCustomerRelationshipInvolvementPep" javaclass="com.wm.util.Values">
       <value name="sessionDialogueIdentification"></value>
       <value name="applicationReferenceId"></value>
       <record name="customerRelationshipInvolvement" javaclass="com.wm.util.Values">
@@ -299,9 +299,40 @@
         <value name="housingType"></value>
       </record>
     </record>
+    <record name="retrieveQualification" javaclass="com.wm.util.Values">
+      <record name="qualification" javaclass="com.wm.util.Values">
+        <record name="partyReference" javaclass="com.wm.util.Values">
+          <array name="contactPoint" type="record" depth="1">
+          </array>
+          <value name="dateOfBirth"></value>
+          <array name="location" type="record" depth="1">
+          </array>
+          <value name="nationality"></value>
+          <record name="personName" javaclass="com.wm.util.Values">
+            <value name="familyName"></value>
+            <value name="firstName"></value>
+            <value name="secondLastName"></value>
+            <value name="secondName"></value>
+          </record>
+          <record name="personProfile" javaclass="com.wm.util.Values">
+            <record name="pepProfile" javaclass="com.wm.util.Values">
+              <value name="associationDescription"></value>
+              <value name="pepRole"></value>
+              <value name="role"></value>
+            </record>
+          </record>
+          <value name="referenceId"></value>
+        </record>
+        <record name="publicDirectoryReference" javaclass="com.wm.util.Values">
+          <array name="identifierValue" type="value" depth="1">
+          </array>
+        </record>
+      </record>
+    </record>
     <record name="customerCreditRatingStateRegister" javaclass="com.wm.util.Values">
       <value name="sessionDialogueIdentification"></value>
       <record name="partyReference" javaclass="com.wm.util.Values">
+        <value name="referenceId"></value>
         <record name="personName" javaclass="com.wm.util.Values">
           <value name="firstName"></value>
           <value name="secondName"></value>
@@ -321,6 +352,9 @@
     <record name="compuertas" javaclass="com.wm.util.Values">
       <value name="calificacionPEP"></value>
       <value name="estatusRegistroPEP"></value>
+      <value name="civilAssociation"></value>
+      <value name="pepFamily"></value>
+      <value name="publicPosition"></value>
     </record>
   </record>
 </Values>
@@ -1379,6 +1413,36 @@
 
 <MAPCOPY FROM="/value;2;0/product;1;0" TO="/dt_pep;4;0;BC_SRV_Apolo.docs:dt_pep/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/product;1;0">
 </MAPCOPY>
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_pep;4;0;BC_SRV_Apolo.docs:dt_pep/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/txId;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">dt_pep</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="node_comment">sessionDialogId</value>
+    <record name="node_hints" javaclass="com.wm.util.Values">
+      <value name="field_usereditable">true</value>
+      <value name="field_largerEditor">false</value>
+      <value name="field_password">false</value>
+    </record>
+    <value name="is_public">false</value>
+    <value name="field_name">txId</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
+    <value name="field_opt">true</value>
+    <array name="field_options" type="value" depth="1">
+    </array>
+    <value name="nillable">false</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <number name="protobufKey" type="Integer">1</number>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
 </MAP>
 </SEQUENCE>
 </FLOW>

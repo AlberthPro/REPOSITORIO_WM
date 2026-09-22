@@ -187,6 +187,38 @@ public final class util
 
 
 
+	public static final void UT_CleanEmptyFields (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(UT_CleanEmptyFields)>> ---
+		// @sigtype java 3.5
+		// [i] record:0:required documento
+		// [o] record:0:required documentoLimpio
+		IDataCursor pipelineCursor = pipeline.getCursor();
+		
+		    IData documento = IDataUtil.getIData(
+		pipelineCursor,
+		"documento"
+		    );
+		
+		    pipelineCursor.destroy();
+		
+		    // Obtener la estructura limpia
+		    IData documentoLimpio = limpiarStringsVacios(documento);
+		
+		    // Si deseas que la salida del servicio sea el documento limpio:
+		    IDataUtil.put(
+		pipeline.getCursor(),
+		"documentoLimpio",
+		documentoLimpio
+		    );
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void UT_CompleteTask (IData pipeline)
         throws ServiceException
 	{
@@ -687,7 +719,55 @@ public final class util
 	}
 
 	// --- <<IS-START-SHARED>> ---
-	private static void mergeIDataSteps(
+	    public static IData limpiarStringsVacios(IData data) {
+	
+	    if (data == null) {
+	        return null;
+	    }
+	
+	    IDataCursor cursor = data.getCursor();
+	
+	    while (cursor.next()) {
+	
+	        String key = cursor.getKey();
+	        Object value = cursor.getValue();
+	
+	        if (value instanceof String) {
+	
+	            String texto = (String) value;
+	
+	            // Eliminar campo si est\u00E1 vac\u00EDo o contiene solo espacios
+	            if (texto.trim().isEmpty()) {
+	                cursor.delete();
+	            }
+	
+	        } else if (value instanceof IData) {
+	
+	            // Limpiar documento IData anidado
+	            IData limpio = limpiarStringsVacios((IData) value);
+	
+	            // Mantener el documento limpio en la misma clave
+	            cursor.setValue(limpio);
+	
+	        } else if (value instanceof IData[]) {
+	
+	            // Limpiar arreglos de documentos IData
+	            IData[] documentos = (IData[]) value;
+	
+	            for (int i = 0; i < documentos.length; i++) {
+	                documentos[i] = limpiarStringsVacios(documentos[i]);
+	            }
+	
+	            cursor.setValue(documentos);
+	        }
+	    }
+	
+	    cursor.destroy();
+	
+	    return data;
+	}
+	    
+	    private static void mergeIDataSteps(
 	        IData target,
 	        IData source) {
 	
