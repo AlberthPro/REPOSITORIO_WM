@@ -184,7 +184,7 @@
 </INVOKE>
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>set data</COMMENT>
+  <COMMENT>set data </COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -260,6 +260,47 @@
 
 <Values version="2.0">
   <record name="xml" javaclass="com.wm.util.Values">
+    <record name="dt_ContextoTransaccional" javaclass="com.wm.util.Values">
+      <value name="txId"></value>
+      <value name="sessionDialogueIdentification"></value>
+      <value name="txStartDate"></value>
+      <value name="processDefinitionName"></value>
+      <value name="processInstanceID"></value>
+      <value name="customProcessInstanceId"></value>
+      <value name="stepId"></value>
+      <value name="stepName"></value>
+      <value name="channelScreen"></value>
+      <value name="taskId"></value>
+      <value name="customTaskId"></value>
+      <value name="applicationUserId"></value>
+      <value name="executorUserId"></value>
+      <value name="stopInstance"></value>
+      <value name="completeTask"></value>
+      <value name="product"></value>
+      <value name="channel"></value>
+      <value name="exitCode"></value>
+    </record>
+    <record name="dt_authenticate" javaclass="com.wm.util.Values">
+      <value name="token"></value>
+      <value name="identity_session_token"></value>
+      <value name="sessionId"></value>
+      <value name="consumerRequestId"></value>
+    </record>
+    <record name="captureVulnerabilityProfile" javaclass="com.wm.util.Values">
+      <record name="partyReference" javaclass="com.wm.util.Values">
+        <value name="referenceId"></value>
+      </record>
+      <record name="vulnerabilityProfile" javaclass="com.wm.util.Values">
+        <Boolean name="vulnerableGroupIndicator">false</Boolean>
+        <number name="declarationResponseType" type="Integer">0</number>
+        <Boolean name="elderlyIndicator">false</Boolean>
+        <Boolean name="disabilityIndicator">false</Boolean>
+        <Boolean name="indigenousCommunityIndicator">false</Boolean>
+      </record>
+    </record>
+    <record name="compuertas" javaclass="com.wm.util.Values">
+      <value name="extra1"></value>
+    </record>
   </record>
 </Values>
 </DATA>
@@ -1025,6 +1066,27 @@
 
 <MAPCOPY FROM="/dt_personaVulnerable;4;0;BC_SRV_Apolo.docs:dt_personaVulnerable/dt_ContextoTransaccional;4;0;BC_SRV_Transversales.docs:dt_ContextoTransaccional/customProcessInstanceId;1;0" TO="/key;1;0">
 </MAPCOPY>
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/waitLength;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">0</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">field</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_name">waitLength</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
+    <value name="field_opt">true</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
 </MAP>
 
 <MAP MODE="OUTPUT">
@@ -1062,6 +1124,17 @@
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
         <value name="field_name">key</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">waitLength</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -1208,6 +1281,17 @@
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
         <value name="field_name">key</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">waitLength</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
