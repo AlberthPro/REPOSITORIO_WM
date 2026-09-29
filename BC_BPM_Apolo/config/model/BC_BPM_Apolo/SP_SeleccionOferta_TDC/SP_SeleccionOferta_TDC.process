@@ -59,7 +59,7 @@
     <annotationNode Id="1bf1c1bd-371b-45d4-ac90-0040bce05918" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
-      text="Dom_updateCreditCardApplication" uid="N35" width="199"
+      text="Pro_updateCreditCardApplication" uid="N35" width="194"
       x="172" y="147">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
@@ -68,8 +68,8 @@
     <annotationNode Id="fb64eb45-f886-492a-85f6-281c5d9d3514" blue="0"
       green="196" height="46" label="annotationNode"
       name="annotationNode" red="255"
-      text="Dom_retrieveProductInstanceRecord&#xd;&#xa;Dom_updateCreditcardApplication"
-      uid="N37" width="212" x="477" y="140">
+      text="Pro_retrieveProductInstanceRecord&#xd;&#xa;Pro_updateCreditcardApplication"
+      uid="N37" width="207" x="477" y="140">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -105,7 +105,7 @@
     </gatewayStep>
     <gatewayStep Id="e8f7827e-c9da-4a8b-bf8f-4067a02f80ef"
       externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
-      label="COD.statuCodeOferta" labelHeight="-1" labelWidth="-1"
+      label="COD.statusCodeOferta" labelHeight="-1" labelWidth="-1"
       logicalServer="Default" retryCount="0" stepLock="false" uid="S15"
       useCorrelation="false" width="34" x="367" y="66">
       <documentation/>
@@ -257,7 +257,8 @@
     </invokeStep>
     <invokeStep Id="a724468f-0ec2-41f9-a352-e840b7def540"
       dynamicReferenceProcess="false" externalizeConditions="false"
-      height="60" inputMessageType="Unconfigured" invokeContainer=""
+      height="60" inputMessageType="Unconfigured"
+      invokeContainer="BC_SRV_Apolo.srv.bb_seleccionOferta"
       invokeId="BC_SRV_Apolo.srv.bb_seleccionOferta:actualizarCondicionesTDC"
       invokeLocation="" invokeName="actualizarCondicionesTDC"
       invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
@@ -386,6 +387,7 @@
       source="S15" sourceLocation="384,100" sourceTerminal="BOTTOM"
       target="S17" targetLocation="383,201" targetTerminal="TOP" uid="T18">
       <bendpoint index="0" location="444,202" weight="0.5"/>
+      <bendpoint index="1" location="443,202" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
         height="14" red="255" width="113" x="398" y="234">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -465,8 +467,8 @@
       <wmExpression/>
     </transition>
     <transition Id="4cc6e6b4-5b68-45c3-b56b-be30ff9137e1" blue="255"
-      conditionDescription="&lt;> 200 | exitCode=0036"
-      conditionText="dt_seleccionOferta/compuertas/statusCodeCond != 200"
+      conditionDescription="&lt;> 204 | exitCode=0036"
+      conditionText="dt_seleccionOferta/compuertas/statusCodeCond != 204"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S24" sourceLocation="687,100" sourceTerminal="BOTTOM"
       target="S26" targetLocation="686,201" targetTerminal="TOP" uid="T27">
@@ -480,7 +482,7 @@
       <wmExpression>
         <row chainOperator="" leftFieldPath="compuertas/statusCodeCond"
           leftOperand="{ProcessNamespace}dt_seleccionOferta"
-          operator="!=" rightOperand="'200'"/>
+          operator="!=" rightOperand="'204'"/>
       </wmExpression>
     </transition>
     <transition Id="a8133400-45a7-435b-92bb-9b33c71e91c4" blue="255"
@@ -498,8 +500,8 @@
       <wmExpression/>
     </transition>
     <transition Id="3b43cc6e-53df-409b-b9a9-979f70dce69d" blue="255"
-      conditionDescription="= 200"
-      conditionText="dt_seleccionOferta/compuertas/statusCodeCond = 200"
+      conditionDescription="= 204"
+      conditionText="dt_seleccionOferta/compuertas/statusCodeCond = 204"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S24" sourceLocation="704,83" sourceTerminal="RIGHT"
       target="S29" targetLocation="756,83" targetTerminal="LEFT" uid="T30">
@@ -514,7 +516,7 @@
       <wmExpression>
         <row chainOperator="" leftFieldPath="compuertas/statusCodeCond"
           leftOperand="{ProcessNamespace}dt_seleccionOferta"
-          operator="=" rightOperand="'200'"/>
+          operator="=" rightOperand="'204'"/>
       </wmExpression>
     </transition>
     <transition Id="bc37ac4a-1d44-455b-9d66-0d05ac7572c9" blue="255"
@@ -555,7 +557,7 @@
     <annotationFlow Id="77410e92-6119-4f02-9545-2fba29f42e69" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S10" sourceLocation="289,113" sourceTerminal="BOTTOM"
-      target="N35" targetLocation="271,147" targetTerminal="TOP" uid="T36">
+      target="N35" targetLocation="266,147" targetTerminal="TOP" uid="T36">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -577,7 +579,7 @@
     <annotationFlow Id="844ab9e5-5508-4b12-9d25-faaa35a4cd20" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S22" sourceLocation="567,113" sourceTerminal="BOTTOM"
-      target="N37" targetLocation="553,140" targetTerminal="TOP" uid="T40">
+      target="N37" targetLocation="550,140" targetTerminal="TOP" uid="T40">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
