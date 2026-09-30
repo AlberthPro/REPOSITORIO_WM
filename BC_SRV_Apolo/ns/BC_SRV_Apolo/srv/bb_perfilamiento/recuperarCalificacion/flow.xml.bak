@@ -849,6 +849,11 @@
 </MAPINVOKE>
 </MAP>
 
+<RETRY TIMEOUT="" COUNT="3" BACK-OFF="100" LOOP-ON="FAILURE">
+  <COMMENT>repeat 3 times</COMMENT>
+
+  <!-- nodes -->
+
 <INVOKE TIMEOUT="" SERVICE="BC_SRV_Mulesoft.api.mulesoft.bussalesandservice.services:V1QualificationRetrieve_POST" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
@@ -1217,6 +1222,17 @@
         </array>
         <value name="modifiable">true</value>
       </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">$retries</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -1244,6 +1260,7 @@
 </MAPCOPY>
 </MAP>
 </INVOKE>
+</RETRY>
 
 <BRANCH TIMEOUT="" SWITCH="/retrieveQualificationRs/qualification/qualificationTaskResult[0]/result">
   <COMMENT></COMMENT>
