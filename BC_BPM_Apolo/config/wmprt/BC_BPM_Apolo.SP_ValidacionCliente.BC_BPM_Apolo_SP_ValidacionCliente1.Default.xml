@@ -116,7 +116,7 @@
           </array>
           <array name="outputs" type="idatacodable" depth="1">
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &lt; 2)</value>
+              <value name="condition">(%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S64</value>
@@ -127,7 +127,7 @@
               <value name="compensating">false</value>
             </idatacodable>
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% = 2)</value>
+              <value name="condition">(%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S73</value>
@@ -152,7 +152,7 @@
           <value name="parallelExecute">false</value>
           <value name="suppressUnsatisfiedJoin">false</value>
           <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!((%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &lt; 2)) &amp;&amp; !((%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% = 2))</value>
+            <value name="condition">!((%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)) &amp;&amp; !((%dt_validacionCliente/hasIneErrorBack% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneBack% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%))</value>
             <value name="isXpathCond">false</value>
             <value name="targetServerId">Default</value>
             <value name="targetStepId">S83</value>
@@ -531,7 +531,7 @@
         </idatacodable>
         <idatacodable javaclass="com.wm.app.prt.model.ExclusiveGateway">
           <value name="stepId">S104</value>
-          <value name="stepLabel">COD.Reintento selfie</value>
+          <value name="stepLabel">COD.hasErrorSelfie</value>
           <value name="isStart">false</value>
           <value name="isSynchronizationPoint">false</value>
           <array name="inputs" type="idatacodable" depth="1">
@@ -541,7 +541,7 @@
           </array>
           <array name="outputs" type="idatacodable" depth="1">
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &lt; 2)</value>
+              <value name="condition">(%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S98</value>
@@ -552,7 +552,7 @@
               <value name="compensating">false</value>
             </idatacodable>
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% = 2)</value>
+              <value name="condition">(%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S73</value>
@@ -577,7 +577,7 @@
           <value name="parallelExecute">false</value>
           <value name="suppressUnsatisfiedJoin">false</value>
           <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!((%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &lt; 2)) &amp;&amp; !((%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% = 2))</value>
+            <value name="condition">!((%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)) &amp;&amp; !((%dt_validacionCliente/compuertas/hasErrorSelfie% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countSelfie% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%))</value>
             <value name="isXpathCond">false</value>
             <value name="targetServerId">Default</value>
             <value name="targetStepId">S109</value>
@@ -1108,7 +1108,7 @@
           </array>
           <array name="outputs" type="idatacodable" depth="1">
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &lt; 2)</value>
+              <value name="condition">(%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S53</value>
@@ -1119,7 +1119,7 @@
               <value name="compensating">false</value>
             </idatacodable>
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">(%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% = 2)</value>
+              <value name="condition">(%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S73</value>
@@ -1144,7 +1144,7 @@
           <value name="parallelExecute">false</value>
           <value name="suppressUnsatisfiedJoin">false</value>
           <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!((%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &lt; 2)) &amp;&amp; !((%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% = 2))</value>
+            <value name="condition">!((%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &lt; %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%)) &amp;&amp; !((%dt_validacionCliente/hasIneErrorFront% = "true" &amp;&amp; %dt_validacionCliente/compuertas/countIneFront% &gt;= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts%))</value>
             <value name="isXpathCond">false</value>
             <value name="targetServerId">Default</value>
             <value name="targetStepId">S64</value>
@@ -1322,6 +1322,6 @@
         </idatacodable>
       </array>
     </idatacodable>
-    <Date name="timestamp" type="java.util.Date">Tue Sep 22 19:11:42 UTC 2026</Date>
+    <Date name="timestamp" type="java.util.Date">Wed Sep 30 19:37:27 UTC 2026</Date>
   </record>
 </IDataXMLCoder>

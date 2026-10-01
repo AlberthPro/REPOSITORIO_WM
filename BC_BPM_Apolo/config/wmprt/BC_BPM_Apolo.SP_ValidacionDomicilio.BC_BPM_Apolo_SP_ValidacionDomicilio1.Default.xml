@@ -1303,7 +1303,7 @@
           </array>
           <array name="outputs" type="idatacodable" depth="1">
             <idatacodable javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-              <value name="condition">%dt_validacionDomicilio/control/attemptControlRuleRs/exhausted% = "true"</value>
+              <value name="condition">(%dt_validacionDomicilio/compuertas/retryAddress1% = "true" &amp;&amp; %dt_validacionDomicilio/compuertas/countAddress1% &gt;= %dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts%)</value>
               <value name="isXpathCond">false</value>
               <value name="targetServerId">Default</value>
               <value name="targetStepId">S143</value>
@@ -1339,7 +1339,7 @@
           <value name="parallelExecute">false</value>
           <value name="suppressUnsatisfiedJoin">false</value>
           <idatacodable name="defaultTransition" javaclass="com.wm.app.prt.model.PRTTransitionOutputDef">
-            <value name="condition">!(%dt_validacionDomicilio/control/attemptControlRuleRs/exhausted% = "true") &amp;&amp; !((%dt_validacionDomicilio/compuertas/retryAddress1% = "true" &amp;&amp; %dt_validacionDomicilio/compuertas/countAddress1% &lt; %dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts%))</value>
+            <value name="condition">!((%dt_validacionDomicilio/compuertas/retryAddress1% = "true" &amp;&amp; %dt_validacionDomicilio/compuertas/countAddress1% &gt;= %dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts%)) &amp;&amp; !((%dt_validacionDomicilio/compuertas/retryAddress1% = "true" &amp;&amp; %dt_validacionDomicilio/compuertas/countAddress1% &lt; %dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts%))</value>
             <value name="isXpathCond">false</value>
             <value name="targetServerId">Default</value>
             <value name="targetStepId">S56</value>
@@ -1926,6 +1926,6 @@
         </idatacodable>
       </array>
     </idatacodable>
-    <Date name="timestamp" type="java.util.Date">Wed Sep 30 15:56:12 UTC 2026</Date>
+    <Date name="timestamp" type="java.util.Date">Wed Sep 30 19:40:15 UTC 2026</Date>
   </record>
 </IDataXMLCoder>
