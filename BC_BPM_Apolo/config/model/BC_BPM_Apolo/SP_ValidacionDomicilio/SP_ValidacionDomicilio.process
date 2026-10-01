@@ -73,43 +73,6 @@
     timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
   <input name="{ProcessNamespace}dt_validacionDomicilio"/>
   <output name="{ProcessNamespace}dt_validacionDomicilio"/>
-  <pool Id="675a3ea0-518a-4e5b-9dd5-2988013dd8bd" blue="128"
-    containerType="BPMN_SUBPROCESS" external="true"
-    externalizeConditions="false" green="128" isCollapsed="false"
-    isCompensating="false" isTestAfter="false" label="Pool"
-    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
-    loopMaximum="0" loopMaximumField="" name="1"
-    orientation="horizontal" red="128" retryCount="0" stepLock="false"
-    uid="P2" useCorrelation="false">
-    <documentation/>
-    <businessKPIs/>
-    <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    <annotationNode Id="befb73b0-57f4-4392-bf14-e9c8a64342ce" blue="0"
-      green="196" height="32" label="annotationNode"
-      name="annotationNode" red="255" text="V2 - 29/09/2026" uid="N164"
-      width="113" x="37" y="9">
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-    </annotationNode>
-    <poolReference Id="e55cc728-7e85-44d0-8357-d7d719b180cd"
-      label="SP_ValidacionDomicilio" logicalServer="Default"
-      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
-      x="37" y="40">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    </poolReference>
-    <timeout calendarAlias="" calendarTime="0:0:0"
-      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-      dynamicFieldName="" isCalendarTimeout="false"
-      isStaticTimeout="true" isXPathTimeout="false"
-      pipelineCalendarAlias="" pipelineCalendarDays=""
-      pipelineCalendarHours="" pipelineCalendarMinutes=""
-      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
-    <wmExpression/>
-  </pool>
   <pool Id="0680d347-4dba-48a5-b5b3-12241f03ba2a" blue="128"
     containerType="BPMN_SUBPROCESS" errorHandler="S163" external="false"
     externalizeConditions="false" green="128" isCollapsed="false"
@@ -2203,23 +2166,27 @@
       <wmExpression/>
     </transition>
     <transition Id="0b26d26b-37ba-44f9-9eaf-9526e2cba6f5" blue="255"
-      conditionDescription="exhausted=true | exitCode=0003"
-      conditionText="dt_validacionDomicilio/control/attemptControlRuleRs/exhausted = true"
+      conditionDescription="retryAddress1=true &amp; countAddress1>=maxattempts | exitCode=0003"
+      conditionText="dt_validacionDomicilio/compuertas/retryAddress1 = true and&#xa;dt_validacionDomicilio/compuertas/countAddress1 >= dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S53" sourceLocation="1520,170" sourceTerminal="BOTTOM"
       target="S143" targetLocation="1713,291" targetTerminal="LEFT" uid="T148">
       <bendpoint index="0" location="1587,332" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="156" x="1538" y="341">
+        height="14" red="255" width="337" x="1441" y="338">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
       </labelLayout>
       <wmExpression>
-        <row chainOperator=""
-          leftFieldPath="control/attemptControlRuleRs/exhausted"
+        <row chainOperator="and"
+          leftFieldPath="compuertas/retryAddress1"
           leftOperand="{ProcessNamespace}dt_validacionDomicilio"
           operator="=" rightOperand="'true'"/>
+        <row chainOperator="" leftFieldPath="compuertas/countAddress1"
+          leftOperand="{ProcessNamespace}dt_validacionDomicilio"
+          operator=">="
+          rightFieldPath="control/attemptControlRuleRs/maxAttempts" rightOperand="{ProcessNamespace}dt_validacionDomicilio"/>
       </wmExpression>
     </transition>
     <transition Id="c74615ba-8dca-4df2-b246-aaac9ad3346b" blue="255"
@@ -2569,6 +2536,43 @@
       uid="W8" width="2357">
       <documentation/>
     </swimlane>
+  </pool>
+  <pool Id="675a3ea0-518a-4e5b-9dd5-2988013dd8bd" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="befb73b0-57f4-4392-bf14-e9c8a64342ce" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="V2 - 29/09/2026" uid="N164"
+      width="113" x="37" y="9">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <poolReference Id="e55cc728-7e85-44d0-8357-d7d719b180cd"
+      label="SP_ValidacionDomicilio" logicalServer="Default"
+      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
+      x="37" y="40">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
   </pool>
   <documentation/>
 </businessProcessDiagram>
