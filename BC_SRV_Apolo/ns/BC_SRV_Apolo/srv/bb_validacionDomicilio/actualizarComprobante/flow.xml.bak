@@ -567,7 +567,12 @@
 </MAPSET>
 </MAP>
 
-<BRANCH TIMEOUT="" SWITCH="/dt_validacionDomicilio/compuertas/countAddress1 == 5">
+<BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
+  <COMMENT></COMMENT>
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="%/dt_validacionDomicilio/compuertas/countAddress1% >= %dt_validacionDomicilio/control/attemptControlRuleRs/maxAttempts%" TIMEOUT="" EXIT-ON="FAILURE">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
@@ -704,6 +709,7 @@
 <EXIT FROM="$flow" SIGNAL="SUCCESS" FAILURE-MESSAGE="">
   <COMMENT></COMMENT>
 </EXIT>
+</SEQUENCE>
 </BRANCH>
 
 <SEQUENCE TIMEOUT="" EXIT-ON="FAILURE">
