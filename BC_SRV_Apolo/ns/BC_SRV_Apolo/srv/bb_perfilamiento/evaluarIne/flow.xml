@@ -512,6 +512,161 @@
 </MAPINVOKE>
 </MAP>
 
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>concat firstName + secondName</COMMENT>
+  <MAPTARGET>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">fileName</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">dt_perfilamiento</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_perfilamiento</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">registrationYear</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPTARGET>
+  <MAPSOURCE>
+
+<Values version="2.0">
+  <record name="xml" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_type">record</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+    <array name="rec_fields" type="record" depth="1">
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">fileName</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
+        <value name="node_comment"></value>
+        <record name="node_hints" javaclass="com.wm.util.Values">
+          <value name="field_largerEditor">false</value>
+          <value name="field_password">false</value>
+        </record>
+        <value name="is_public">false</value>
+        <value name="field_name">dt_perfilamiento</value>
+        <value name="field_type">recref</value>
+        <value name="field_dim">0</value>
+        <value name="wrapper_type">IData</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <value name="rec_closed">true</value>
+        <value name="modifiable">true</value>
+        <value name="rec_ref">BC_SRV_Apolo.docs:dt_perfilamiento</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">registrationYear</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
+    </array>
+    <value name="modifiable">true</value>
+  </record>
+</Values>
+</MAPSOURCE>
+
+  <!-- nodes -->
+
+<MAPINVOKE SERVICE="BC_SRV_Transversales.srv:UT_MultiConcatString" VALIDATE-IN="$none" VALIDATE-OUT="$none" INVOKE-ORDER="0">
+
+  <!-- nodes -->
+
+<MAP MODE="INVOKEINPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/ineShow;2;0/personName;2;0/firstName;1;0" TO="/toConcat[0];1;1">
+</MAPCOPY>
+
+<MAPCOPY FROM="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/ineShow;2;0/personName;2;0/secondName;1;0" TO="/toConcat[1];1;1">
+</MAPCOPY>
+</MAP>
+
+<MAP MODE="INVOKEOUTPUT">
+
+  <!-- nodes -->
+
+<MAPCOPY FROM="/string;1;0" TO="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/ineShow;2;0/personName;2;0/firstName;1;0">
+</MAPCOPY>
+</MAP>
+</MAPINVOKE>
+</MAP>
+
+<RETRY TIMEOUT="" COUNT="1" BACK-OFF="" LOOP-ON="FAILURE">
+  <COMMENT>repeat on 1</COMMENT>
+
+  <!-- nodes -->
+
 <INVOKE TIMEOUT="" SERVICE="BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.services:V1IneEvaluate_POST" VALIDATE-IN="$none" VALIDATE-OUT="$none">
   <COMMENT></COMMENT>
 
@@ -783,6 +938,17 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
       </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">$retries</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+      </record>
     </array>
     <value name="modifiable">true</value>
   </record>
@@ -840,6 +1006,7 @@
 <MAP MODE="OUTPUT">
 </MAP>
 </INVOKE>
+</RETRY>
 
 <INVOKE TIMEOUT="" SERVICE="pub.json:jsonStringToDocument" VALIDATE-IN="$none" VALIDATE-OUT="$none" DISABLED="true">
   <COMMENT>set response</COMMENT>
@@ -1125,6 +1292,31 @@
       <record javaclass="com.wm.util.Values">
         <value name="node_type">record</value>
         <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">header</value>
+        <value name="field_type">record</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
+        <array name="rec_fields" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">unknown</value>
+            <value name="node_subtype">unknown</value>
+            <value name="is_public">false</value>
+            <value name="field_name">status</value>
+            <value name="field_type">string</value>
+            <value name="field_dim">0</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+          </record>
+        </array>
+        <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">record</value>
+        <value name="node_subtype">unknown</value>
         <value name="node_comment"></value>
         <record name="node_hints" javaclass="com.wm.util.Values">
           <value name="field_largerEditor">false</value>
@@ -1241,6 +1433,26 @@
 
 <MAPCOPY FROM="/document;2;0" TO="/evaluateINERs;2;0">
 </MAPCOPY>
+
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/header;2;0/status;1;0">
+  <DATA ENCODING="XMLValues" I18N="true">
+
+<Values version="2.0">
+  <value name="xml">200</value>
+  <record name="type" javaclass="com.wm.util.Values">
+    <value name="node_type">record</value>
+    <value name="node_subtype">unknown</value>
+    <value name="is_public">false</value>
+    <value name="field_name">status</value>
+    <value name="field_type">string</value>
+    <value name="field_dim">0</value>
+    <value name="nillable">true</value>
+    <value name="form_qualified">false</value>
+    <value name="is_global">false</value>
+  </record>
+</Values>
+</DATA>
+</MAPSET>
 </MAP>
 </INVOKE>
 
@@ -1425,7 +1637,7 @@
 </MAPSET>
 </MAP>
 
-<MAP NAME="temp" TIMEOUT="" MODE="STANDALONE">
+<MAP NAME="temp" TIMEOUT="" MODE="STANDALONE" DISABLED="true">
   <COMMENT></COMMENT>
   <MAPTARGET>
 
@@ -1577,7 +1789,7 @@
 
   <!-- nodes -->
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/compuertas;2;0/ineStatusCode;1;0">
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/compuertas;2;0/ineStatusCode;1;0" DISABLED="true">
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
@@ -1605,7 +1817,7 @@
 </DATA>
 </MAPSET>
 
-<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/compuertas;2;0/ineHasErrorMsg;3.1;0">
+<MAPSET NAME="Setter" OVERWRITE="true" VARIABLES="false" GLOBALVARIABLES="false" FIELD="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/compuertas;2;0/ineHasErrorMsg;3.1;0" DISABLED="true">
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
@@ -2373,7 +2585,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -2400,6 +2612,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -2552,6 +2775,318 @@
         <value name="form_qualified">false</value>
         <value name="is_global">false</value>
         <array name="rec_fields" type="record" depth="1">
+          <record javaclass="com.wm.util.Values">
+            <value name="node_type">record</value>
+            <value name="node_subtype">unknown</value>
+            <value name="node_comment"></value>
+            <record name="node_hints" javaclass="com.wm.util.Values">
+              <value name="field_largerEditor">false</value>
+              <value name="field_password">false</value>
+            </record>
+            <value name="is_public">false</value>
+            <value name="field_name">ine</value>
+            <value name="field_type">record</value>
+            <value name="field_dim">0</value>
+            <value name="wrapper_type">IData</value>
+            <value name="nillable">true</value>
+            <value name="form_qualified">false</value>
+            <value name="is_global">false</value>
+            <array name="rec_fields" type="record" depth="1">
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">record</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">identificationDevice</value>
+                <value name="field_type">recref</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">IData</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+                <value name="rec_closed">true</value>
+                <value name="modifiable">true</value>
+                <value name="rec_ref">BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.docTypes:identificationDevice</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_usereditable">true</value>
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">result</value>
+                <value name="field_type">string</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <value name="field_opt">true</value>
+                <array name="field_options" type="value" depth="1">
+                </array>
+                <value name="description">Resultado de la acción INE</value>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">string</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_usereditable">true</value>
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">scrapingStatus</value>
+                <value name="field_type">string</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <value name="field_opt">true</value>
+                <array name="field_options" type="value" depth="1">
+                </array>
+                <value name="description">Resultado del proceso de scraping</value>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">string</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">hasScrapingMethod</value>
+                <value name="field_type">object</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <value name="field_opt">true</value>
+                <value name="wrapper_type">java.lang.Boolean</value>
+                <value name="description">Fuerza al sistema a usar siempre la validación por scraping, saltándose el servicio principal</value>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">boolean</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_usereditable">true</value>
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">url</value>
+                <value name="field_type">string</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <value name="field_opt">true</value>
+                <array name="field_options" type="value" depth="1">
+                </array>
+                <value name="description">Direccion URL que lleva a una captura de pantalla del scraping</value>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">string</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">record</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">documentContent</value>
+                <value name="field_type">recref</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">IData</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+                <value name="rec_closed">true</value>
+                <value name="modifiable">true</value>
+                <value name="rec_ref">BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.docTypes:documentContent</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">field</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">fallbackEnabled</value>
+                <value name="field_type">object</value>
+                <value name="field_is_jsonSchema">true</value>
+                <value name="field_dim">0</value>
+                <value name="field_opt">true</value>
+                <value name="wrapper_type">java.lang.Boolean</value>
+                <value name="description">Activa la validación por scraping como un plan B únicamente si el servicio principal del INE falla</value>
+                <array name="field_content_type" type="record" depth="1">
+                  <record javaclass="com.wm.util.Values">
+                    <record name="type" javaclass="com.wm.util.Values">
+                      <value name="key">type</value>
+                      <value name="value">boolean</value>
+                      <value name="type">STRING</value>
+                    </record>
+                    <record name="extendedProperties" javaclass="com.wm.util.Values">
+                      <record name="extensionName" javaclass="com.wm.util.Values">
+                        <value name="key">extensionName</value>
+                        <value name="value">openapi</value>
+                        <value name="type">STRING</value>
+                      </record>
+                      <record name="extensionVersion" javaclass="com.wm.util.Values">
+                        <value name="key">extensionVersion</value>
+                        <value name="value">3.0.2</value>
+                        <value name="type">STRING</value>
+                      </record>
+                    </record>
+                  </record>
+                </array>
+                <value name="nillable">false</value>
+                <Boolean name="readOnly">false</Boolean>
+                <Boolean name="writeOnly">false</Boolean>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">record</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">statusInstanceRecord</value>
+                <value name="field_type">recref</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">IData</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+                <value name="rec_closed">true</value>
+                <value name="modifiable">true</value>
+                <value name="rec_ref">BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.docTypes:statusInstanceRecord</value>
+              </record>
+              <record javaclass="com.wm.util.Values">
+                <value name="node_type">record</value>
+                <value name="node_subtype">unknown</value>
+                <value name="node_comment"></value>
+                <record name="node_hints" javaclass="com.wm.util.Values">
+                  <value name="field_largerEditor">false</value>
+                  <value name="field_password">false</value>
+                </record>
+                <value name="is_public">false</value>
+                <value name="field_name">countryReference</value>
+                <value name="field_type">recref</value>
+                <value name="field_dim">0</value>
+                <value name="wrapper_type">IData</value>
+                <value name="nillable">true</value>
+                <value name="form_qualified">false</value>
+                <value name="is_global">false</value>
+                <value name="rec_closed">true</value>
+                <value name="modifiable">true</value>
+                <value name="rec_ref">BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.docTypes:countryReference</value>
+              </record>
+            </array>
+            <value name="rec_closed">true</value>
+            <value name="modifiable">true</value>
+          </record>
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
@@ -2583,10 +3118,13 @@
 <MAPCOPY FROM="/string;1;0" TO="/dt_perfilamiento;4;0;BC_SRV_Apolo.docs:dt_perfilamiento/compuertas;2;0/referenceKnockoutId;1;0">
 </MAPCOPY>
 
-<MAPCOPY FROM="/string;1;0" TO="/statusCode;1;0">
+<MAPCOPY FROM="/string;1;0" TO="/statusCodeINE;1;0">
 </MAPCOPY>
 </MAP>
 </MAPINVOKE>
+
+<MAPCOPY FROM="/evaluateINERs;2;0/ine;2;0/statusInstanceRecord;4;0;BC_SRV_Mulesoft.api.mulesoft.dompartylifecyclemanagement.docTypes:statusInstanceRecord/status;1;0" TO="/statusINE;1;0">
+</MAPCOPY>
 </MAP>
 
 <BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
@@ -2594,8 +3132,8 @@
 
   <!-- nodes -->
 
-<MAP NAME="%statusCodeInt% >= 0 AND %statusCodeInt% &lt;= 8" TIMEOUT="" MODE="STANDALONE">
-  <COMMENT></COMMENT>
+<MAP NAME="%statusINE% == &#34;FAIL&#34; &amp;&amp; %statusCodeINE% >= 5 &amp;&amp; %statusCodeINE% &lt;= 8" TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>exitCode 0042</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -2717,7 +3255,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -2744,6 +3282,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -2820,7 +3369,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>exitCode 0035</COMMENT>
+  <COMMENT>exitCode 0036</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -2942,7 +3491,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -2969,6 +3518,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -3000,7 +3560,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">0035</value>
+  <value name="xml">0036</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -3034,7 +3594,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>exitCode 0035</COMMENT>
+  <COMMENT>exitCode 0036</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -3156,7 +3716,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -3183,6 +3743,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -3214,7 +3785,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">0035</value>
+  <value name="xml">0036</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -3248,7 +3819,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>exitCode 0035</COMMENT>
+  <COMMENT>exitCode 0036</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -3370,7 +3941,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -3397,6 +3968,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -3428,7 +4010,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">0035</value>
+  <value name="xml">0036</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -3584,7 +4166,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -3611,6 +4193,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -3799,7 +4392,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -3826,6 +4419,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4003,7 +4607,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -4030,6 +4634,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4093,7 +4708,7 @@
   <!-- nodes -->
 
 <MAP TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>exitCode 9998</COMMENT>
+  <COMMENT>exitCode 0036</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -4215,7 +4830,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -4242,6 +4857,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4273,7 +4899,7 @@
   <DATA ENCODING="XMLValues" I18N="true">
 
 <Values version="2.0">
-  <value name="xml">9998</value>
+  <value name="xml">0036</value>
   <record name="type" javaclass="com.wm.util.Values">
     <value name="node_type">record</value>
     <value name="node_subtype">unknown</value>
@@ -4428,7 +5054,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -4455,6 +5081,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>
@@ -4582,7 +5219,7 @@
         <value name="node_type">unknown</value>
         <value name="node_subtype">unknown</value>
         <value name="is_public">false</value>
-        <value name="field_name">statusCode</value>
+        <value name="field_name">statusCodeINE</value>
         <value name="field_type">string</value>
         <value name="field_dim">0</value>
         <value name="nillable">true</value>
@@ -4609,6 +5246,17 @@
         </array>
         <value name="rec_closed">true</value>
         <value name="modifiable">true</value>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="node_type">unknown</value>
+        <value name="node_subtype">unknown</value>
+        <value name="is_public">false</value>
+        <value name="field_name">statusINE</value>
+        <value name="field_type">string</value>
+        <value name="field_dim">0</value>
+        <value name="nillable">true</value>
+        <value name="form_qualified">false</value>
+        <value name="is_global">false</value>
       </record>
     </array>
     <value name="modifiable">true</value>

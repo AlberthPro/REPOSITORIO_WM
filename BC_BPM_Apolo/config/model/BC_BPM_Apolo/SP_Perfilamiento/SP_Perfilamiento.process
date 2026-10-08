@@ -38,6 +38,12 @@
   <logicalDataItem Id="" description="" dimension="0"
     label="TU.Reintentar INEOutputEnv"
     name="{ProcessNamespace}TU.Reintentar INEOutputEnv" type="{pub.task}TaskCompletionInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Reintentar CURPInputEnv"
+    name="{ProcessNamespace}TU.Reintentar CURPInputEnv" type="{pub.task}TaskQueueInfo"/>
+  <logicalDataItem Id="" description="" dimension="0"
+    label="TU.Reintentar CURPOutputEnv"
+    name="{ProcessNamespace}TU.Reintentar CURPOutputEnv" type="{pub.task}TaskCompletionInfo"/>
   <timeout calendarAlias="" calendarTime="0:0:0"
     dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
     dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
@@ -48,6 +54,42 @@
     timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
   <input name="{ProcessNamespace}dt_perfilamiento"/>
   <output name="{ProcessNamespace}dt_perfilamiento"/>
+  <pool Id="4883a232-8598-4fa7-96c3-38dd4d53ec7c" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="41339bb1-1d16-4b7a-af28-3baaccd91fa6" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="v2 - 06/10/2026" uid="N131"
+      width="111" x="21" y="0">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <poolReference Id="d67d911a-5303-4641-8f3a-95c5272299da"
+      label="SP_Perfilamiento" logicalServer="Default" poolName="6"
+      stepLock="false" uid="S3" useCorrelation="false" x="21" y="35">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
   <pool Id="8f2b02c3-a404-4453-a045-df8a91b9c9d6" blue="128"
     containerType="BPMN_SUBPROCESS" errorHandler="S21" external="false"
     externalizeConditions="false" green="128" isCollapsed="false"
@@ -62,7 +104,7 @@
     <annotationNode Id="38386285-f89f-452d-ad48-654b3f044a28" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="webHook = START_PROFILE_BB"
-      uid="N14" width="193" x="238" y="43">
+      uid="N14" width="193" x="248" y="107">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -71,7 +113,7 @@
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
       text="Pro_updatePartyRelationshipProcedure" uid="N35" width="223"
-      x="430" y="309">
+      x="300" y="310">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -79,7 +121,7 @@
     <annotationNode Id="6c316b1c-147a-45cf-a106-980768ce3b85" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="webHook = TIPO_DOMICILIO"
-      uid="N47" width="171" x="594" y="43">
+      uid="N47" width="171" x="427" y="392">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -88,7 +130,7 @@
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
       text="Pro_updatePartyRelationshipProcedure" uid="N51" width="223"
-      x="668" y="310">
+      x="614" y="402">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -96,7 +138,7 @@
     <annotationNode Id="cec976c1-03fe-4cf1-8c98-d829265f32f1" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="Bus_retrieveQualification"
-      uid="N55" width="156" x="1027" y="310">
+      uid="N55" width="156" x="971" y="422">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -104,16 +146,15 @@
     <annotationNode Id="03fb582d-3d2a-421a-8415-8a124cb76e62" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="Bus_retrieveOCR" uid="N59"
-      width="119" x="899" y="310">
+      width="119" x="856" y="392">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
     </annotationNode>
     <annotationNode Id="3bc1de93-9871-4103-bce6-7305af0be37f" blue="0"
       green="196" height="32" label="annotationNode"
-      name="annotationNode" red="255"
-      text="Bus_evaluatePartyAgeEligibility" uid="N73" width="185"
-      x="1222" y="310">
+      name="annotationNode" red="255" text="RN28_EvaluateAgeEligibility"
+      uid="N73" width="167" x="1219" y="310">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -129,7 +170,7 @@
     <annotationNode Id="4a98ffce-ad38-4553-aca0-565705877b9a" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255"
-      text="Bus_retrieveCustomerIdentity" uid="N92" width="177" x="1638" y="298">
+      text="Bus_retrieveCustomerIdentity" uid="N92" width="177" x="1701" y="273">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -137,7 +178,7 @@
     <annotationNode Id="5c0715a6-d339-4bae-aefb-672a0d15b3f8" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="Pro_evaluateINE" uid="N99"
-      width="113" x="1908" y="318">
+      width="113" x="2013" y="288">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
@@ -151,27 +192,27 @@
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
     </annotationNode>
-    <annotationNode Id="ebe7d68f-472f-47bb-928b-39fe11e2a051" blue="0"
+    <annotationNode Id="f685b1c6-0610-4fcc-a277-2ec0eaa81fdb" blue="0"
       green="196" height="32" label="annotationNode"
-      name="annotationNode" red="255" text="Pro_retrieveHistory"
-      uid="N112" width="128" x="2305" y="298">
+      name="annotationNode" red="255" text="webHook = RISK_RETRY"
+      uid="N126" width="156" x="2013" y="466">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
         <fontColor blue="192" green="192" red="192"/>
       </fontData>
     </annotationNode>
-    <annotationNode Id="f685b1c6-0610-4fcc-a277-2ec0eaa81fdb" blue="0"
+    <annotationNode Id="5ced96c3-a74c-4462-88c6-5b1785ac5a21" blue="0"
       green="196" height="32" label="annotationNode"
       name="annotationNode" red="255" text="webHook = RISK_RETRY"
-      uid="N126" width="156" x="1897" y="475">
+      uid="N152" width="156" x="1712" y="475">
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
+        <fontColor blue="192" green="192" red="192"/>
       </fontData>
     </annotationNode>
     <noneEventStep Id="68628c02-f045-4f61-b12e-448130283712"
       eventType="END" height="28" label="EVF.Perfilamiento finalizado"
       labelHeight="-1" labelWidth="-1" logicalServer="Default"
       stepLock="false" uid="S12" useCorrelation="false" width="28"
-      x="2596" y="216">
+      x="2429" y="216">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -181,45 +222,11 @@
       <extendedProperty name="retries" value="0"/>
       <extendedProperty name="retryInterval" value="60000"/>
     </noneEventStep>
-    <gatewayStep Id="eff7fc50-8fd9-4da1-a63f-abb42675d0ef"
-      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
-      label="COC.Office1" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" retryCount="0" stepLock="false" uid="S22"
-      useCorrelation="false" width="34" x="2210" y="77">
-      <documentation/>
-      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <timeout calendarAlias="" calendarTime="0:0:0"
-        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-        dynamicFieldName="" isCalendarTimeout="false"
-        isStaticTimeout="true" isXPathTimeout="false"
-        pipelineCalendarAlias="" pipelineCalendarDays=""
-        pipelineCalendarHours="" pipelineCalendarMinutes=""
-        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
-        timeoutValue="0" xpathTimeoutValue=""/>
-    </gatewayStep>
-    <noneEventStep Id="67f1b5f2-da5a-4c26-8d4a-9a6d47a6714e"
-      eventType="END" height="28" label="EVF.Perfilamiento cancelado 2"
-      labelHeight="-1" labelWidth="-1" logicalServer="Default"
-      stepLock="false" uid="S26" useCorrelation="false" width="28"
-      x="2596" y="80">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <extendedProperty name="retries" value="0"/>
-      <extendedProperty name="retryInterval" value="60000"/>
-    </noneEventStep>
     <gatewayStep Id="5f5aed69-5081-4911-a5b2-8b3d80b494ce"
       externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
       label="COD.BlackList" labelHeight="-1" labelWidth="-1"
       logicalServer="Default" retryCount="0" stepLock="false" uid="S62"
-      useCorrelation="false" width="34" x="1189" y="213">
+      useCorrelation="false" width="34" x="1177" y="213">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -313,7 +320,7 @@
       externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
       label="COD.hasCURP" labelHeight="-1" labelWidth="-1"
       logicalServer="Default" retryCount="0" stepLock="false" uid="S94"
-      useCorrelation="false" width="34" x="1806" y="213">
+      useCorrelation="false" width="34" x="1900" y="215">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -349,26 +356,6 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </gatewayStep>
-    <gatewayStep Id="367e94a3-6026-44bb-98e2-a1d185f06521"
-      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
-      label="COD.score" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" retryCount="0" stepLock="false" uid="S106"
-      useCorrelation="false" width="34" x="2448" y="213">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <timeout calendarAlias="" calendarTime="0:0:0"
-        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-        dynamicFieldName="" isCalendarTimeout="false"
-        isStaticTimeout="true" isXPathTimeout="false"
-        pipelineCalendarAlias="" pipelineCalendarDays=""
-        pipelineCalendarHours="" pipelineCalendarMinutes=""
-        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
-        timeoutValue="0" xpathTimeoutValue=""/>
-    </gatewayStep>
     <noneEventStep Id="389fafc6-d857-4fdb-9f8c-541ba0a29643"
       eventType="START" height="28" label="EVI.Perfilamiento iniciado"
       labelHeight="-1" labelWidth="-1" logicalServer="Default"
@@ -384,7 +371,69 @@
       externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
       label="COC.loop INE" labelHeight="-1" labelWidth="-1"
       logicalServer="Default" retryCount="0" stepLock="false" uid="S117"
-      useCorrelation="false" width="34" x="1885" y="213">
+      useCorrelation="false" width="34" x="1973" y="213">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="064bca64-1a44-4d67-96e3-e40aff01a435"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COD.Producto" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S132"
+      useCorrelation="false" width="34" x="539" y="213">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="0b0f861a-308e-4a69-8a8c-d78b2fa13a9e"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Producto" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S135"
+      useCorrelation="false" width="34" x="836" y="215">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
+    <gatewayStep Id="0154caef-4562-4ca4-96e8-b51b6af7c97a"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.loop Curp" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S146"
+      useCorrelation="false" width="34" x="1672" y="213">
       <documentation/>
       <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
       <businessKPIs/>
@@ -411,7 +460,7 @@
       labelWidth="-1" logicalServer="Default" loopMaximum="0"
       loopMaximumField="" retryCount="0" routingRuleSet=""
       ruleType="TASK" stepLock="false" uid="S10" useCorrelation="false"
-      width="93" x="288" y="200">
+      width="93" x="274" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -498,39 +547,6 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </invokeStep>
-    <invokeStep Id="571349d2-7303-439f-bc89-e2014e1aed84"
-      dynamicReferenceProcess="false" externalizeConditions="false"
-      height="60" inputMessageType="Unconfigured"
-      invokeContainer="BC_SRV_Apolo.srv.bb_perfilamiento"
-      invokeId="BC_SRV_Apolo.srv.bb_perfilamiento:regresarFlujoPrincipal"
-      invokeLocation="" invokeName="regresarFlujoPrincipal"
-      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
-      label="TS.Regresar flujo principal 2" labelHeight="-1"
-      labelWidth="-1" logicalServer="Default" loopMaximum="0"
-      loopMaximumField="" ornamentKey="32_decision_diamond_orange.png"
-      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
-      ruleType="WMRULE" stepLock="false" uid="S24"
-      useCorrelation="false" width="93" x="2325" y="64">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <input name="{ProcessNamespace}dt_perfilamiento"/>
-      <wmExpression/>
-      <output name="{ProcessNamespace}dt_perfilamiento"/>
-      <extendedProperty name="retries" value="0"/>
-      <extendedProperty name="retryInterval" value="60000"/>
-      <timeout calendarAlias="" calendarTime="0:0:0"
-        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-        dynamicFieldName="" isCalendarTimeout="false"
-        isStaticTimeout="true" isXPathTimeout="false"
-        pipelineCalendarAlias="" pipelineCalendarDays=""
-        pipelineCalendarHours="" pipelineCalendarMinutes=""
-        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
-        timeoutValue="0" xpathTimeoutValue=""/>
-    </invokeStep>
     <invokeStep Id="ad588ca0-87c7-4c35-9f97-633a979f8088"
       dynamicReferenceProcess="false" externalizeConditions="false"
       height="60" inputMessageType="Unconfigured"
@@ -543,7 +559,7 @@
       loopMaximumField="" outputMessageType="Unconfigured"
       retryCount="0" routingRuleSet="" ruleType="WMRULE"
       stepLock="false" uid="S33" useCorrelation="false" width="93"
-      x="477" y="200">
+      x="405" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -574,7 +590,7 @@
       labelWidth="-1" logicalServer="Default" loopMaximum="0"
       loopMaximumField="" retryCount="0" routingRuleSet=""
       ruleType="TASK" stepLock="false" uid="S45" useCorrelation="false"
-      width="93" x="628" y="200">
+      width="93" x="587" y="284">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -609,7 +625,7 @@
       loopMaximumField="" outputMessageType="Unconfigured"
       retryCount="0" routingRuleSet="" ruleType="WMRULE"
       stepLock="false" uid="S49" useCorrelation="false" width="93"
-      x="778" y="200">
+      x="729" y="284">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -641,7 +657,7 @@
       logicalServer="Default" loopMaximum="0" loopMaximumField=""
       outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
       ruleType="WMRULE" stepLock="false" uid="S53"
-      useCorrelation="false" width="93" x="1052" y="200">
+      useCorrelation="false" width="93" x="1042" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -673,7 +689,7 @@
       logicalServer="Default" loopMaximum="0" loopMaximumField=""
       outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
       ruleType="WMRULE" stepLock="false" uid="S57"
-      useCorrelation="false" width="93" x="924" y="200">
+      useCorrelation="false" width="93" x="902" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -835,7 +851,7 @@
       loopMaximum="0" loopMaximumField=""
       outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
       ruleType="WMRULE" stepLock="false" uid="S90"
-      useCorrelation="false" width="93" x="1680" y="200">
+      useCorrelation="false" width="93" x="1737" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -867,39 +883,7 @@
       loopMaximum="0" loopMaximumField=""
       outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
       ruleType="WMRULE" stepLock="false" uid="S97"
-      useCorrelation="false" width="93" x="1978" y="200">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <input name="{ProcessNamespace}dt_perfilamiento"/>
-      <wmExpression/>
-      <output name="{ProcessNamespace}dt_perfilamiento"/>
-      <extendedProperty name="retries" value="0"/>
-      <extendedProperty name="retryInterval" value="60000"/>
-      <timeout calendarAlias="" calendarTime="0:0:0"
-        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-        dynamicFieldName="" isCalendarTimeout="false"
-        isStaticTimeout="true" isXPathTimeout="false"
-        pipelineCalendarAlias="" pipelineCalendarDays=""
-        pipelineCalendarHours="" pipelineCalendarMinutes=""
-        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
-        timeoutValue="0" xpathTimeoutValue=""/>
-    </invokeStep>
-    <invokeStep Id="1660d568-f2e7-4607-90c7-4cac59f6dc1e"
-      dynamicReferenceProcess="false" externalizeConditions="false"
-      height="60" inputMessageType="Unconfigured"
-      invokeContainer="BC_SRV_Apolo.srv.bb_perfilamiento"
-      invokeId="BC_SRV_Apolo.srv.bb_perfilamiento:recuperarHistoria"
-      invokeLocation="" invokeName="recuperarHistoria"
-      invokeType="ISSERVICE" isCompensating="false" isTestAfter="false"
-      label="TS.Recuperar historia" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" loopMaximum="0" loopMaximumField=""
-      outputMessageType="Unconfigured" retryCount="0" routingRuleSet=""
-      ruleType="WMRULE" stepLock="false" uid="S104"
-      useCorrelation="false" width="93" x="2325" y="200">
+      useCorrelation="false" width="93" x="2051" y="200">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -929,7 +913,7 @@
       label="TU.Reintentar INE" labelHeight="-1" labelWidth="-1"
       logicalServer="Default" loopMaximum="0" loopMaximumField=""
       retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
-      uid="S122" useCorrelation="false" width="93" x="2033" y="329">
+      uid="S122" useCorrelation="false" width="93" x="2052" y="330">
       <documentation/>
       <businessKPIs/>
       <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -952,58 +936,45 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </invokeStep>
+    <invokeStep Id="ea7f5bbd-6c3b-4450-a165-6ea3f4efbcfa"
+      dynamicReferenceProcess="false" externalizeConditions="false"
+      height="60" invokeContainer="P/BC_PAN_Perfilamiento"
+      invokeId="66CA2F50-4220-14EB-1F45-AC51B6FDA571" invokeLocation=""
+      invokeName="pntPerfilamiento" invokeType="TASK"
+      isCompensating="false" isTestAfter="false"
+      label="TU.Reintentar CURP" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" loopMaximum="0" loopMaximumField=""
+      retryCount="0" routingRuleSet="" ruleType="TASK" stepLock="false"
+      uid="S145" useCorrelation="false" width="93" x="1749" y="330">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <input name="{ProcessNamespace}dt_perfilamiento"/>
+      <input name="{ProcessNamespace}TU.Reintentar CURPInputEnv"/>
+      <wmExpression/>
+      <output name="{ProcessNamespace}dt_perfilamiento"/>
+      <output name="{ProcessNamespace}TU.Reintentar CURPOutputEnv"/>
+      <extendedProperty name="retries" value="0"/>
+      <extendedProperty name="retryInterval" value="60000"/>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </invokeStep>
     <transition Id="43db1dca-d0f9-4f8c-b30b-3276562ae655" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S16"
       sourceLocation="239,230" sourceTerminal="RIGHT" target="S10"
-      targetLocation="288,230" targetTerminal="LEFT" uid="T18">
-      <bendpoint index="0" location="314,266" weight="0.5"/>
-      <bendpoint index="1" location="314,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="f408e397-b646-4fbd-a44e-6c8ab4548186" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S33"
-      sourceLocation="570,229" sourceTerminal="RIGHT" target="S45"
-      targetLocation="627,229" targetTerminal="LEFT" uid="T46">
-      <bendpoint index="0" location="648,265" weight="0.5"/>
-      <bendpoint index="1" location="648,265" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="e1e159d7-1511-4f14-8d18-f442f5dce1d3" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S45"
-      sourceLocation="721,229" sourceTerminal="RIGHT" target="S49"
-      targetLocation="777,229" targetTerminal="LEFT" uid="T50">
-      <bendpoint index="0" location="800,265" weight="0.5"/>
-      <bendpoint index="1" location="800,265" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="836f77e8-b98a-45b1-91d7-4e0d4f5499e8" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S49"
-      sourceLocation="871,230" sourceTerminal="RIGHT" target="S57"
-      targetLocation="924,230" targetTerminal="LEFT" uid="T58">
-      <bendpoint index="0" location="948,266" weight="0.5"/>
-      <bendpoint index="1" location="948,266" weight="0.5"/>
+      targetLocation="274,230" targetTerminal="LEFT" uid="T18">
+      <bendpoint index="0" location="306,266" weight="0.5"/>
+      <bendpoint index="1" location="306,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1015,10 +986,10 @@
     <transition Id="ded0f430-ea9a-420a-9e38-69a008842da0" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S57"
-      sourceLocation="1017,230" sourceTerminal="RIGHT" target="S53"
-      targetLocation="1052,230" targetTerminal="LEFT" uid="T61">
-      <bendpoint index="0" location="1084,266" weight="0.5"/>
-      <bendpoint index="1" location="1084,266" weight="0.5"/>
+      sourceLocation="995,230" sourceTerminal="RIGHT" target="S53"
+      targetLocation="1042,230" targetTerminal="LEFT" uid="T61">
+      <bendpoint index="0" location="1068,266" weight="0.5"/>
+      <bendpoint index="1" location="1068,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1030,10 +1001,10 @@
     <transition Id="fedac094-0328-4f19-bbab-82eee0efdf9b" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S53"
-      sourceLocation="1145,230" sourceTerminal="RIGHT" target="S62"
-      targetLocation="1189,230" targetTerminal="LEFT" uid="T63">
-      <bendpoint index="0" location="1218,266" weight="0.5"/>
-      <bendpoint index="1" location="1218,266" weight="0.5"/>
+      sourceLocation="1135,230" sourceTerminal="RIGHT" target="S62"
+      targetLocation="1177,230" targetTerminal="LEFT" uid="T63">
+      <bendpoint index="0" location="1206,266" weight="0.5"/>
+      <bendpoint index="1" location="1206,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1041,25 +1012,6 @@
         </fontData>
       </labelLayout>
       <wmExpression/>
-    </transition>
-    <transition Id="b89c6c32-4404-40f1-9d95-bad82483d565" blue="255"
-      conditionDescription="false"
-      conditionText="dt_perfilamiento/compuertas/blacklist = false"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S62" sourceLocation="1223,230" sourceTerminal="RIGHT"
-      target="S64" targetLocation="1268,230" targetTerminal="LEFT" uid="T65">
-      <bendpoint index="0" location="1296,266" weight="0.5"/>
-      <bendpoint index="1" location="1296,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="24" x="1279" y="252">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/blacklist"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
-      </wmExpression>
     </transition>
     <transition Id="6780a7ed-6a64-4736-922d-ee6ed698051c" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
@@ -1156,14 +1108,14 @@
       <wmExpression/>
     </transition>
     <transition Id="d960d64a-07ce-40fa-8d66-1f5dcef1b518" blue="255"
-      conditionDescription="true"
+      conditionDescription="true | exitCode=0030"
       conditionText="dt_perfilamiento/compuertas/blacklist = true"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S62" sourceLocation="1206,247" sourceTerminal="BOTTOM"
+      source="S62" sourceLocation="1194,247" sourceTerminal="BOTTOM"
       target="S66" targetLocation="2210,438" targetTerminal="LEFT" uid="T83">
-      <bendpoint index="0" location="1257,474" weight="0.5"/>
+      <bendpoint index="0" location="1245,474" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="19" x="1270" y="448">
+        height="14" red="255" width="99" x="1270" y="448">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -1173,63 +1125,15 @@
           leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'true'"/>
       </wmExpression>
     </transition>
-    <transition Id="ae8a5a61-d7ca-46ef-93bf-d5ea66731bc8" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S24"
-      sourceLocation="2418,94" sourceTerminal="RIGHT" target="S26"
-      targetLocation="2596,94" targetTerminal="LEFT" uid="T86">
-      <bendpoint index="0" location="2558,130" weight="0.5"/>
-      <bendpoint index="1" location="2558,130" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="89f4c608-69f4-417e-bf6a-97089284855e" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S22"
-      sourceLocation="2244,94" sourceTerminal="RIGHT" target="S24"
-      targetLocation="2325,94" targetTerminal="LEFT" uid="T87">
-      <bendpoint index="0" location="2334,130" weight="0.5"/>
-      <bendpoint index="1" location="2334,130" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="353cb3f7-d73c-49b5-bddc-a38731b40c79" blue="255"
-      conditionDescription="false"
-      conditionText="dt_perfilamiento/compuertas/hasAge = false"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S75" sourceLocation="1408,213" sourceTerminal="TOP"
-      target="S22" targetLocation="2210,94" targetTerminal="LEFT" uid="T88">
-      <bendpoint index="0" location="1459,130" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="24" x="1465" y="124">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/hasAge"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
-      </wmExpression>
-    </transition>
     <transition Id="6d0632a0-92eb-45b7-afb8-0d1e0ab2d562" blue="255"
-      conditionDescription="false"
+      conditionDescription="false | exitCode = 0040"
       conditionText="dt_perfilamiento/compuertas/hasNationality = false"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S81" sourceLocation="1622,247" sourceTerminal="BOTTOM"
       target="S66" targetLocation="2210,438" targetTerminal="LEFT" uid="T89">
       <bendpoint index="0" location="1673,474" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="24" x="1680" y="448">
+        height="14" red="255" width="110" x="1680" y="448">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -1239,32 +1143,13 @@
           leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
       </wmExpression>
     </transition>
-    <transition Id="8372d9c3-47e8-4ee3-8d2f-c52ce05fb49b" blue="255"
-      conditionDescription="true"
-      conditionText="dt_perfilamiento/compuertas/hasNationality = true"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S81" sourceLocation="1639,230" sourceTerminal="RIGHT"
-      target="S90" targetLocation="1680,230" targetTerminal="LEFT" uid="T91">
-      <bendpoint index="0" location="1710,266" weight="0.5"/>
-      <bendpoint index="1" location="1710,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="19" x="1709" y="252">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/hasNationality"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'true'"/>
-      </wmExpression>
-    </transition>
     <transition Id="7427fbea-125b-4cca-8998-eae127fea152" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S90"
-      sourceLocation="1773,230" sourceTerminal="RIGHT" target="S94"
-      targetLocation="1806,230" targetTerminal="LEFT" uid="T95">
-      <bendpoint index="0" location="1840,266" weight="0.5"/>
-      <bendpoint index="1" location="1840,266" weight="0.5"/>
+      sourceLocation="1830,230" sourceTerminal="RIGHT" target="S94"
+      targetLocation="1900,232" targetTerminal="LEFT" uid="T95">
+      <bendpoint index="0" location="1916,266" weight="0.5"/>
+      <bendpoint index="1" location="1916,268" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1274,120 +1159,27 @@
       <wmExpression/>
     </transition>
     <transition Id="e00720bf-a99d-4e06-9b93-7ea5e66620b0" blue="255"
-      conditionDescription="false"
-      conditionText="dt_perfilamiento/compuertas/hasCURP = false"
+      conditionDescription="false | exitCode = 0041"
+      conditionText="dt_perfilamiento/compuertas/hasCURP = false and&#xa;dt_perfilamiento/compuertas/ineStatusCode = 200"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S94" sourceLocation="1823,247" sourceTerminal="BOTTOM"
+      source="S94" sourceLocation="1917,249" sourceTerminal="BOTTOM"
       target="S66" targetLocation="2210,438" targetTerminal="LEFT" uid="T96">
-      <bendpoint index="0" location="1874,474" weight="0.5"/>
+      <bendpoint index="0" location="1968,474" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="24" x="1880" y="448">
+        height="14" red="255" width="110" x="1978" y="454">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
       </labelLayout>
       <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/hasCURP"
+        <row chainOperator="and" leftFieldPath="compuertas/hasCURP"
           leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
-      </wmExpression>
-    </transition>
-    <transition Id="bca61f1f-df9b-45da-a5e9-b270f04a7a08" blue="255"
-      conditionDescription="408"
-      conditionText="dt_perfilamiento/compuertas/ineStatusCode = 408"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S101" sourceLocation="2227,213" sourceTerminal="TOP"
-      target="S22" targetLocation="2227,111" targetTerminal="BOTTOM" uid="T103">
-      <bendpoint index="0" location="2278,198" weight="0.5"/>
-      <bendpoint index="1" location="2278,198" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="18" x="2288" y="223">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
         <row chainOperator="" leftFieldPath="compuertas/ineStatusCode"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'408'"/>
-      </wmExpression>
-    </transition>
-    <transition Id="f786e4f6-ad90-46b3-b6f2-ba7df157effc" blue="255"
-      conditionDescription="200"
-      conditionText="dt_perfilamiento/compuertas/ineStatusCode = 200 and&#xa;dt_perfilamiento/compuertas/ineHasErrorMsg = false"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S101" sourceLocation="2244,230" sourceTerminal="RIGHT"
-      target="S104" targetLocation="2325,230" targetTerminal="LEFT" uid="T105">
-      <bendpoint index="0" location="2334,266" weight="0.5"/>
-      <bendpoint index="1" location="2334,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="18" x="2306" y="264">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="and"
-          leftFieldPath="compuertas/ineStatusCode"
           leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'200'"/>
-        <row chainOperator="" leftFieldPath="compuertas/ineHasErrorMsg"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
-      </wmExpression>
-    </transition>
-    <transition Id="707a59bb-1904-461e-8a97-408c1dd81fa7" blue="255"
-      conditionDescription="" conditionText="" conditionType="IF"
-      green="0" lineShape="STRAIGHT" red="0" source="S104"
-      sourceLocation="2418,230" sourceTerminal="RIGHT" target="S106"
-      targetLocation="2448,230" targetTerminal="LEFT" uid="T107">
-      <bendpoint index="0" location="2484,266" weight="0.5"/>
-      <bendpoint index="1" location="2484,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression/>
-    </transition>
-    <transition Id="8ea26eba-ddb7-456d-b72e-42facd192548" blue="255"
-      conditionDescription="> 80"
-      conditionText="dt_perfilamiento/compuertas/score > 80"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S106" sourceLocation="2482,230" sourceTerminal="RIGHT"
-      target="S12" targetLocation="2596,230" targetTerminal="LEFT" uid="T108">
-      <bendpoint index="0" location="2590,266" weight="0.5"/>
-      <bendpoint index="1" location="2590,266" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="21" x="2542" y="249">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/score"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator=">" rightOperand="'80'"/>
-      </wmExpression>
-    </transition>
-    <transition Id="5b532726-68ba-4a67-9169-0b18d7bfa291" blue="255"
-      conditionDescription="&lt;= 80"
-      conditionText="dt_perfilamiento/compuertas/score &lt;= 80"
-      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S106" sourceLocation="2465,247" sourceTerminal="BOTTOM"
-      target="S66" targetLocation="2227,421" targetTerminal="TOP" uid="T109">
-      <bendpoint index="0" location="2516,376" weight="0.5"/>
-      <bendpoint index="1" location="2278,376" weight="0.5"/>
-      <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="27" x="2481" y="356">
-        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-          <fontColor blue="0" green="0" red="0"/>
-        </fontData>
-      </labelLayout>
-      <wmExpression>
-        <row chainOperator="" leftFieldPath="compuertas/score"
-          leftOperand="{ProcessNamespace}dt_perfilamiento"
-          operator="&lt;=" rightOperand="'80'"/>
       </wmExpression>
     </transition>
     <transition Id="1db19d9c-96d7-4804-8339-f0c0a259164a" blue="255"
-      conditionDescription="200 &amp; ine.result=FAIL"
+      conditionDescription="200 &amp; ine.result=FAIL | exitCode = 0042"
       conditionText="dt_perfilamiento/compuertas/ineStatusCode = 200 and&#xa;dt_perfilamiento/compuertas/ineHasErrorMsg = true"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S101" sourceLocation="2227,247" sourceTerminal="BOTTOM"
@@ -1395,7 +1187,7 @@
       <bendpoint index="0" location="2278,370" weight="0.5"/>
       <bendpoint index="1" location="2278,370" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="102" x="2264" y="420">
+        height="14" red="255" width="188" x="2264" y="420">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -1427,12 +1219,12 @@
       conditionDescription="true"
       conditionText="dt_perfilamiento/compuertas/hasCURP = true"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
-      source="S94" sourceLocation="1840,230" sourceTerminal="RIGHT"
-      target="S117" targetLocation="1885,230" targetTerminal="LEFT" uid="T118">
-      <bendpoint index="0" location="1912,266" weight="0.5"/>
-      <bendpoint index="1" location="1912,266" weight="0.5"/>
+      source="S94" sourceLocation="1934,232" sourceTerminal="RIGHT"
+      target="S117" targetLocation="1973,230" targetTerminal="LEFT" uid="T118">
+      <bendpoint index="0" location="2004,268" weight="0.5"/>
+      <bendpoint index="1" location="2004,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="-1" red="255" width="-1" x="1909" y="236">
+        height="14" red="255" width="19" x="1991" y="249">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -1445,10 +1237,10 @@
     <transition Id="8136f5c0-7e1c-4798-afb4-5f7798bde114" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S117"
-      sourceLocation="1919,230" sourceTerminal="RIGHT" target="S97"
-      targetLocation="1978,230" targetTerminal="LEFT" uid="T119">
-      <bendpoint index="0" location="1998,266" weight="0.5"/>
-      <bendpoint index="1" location="1998,266" weight="0.5"/>
+      sourceLocation="2007,230" sourceTerminal="RIGHT" target="S97"
+      targetLocation="2051,230" targetTerminal="LEFT" uid="T119">
+      <bendpoint index="0" location="2080,266" weight="0.5"/>
+      <bendpoint index="1" location="2080,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1460,9 +1252,9 @@
     <transition Id="413414d6-8dc8-4488-9435-ba7e54a96612" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S122"
-      sourceLocation="2033,359" sourceTerminal="LEFT" target="S117"
-      targetLocation="1902,247" targetTerminal="BOTTOM" uid="T124">
-      <bendpoint index="0" location="1953,395" weight="0.5"/>
+      sourceLocation="2052,360" sourceTerminal="LEFT" target="S117"
+      targetLocation="1990,247" targetTerminal="BOTTOM" uid="T124">
+      <bendpoint index="0" location="2041,396" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1474,10 +1266,10 @@
     <transition Id="ba5363ef-2185-4cc5-b111-8056de5051f2" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S97"
-      sourceLocation="2071,230" sourceTerminal="RIGHT" target="S101"
+      sourceLocation="2144,230" sourceTerminal="RIGHT" target="S101"
       targetLocation="2210,230" targetTerminal="LEFT" uid="T128">
-      <bendpoint index="0" location="2190,266" weight="0.5"/>
-      <bendpoint index="1" location="2190,266" weight="0.5"/>
+      <bendpoint index="0" location="2228,266" weight="0.5"/>
+      <bendpoint index="1" location="2228,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1487,35 +1279,246 @@
       <wmExpression/>
     </transition>
     <transition Id="c2bb74e3-ca98-4b4e-94bf-605ff703e800" blue="255"
-      conditionDescription="Error"
-      conditionText="dt_perfilamiento/compuertas/ineStatusCode = 500 or&#xa;dt_perfilamiento/compuertas/ineStatusCode = 400 or&#xa;dt_perfilamiento/compuertas/ineStatusCode = 404"
+      conditionDescription="statusCode &lt;> 200 | exitCode=0036"
+      conditionText="dt_perfilamiento/compuertas/ineStatusCode != 200"
       conditionType="IF" green="0" lineShape="CURVE" red="0"
       source="S101" sourceLocation="2227,247" sourceTerminal="BOTTOM"
-      target="S122" targetLocation="2126,359" targetTerminal="RIGHT" uid="T129">
+      target="S122" targetLocation="2145,360" targetTerminal="RIGHT" uid="T129">
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="24" x="2222" y="356">
+        height="14" red="255" width="171" x="2109" y="349">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
       </labelLayout>
       <wmExpression>
-        <row chainOperator="or" leftFieldPath="compuertas/ineStatusCode"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'500'"/>
-        <row chainOperator="or" leftFieldPath="compuertas/ineStatusCode"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'400'"/>
         <row chainOperator="" leftFieldPath="compuertas/ineStatusCode"
-          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'404'"/>
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="!=" rightOperand="'200'"/>
       </wmExpression>
     </transition>
     <transition Id="fb3ad2a3-1dad-459f-b61d-f3827c5722b6" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S10"
-      sourceLocation="381,230" sourceTerminal="RIGHT" target="S33"
-      targetLocation="477,230" targetTerminal="LEFT" uid="T130">
-      <bendpoint index="0" location="480,266" weight="0.5"/>
-      <bendpoint index="1" location="480,266" weight="0.5"/>
+      sourceLocation="367,230" sourceTerminal="RIGHT" target="S33"
+      targetLocation="405,230" targetTerminal="LEFT" uid="T130">
+      <bendpoint index="0" location="436,266" weight="0.5"/>
+      <bendpoint index="1" location="436,266" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="78ec6209-26c6-4afb-9f1f-07da5015f7e9" blue="255"
+      conditionDescription="false | exitCode=0039"
+      conditionText="dt_perfilamiento/compuertas/hasAge = false"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S75" sourceLocation="1408,247" sourceTerminal="BOTTOM"
+      target="S66" targetLocation="2210,438" targetTerminal="LEFT" uid="T142">
+      <bendpoint index="0" location="1459,474" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="104" x="1468" y="448">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/hasAge"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="b53e7a9f-d218-4346-8ca9-a5573eebf7a2" blue="255"
+      conditionDescription="=200"
+      conditionText="dt_perfilamiento/compuertas/ineHasErrorMsg = false and&#xa;dt_perfilamiento/compuertas/ineStatusCode = 200"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S101" sourceLocation="2244,230" sourceTerminal="RIGHT"
+      target="S12" targetLocation="2429,230" targetTerminal="LEFT" uid="T144">
+      <bendpoint index="0" location="2386,266" weight="0.5"/>
+      <bendpoint index="1" location="2386,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="24" x="2318" y="249">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and"
+          leftFieldPath="compuertas/ineHasErrorMsg"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
+        <row chainOperator="" leftFieldPath="compuertas/ineStatusCode"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'200'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="50e97c88-f046-44cf-8ba1-19ae97529b6f" blue="255"
+      conditionDescription="true"
+      conditionText="dt_perfilamiento/compuertas/hasNationality = true"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S81" sourceLocation="1639,230" sourceTerminal="RIGHT"
+      target="S146" targetLocation="1672,230" targetTerminal="LEFT" uid="T147">
+      <bendpoint index="0" location="1706,266" weight="0.5"/>
+      <bendpoint index="1" location="1706,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="19" x="1698" y="249">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/hasNationality"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'true'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="48cf458c-48d2-40d5-b4e2-018599ef0433" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S146"
+      sourceLocation="1706,230" sourceTerminal="RIGHT" target="S90"
+      targetLocation="1737,230" targetTerminal="LEFT" uid="T148">
+      <bendpoint index="0" location="1772,266" weight="0.5"/>
+      <bendpoint index="1" location="1772,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="d2cab059-1aa2-4837-ac08-6be0701b7157" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S145"
+      sourceLocation="1749,360" sourceTerminal="LEFT" target="S146"
+      targetLocation="1689,247" targetTerminal="BOTTOM" uid="T149">
+      <bendpoint index="0" location="1740,396" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="2d5c397b-9b27-4327-b33f-4004604ae9b3" blue="255"
+      conditionDescription="statusCode &lt;> 200 | exitCode = 0036"
+      conditionText="dt_perfilamiento/compuertas/ineStatusCode != 200 and&#xa;dt_perfilamiento/compuertas/hasCURP = false"
+      conditionType="IF" green="0" lineShape="CURVE" red="0"
+      source="S94" sourceLocation="1917,249" sourceTerminal="BOTTOM"
+      target="S145" targetLocation="1842,360" targetTerminal="RIGHT" uid="T150">
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="177" x="1795" y="349">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="and"
+          leftFieldPath="compuertas/ineStatusCode"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="!=" rightOperand="'200'"/>
+        <row chainOperator="" leftFieldPath="compuertas/hasCURP"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'false'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="60d65f22-e21f-436f-b000-96b701d0f8fc" blue="255"
+      conditionDescription="Colocación"
+      conditionText="dt_perfilamiento/compuertas/productType = captacion"
+      conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
+      source="S132" sourceLocation="556,247" sourceTerminal="BOTTOM"
+      target="S45" targetLocation="587,314" targetTerminal="LEFT" uid="T159">
+      <bendpoint index="0" location="607,350" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="53" x="585" y="325">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression>
+        <row chainOperator="" leftFieldPath="compuertas/productType"
+          leftOperand="{ProcessNamespace}dt_perfilamiento" operator="=" rightOperand="'captacion'"/>
+      </wmExpression>
+    </transition>
+    <transition Id="622db1f6-2a25-40cb-aa5c-2bb0270afc4d" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S45"
+      sourceLocation="680,314" sourceTerminal="RIGHT" target="S49"
+      targetLocation="729,314" targetTerminal="LEFT" uid="T160">
+      <bendpoint index="0" location="754,350" weight="0.5"/>
+      <bendpoint index="1" location="754,350" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="76b3c81e-8cba-49cf-8737-4a4f2c64cca8" blue="255"
+      conditionDescription="Captación" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S132" sourceLocation="573,230" sourceTerminal="RIGHT"
+      target="S135" targetLocation="836,232" targetTerminal="LEFT" uid="T162">
+      <bendpoint index="0" location="754,266" weight="0.5"/>
+      <bendpoint index="1" location="754,268" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="48" x="632" y="249">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="8cc1c5fd-592a-4451-8106-5e4b47c96f0b" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S49"
+      sourceLocation="822,314" sourceTerminal="RIGHT" target="S135"
+      targetLocation="853,249" targetTerminal="BOTTOM" uid="T163">
+      <bendpoint index="0" location="904,350" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="b5f34b78-851e-487c-bf3d-f29d41b6bb71" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S135"
+      sourceLocation="870,232" sourceTerminal="RIGHT" target="S57"
+      targetLocation="902,230" targetTerminal="LEFT" uid="T164">
+      <bendpoint index="0" location="936,268" weight="0.5"/>
+      <bendpoint index="1" location="936,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="2c24942b-86b7-4571-a154-a104494dd351" blue="255"
+      conditionDescription="" conditionText="" conditionType="IF"
+      green="0" lineShape="STRAIGHT" red="0" source="S33"
+      sourceLocation="498,230" sourceTerminal="RIGHT" target="S132"
+      targetLocation="539,230" targetTerminal="LEFT" uid="T165">
+      <bendpoint index="0" location="568,266" weight="0.5"/>
+      <bendpoint index="1" location="568,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
+      </labelLayout>
+      <wmExpression/>
+    </transition>
+    <transition Id="5dded4b3-244f-4341-8d9a-bfd33dd3c6f8" blue="255"
+      conditionDescription="false" conditionText="Default"
+      conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
+      source="S62" sourceLocation="1211,230" sourceTerminal="RIGHT"
+      target="S64" targetLocation="1268,230" targetTerminal="LEFT" uid="T166">
+      <bendpoint index="0" location="1290,266" weight="0.5"/>
+      <bendpoint index="1" location="1290,266" weight="0.5"/>
+      <labelLayout blue="0" defaultLocation="false" green="196"
+        height="14" red="255" width="24" x="1273" y="252">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -1533,8 +1536,8 @@
     <wmExpression/>
     <annotationFlow Id="00c1a35e-0676-4832-afb3-c9ae7242f9aa" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S10" sourceLocation="334,260" sourceTerminal="BOTTOM"
-      target="N14" targetLocation="334,75" targetTerminal="BOTTOM" uid="T15">
+      source="S10" sourceLocation="320,260" sourceTerminal="BOTTOM"
+      target="N14" targetLocation="344,139" targetTerminal="BOTTOM" uid="T15">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1544,8 +1547,8 @@
     </annotationFlow>
     <annotationFlow Id="113f5cfd-9336-4ef0-981b-08d9e571f47d" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S33" sourceLocation="523,260" sourceTerminal="BOTTOM"
-      target="N35" targetLocation="539,308" targetTerminal="TOP" uid="T36">
+      source="S33" sourceLocation="451,260" sourceTerminal="BOTTOM"
+      target="N35" targetLocation="409,309" targetTerminal="TOP" uid="T36">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1553,17 +1556,19 @@
     </annotationFlow>
     <annotationFlow Id="d162cbdf-f3d0-4074-8d59-5639f71be388" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S45" sourceLocation="674,200" sourceTerminal="TOP"
-      target="N47" targetLocation="679,75" targetTerminal="BOTTOM" uid="T48">
+      source="S45" sourceLocation="619,344" sourceTerminal="BOTTOM"
+      target="N47" targetLocation="512,392" targetTerminal="TOP" uid="T48">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+        <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+          <fontColor blue="0" green="0" red="0"/>
+        </fontData>
       </labelLayout>
     </annotationFlow>
     <annotationFlow Id="b83a25f2-613e-42b9-b36e-5302acae75f7" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S49" sourceLocation="823,260" sourceTerminal="BOTTOM"
-      target="N51" targetLocation="776,310" targetTerminal="TOP" uid="T52">
+      source="S49" sourceLocation="774,344" sourceTerminal="BOTTOM"
+      target="N51" targetLocation="722,402" targetTerminal="TOP" uid="T52">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1571,8 +1576,8 @@
     </annotationFlow>
     <annotationFlow Id="941ccc16-0182-4af8-81e7-597f1fd3bef1" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S53" sourceLocation="1098,260" sourceTerminal="BOTTOM"
-      target="N55" targetLocation="1105,310" targetTerminal="TOP" uid="T56">
+      source="S53" sourceLocation="1088,260" sourceTerminal="BOTTOM"
+      target="N55" targetLocation="1049,422" targetTerminal="TOP" uid="T56">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1580,8 +1585,8 @@
     </annotationFlow>
     <annotationFlow Id="b13a3691-0749-400c-8f93-9c8f58c036d9" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S57" sourceLocation="970,260" sourceTerminal="BOTTOM"
-      target="N59" targetLocation="958,310" targetTerminal="TOP" uid="T60">
+      source="S57" sourceLocation="948,260" sourceTerminal="BOTTOM"
+      target="N59" targetLocation="915,392" targetTerminal="TOP" uid="T60">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1590,7 +1595,7 @@
     <annotationFlow Id="b14dd4d2-a76d-46b7-a374-9040228c025e" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
       source="S64" sourceLocation="1314,260" sourceTerminal="BOTTOM"
-      target="N73" targetLocation="1314,310" targetTerminal="TOP" uid="T74">
+      target="N73" targetLocation="1299,310" targetTerminal="TOP" uid="T74">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1607,8 +1612,8 @@
     </annotationFlow>
     <annotationFlow Id="74669564-083f-44d1-b59d-c3511edd039a" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S90" sourceLocation="1726,260" sourceTerminal="BOTTOM"
-      target="N92" targetLocation="1726,298" targetTerminal="TOP" uid="T93">
+      source="S90" sourceLocation="1783,260" sourceTerminal="BOTTOM"
+      target="N92" targetLocation="1789,273" targetTerminal="TOP" uid="T93">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1616,8 +1621,8 @@
     </annotationFlow>
     <annotationFlow Id="bc7c07e8-572b-4aeb-848e-6bbd3fe18bae" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S97" sourceLocation="2024,260" sourceTerminal="BOTTOM"
-      target="N99" targetLocation="1962,318" targetTerminal="TOP" uid="T100">
+      source="S97" sourceLocation="2097,260" sourceTerminal="BOTTOM"
+      target="N99" targetLocation="2067,288" targetTerminal="TOP" uid="T100">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
@@ -1632,19 +1637,10 @@
         <fontData boldFont="false" fontFamily="" italicFont="false"/>
       </labelLayout>
     </annotationFlow>
-    <annotationFlow Id="a7b8233e-dcbc-4dfd-9edc-7a0110724549" blue="0"
-      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S104" sourceLocation="2371,260" sourceTerminal="BOTTOM"
-      target="N112" targetLocation="2366,298" targetTerminal="TOP" uid="T113">
-      <labelLayout blue="0" defaultLocation="true" green="196"
-        height="-1" red="255" width="-1" x="-1" y="-1">
-        <fontData boldFont="false" fontFamily="" italicFont="false"/>
-      </labelLayout>
-    </annotationFlow>
     <annotationFlow Id="8ff443cb-1d78-46c4-804a-9dd48ec7f994" blue="0"
       conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
-      source="S122" sourceLocation="2079,389" sourceTerminal="BOTTOM"
-      target="N126" targetLocation="1975,475" targetTerminal="TOP" uid="T127">
+      source="S122" sourceLocation="2098,390" sourceTerminal="BOTTOM"
+      target="N126" targetLocation="2091,466" targetTerminal="TOP" uid="T127">
       <labelLayout blue="0" defaultLocation="true" green="196"
         height="-1" red="255" width="-1" x="-1" y="-1">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -1652,40 +1648,21 @@
         </fontData>
       </labelLayout>
     </annotationFlow>
+    <annotationFlow Id="9b9f2ed5-e3a9-4272-bdd9-7721d02c5962" blue="0"
+      conditionDescription="" green="0" lineShape="BENDPOINT" red="0"
+      source="S145" sourceLocation="1795,390" sourceTerminal="BOTTOM"
+      target="N152" targetLocation="1790,475" targetTerminal="TOP" uid="T154">
+      <labelLayout blue="0" defaultLocation="true" green="196"
+        height="-1" red="255" width="-1" x="-1" y="-1">
+        <fontData boldFont="false" fontFamily="" italicFont="false"/>
+      </labelLayout>
+    </annotationFlow>
     <swimlane Id="4ffc2015-9b7b-4fb0-a7b1-8b026adec3fd" blue="255"
       green="255" height="596" label="webMethods" labelBlue="255"
       labelGreen="238" labelRed="221" name="webMethods" red="255"
-      uid="W8" width="2676">
+      uid="W8" width="2750">
       <documentation/>
     </swimlane>
-  </pool>
-  <pool Id="4883a232-8598-4fa7-96c3-38dd4d53ec7c" blue="128"
-    containerType="BPMN_SUBPROCESS" external="true"
-    externalizeConditions="false" green="128" isCollapsed="false"
-    isCompensating="false" isTestAfter="false" label="Pool"
-    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
-    loopMaximum="0" loopMaximumField="" name="1"
-    orientation="horizontal" red="128" retryCount="0" stepLock="false"
-    uid="P2" useCorrelation="false">
-    <documentation/>
-    <businessKPIs/>
-    <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    <poolReference Id="d67d911a-5303-4641-8f3a-95c5272299da"
-      label="SP_Perfilamiento" logicalServer="Default" poolName="6"
-      stepLock="false" uid="S3" useCorrelation="false" x="21" y="35">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    </poolReference>
-    <timeout calendarAlias="" calendarTime="0:0:0"
-      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-      dynamicFieldName="" isCalendarTimeout="false"
-      isStaticTimeout="true" isXPathTimeout="false"
-      pipelineCalendarAlias="" pipelineCalendarDays=""
-      pipelineCalendarHours="" pipelineCalendarMinutes=""
-      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
-    <wmExpression/>
   </pool>
   <documentation/>
 </businessProcessDiagram>
