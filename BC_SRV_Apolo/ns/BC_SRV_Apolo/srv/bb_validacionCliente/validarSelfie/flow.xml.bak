@@ -3499,13 +3499,18 @@
 
   <!-- nodes -->
 
-<BRANCH TIMEOUT="" SWITCH="/dt_validacionCliente/compuertas/countSelfie">
+<BRANCH TIMEOUT="" LABELEXPRESSIONS="true">
+  <COMMENT>Maximos Intentos</COMMENT>
+
+  <!-- nodes -->
+
+<SEQUENCE NAME="%dt_validacionCliente/compuertas/countSelfie% >= %dt_validacionCliente/control/attemptControlRuleRs/maxAttempts% " TIMEOUT="" EXIT-ON="FAILURE">
   <COMMENT></COMMENT>
 
   <!-- nodes -->
 
-<MAP NAME="2" TIMEOUT="" MODE="STANDALONE">
-  <COMMENT>0003</COMMENT>
+<MAP TIMEOUT="" MODE="STANDALONE">
+  <COMMENT>exitCode 0003</COMMENT>
   <MAPTARGET>
 
 <Values version="2.0">
@@ -3722,6 +3727,7 @@
 </DATA>
 </MAPSET>
 </MAP>
+</SEQUENCE>
 </BRANCH>
 </SEQUENCE>
 </SEQUENCE>

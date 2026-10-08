@@ -33,24 +33,24 @@
         <value name="type">simple</value>
         <record name="data" javaclass="com.wm.util.Values">
           <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
-            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
-            <null name="filter"/>
-            <value name="umFilter">( ProcessModelID = 'BC_BPM_Apolo/SP_SeleccionOferta' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S9', 'S36', 'S52', 'S40', 'S34', 'S44', 'S10', 'S11', 'S32', 'S55', 'S46', 'S28', 'S47', 'S30', 'S8' )  ) </value>
-          </record>
-          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
-          <value name="conditionName">Inbound transitions</value>
-        </record>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="type">simple</value>
-        <record name="data" javaclass="com.wm.util.Values">
-          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
             <value name="messageType">wm.prt.dispatch:CallActivityReturn</value>
             <null name="filter"/>
             <value name="umFilter">ParentModelID = 'BC_BPM_Apolo/SP_SeleccionOferta' and ParentModelVersion = '1'</value>
           </record>
           <value name="serviceName">wm.prt.dispatch:handleCallActivityReturn</value>
           <value name="conditionName">Call Activity Return Event</value>
+        </record>
+      </record>
+      <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:ProcessTransitionVol</value>
+            <null name="filter"/>
+            <value name="umFilter">( ProcessModelID = 'BC_BPM_Apolo/SP_SeleccionOferta' and ProcessModelVersion = '1' )  and  ( TargetStepID  in (  'S40', 'S52', 'S55', 'S46', 'S9', 'S44', 'S8', 'S10', 'S47', 'S11' )  ) </value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleTransition</value>
+          <value name="conditionName">Inbound transitions</value>
         </record>
       </record>
     </array>

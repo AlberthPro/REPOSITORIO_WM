@@ -37,6 +37,33 @@ public final class srv
 
 
 
+	public static final void UT_MultiConcatString (IData pipeline)
+        throws ServiceException
+	{
+		// --- <<IS-START(UT_MultiConcatString)>> ---
+		// @sigtype java 3.5
+		// [i] field:1:required toConcat
+		// [o] field:0:required string
+		String[] list = IDataUtil.getStringArray(pipeline.getCursor(), "toConcat");
+		if (list == null) throw new RuntimeException("Los campos de nombre no pueden ser nulos");
+		String output  = "";
+		int index = 0;
+		for (String item : list){
+		if (item!=null){
+		output += item;
+		if (index<list.length-1)
+		output = output + " "; 
+		index++;
+		}
+		}
+		IDataUtil.put(pipeline.getCursor(), "string", output.trim());
+		// --- <<IS-END>> ---
+
+                
+	}
+
+
+
 	public static final void callApiMulesoft (IData pipeline)
         throws ServiceException
 	{

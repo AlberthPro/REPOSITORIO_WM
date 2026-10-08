@@ -31,6 +31,18 @@
     <value name="executeUser">Administrator</value>
     <array name="conditions" type="record" depth="1">
       <record javaclass="com.wm.util.Values">
+        <value name="type">simple</value>
+        <record name="data" javaclass="com.wm.util.Values">
+          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
+            <value name="messageType">wm.prt.dispatch:SubprocessStart</value>
+            <null name="filter"/>
+            <value name="umFilter">ProcessModelID = 'BC_BPM_Apolo/FP_ApoloTDC'</value>
+          </record>
+          <value name="serviceName">wm.prt.dispatch:handleSubprocessStart</value>
+          <value name="conditionName">Subprocess Start Event</value>
+        </record>
+      </record>
+      <record javaclass="com.wm.util.Values">
         <value name="type">join</value>
         <record name="data" javaclass="com.wm.util.Values">
           <array name="messageTypeFilterPairs" type="record" depth="1">
@@ -46,18 +58,6 @@
           <value name="serviceName">wm.prt.dispatch:handlePublishedInput</value>
           <value name="conditionName">Subscribed inputs</value>
           <number name="joinType" type="Integer">3</number>
-        </record>
-      </record>
-      <record javaclass="com.wm.util.Values">
-        <value name="type">simple</value>
-        <record name="data" javaclass="com.wm.util.Values">
-          <record name="messageTypeFilterPair" javaclass="com.wm.util.Values">
-            <value name="messageType">wm.prt.dispatch:SubprocessStart</value>
-            <null name="filter"/>
-            <value name="umFilter">ProcessModelID = 'BC_BPM_Apolo/FP_ApoloTDC'</value>
-          </record>
-          <value name="serviceName">wm.prt.dispatch:handleSubprocessStart</value>
-          <value name="conditionName">Subprocess Start Event</value>
         </record>
       </record>
     </array>

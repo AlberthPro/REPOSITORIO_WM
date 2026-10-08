@@ -284,6 +284,27 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </gatewayStep>
+    <gatewayStep Id="3d52f58e-8a79-4859-842b-e973415870c7"
+      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
+      label="COC.Default" labelHeight="-1" labelWidth="-1"
+      logicalServer="Default" retryCount="0" stepLock="false" uid="S144"
+      useCorrelation="false" width="34" x="558" y="127">
+      <documentation/>
+      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+      <timeout calendarAlias="" calendarTime="0:0:0"
+        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+        dynamicFieldName="" isCalendarTimeout="false"
+        isStaticTimeout="true" isXPathTimeout="false"
+        pipelineCalendarAlias="" pipelineCalendarDays=""
+        pipelineCalendarHours="" pipelineCalendarMinutes=""
+        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
+        timeoutValue="0" xpathTimeoutValue=""/>
+    </gatewayStep>
     <invokeStep Id="a8e5a0dd-fd04-46c1-b19b-b5667c444584"
       description="https://docs.google.com/document/d/1g-a_fqNDb1YbcmpJ1kJ_nJn9e3w3YcnK/edit?tab=t.0"
       dynamicReferenceProcess="false" externalizeConditions="false"
@@ -581,27 +602,6 @@
         timeoutStyle="RELATIVE" timeoutType="stepTimeout"
         timeoutValue="0" xpathTimeoutValue=""/>
     </invokeStep>
-    <gatewayStep Id="3d52f58e-8a79-4859-842b-e973415870c7"
-      externalizeConditions="false" gatewayType="EXCLUSIVE" height="34"
-      label="COC.Default" labelHeight="-1" labelWidth="-1"
-      logicalServer="Default" retryCount="0" stepLock="false" uid="S144"
-      useCorrelation="false" width="34" x="558" y="127">
-      <documentation/>
-      <join joinType="UnsynchronizedOr" suppressJoinFailure="false" synchronizationPoint="false"/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-      <timeout calendarAlias="" calendarTime="0:0:0"
-        dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-        dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-        dynamicFieldName="" isCalendarTimeout="false"
-        isStaticTimeout="true" isXPathTimeout="false"
-        pipelineCalendarAlias="" pipelineCalendarDays=""
-        pipelineCalendarHours="" pipelineCalendarMinutes=""
-        timeoutStyle="RELATIVE" timeoutType="stepTimeout"
-        timeoutValue="0" xpathTimeoutValue=""/>
-    </gatewayStep>
     <transition Id="7efb1fb4-d40a-4f71-8de7-ccf800754ca4" blue="255"
       conditionDescription="" conditionText="" conditionType="IF"
       green="0" lineShape="STRAIGHT" red="0" source="S41"
@@ -633,7 +633,7 @@
       <wmExpression/>
     </transition>
     <transition Id="ca496874-f57b-40fc-a9bb-bf7c86ad8a0f" blue="255"
-      conditionDescription="Reenvio OTP &lt; 3 intentos"
+      conditionDescription="Reenvio OTP &lt; maxattempt"
       conditionText="dt_validacionTelefono/compuertas/OTPcorrecto = reenvioEdicion"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S35" sourceLocation="1378,130" sourceTerminal="TOP"
@@ -641,7 +641,7 @@
       <bendpoint index="0" location="1452,141" weight="0.5"/>
       <bendpoint index="1" location="708,141" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="121" x="1327" y="121">
+        height="14" red="255" width="129" x="1327" y="121">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -748,7 +748,7 @@
       <wmExpression/>
     </transition>
     <transition Id="1f79927a-dc45-4e89-8a9c-235e4b614301" blue="255"
-      conditionDescription="OTP incorrecto 3 intentos | exitCode=0017"
+      conditionDescription="OTP incorrecto maxattempts | exitCode=0017"
       conditionText="dt_validacionTelefono/compuertas/OTPcorrecto = OTPIncorrecto"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S35" sourceLocation="1378,164" sourceTerminal="BOTTOM"
@@ -756,7 +756,7 @@
       <bendpoint index="0" location="1452,290" weight="0.5"/>
       <bendpoint index="1" location="1129,290" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="202" x="1238" y="268">
+        height="14" red="255" width="216" x="1220" y="268">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -802,7 +802,7 @@
       </wmExpression>
     </transition>
     <transition Id="cb21d75f-22cb-45f9-a6f3-ec5b1e54fc24" blue="255"
-      conditionDescription="editarTeléfono=true AND OTPcont&lt;=3 OR OTPcont > 3 reenvios | exitCode=0036"
+      conditionDescription="editarTeléfono=true AND OTPcont&lt;=maxattempts OR OTPcont > maxattempts  | exitCode=0036"
       conditionText="dt_validacionTelefono/edicionTel = true"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S35" sourceLocation="1378,129" sourceTerminal="TOP"
@@ -810,7 +810,7 @@
       <bendpoint index="0" location="1452,105" weight="0.5"/>
       <bendpoint index="1" location="329,105" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="384" x="1056" y="89">
+        height="14" red="255" width="452" x="1056" y="89">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
