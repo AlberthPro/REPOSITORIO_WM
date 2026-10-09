@@ -73,6 +73,43 @@
     timeoutType="processTimeout" timeoutValue="0" xpathTimeoutValue=""/>
   <input name="{ProcessNamespace}dt_validacionDomicilio"/>
   <output name="{ProcessNamespace}dt_validacionDomicilio"/>
+  <pool Id="675a3ea0-518a-4e5b-9dd5-2988013dd8bd" blue="128"
+    containerType="BPMN_SUBPROCESS" external="true"
+    externalizeConditions="false" green="128" isCollapsed="false"
+    isCompensating="false" isTestAfter="false" label="Pool"
+    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
+    loopMaximum="0" loopMaximumField="" name="1"
+    orientation="horizontal" red="128" retryCount="0" stepLock="false"
+    uid="P2" useCorrelation="false">
+    <documentation/>
+    <businessKPIs/>
+    <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    <annotationNode Id="befb73b0-57f4-4392-bf14-e9c8a64342ce" blue="0"
+      green="196" height="32" label="annotationNode"
+      name="annotationNode" red="255" text="V1 - 29/09/2026" uid="N164"
+      width="113" x="37" y="9">
+      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
+        <fontColor blue="0" green="0" red="0"/>
+      </fontData>
+    </annotationNode>
+    <poolReference Id="e55cc728-7e85-44d0-8357-d7d719b180cd"
+      label="SP_ValidacionDomicilio" logicalServer="Default"
+      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
+      x="37" y="40">
+      <documentation/>
+      <businessKPIs/>
+      <fontData boldFont="false" fontFamily="" italicFont="false"/>
+    </poolReference>
+    <timeout calendarAlias="" calendarTime="0:0:0"
+      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
+      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
+      dynamicFieldName="" isCalendarTimeout="false"
+      isStaticTimeout="true" isXPathTimeout="false"
+      pipelineCalendarAlias="" pipelineCalendarDays=""
+      pipelineCalendarHours="" pipelineCalendarMinutes=""
+      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
+    <wmExpression/>
+  </pool>
   <pool Id="0680d347-4dba-48a5-b5b3-12241f03ba2a" blue="128"
     containerType="BPMN_SUBPROCESS" errorHandler="S163" external="false"
     externalizeConditions="false" green="128" isCollapsed="false"
@@ -1495,8 +1532,8 @@
       conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
       source="S33" sourceLocation="612,97" sourceTerminal="BOTTOM"
       target="S37" targetLocation="820,98" targetTerminal="BOTTOM" uid="T39">
-      <bendpoint index="0" location="679,148" weight="0.5"/>
-      <bendpoint index="1" location="887,148" weight="0.5"/>
+      <bendpoint index="0" location="679,188" weight="0.5"/>
+      <bendpoint index="1" location="887,188" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
         height="14" red="255" width="24" x="687" y="192">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
@@ -2070,8 +2107,8 @@
       </wmExpression>
     </transition>
     <transition Id="e5a6e30d-04cd-40dc-a4d2-4558c378df84" blue="255"
-      conditionDescription="2000 (N4)"
-      conditionText="dt_validacionDomicilio/dt_ContextoTransaccional/product = 2000"
+      conditionDescription="Captación"
+      conditionText="dt_validacionDomicilio/compuertas/productType = captacion"
       conditionType="IF" green="0" lineShape="STRAIGHT" red="0"
       source="S104" sourceLocation="1918,517" sourceTerminal="RIGHT"
       target="S106" targetLocation="1993,516" targetTerminal="LEFT" uid="T107">
@@ -2084,10 +2121,9 @@
         </fontData>
       </labelLayout>
       <wmExpression>
-        <row chainOperator=""
-          leftFieldPath="dt_ContextoTransaccional/product"
+        <row chainOperator="" leftFieldPath="compuertas/productType"
           leftOperand="{ProcessNamespace}dt_validacionDomicilio"
-          operator="=" rightOperand="'2000'"/>
+          operator="=" rightOperand="'captacion'"/>
       </wmExpression>
     </transition>
     <transition Id="bf3f7740-96bc-4261-a9a7-aca0c5977507" blue="255"
@@ -2121,14 +2157,14 @@
       <wmExpression/>
     </transition>
     <transition Id="b446c149-542b-41ad-8ad8-0f1c6682a0cc" blue="255"
-      conditionDescription="Otros productos" conditionText="Default"
+      conditionDescription="Colocacion" conditionText="Default"
       conditionType="ELSE" green="0" lineShape="STRAIGHT" red="0"
       source="S104" sourceLocation="1899,534" sourceTerminal="BOTTOM"
       target="S108" targetLocation="2152,534" targetTerminal="BOTTOM" uid="T112">
-      <bendpoint index="0" location="1966,584" weight="0.5"/>
-      <bendpoint index="1" location="2219,584" weight="0.5"/>
+      <bendpoint index="0" location="1966,625" weight="0.5"/>
+      <bendpoint index="1" location="2219,625" weight="0.5"/>
       <labelLayout blue="0" defaultLocation="false" green="196"
-        height="14" red="255" width="79" x="1974" y="603">
+        height="14" red="255" width="53" x="1974" y="603">
         <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
           <fontColor blue="0" green="0" red="0"/>
         </fontData>
@@ -2540,43 +2576,6 @@
       uid="W8" width="2357">
       <documentation/>
     </swimlane>
-  </pool>
-  <pool Id="675a3ea0-518a-4e5b-9dd5-2988013dd8bd" blue="128"
-    containerType="BPMN_SUBPROCESS" external="true"
-    externalizeConditions="false" green="128" isCollapsed="false"
-    isCompensating="false" isTestAfter="false" label="Pool"
-    labelBlue="255" labelGreen="204" labelRed="153" logicalServer=""
-    loopMaximum="0" loopMaximumField="" name="1"
-    orientation="horizontal" red="128" retryCount="0" stepLock="false"
-    uid="P2" useCorrelation="false">
-    <documentation/>
-    <businessKPIs/>
-    <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    <annotationNode Id="befb73b0-57f4-4392-bf14-e9c8a64342ce" blue="0"
-      green="196" height="32" label="annotationNode"
-      name="annotationNode" red="255" text="V2 - 29/09/2026" uid="N164"
-      width="113" x="37" y="9">
-      <fontData boldFont="false" fontFamily="Arial" fontSize="8" italicFont="false">
-        <fontColor blue="0" green="0" red="0"/>
-      </fontData>
-    </annotationNode>
-    <poolReference Id="e55cc728-7e85-44d0-8357-d7d719b180cd"
-      label="SP_ValidacionDomicilio" logicalServer="Default"
-      poolName="6" stepLock="false" uid="S3" useCorrelation="false"
-      x="37" y="40">
-      <documentation/>
-      <businessKPIs/>
-      <fontData boldFont="false" fontFamily="" italicFont="false"/>
-    </poolReference>
-    <timeout calendarAlias="" calendarTime="0:0:0"
-      dynamicCalendarStaticAlias="" dynamicCalendarStaticDays=""
-      dynamicCalendarStaticHours="" dynamicCalendarStaticMinutes=""
-      dynamicFieldName="" isCalendarTimeout="false"
-      isStaticTimeout="true" isXPathTimeout="false"
-      pipelineCalendarAlias="" pipelineCalendarDays=""
-      pipelineCalendarHours="" pipelineCalendarMinutes=""
-      timeoutStyle="RELATIVE" timeoutType="stepTimeout" timeoutValue="0" xpathTimeoutValue=""/>
-    <wmExpression/>
   </pool>
   <documentation/>
 </businessProcessDiagram>
